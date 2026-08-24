@@ -4,9 +4,11 @@ Adapt section names to the selected language, project, audience, and available e
 
 Audience and context choices configure the writing but are not automatic report content. Include an event, venue, or audience label only when the user supplies it and it naturally belongs in the published or projected artifact. Never add internal writing guidance, speaking advice, or “what to say” sections to either format.
 
+A user-supplied outline takes precedence over the scaffold below. Preserve its recognizable hierarchy and emphasis while completing the scientific logic. Use this scaffold only when the user asks the agent to organize the report, or to fill a genuine gap that cannot be integrated clearly into the supplied outline.
+
 ## Markdown
 
-Use ordinary GitHub-flavored Markdown unless the target platform imposes another dialect. A useful scaffold is:
+Use ordinary GitHub-flavored Markdown unless the target platform imposes another dialect. When no outline is supplied, a useful scaffold is:
 
 ```markdown
 # [Project or progress-report title]

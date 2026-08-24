@@ -15,10 +15,15 @@ Determine these settings from the request and supplied material:
 - **Output:** Markdown by default; standalone semantic HTML when requested.
 - **Audience:** `普遍高学历人群`, `大领域科研人群`, `小领域科研人群`, or `研究伙伴`. Read [references/audience-and-context.md](references/audience-and-context.md) when selecting background depth, terminology, methods detail, and emphasis.
 - **Context:** public report or lab meeting. This affects disclosure, explanation, and operational detail; it does not change the evidence standard.
+- **Outline:** optional and user-controlled. The user may supply headings, bullets, an existing report structure, or ask the agent to organize the report.
 - **Shared prior context:** default to none. Treat prior reports, conversations, attachments, notebooks, and source bundles as authoring material that the audience has not seen unless the user explicitly identifies what the audience already knows or has received.
 - **Scope:** project and reporting period, objectives or hypotheses, material progress, methods or interventions, results, source data, citations, problems, and intended next steps.
 
 **Audience is a required user decision.** Before drafting any report body, verify that the user has explicitly selected one of the four audience profiles or described a custom audience for this artifact. If not, stop and ask the user to choose; present the four options with brief distinctions and wait for the answer. Do not infer the audience from the field, terminology, source complexity, intended venue, or presumed expertise. If the audience is mixed, ask which group is primary and use layered detail for the rest. When context is also missing, ask for public report or lab meeting in the same clarification; context never substitutes for audience.
+
+**The outline itself is optional, but the user must receive an opportunity to provide one before the first full draft.** If the user has neither supplied an outline nor explicitly delegated structure, ask whether they want to paste an outline or have the agent organize the report. Wait for the answer before drafting. Treat “no outline”, “organize it”, “draft directly”, and equivalent instructions as an explicit choice of agent-organized structure. An existing report being revised counts as a supplied outline unless the user requests restructuring.
+
+Combine all missing pre-draft choices—audience, context, and optional outline—into one concise intake message rather than asking them serially. Localize the choices to the user's language. Do not repeat a choice already made. A suitable outline prompt is: “You may paste an outline to follow, or say ‘no outline—organize automatically.’”
 
 Ask further clarification only when another missing choice would materially change the artifact and cannot be inferred safely. Otherwise proceed with the stated settings. If factual inputs are insufficient, produce a useful structure with localized missing-information markers such as `[待补充：样本量与统计方法]` or `[TO SUPPLY: sample size and statistical method]`; never invent data, citations, experiments, causes, or outcomes.
 
@@ -45,17 +50,18 @@ Only omit a background element when it is common knowledge for the selected audi
 
 1. Inventory the supplied claims and evidence. Distinguish observation, interpretation, decision, plan, and open question. Preserve source identifiers so every number and citation remains traceable.
 2. Decide the report's central message: what changed during this period, what the strongest evidence supports, what remains blocked or uncertain, and what decision or action follows. State enough of the problem and prior state for that message to make sense without the authoring conversation.
-3. Use a flexible **summary–detail–summary** structure:
+3. If the user supplied an outline, treat its hierarchy, order, and emphasis as authorial intent. Map context and evidence into it instead of silently replacing it with the default scaffold. Normalize rough bullets and heading wording when useful, but do not materially reorder or discard the outline without explaining the conflict and obtaining direction. Integrate any essential missing background, evidence, limitations, or closing synthesis into the nearest suitable section; add the smallest necessary section only when integration would make the logic unclear.
+4. If the user delegated structure, use a flexible **summary–detail–summary** structure:
    - Open with the most important progress, conclusions, problems, and any decision required.
    - Organize the body by research question, hypothesis, work package, or decision—not merely by chronology. Present the evidence behind each opening claim.
    - Close by restating the supported conclusions, naming unresolved problems and proposed responses, and specifying next steps and outlook.
-4. For each substantive result, preserve the reasoning chain as applicable:
+5. For each substantive result, preserve the reasoning chain as applicable:
 
    `objective or question → prior evidence or rationale → action or experimental choice and why → design and controls → observation or data → analysis → supported interpretation → implication or next decision`
 
    This is a completeness principle, not a mandatory list of headings. Adapt the visible structure to the project and audience. Every non-obvious action needs a reason; every conclusion needs evidence; every result should connect back to the objective or decision it informs.
-5. Calibrate detail using the audience reference. Define only the concepts the audience is unlikely to know. Retain enough methodological detail to evaluate the claim, without turning a progress report into a protocol or literature review unless requested.
-6. Use [references/output-formats.md](references/output-formats.md) for the selected output. The examples are adaptable scaffolds, not compulsory headings.
+6. Calibrate detail using the audience reference. Define only the concepts the audience is unlikely to know. Retain enough methodological detail to evaluate the claim, without turning a progress report into a protocol or literature review unless requested.
+7. Use [references/output-formats.md](references/output-formats.md) for the selected output. The examples are fallback scaffolds, not compulsory headings, and never override a user-supplied outline.
 
 ## Maintain scientific integrity
 
@@ -106,6 +112,7 @@ Confirm that:
 - the depth and terminology fit the selected audience and context;
 - problems lead to concrete responses, decision criteria, or next experiments rather than vague promises;
 - completed work, interpretation, uncertainty, and future plans remain distinguishable;
+- a supplied outline is recognizable in the final hierarchy, or any material deviation was approved by the user;
 - every heading names scientific content rather than writing, speaking, or generation advice;
 - every visible paragraph passes the projection test and respects the speaker–audience boundary;
 - a reader from the selected audience can understand the research problem, project-specific setup, reference points, reasoning chain, and conclusions without access to the authoring conversation or source bundle;

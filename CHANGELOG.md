@@ -2,6 +2,14 @@
 
 All notable changes to this repository are documented here.
 
+## [0.1.3] - 2026-08-24
+
+### Added
+
+- Give the user an explicit pre-draft opportunity to provide an optional outline or delegate report organization to the agent.
+- Combine missing audience, context, and outline choices into one concise intake message.
+- Preserve the hierarchy and emphasis of a supplied outline while integrating essential scientific context and evidence.
+
 ## [0.1.2] - 2026-08-24
 
 ### Fixed

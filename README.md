@@ -8,7 +8,7 @@ Each skill is a self-contained directory built around `SKILL.md`. Supporting ref
 
 | Skill | Purpose |
 |---|---|
-| [`research-progress-report`](skills/research-progress-report/) | Draft or revise self-contained, evidence-led progress reports for different languages, audiences, and public or lab-meeting contexts. Outputs Markdown or HTML and keeps charts paired with exact-value tables. |
+| [`research-progress-report`](skills/research-progress-report/) | Draft or revise self-contained, evidence-led progress reports for different languages, audiences, and public or lab-meeting contexts. Accepts an optional user outline, outputs Markdown or HTML, and keeps charts paired with exact-value tables. |
 | [`clinical-data-chart-style`](skills/clinical-data-chart-style/) | Create consistent clinical, medical-imaging, OCT/OCTA, and healthcare charts with an implementation-neutral visual system. |
 
 Machine-readable discovery metadata is available in [`catalog.json`](catalog.json).
