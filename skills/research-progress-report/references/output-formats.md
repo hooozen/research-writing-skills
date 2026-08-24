@@ -2,6 +2,8 @@
 
 Adapt section names to the selected language, project, audience, and available evidence. Preserve the summary–detail–summary logic even when the visible headings differ.
 
+Audience and context choices configure the writing but are not automatic report content. Include an event, venue, or audience label only when the user supplies it and it naturally belongs in the published or projected artifact. Never add internal writing guidance, speaking advice, or “what to say” sections to either format.
+
 ## Markdown
 
 Use ordinary GitHub-flavored Markdown unless the target platform imposes another dialect. A useful scaffold is:
@@ -10,7 +12,6 @@ Use ordinary GitHub-flavored Markdown unless the target platform imposes another
 # [Project or progress-report title]
 
 > Reporting period: [...] \
-> Audience / occasion: [...] \
 > Presenter or team: [...]
 
 ## Key progress and conclusions

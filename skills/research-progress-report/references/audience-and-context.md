@@ -2,6 +2,8 @@
 
 Use the selected audience to decide what must be explained, what can be assumed, and which evidence details belong in the main narrative. Scientific accuracy and traceability do not change across audiences.
 
+The audience must come from an explicit user choice; these profiles are not inference targets. Treat the selected profile and public/lab context as internal configuration. Do not print labels such as `小领域科研人群` or `研究伙伴` in the report unless the user explicitly asks for audience metadata.
+
 ## Audience profiles
 
 | Audience | Assume | Explain in the report | Evidence and methods emphasis | Avoid |

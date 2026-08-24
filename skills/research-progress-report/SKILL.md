@@ -17,7 +17,9 @@ Determine these settings from the request and supplied material:
 - **Context:** public report or lab meeting. This affects disclosure, explanation, and operational detail; it does not change the evidence standard.
 - **Scope:** project and reporting period, objectives or hypotheses, material progress, methods or interventions, results, source data, citations, problems, and intended next steps.
 
-Ask one compact clarification only when a missing choice would materially change the artifact and cannot be inferred safely. Otherwise proceed with the stated settings. If factual inputs are insufficient, produce a useful structure with localized missing-information markers such as `[待补充：样本量与统计方法]` or `[TO SUPPLY: sample size and statistical method]`; never invent data, citations, experiments, causes, or outcomes.
+**Audience is a required user decision.** Before drafting any report body, verify that the user has explicitly selected one of the four audience profiles or described a custom audience for this artifact. If not, stop and ask the user to choose; present the four options with brief distinctions and wait for the answer. Do not infer the audience from the field, terminology, source complexity, intended venue, or presumed expertise. If the audience is mixed, ask which group is primary and use layered detail for the rest. When context is also missing, ask for public report or lab meeting in the same clarification; context never substitutes for audience.
+
+Ask further clarification only when another missing choice would materially change the artifact and cannot be inferred safely. Otherwise proceed with the stated settings. If factual inputs are insufficient, produce a useful structure with localized missing-information markers such as `[待补充：样本量与统计方法]` or `[TO SUPPLY: sample size and statistical method]`; never invent data, citations, experiments, causes, or outcomes.
 
 ## Build the report
 
@@ -62,6 +64,18 @@ Write as material the researcher can present or publish, not as an AI explaining
 
 Deliver the finished report first. Keep any necessary assumptions or missing-input notes outside the report and concise so they do not contaminate the artifact's authorial voice.
 
+## Enforce the speaker–audience boundary
+
+The report is an audience-facing artifact. By default, include only material that the researcher could directly show, publish, or say to the selected audience. Keep planning logic, writing advice, safety coaching, and instructions to the researcher outside the report.
+
+- Do not create headings or passages such as `组会汇报口径`, `可以直接说`, `可以说与不能说`, `表达建议`, `写作说明`, `演讲提示`, “what to say”, “what not to say”, or “suggested wording”. These describe the drafting process rather than the research.
+- Do not address the researcher as “你/您/you” inside the report or tell them how to present a claim.
+- Express scientific boundaries as audience-facing content. Write “These results do not establish causality,” not “Do not say that the results prove causality.”
+- Treat audience profile, context selection, internal quality checks, and content-generation instructions as hidden configuration. Do not expose them as report sections or metadata unless the user explicitly requests that information in the artifact.
+- Add speaker notes, delivery coaching, anticipated questions, or a talk script only when the user explicitly requests them. Return them as a separate artifact after the report, never interleaved with the report body. Even there, prefer direct spoken text or concise stage cues over “can say/cannot say” coaching.
+
+Apply a projection test to every visible section: if showing it to the audience would reveal the drafting process, instruct the speaker, or sound absurd as part of a scientific report, remove it or rewrite it as scientific content.
+
 ## Verify before delivery
 
 Confirm that:
@@ -72,5 +86,7 @@ Confirm that:
 - the depth and terminology fit the selected audience and context;
 - problems lead to concrete responses, decision criteria, or next experiments rather than vague promises;
 - completed work, interpretation, uncertainty, and future plans remain distinguishable;
+- every heading names scientific content rather than writing, speaking, or generation advice;
+- every visible paragraph passes the projection test and respects the speaker–audience boundary;
 - Markdown links resolve, or the HTML is valid, semantic, accessible, and free of unnecessary remote dependencies;
 - no AI-facing preamble, invented evidence, or unfilled scaffold instruction remains in the report.

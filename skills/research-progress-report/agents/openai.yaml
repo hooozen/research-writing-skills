@@ -1,4 +1,4 @@
 interface:
   display_name: "科研进展报告"
   short_description: "Create evidence-led progress reports for research audiences"
-  default_prompt: "Use $research-progress-report to organize my evidence and updates into a researcher-authored scientific progress report."
+  default_prompt: "Use $research-progress-report to organize my evidence into a researcher-authored progress report; ask me to select the target audience before drafting if I have not specified it."
