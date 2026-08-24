@@ -1,0 +1,4 @@
+interface:
+  display_name: "Clinical Data Chart Style"
+  short_description: "Render consistent clinical report charts"
+  default_prompt: "Use $clinical-data-chart-style to create consistent charts for this Markdown report."
