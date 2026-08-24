@@ -1,6 +1,6 @@
 ---
 name: research-progress-report
-description: "Draft, restructure, or revise researcher-authored scientific progress reports for public briefings or lab meetings. Use for 科研进展报告、阶段性研究总结、项目进度汇报, especially when language, audience depth, evidence, charts, and Markdown or HTML output must be coordinated; do not route journal-manuscript or grant-proposal requests here unless the requested artifact is explicitly a progress report."
+description: "Draft, restructure, or revise self-contained, researcher-authored scientific progress reports for public briefings or lab meetings. Use for 科研进展报告、阶段性研究总结、项目进度汇报, especially when language, audience depth, background context, evidence, charts, and Markdown or HTML output must be coordinated; do not route journal-manuscript or grant-proposal requests here unless the requested artifact is explicitly a progress report."
 ---
 
 # Research Progress Report
@@ -15,16 +15,36 @@ Determine these settings from the request and supplied material:
 - **Output:** Markdown by default; standalone semantic HTML when requested.
 - **Audience:** `普遍高学历人群`, `大领域科研人群`, `小领域科研人群`, or `研究伙伴`. Read [references/audience-and-context.md](references/audience-and-context.md) when selecting background depth, terminology, methods detail, and emphasis.
 - **Context:** public report or lab meeting. This affects disclosure, explanation, and operational detail; it does not change the evidence standard.
+- **Shared prior context:** default to none. Treat prior reports, conversations, attachments, notebooks, and source bundles as authoring material that the audience has not seen unless the user explicitly identifies what the audience already knows or has received.
 - **Scope:** project and reporting period, objectives or hypotheses, material progress, methods or interventions, results, source data, citations, problems, and intended next steps.
 
 **Audience is a required user decision.** Before drafting any report body, verify that the user has explicitly selected one of the four audience profiles or described a custom audience for this artifact. If not, stop and ask the user to choose; present the four options with brief distinctions and wait for the answer. Do not infer the audience from the field, terminology, source complexity, intended venue, or presumed expertise. If the audience is mixed, ask which group is primary and use layered detail for the rest. When context is also missing, ask for public report or lab meeting in the same clarification; context never substitutes for audience.
 
 Ask further clarification only when another missing choice would materially change the artifact and cannot be inferred safely. Otherwise proceed with the stated settings. If factual inputs are insufficient, produce a useful structure with localized missing-information markers such as `[待补充：样本量与统计方法]` or `[TO SUPPLY: sample size and statistical method]`; never invent data, citations, experiments, causes, or outcomes.
 
+## Make the report self-contained
+
+The agent's authoring context is not the audience's knowledge. Use the conversation, attachments, previous drafts, and detailed notes to understand the project, but rewrite the necessary premises into the report. Never rely on “as discussed”, “the previous approach”, “this issue”, “the second experiment”, an unexplained acronym, or another reference that only makes sense inside the authoring session.
+
+Before drafting, build an internal context map from the supplied material. As applicable, identify:
+
+- the research object or system, the larger problem, and why it matters;
+- the relevant prior state, accepted baseline, or previous project result;
+- the unresolved gap or obstacle that motivates the current work;
+- the project's objective, hypothesis, scope, and success criteria;
+- the entities, cohorts, conditions, methods, metrics, and abbreviations needed to read the evidence;
+- what changed during the reporting period and why that change is consequential.
+
+Use that map to supply the minimum sufficient background for the selected audience. “Minimum” means no unrelated textbook review; “sufficient” means every major claim has the premises needed to understand what was tested, compared, changed, and concluded. Compression may remove repetition but must not remove a logical premise.
+
+Introduce project-specific terms, sample groups, baselines, methods, and abbreviations before first substantive use. Resolve vague references and comparisons by naming their antecedent and reference point. At the start of each major result or work package, orient the reader to the question, relevant prior state or baseline, action taken and its rationale, and the decision the result informs. Integrate background near first use when that reads better than a long standalone review.
+
+Only omit a background element when it is common knowledge for the selected audience or the user explicitly confirms that the audience shares that specific prior context. A “continuation” label alone is not enough: preserve a compact recap of the project aim, previous state, and current transition unless the user asks otherwise.
+
 ## Build the report
 
 1. Inventory the supplied claims and evidence. Distinguish observation, interpretation, decision, plan, and open question. Preserve source identifiers so every number and citation remains traceable.
-2. Decide the report's central message: what changed during this period, what the strongest evidence supports, what remains blocked or uncertain, and what decision or action follows.
+2. Decide the report's central message: what changed during this period, what the strongest evidence supports, what remains blocked or uncertain, and what decision or action follows. State enough of the problem and prior state for that message to make sense without the authoring conversation.
 3. Use a flexible **summary–detail–summary** structure:
    - Open with the most important progress, conclusions, problems, and any decision required.
    - Organize the body by research question, hypothesis, work package, or decision—not merely by chronology. Present the evidence behind each opening claim.
@@ -88,5 +108,7 @@ Confirm that:
 - completed work, interpretation, uncertainty, and future plans remain distinguishable;
 - every heading names scientific content rather than writing, speaking, or generation advice;
 - every visible paragraph passes the projection test and respects the speaker–audience boundary;
+- a reader from the selected audience can understand the research problem, project-specific setup, reference points, reasoning chain, and conclusions without access to the authoring conversation or source bundle;
+- every acronym, entity, cohort, condition, method, and comparison is introduced before use and has an unambiguous referent or baseline;
 - Markdown links resolve, or the HTML is valid, semantic, accessible, and free of unnecessary remote dependencies;
 - no AI-facing preamble, invented evidence, or unfilled scaffold instruction remains in the report.

@@ -16,9 +16,13 @@ Use ordinary GitHub-flavored Markdown unless the target platform imposes another
 
 ## Key progress and conclusions
 
-- [Most important supported advance and why it matters]
+- [Most important supported advance, with enough problem context to understand why it matters]
 - [Second advance, limitation, or changed conclusion]
 - [Main unresolved problem or decision required]
+
+## Background and research gap
+
+[Research object and larger problem; relevant prior state or baseline; unresolved gap; essential project-specific terms. Calibrate depth to the selected audience.]
 
 ## Objective and success criteria
 
@@ -63,7 +67,7 @@ Use ordinary GitHub-flavored Markdown unless the target platform imposes another
 [Preserve supplied citation style and identifiers]
 ```
 
-Omit empty metadata and irrelevant sections. Use appendices for detailed protocols, full tables, supplementary diagnostics, or specialist material that would interrupt the main narrative. Keep the exact-value table adjacent to its chart when practical; otherwise link explicitly to the appendix table.
+Omit empty metadata and irrelevant sections, but do not omit premises required to understand the evidence. The background heading is optional only when its content is integrated clearly into the opening or first relevant section. For a continuation report, retain a compact recap unless the user explicitly confirms that the audience shares the specific prior material. Use appendices for detailed protocols, full tables, supplementary diagnostics, or specialist material that would interrupt the main narrative. Keep the exact-value table adjacent to its chart when practical; otherwise link explicitly to the appendix table.
 
 ## HTML
 

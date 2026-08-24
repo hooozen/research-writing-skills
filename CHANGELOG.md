@@ -2,6 +2,15 @@
 
 All notable changes to this repository are documented here.
 
+## [0.1.2] - 2026-08-24
+
+### Fixed
+
+- Make reports self-contained by default instead of assuming the audience has access to the author–agent conversation, attachments, prior drafts, or source bundle.
+- Require the report to reconstruct the relevant problem, prior state, research gap, project setup, baselines, and reasons needed to understand each result.
+- Add standalone-reader and reference-resolution checks for unexplained terms, cohorts, comparisons, and context-dependent phrases.
+- Add an explicit background-and-gap layer to the adaptable report scaffold.
+
 ## [0.1.1] - 2026-08-24
 
 ### Fixed
