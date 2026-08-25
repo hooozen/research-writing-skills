@@ -13,6 +13,7 @@ Determine these settings from the request and supplied material:
 
 - **Language:** `中文`, `English`, or a user-specified language. If unspecified, use the language of the user's request. Keep the report consistently in that language except for established names, symbols, or quotations.
 - **Output:** Markdown by default; standalone semantic HTML when requested.
+- **Math:** when formulas appear, use VS Code/KaTeX-compatible TeX with dollar-sign delimiters and read [references/math-formatting.md](references/math-formatting.md) completely before drafting them.
 - **Audience:** `普遍高学历人群`, `大领域科研人群`, `小领域科研人群`, or `研究伙伴`. Read [references/audience-and-context.md](references/audience-and-context.md) when selecting background depth, terminology, methods detail, and emphasis.
 - **Context:** public report or lab meeting. This affects disclosure, explanation, and operational detail; it does not change the evidence standard.
 - **Outline:** optional and user-controlled. The user may supply headings, bullets, an existing report structure, or ask the agent to organize the report.
@@ -72,6 +73,12 @@ Only omit a background element when it is common knowledge for the selected audi
 - Preserve citation details exactly. If a source is missing, mark it for completion instead of fabricating a title, DOI, author, or URL.
 - Keep plans and proposed solutions distinct from completed work and demonstrated results.
 
+## Format mathematics for VS Code and KaTeX
+
+Write inline formulas as `$...$` and display formulas as `$$...$$`, with display delimiters on their own lines. Do not use `\(...\)` or `\[...\]`. Use only KaTeX-supported commands and environments that work in common VS Code Markdown math rendering. Do not use equation labels, cross-references, custom macros, document-level LaTeX commands, package-dependent extensions, or unsupported tags. Refer to an equation by its defined symbol or descriptive name in prose rather than by a generated number.
+
+Follow [references/math-formatting.md](references/math-formatting.md) for compatible constructs, Markdown interactions, HTML handling, examples, and verification. Preserve the mathematical meaning of user-supplied formulas when converting their syntax; if an expression cannot be translated confidently, keep the source expression outside the report and ask for clarification rather than silently changing it.
+
 ## Visualize key data without losing detail
 
 Use a chart when comparison, trend, distribution, composition, relationship, or uncertainty is materially easier to understand visually. Keep the corresponding numerical table adjacent to the figure or in a clearly linked appendix so readers can locate exact values.
@@ -117,5 +124,6 @@ Confirm that:
 - every visible paragraph passes the projection test and respects the speaker–audience boundary;
 - a reader from the selected audience can understand the research problem, project-specific setup, reference points, reasoning chain, and conclusions without access to the authoring conversation or source bundle;
 - every acronym, entity, cohort, condition, method, and comparison is introduced before use and has an unambiguous referent or baseline;
+- every formula uses balanced `$...$` or `$$...$$` delimiters, KaTeX-compatible syntax, defined symbols, and no labels, cross-references, custom macros, or unsupported environments;
 - Markdown links resolve, or the HTML is valid, semantic, accessible, and free of unnecessary remote dependencies;
 - no AI-facing preamble, invented evidence, or unfilled scaffold instruction remains in the report.

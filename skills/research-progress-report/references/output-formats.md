@@ -10,6 +10,8 @@ A user-supplied outline takes precedence over the scaffold below. Preserve its r
 
 Use ordinary GitHub-flavored Markdown unless the target platform imposes another dialect. When no outline is supplied, a useful scaffold is:
 
+When formulas appear, follow [math-formatting.md](math-formatting.md): use `$...$` for inline math and `$$...$$` for display math, and keep all commands KaTeX-compatible.
+
 ```markdown
 # [Project or progress-report title]
 
@@ -83,6 +85,7 @@ Produce a complete HTML document when HTML is requested:
 - Embed restrained print-friendly CSS in `<style>` unless the user supplies a stylesheet. Do not use JavaScript or remote fonts, libraries, trackers, or CDNs unless requested.
 - Keep figures in a sibling `figures/` directory and use relative paths. If the user explicitly requires a single-file artifact, confirm whether images should be embedded before expanding file size.
 - Ensure the reading order and meaning remain intact without color and when printed.
+- When the target page already loads KaTeX auto-render, keep formulas in `$...$` and `$$...$$` form. Otherwise follow the standalone-HTML rule in [math-formatting.md](math-formatting.md) and do not introduce an undeclared remote dependency.
 
 Use responsive tables or wrappers where needed, but do not hide columns or exact values on small screens.
 

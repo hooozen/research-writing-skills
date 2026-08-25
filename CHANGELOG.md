@@ -2,6 +2,14 @@
 
 All notable changes to this repository are documented here.
 
+## [0.1.4] - 2026-08-25
+
+### Added
+
+- Require `$...$` for inline mathematics and `$$...$$` for display mathematics.
+- Add a KaTeX/VS Code compatibility guide covering supported constructs, Markdown interactions, HTML behavior, and verification.
+- Prohibit equation labels, cross-references, custom macros, document-level LaTeX commands, package-dependent extensions, and unsupported environments.
+
 ## [0.1.3] - 2026-08-24
 
 ### Added
