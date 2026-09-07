@@ -9,7 +9,7 @@ Contributions should improve reusable research writing, reporting, evidence pres
 3. Keep the entrypoint concise. Place conditional detail in linked `references/`, repeatable automation in `scripts/`, and output resources in `assets/`.
 4. Do not invent evidence, citations, or permissions. Preserve the user's choices and the skill's stated scope.
 5. Add or update the skill entry in `catalog.json` and document user-visible changes in `CHANGELOG.md`.
-6. Run `python3 scripts/validate.py` and test any changed executable script before opening a pull request.
+6. Install `requirements-dev.txt`, run `python3 scripts/validate.py` and `MPLBACKEND=Agg python3 -m unittest discover -s tests -v`, and test changed executable behavior. For substantial skill changes, use the relevant cases in [evals/cases.md](evals/cases.md) and inspect actual outputs. Do not add tests that merely enforce preferred wording.
 
 Pull requests should explain the use case, important behavior changes, validation performed, and any compatibility considerations. Keep unrelated changes separate.
 

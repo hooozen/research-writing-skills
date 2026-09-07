@@ -1,0 +1,4 @@
+# Maintenance only; installed skills do not require these packages.
+PyYAML>=6.0,<7
+markdown-it-py>=3.0,<5
+matplotlib>=3.8,<4

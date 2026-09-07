@@ -24,7 +24,7 @@ Use colors semantically and consistently. Translate these exact hex values into 
 
 ## Typography
 
-- Font stack: `Helvetica Neue`, Helvetica, Arial, `Noto Sans`, sans-serif. Use the first installed option without changing the hierarchy.
+- Font stack: `Helvetica Neue`, Helvetica, Arial, `Noto Sans`, sans-serif. Use the first installed option that covers the output language without changing the hierarchy. For Chinese or mixed-script labels, use an installed CJK fallback such as Noto Sans CJK SC or PingFang SC; check the rendered glyphs. Convert px to the renderer’s units rather than treating px as points.
 - Chart title: 26 px, bold, black.
 - Subtitle: 14 px, regular, muted gray.
 - Category labels: 15 px, regular, muted gray.
@@ -44,20 +44,28 @@ Use colors semantically and consistently. Translate these exact hex values into 
 
 ## Data labels
 
-Use this exact pattern:
+For a count-and-share chart with a known positive denominator, use this pattern:
 
 ```text
 14,325 · 50.2%
 ```
 
-Compute the percentage with an explicit denominator. Confirm that category shares reconcile with the intended total; rounding may cause displayed shares not to sum to exactly 100.0%.
+Compute the percentage with the correct population denominator, naming its unit (patients, eyes, images, or scans). Do not treat these units as interchangeable.
+
+- Exclusive and exhaustive categories reconcile with the population; rounding alone may prevent a displayed sum of exactly 100.0%.
+- For subsets, retain the full-population denominator and identify omitted categories. Do not silently normalize the displayed subset to 100%.
+- For overlapping categories, count each category against the stated population; explain that one unit may occur in multiple categories and shares can sum above 100%. Use separate bars, not a composition stack.
+- If denominators vary by category, show each denominator and make the comparison basis explicit. Choose a rate or percentage axis when rates are the intended comparison rather than using count lengths to imply rate differences.
+- For an unknown or zero denominator, show counts without numeric shares and explain why the share is unavailable. Zero is a valid count; missing data are not zero.
+- For continuous outcomes, signed changes, or intervals, use the metric's unit and supplied uncertainty. Do not apply the count-and-share pattern or infer error bars from unsupported assumptions.
 
 ## Chart selection
 
 - Horizontal bars: modality, layer/type, diagnosis, device, long category labels, or more than four categories.
-- Vertical bars: scan sizes or two to six short categories.
-- Lines: ordered time only; use primary blue for the focal series and gray for comparison.
-- Stacked bars: composition across a small number of cohorts; label totals and explain the denominator.
+- Vertical bars: two to four short categories, such as scan sizes. Longer labels or larger category sets use horizontal bars.
+- Lines: ordered time; use primary blue for the focal series and gray for comparison. For other continuous ordered predictors, use an appropriate scatter/line encoding with explicitly defined axes rather than connecting unordered categories.
+- Stacked bars: mutually exclusive composition across a small number of cohorts; label totals and explain the denominator.
+- Means, effects, and uncertainty: use points and intervals when appropriate; keep signed values, units, and a meaningful reference such as zero. Bar lengths encode from zero; do not truncate a bar axis to exaggerate differences.
 - Avoid pie/donut charts unless the user explicitly requests them.
 
 ## Markdown integration

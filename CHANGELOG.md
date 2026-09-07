@@ -2,6 +2,21 @@
 
 All notable changes to this repository are documented here.
 
+## [0.1.5] - 2026-09-07
+
+### Fixed
+
+- Reject unsafe installation names, deduplicate selections, honor `--`, protect source directories and dangling destination symlinks, stage copies before replacement, and restore the previous installation when its final move fails.
+- Validate malformed catalog entries and actual YAML without tracebacks; check links in supporting references, portability boundaries, optional adapters, and nested script syntax without writing skill bytecode.
+- Reuse supplied or delegated report settings, remove the separate optional-outline wait, and align mixed-audience guidance around the chosen primary audience.
+- Provide an explicit offline/single-file HTML math route and make the chart-style companion optional for portable report use.
+- Scope count/share labels to counts, preserve overlapping/subset denominators and continuous metrics, and handle missing or zero populations without invented percentages.
+- Use exclusive scan-size categories and explicit synthetic/population labels in the plotting example; convert pixel typography tokens to renderer points.
+
+### Added
+
+- Installer, validator, and chart regression tests; Python maintenance dependencies; Linux/macOS CI coverage; and bounded behavioral evaluation cases.
+
 ## [0.1.4] - 2026-08-25
 
 ### Added

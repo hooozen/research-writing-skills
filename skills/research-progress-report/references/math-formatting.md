@@ -1,6 +1,6 @@
 # KaTeX-Compatible Mathematics
 
-Use this guide whenever a report contains mathematical notation. The source must render in common VS Code Markdown math support and KaTeX without relying on a full LaTeX installation or optional extensions.
+Use this guide whenever a report contains mathematical notation. Markdown and retained TeX source must use portable VS Code/KaTeX syntax. Standalone HTML can instead present the equivalent expression as semantic MathML or locally rendered output; its readers should not need a TeX installation.
 
 ## Delimiters
 
@@ -60,8 +60,10 @@ If uncertain whether a command is portable, rewrite it using simpler primitives.
 - Inside a Markdown table, avoid raw vertical bars in formulas because they can split cells. Use `\mid`, `\lvert...\rvert`, or `\lVert...\rVert` as appropriate.
 - Do not place formulas in code spans or fenced code blocks in the finished report; code fences in this guide show source syntax only.
 - Keep sentence punctuation outside an inline delimiter unless it is mathematically meaningful.
-- For HTML intended for a page that already loads KaTeX auto-render, retain `$...$` and `$$...$$` in text content. Do not place TeX in HTML attributes.
-- For standalone HTML without a math renderer, do not claim the formulas are rendered. Use user-approved local KaTeX assets when available, or state the rendering requirement outside the report; never add an undeclared remote CDN dependency.
+- For HTML on a page with a math renderer, retain `$...$` and `$$...$$` in text content and verify that its delimiter configuration recognizes both. Do not place TeX in HTML attributes.
+- For offline standalone HTML, use installed local KaTeX assets, prerendered mathematics with the necessary local styles/fonts, or semantic MathML for expressions that can be converted faithfully. A request for rendered offline HTML authorizes the necessary local assets; do not add a remote CDN.
+- For single-file HTML, embed any required styles/fonts or use native MathML without an external runtime. A MathML `<semantics>` element can preserve the dollar-delimited TeX source in an `<annotation encoding="application/x-tex">` while displaying the equivalent expression. This is an HTML output exception to the visible dollar-delimiter rule, not permission to change the mathematics.
+- Check the actual output in the target renderer when available, including fractions, subscripts, and line wrapping. If no workable renderer or conversion is available, describe that limitation outside the artifact and do not claim that raw TeX is rendered.
 
 ## Verification
 

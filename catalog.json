@@ -1,20 +1,36 @@
 {
   "schema_version": 1,
-  "release": "0.1.4",
+  "release": "0.1.5",
   "repository": "https://github.com/hooozen/research-writing-skills",
   "skills": [
     {
       "name": "clinical-data-chart-style",
       "path": "skills/clinical-data-chart-style",
-      "description": "Specify, create, and restyle consistent clinical, medical-imaging, OCT, OCTA, and healthcare data charts for Markdown reports and other static deliverables, independently of programming language or visualization library. Use when an agent needs distribution charts, count-and-share graphics, modality/layer/scan-size summaries, report figures, implementation guidance, or visual QA that should follow the Clinical Imaging Data Brief visual system: white canvas, light-gray evidence cards, black typography, muted-gray annotations, blue data accents, and direct count-plus-percentage labels.",
-      "tags": ["charts", "clinical-data", "healthcare", "medical-imaging", "visualization"]
+      "description": "Create or restyle static clinical, medical-imaging, OCT/OCTA, and healthcare data charts with consistent blue/gray evidence panels. Use for counts, distributions, trends, and statistical comparisons in reports; preserve the metric, denominator, uncertainty, and source data.",
+      "tags": [
+        "charts",
+        "clinical-data",
+        "healthcare",
+        "medical-imaging",
+        "visualization"
+      ]
     },
     {
       "name": "research-progress-report",
       "path": "skills/research-progress-report",
-      "description": "Draft, restructure, or revise self-contained, researcher-authored scientific progress reports for public briefings or lab meetings. Use for 科研进展报告、阶段性研究总结、项目进度汇报, especially when language, audience depth, background context, evidence, charts, and Markdown or HTML output must be coordinated; do not route journal-manuscript or grant-proposal requests here unless the requested artifact is explicitly a progress report.",
-      "tags": ["html", "katex", "markdown", "math", "progress-report", "research-writing", "scientific-communication"],
-      "related_skills": ["clinical-data-chart-style"]
+      "description": "Draft or revise self-contained scientific progress reports for public briefings or lab meetings, including 科研进展报告、阶段性研究总结、项目进度汇报. Adapt evidence, background, figures, and Markdown or HTML output to the chosen audience; use another workflow for journal manuscripts or grant proposals.",
+      "tags": [
+        "html",
+        "katex",
+        "markdown",
+        "math",
+        "progress-report",
+        "research-writing",
+        "scientific-communication"
+      ],
+      "related_skills": [
+        "clinical-data-chart-style"
+      ]
     }
   ]
 }

@@ -1,16 +1,18 @@
 # Output Formats
 
-Adapt section names to the selected language, project, audience, and available evidence. Preserve the summary–detail–summary logic even when the visible headings differ.
+Adapt section names to the selected language, project, audience, and available evidence. Lead with the material progress and provide its evidence and next implications; scale the structure to the requested length.
 
 Audience and context choices configure the writing but are not automatic report content. Include an event, venue, or audience label only when the user supplies it and it naturally belongs in the published or projected artifact. Never add internal writing guidance, speaking advice, or “what to say” sections to either format.
 
-A user-supplied outline takes precedence over the scaffold below. Preserve its recognizable hierarchy and emphasis while completing the scientific logic. Use this scaffold only when the user asks the agent to organize the report, or to fill a genuine gap that cannot be integrated clearly into the supplied outline.
+A user-supplied outline takes precedence over the scaffold below. Preserve its recognizable hierarchy and emphasis while completing the scientific logic. Use this scaffold when structure is delegated or no outline is supplied; omit redundant sections in short reports.
 
 ## Markdown
 
-Use ordinary GitHub-flavored Markdown unless the target platform imposes another dialect. When no outline is supplied, a useful scaffold is:
+Use ordinary GitHub-flavored Markdown unless the target platform imposes another dialect.
 
 When formulas appear, follow [math-formatting.md](math-formatting.md): use `$...$` for inline math and `$$...$$` for display math, and keep all commands KaTeX-compatible.
+
+For a substantial report without a supplied outline, a useful scaffold is:
 
 ```markdown
 # [Project or progress-report title]
@@ -82,10 +84,10 @@ Produce a complete HTML document when HTML is requested:
 - Use one `<h1>` and a correctly nested heading hierarchy.
 - Put tabular data in `<table>` with `<caption>`, `<thead>`, `<tbody>`, and scoped header cells. Preserve units in headers and exact values in cells.
 - Give every informative image meaningful `alt` text. Do not duplicate the full visible caption in the alt text.
-- Embed restrained print-friendly CSS in `<style>` unless the user supplies a stylesheet. Do not use JavaScript or remote fonts, libraries, trackers, or CDNs unless requested.
-- Keep figures in a sibling `figures/` directory and use relative paths. If the user explicitly requires a single-file artifact, confirm whether images should be embedded before expanding file size.
+- Embed restrained print-friendly CSS in `<style>` unless the user supplies a stylesheet. Use no remote dependencies by default. A requested rendered-math output permits the minimal local rendering assets it needs; use static rendering or semantic MathML when practical.
+- Keep figures in a sibling `figures/` directory and use relative paths. For an explicitly requested single-file artifact, embed figures as inline SVG or image data, including accessible descriptions. The request already authorizes embedding; ask about size only if an actual delivery limit is at risk.
 - Ensure the reading order and meaning remain intact without color and when printed.
-- When the target page already loads KaTeX auto-render, keep formulas in `$...$` and `$$...$$` form. Otherwise follow the standalone-HTML rule in [math-formatting.md](math-formatting.md) and do not introduce an undeclared remote dependency.
+- For formulas, follow [math-formatting.md](math-formatting.md). Check that a host renderer recognizes the chosen delimiters; a standalone file must contain a working offline rendering route when displayed mathematics is requested.
 
 Use responsive tables or wrappers where needed, but do not hide columns or exact values on small screens.
 

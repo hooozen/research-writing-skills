@@ -1,6 +1,6 @@
 # Research Writing Skills
 
-Reusable, agent-neutral skills for turning research evidence into clear reports, figures, manuscripts, reviews, and presentations.
+Reusable, agent-neutral skills for turning research evidence into self-contained progress reports and precise clinical-data figures.
 
 Each skill is a self-contained directory built around `SKILL.md`. Supporting references, scripts, assets, and optional agent adapters stay inside the same directory, so a skill can be installed by copying one folder.
 
@@ -30,7 +30,7 @@ SKILLS_DIR=/path/to/your-agent/skills
 ./scripts/install.sh --target "$SKILLS_DIR" --all
 ```
 
-The installer never overwrites an existing skill by default. To upgrade intentionally, add `--force`; the previous directory is moved to a timestamped backup before the new version is copied.
+The installer never overwrites an existing skill by default. To upgrade intentionally, add `--force`; all selected copies are staged first, and each previous installation is moved to a unique timestamped backup before replacement. Repeating a skill name installs it once. Invalid selections are rejected before any skill is installed, and source directories cannot be used as their own destinations. If replacement fails, the installer attempts to restore that skill; a multi-skill install is not one atomic transaction.
 
 Manual installation is equally simple:
 
@@ -52,11 +52,17 @@ Agents that support `SKILL.md` directories can load the installed skill directly
 
 ## Maintain
 
-Validate the repository before publishing changes:
+Use Python 3.10+ and install maintenance dependencies before validating changes:
 
 ```sh
+python3 -m pip install -r requirements-dev.txt
 python3 scripts/validate.py
+MPLBACKEND=Agg python3 -m unittest discover -s tests -v
 ```
+
+These dependencies are for maintainers, not installation requirements. Installed skill instructions remain agent-neutral; Matplotlib is needed only for its optional example. Validation parses YAML, checks catalog consistency and relative Markdown resources throughout each skill, validates optional UI metadata, and checks script syntax without executing skill scripts or creating bytecode in their folders. It does not verify remote URLs, Markdown anchor IDs, raw HTML links, or scientific reasoning.
+
+Use [evals/cases.md](evals/cases.md) for bounded report and chart behavior checks. Review generated artifacts as well as source data; a passing structural check does not establish scientific or visual correctness.
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md) for scope and contribution rules. Releases use semantic version tags; changes are recorded in [`CHANGELOG.md`](CHANGELOG.md).
 

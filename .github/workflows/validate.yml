@@ -9,8 +9,22 @@ permissions:
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      MPLBACKEND: Agg
+      PYTHONDONTWRITEBYTECODE: "1"
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install maintenance dependencies
+        run: python3 -m pip install -r requirements-dev.txt
       - name: Validate catalog and skills
         run: python3 scripts/validate.py
+      - name: Check installer, validator, and chart regressions
+        run: python3 -m unittest discover -s tests -v
