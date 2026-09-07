@@ -2,6 +2,17 @@
 
 All notable changes to this repository are documented here.
 
+## [0.2.0] - 2026-09-07
+
+### Changed
+
+- Use lighter box/violin median strokes and a borderless heatmap colorbar; choose bar orientation from label readability, ordering and layout instead of a category-count cutoff.
+
+### Added
+
+- Nine reproducible scientific chart examples: box, violin, scatter, longitudinal line, histogram, ECDF, paired observations, estimates with intervals, and heatmap; export raw/derived data and English or Chinese labels.
+- A compact visual reference and chart-specific guidance on statistical definitions, pairing, missingness, axes and quantitative color scales, loaded only when relevant.
+
 ## [0.1.5] - 2026-09-07
 
 ### Fixed

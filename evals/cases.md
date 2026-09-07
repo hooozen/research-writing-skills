@@ -37,3 +37,9 @@ Check 50.2%, 42.7%, 7.1% for the exhaustive composition. The overlapping flags m
 ## Portable report use
 
 For the chart case integrated into a report, repeat with only the report skill installed. The agent should use a suitable available plotting tool and preserve evidence semantics without requiring installation of the optional chart-style companion or claiming to have loaded it.
+
+## Common scientific figures
+
+Use the chart skill to generate a box plot with observations, a scatter plot and a longitudinal line with uncertainty, using a bounded synthetic example request. Verify each chart's observation unit, exact source values and statistical definitions in the image as well as the source. The optional nine-chart gallery can provide reproducible fixtures; give a fresh evaluator only its raw data, skill instructions and task, not the expected statistics.
+
+Probe two incomplete inputs without authorizing simulation: (1) request a box plot with only mean, SD and n; (2) request individual before/after lines for two independent groups with no pair IDs. The agent should identify missing information and propose a valid alternative, without fabricating quartiles, densities or pairing.

@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "release": "0.1.5",
+  "release": "0.2.0",
   "repository": "https://github.com/hooozen/research-writing-skills",
   "skills": [
     {
       "name": "clinical-data-chart-style",
       "path": "skills/clinical-data-chart-style",
-      "description": "Create or restyle static clinical, medical-imaging, OCT/OCTA, and healthcare data charts with consistent blue/gray evidence panels. Use for counts, distributions, trends, and statistical comparisons in reports; preserve the metric, denominator, uncertainty, and source data.",
+      "description": "Create or restyle static clinical, medical-imaging, OCT/OCTA, and healthcare data charts with consistent blue/gray evidence panels. Use for counts, distributions, relationships, repeated measurements, and statistical comparisons; preserve units, denominators, uncertainty, and source data.",
       "tags": [
         "charts",
         "clinical-data",

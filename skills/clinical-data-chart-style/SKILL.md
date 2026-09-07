@@ -1,6 +1,6 @@
 ---
 name: clinical-data-chart-style
-description: "Create or restyle static clinical, medical-imaging, OCT/OCTA, and healthcare data charts with consistent blue/gray evidence panels. Use for counts, distributions, trends, and statistical comparisons in reports; preserve the metric, denominator, uncertainty, and source data."
+description: "Create or restyle static clinical, medical-imaging, OCT/OCTA, and healthcare data charts with consistent blue/gray evidence panels. Use for counts, distributions, relationships, repeated measurements, and statistical comparisons; preserve units, denominators, uncertainty, and source data."
 ---
 
 # Clinical Data Chart Style
@@ -13,7 +13,7 @@ Apply one implementation-neutral visual system to clinical-data charts, especial
 2. Read [references/style-guide.md](references/style-guide.md) completely before creating, restyling, or reviewing charts.
 3. Choose the plotting language and library from the user's environment and existing project. Do not require Matplotlib, Python, or any other specific implementation.
 4. Translate the style guide's tokens and composition rules into the selected tool without changing their visual meaning.
-5. Choose the encoding from the analytical question. For categorical bars, use horizontal bars for long labels or more than four categories; vertical bars suit two to four short labels. Preserve meaningful clinical, anatomical, or temporal order.
+5. Choose the encoding from the analytical question. For categorical bars with short readable labels, start with a vertical layout. Use horizontal bars when long labels, crowded categories or ranked values are easier to read that way; decide from the actual labels and available space, not a fixed category-count cutoff. Preserve meaningful clinical, anatomical, or temporal order.
 6. Prefer SVG for Markdown, with high-resolution PNG as a compatibility fallback. Save figures in a `figures/` directory beside the report and use relative links.
 7. Verify every plotted value, denominator, percentage, label, title, source note, and rendered figure before finishing.
 
@@ -34,7 +34,7 @@ Embed report figures with meaningful alt text:
 - For count-and-share bars, show `count · share` directly on each bar using one decimal place for shares and thousands separators for counts. State the denominator and its unit; when it is unknown or zero, show the count with “share unavailable”, never a made-up percentage.
 - For means, rates, changes, or intervals, label the actual metric and unit, and specify uncertainty when supplied. Do not convert continuous outcomes or signed changes to counts or percentages. A single series needs no legend.
 - Treat `Other`, `Unknown`, `Missing`, and similar residual categories as neutral gray.
-- Do not use 3D, gradients, shadows, decorative icons, dense gridlines, or rainbow palettes.
+- Do not use 3D, decorative gradients, shadows, decorative icons, or rainbow palettes. Continuous color scales in heatmaps and restrained gridlines that support quantitative reading are valid data encodings.
 - Do not use pie or donut charts when bars make comparison clearer.
 - Write a conclusion-led title when the figure stands alone; use a descriptive metric title inside a multi-figure report section.
 - Keep a vector artifact when supported. Also provide PNG when the user requests it or the target renderer needs it.
@@ -42,4 +42,8 @@ Embed report figures with meaningful alt text:
 
 ## Additional chart types
 
-For time series, paired comparisons, or statistical intervals, reproduce the design tokens and hierarchy in the style guide using an appropriate implementation. Keep direct labeling and restrained blue/gray encoding. Do not invent clinical interpretation or statistical significance.
+For box/violin plots, scatter plots, time series, histograms, ECDFs, paired observations, intervals, or heatmaps, read the relevant section of [references/scientific-chart-examples.md](references/scientific-chart-examples.md). It explains which data and statistical definitions each encoding needs and shows one compact visual overview.
+
+Use axes and a few meaningful labels for dense observations; do not force the count/share labeling pattern onto them. Identify the observation unit, missing-data handling, and any uncertainty encoding. Preserve pairing and actual time spacing. Do not invent clinical interpretation or statistical significance.
+
+When an executable example would help and Matplotlib fits the environment, use [scripts/scientific_chart_gallery.py](scripts/scientific_chart_gallery.py). It generates synthetic figures and exact data in an explicit output directory. Load or run only what the task needs; the gallery does not make Python a requirement for this skill.

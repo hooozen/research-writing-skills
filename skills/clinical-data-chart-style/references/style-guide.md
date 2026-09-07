@@ -36,11 +36,13 @@ Use colors semantically and consistently. Translate these exact hex values into 
 
 - Place the chart on a light-gray card without border or shadow.
 - Maintain generous padding: about 40 px on all sides.
-- Use a single baseline and remove gridlines when direct labels carry the values.
+- For count/share bars, a single baseline and direct labels often suffice. For scatter plots, distributions and time series, retain the numeric axes needed to read coordinates; use restrained gridlines only when they improve quantitative reading.
 - Put horizontal-bar labels immediately beyond bar ends.
 - Put vertical-bar labels immediately above bars.
 - Keep category order descending by value unless clinical, anatomical, temporal, or acquisition order is meaningful.
 - Limit a figure to one message. Split unrelated metrics into separate figures.
+- Keep box-plot and violin-plot median strokes thin and legible, without dominating the observations or distribution outline. The examples use 0.8 pt; adjust to the final display size when needed.
+- Omit heatmap colorbar outlines by default. Keep ticks and labels restrained; if a boundary is needed, use a thin baseline-gray edge rather than a solid black frame.
 
 ## Data labels
 
@@ -61,12 +63,15 @@ Compute the percentage with the correct population denominator, naming its unit 
 
 ## Chart selection
 
-- Horizontal bars: modality, layer/type, diagnosis, device, long category labels, or more than four categories.
-- Vertical bars: two to four short categories, such as scan sizes. Longer labels or larger category sets use horizontal bars.
+- Vertical bars: a natural starting point for categorical comparisons with short readable labels; keep meaningful left-to-right order such as dose or acquisition size.
+- Horizontal bars: useful when long category names, many crowded labels, or a ranking read more clearly top-to-bottom. Leave room for labels and values without excessive axis-label rotation.
+- Select orientation from the actual label lengths, order, audience convention and available aspect ratio. Category count alone is not a rule, and neither orientation is inherently more scientific. Follow the user's chosen orientation when supplied.
 - Lines: ordered time; use primary blue for the focal series and gray for comparison. For other continuous ordered predictors, use an appropriate scatter/line encoding with explicitly defined axes rather than connecting unordered categories.
 - Stacked bars: mutually exclusive composition across a small number of cohorts; label totals and explain the denominator.
 - Means, effects, and uncertainty: use points and intervals when appropriate; keep signed values, units, and a meaningful reference such as zero. Bar lengths encode from zero; do not truncate a bar axis to exaggerate differences.
 - Avoid pie/donut charts unless the user explicitly requests them.
+
+For distributions, associations, paired data, uncertainty and heatmaps, consult the relevant example in [scientific-chart-examples.md](scientific-chart-examples.md). Its statistical conventions complement these shared style tokens.
 
 ## Markdown integration
 
