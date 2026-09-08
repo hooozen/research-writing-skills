@@ -44,6 +44,30 @@ Use colors semantically and consistently. Translate these exact hex values into 
 - Keep box-plot and violin-plot median strokes thin and legible, without dominating the observations or distribution outline. The examples use 0.8 pt; adjust to the final display size when needed.
 - Omit heatmap colorbar outlines by default. Keep ticks and labels restrained; if a boundary is needed, use a thin baseline-gray edge rather than a solid black frame.
 
+## Spacing and overlap
+
+- Leave clear separation between titles, subtitles, plot areas, axis ticks and labels, direct values, legends, annotations, and source notes, including between adjacent panels. Scale spacing to the font size and final display size.
+- Prevent unintended overlap, occlusion, and clipping that obscure text, data marks, or their relationships. Intentional layering, such as intersecting series or confidence bands, is acceptable when the data remain interpretable and labels stay legible.
+- Resolve collisions by adjusting margins, axis limits, label positions, wrapping, panel spacing, or figure size; simplify or split a crowded figure when needed. Do not hide required information or shrink text until it becomes hard to read.
+- Inspect the actual rendered export at its intended display size, including long labels and edge elements. Fix collisions and render again before delivery; automatic layout alone is not sufficient verification.
+
+## Title placement and panel boundaries
+
+Choose one layout per panel before positioning its contents:
+
+- **Title inside the card (default for a standalone card):** the gray background contains a header region for the complete title and optional subtitle, followed by a separate plot region. Align the title with the plot's left edge and reserve top/side padding. Measure the header height before assigning the plot's top edge.
+- **Title above the panel:** the entire title/subtitle sits on white, with a clear gap before the gray panel begins. This suits compact multi-panel figures. Keep the same arrangement across comparable panels.
+
+The gray/white boundary must never pass through any title or subtitle glyph. Check the full rendered text rectangle, not its anchor point or baseline. As a starting point, leave about 24–40 px from an inside title to the card edge and 12–20 px from the header to plot decorations; scale these gaps to the actual typography and final display size.
+
+Long or multiline titles need more header height. Wrap at the available text width using the final font, then move the plot down or increase figure height. Do not keep a fixed header height while adding lines, move the title onto the card edge, or shrink text until it becomes hard to read. Include top ticks, scientific-notation offsets, legends and colorbar labels when checking the gap below the header.
+
+**Matplotlib translation.** A figure-coordinate `FancyBboxPatch` and an axes title positioned by `ax.set_title()` have different layout owners: changing axes geometry can move the title without moving the card. A fixed `y`, `top` or `pad` is not a containment guarantee. For a full card, use a figure-level title with top alignment, measure its bounding box after drawing, and reserve the plot area below it. The optional `layout_card_header()` in [the Matplotlib example](../scripts/matplotlib_example.py) demonstrates measured wrapping, title/subtitle placement and height growth; pass the colorbar axes too when present. It handles plain-text headers; give mathematical titles appropriate explicit breaks in task-specific code.
+
+Use one final layout owner. Finish automatic axes layout before positioning a manual card header, then disable that layout engine; do not call `tight_layout()` or enable constrained layout afterwards without recomputing the card/header geometry. `bbox_inches="tight"` crops the outer export; it does not repair an internal gray/white boundary. Changing fonts, size, DPI or export backend requires another render check. [Title coordinates](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_title.html), [text bounding boxes](https://matplotlib.org/stable/api/text_api.html#matplotlib.text.Text.get_window_extent), [automatic layout scope](https://matplotlib.org/stable/users/explain/axes/tight_layout_guide.html).
+
+Apply the same ownership in other tools: for example, put a heading and plot in separate rows of one gray container, with padding on the container; avoid absolutely centering the heading on its top border.
+
 ## Data labels
 
 For a count-and-share chart with a known positive denominator, use this pattern:
@@ -91,7 +115,8 @@ Use meaningful alt text that states the measure and population. Add the data sou
 
 - Values and labels match the source table.
 - Percentages use the correct denominator.
-- No labels are clipped or overlapping.
+- Spacing is clear at the intended display size; no inappropriate overlap, occlusion, or clipping affects text or data marks (see Spacing and overlap).
+- At the final export size, the title/subtitle rectangles are wholly inside the card with padding, or wholly above it with a gap. Check both PNG and SVG when delivering both; automatic layout or a valid file alone does not verify this.
 - Residual categories use neutral gray.
 - The title accurately states the metric or conclusion.
 - The SVG link is relative and resolves from the Markdown file.

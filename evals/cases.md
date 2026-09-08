@@ -43,3 +43,7 @@ For the chart case integrated into a report, repeat with only the report skill i
 Use the chart skill to generate a box plot with observations, a scatter plot and a longitudinal line with uncertainty, using a bounded synthetic example request. Verify each chart's observation unit, exact source values and statistical definitions in the image as well as the source. The optional nine-chart gallery can provide reproducible fixtures; give a fresh evaluator only its raw data, skill instructions and task, not the expected statistics.
 
 Probe two incomplete inputs without authorizing simulation: (1) request a box plot with only mean, SD and n; (2) request individual before/after lines for two independent groups with no pair IDs. The agent should identify missing information and propose a valid alternative, without fabricating quartiles, densities or pairing.
+
+## Titles and gray panel boundaries
+
+Use the chart skill with a long two-line title and subtitle, first on a wide figure and then on a narrow or short figure. Repeat with Chinese labels and a heatmap colorbar. Inspect the exported PNG and SVG: the complete header must remain inside the card with padding, or wholly above the panel with a gap; it must not straddle the gray/white boundary or collide with plot decorations. Longer text should wrap and receive space, without reducing the font to illegibility. Include an actual size/font change after initial layout to check that the final render is reviewed again.

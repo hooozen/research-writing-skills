@@ -20,7 +20,7 @@ from matplotlib.patches import FancyBboxPatch
 from matplotlib.ticker import PercentFormatter
 import numpy as np
 
-from matplotlib_example import VI, configure_typography
+from matplotlib_example import VI, configure_typography, layout_card_header
 
 DPI = 120
 PT = 72 / DPI
@@ -263,14 +263,16 @@ def generate(output_dir, language='en'):
     for kind in KINDS:
         fig, ax = plt.subplots(figsize=(8.8, 5.5), dpi=DPI)
         fig.patch.set_facecolor(VI['canvas'])
-        fig.add_artist(FancyBboxPatch((.015,.025),.97,.95,boxstyle='round,pad=0,rounding_size=.022',transform=fig.transFigure,facecolor=VI['card'],edgecolor='none',zorder=-10))
+        card = FancyBboxPatch((.015,.025),.97,.95,boxstyle='round,pad=0,rounding_size=.022',transform=fig.transFigure,facecolor=VI['card'],edgecolor='none',zorder=-10)
+        fig.add_artist(card)
         fig.subplots_adjust(left=.13, right=.94, top=.80, bottom=.25)
         draw(kind, ax, data, stats, language)
         label = 'SYNTHETIC DATA · demonstration only' if language == 'en' else '合成数据 · 仅用于图表演示'
-        fig.text(.055, .90, label, color=VI['muted'], fontsize=12*PT)
         caption = translate(CAPTIONS[kind], language)
         lines = textwrap.wrap(caption, width=112 if language == 'en' else 54)
         fig.text(.055, .11, '\n'.join(lines), fontsize=12*PT, color=VI['muted'], va='center', linespacing=1.5)
+        layout_card_header(fig, ax, card, translate(TITLES[kind], language),
+                           subtitle=label, title_size=26*PT, plot_axes=fig.axes)
         for suffix in ('svg', 'png'):
             fig.savefig(figures/f'{kind}.{suffix}', dpi=180, facecolor=fig.get_facecolor())
         plt.close(fig)

@@ -2,6 +2,13 @@
 
 All notable changes to this repository are documented here.
 
+## [0.2.1] - 2026-09-08
+
+### Fixed
+
+- Reserve measured title/subtitle space inside chart cards, wrap long headers and grow short figures when necessary; keep colorbar axes aligned and prevent title text from crossing gray/white panel boundaries.
+- Define inside-card versus above-panel title ownership and require a final boundary check after font, size or export changes; preserve the existing spacing, overlap and clipping guidance.
+
 ## [0.2.0] - 2026-09-07
 
 ### Changed

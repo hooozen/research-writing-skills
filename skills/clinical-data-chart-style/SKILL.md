@@ -31,12 +31,14 @@ Embed report figures with meaningful alt text:
 
 ## Rules
 
+- Maintain clear spacing between chart elements and prevent inappropriate overlap, occlusion, or clipping; apply the spacing and rendered-output checks in [references/style-guide.md](references/style-guide.md). Intentional layering is acceptable only when it preserves readability and data meaning.
 - For count-and-share bars, show `count · share` directly on each bar using one decimal place for shares and thousands separators for counts. State the denominator and its unit; when it is unknown or zero, show the count with “share unavailable”, never a made-up percentage.
 - For means, rates, changes, or intervals, label the actual metric and unit, and specify uncertainty when supplied. Do not convert continuous outcomes or signed changes to counts or percentages. A single series needs no legend.
 - Treat `Other`, `Unknown`, `Missing`, and similar residual categories as neutral gray.
 - Do not use 3D, decorative gradients, shadows, decorative icons, or rainbow palettes. Continuous color scales in heatmaps and restrained gridlines that support quantitative reading are valid data encodings.
 - Do not use pie or donut charts when bars make comparison clearer.
 - Write a conclusion-led title when the figure stands alone; use a descriptive metric title inside a multi-figure report section.
+- Reserve a title region before sizing the plot. The entire title and subtitle must sit inside the card with padding, or wholly above it with a clear gap; no text may straddle the gray/white boundary. Follow the title-layout and export checks in the style guide.
 - Keep a vector artifact when supported. Also provide PNG when the user requests it or the target renderer needs it.
 - Use synthetic values only for an explicitly requested demonstration, and label them on the figure. Otherwise missing values require a specification or an incomplete table, not fabricated observations.
 
