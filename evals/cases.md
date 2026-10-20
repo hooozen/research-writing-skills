@@ -24,6 +24,26 @@ When running this case independently, supply the A/B counts and sampling uncerta
 
 Proceed on the explicit delegation, retain the outline, keep assumptions outside the artifact, and avoid author-facing coaching. Do not leak the other case's dates or intervention into the first example. The second artifact must distinguish implementation from evaluation and remain labeled incomplete; missing evidence must not become synthetic performance results.
 
+## Report: concise reasoning with charts and formulas
+
+**Prompt**
+
+> 为小领域科研人员改写下面的中文组会记录，请组织为简练、可独立阅读的 Markdown 报告，不指定字数。全部是演示用合成数据，须标明。目标是减少图像处理延迟；相同硬件、同一组120张 OCT 图像（来自30个受试者），比较旧版 A 和新版 B 的处理时间。A 的均值为50 ms/图像，B 为40 ms/图像；仅有汇总均值，无逐图配对数据、离散程度、置信区间或检验结果。B 此次同时调整批处理和缓存策略，两者贡献尚未分离。当前仅评估延迟，尚未评估图像质量及外部设备。下一步计划分别关闭这两个改动并复测，同时补做质量评估。原记录：“我们开展了一系列工作，取得了非常显著的优化成果。旧版平均每张50毫秒，新版平均每张40毫秒。我们可以看到，新版比旧版快，速度得到了非常显著的提高。旧版是50毫秒，新版是40毫秒。这证明批处理改动本身使各类设备上的延迟降低20%，且质量完全不受影响。”
+
+**Review**
+
+Inspect the actual report and figure, not keyword matches. Expect a clear question–evidence–conclusion–next-test chain, a compact rendered comparison chart with time units and a zero baseline, traceable exact means and sampling units, and a concise definition/calculation of relative latency reduction: $(50-40)/50=20\%$. Distinguish the 10 ms absolute reduction and 20% relative reduction from throughput or percentage-point claims. The figure and formula should replace repetitive exposition, with brief interpretation rather than a prose recitation of all labels. Keep the report and figure visibly labeled synthetic. Reject “statistically significant”, isolated attribution to batch processing, established quality preservation, generalization across devices, invented dispersion, and treating 120 images as 120 independent subjects. Preserve missing uncertainty and the untested quality/device limits. Do not turn the prompt's long flawed record into a longer report padded with duplicate summaries or decorative visuals. Verify formula meaning, figure values, units, rounding, links, and the rendered output where available; record any unverified rendering.
+
+## Report: brief qualitative update without forced visuals
+
+**Prompt**
+
+> 为研究伙伴整理一份简短中文进展更新，只要文字，不需要图表或公式，请直接组织。项目目标是统一图像质量标注规则。本周完成规则初稿，尚未进行标注一致性或模型性能评估。下一步由两名标注者独立标注同一批样本，再比较差异；样本量和判定阈值未定。受众知道领域知识，但没有读过我们的聊天记录。
+
+**Review**
+
+Preserve the text-only request and produce a short, self-contained update. State the goal, completed draft, unevaluated status, and next comparison without invented results, sample sizes, thresholds, owners, or dates. Do not insert a token chart, generic equation, long methods scaffold, or repeated closing summary merely to follow the visual/formula preference.
+
 ## Charts: composition, overlap, and continuous changes
 
 **Prompt**

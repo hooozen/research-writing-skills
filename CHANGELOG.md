@@ -2,6 +2,14 @@
 
 All notable changes to this repository are documented here.
 
+## [Unreleased]
+
+### Changed
+
+- Make concise language and explicit question–evidence–conclusion logic the default for progress reports; remove repeated exposition while preserving essential scientific context and limitations.
+- Prioritize informative charts and precise formulas when they communicate evidence more briefly and accurately than prose; keep exact values traceable, define quantitative assumptions, and avoid redundant visuals or forced notation.
+- Simplify the report scaffold and add bounded evaluation cases for visual compression, mathematical accuracy, and text-only updates.
+
 ## [0.2.1] - 2026-09-08
 
 ### Fixed

@@ -14,6 +14,7 @@ Apply one implementation-neutral visual system to clinical-data charts, especial
 3. Choose the plotting language and library from the user's environment and existing project. Do not require Matplotlib, Python, or any other specific implementation.
 4. Translate the style guide's tokens and composition rules into the selected tool without changing their visual meaning.
 5. Choose the encoding from the analytical question. For categorical bars with short readable labels, start with a vertical layout. Use horizontal bars when long labels, crowded categories or ranked values are easier to read that way; decide from the actual labels and available space, not a fixed category-count cutoff. Preserve meaningful clinical, anatomical, or temporal order.
+   In reports, prioritize a chart when it makes the evidence clearer and more concise than prose. Give each figure a specific question or message; avoid duplicate plots of the same result. Let captions define the evidence and prose explain the implication, without repeating every plotted value. Keep full exact-value tables adjacent or explicitly linked from an appendix.
 6. Prefer SVG for Markdown, with high-resolution PNG as a compatibility fallback. Save figures in a `figures/` directory beside the report and use relative links.
 7. Verify every plotted value, denominator, percentage, label, title, source note, and rendered figure before finishing.
 

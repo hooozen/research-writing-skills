@@ -1,6 +1,6 @@
 ---
 name: research-progress-report
-description: "Draft or revise self-contained scientific progress reports for public briefings or lab meetings, including 科研进展报告、阶段性研究总结、项目进度汇报. Adapt evidence, background, figures, and Markdown or HTML output to the chosen audience; use another workflow for journal manuscripts or grant proposals."
+description: "Draft or revise concise, self-contained scientific progress reports for public briefings or lab meetings, including 科研进展报告、阶段性研究总结、项目进度汇报. Use clear reasoning, informative charts, and precise formulas in audience-appropriate Markdown or HTML; use another workflow for journal manuscripts or grant proposals."
 ---
 
 # Research Progress Report
@@ -29,14 +29,22 @@ Before drafting, map the research problem, relevant prior state, unresolved gap,
 
 Inventory the evidence and preserve its identifiers. Separate observation, interpretation, decision, plan, and open question. Build each substantive result around the relevant parts of:
 
-`question → prior evidence/rationale → action and why → design/controls → observation → analysis → supported interpretation → next decision`
+`question → essential rationale and setup → evidence → supported interpretation → next decision`
 
-This is a reasoning check, not a required list of headings.
+This is a reasoning check, not a required list of headings. Make each comparison's premise and baseline explicit, and ensure the conclusion answers the question. Organize by research question or decision rather than narrating every activity in chronological order, unless chronology is itself explanatory or the user requests it.
 
 - Follow a supplied outline's hierarchy, order, and emphasis. Integrate missing context or limitations in the nearest suitable section. Explain a consequential conflict before materially reordering it unless the user authorized restructuring.
 - With delegated structure, open with the important progress and problems, develop the evidence by research question or decision, and close with unresolved issues and concrete next steps. Scale the structure to the task; a short update does not need an exhaustive section scaffold or repetitive final summary.
 - Include enough methods to judge the claim at the selected audience's depth. Do not turn a progress report into a full protocol or literature review unless requested.
 - Follow [references/output-formats.md](references/output-formats.md) for Markdown or HTML. Its headings are examples, not requirements.
+
+## Write concisely and prioritize charts and formulas
+
+- State the main finding early. Give each paragraph one inferential purpose, use short direct sentences and concrete terms, and remove repeated background, empty transitions, vague praise, and summaries that merely repeat earlier conclusions. Scale length to the requested scope; do not impose a word count or remove necessary scientific context to appear brief.
+- Choose how to express the evidence before writing explanatory prose. Prefer a chart for comparisons, trends, distributions, composition, relationships, or uncertainty; a compact table for exact values or decision matrices; and a formula for metric definitions, transformations, model relationships, or quantitative decision rules. Give charts and formulas priority when they communicate the same information more briefly and accurately than prose.
+- Let each representation do its work: a chart reveals a pattern, a table retains exact values, a formula defines a relationship, and prose explains its scientific meaning, limitation, or consequence. Replace redundant prose rather than adding a visual to an unchanged explanation. Do not narrate every plotted value or restate a formula step by step when a short interpretation suffices.
+- Keep decisive evidence near its claim; move full tables, derivations, protocols, and secondary diagnostics to explicitly linked appendices when they interrupt the argument. Use a process or concept diagram only when it clarifies actual structure or relationships, and distinguish a hypothesized mechanism from an observed result.
+- Use prose alone for a simple fact or qualitative update when a chart or formula adds no clarity. Respect explicit requests for text-only output. Do not add decorative figures, unnecessary notation, or unsupported calculations to meet a visual quota.
 
 ## Preserve scientific integrity
 
@@ -49,13 +57,15 @@ This is a reasoning check, not a required list of headings.
 
 ## Mathematics
 
+Prefer a concise formula over a long verbal description when defining a quantitative metric, normalization, model, objective, or decision threshold. State its purpose, define symbols, units, reference values, and material assumptions near first use, and explain only the implication needed by the selected audience. Use only supported relationships; notation must not imply an untested model, causal mechanism, or unavailable uncertainty estimate. Keep derivations only when they help assess the claim or are requested.
+
 When formulas appear, read [references/math-formatting.md](references/math-formatting.md). Use `$...$` inline and `$$...$$` on separate lines for display math in Markdown and retained TeX source. Use portable KaTeX constructs, define symbols, and preserve mathematical meaning. Avoid equation numbering, labels, cross-references, custom macros, and document/package commands.
 
 Standalone HTML must actually display formulas when rendered mathematics is requested. Use a local rendering route or semantic MathML as described in the reference; raw dollar-delimited TeX alone is not rendered mathematics. If conversion is uncertain, resolve the expression before claiming a finished mathematical report.
 
 ## Figures and exact values
 
-Use a chart when it materially clarifies comparison, trend, distribution, composition, relationship, or uncertainty. Keep exact values in an adjacent table or explicitly linked appendix. Follow a user-named style first.
+Plan the decisive figures alongside the argument and create them when the available data and output format support a clearer, shorter presentation. Give each figure a specific question or message; combine related panels only when they share a useful comparison, and avoid repeating the same result across multiple charts. Keep exact values in an adjacent compact table or explicitly linked appendix rather than crowding the main narrative. Follow a user-named style first.
 
 For clinical, medical-imaging, or healthcare figures, use `clinical-data-chart-style` when available. It is an optional companion: if absent, continue with legible encodings, units, explicit denominators, accessible direct labels, and restrained styling; do not require installation or claim to have applied an unavailable skill. This skill controls the evidence narrative, while the companion controls the visual system.
 
@@ -74,7 +84,8 @@ Deliver the report first, with any necessary assumption or missing-input note ke
 ## Verify before delivery
 
 - Opening claims have supporting evidence; experiments have reasons; conclusions and next decisions follow from the data.
-- Numbers, units, denominators, tables, charts, captions, and sources agree. Observations, uncertainty, interpretations, and plans remain distinguishable.
+- Prose is direct and logically ordered. Charts and formulas replace avoidable exposition where useful; paragraphs, captions, and summaries do not repeat the same information without a distinct purpose.
+- Numbers, units, denominators, formulas, tables, charts, captions, and sources agree, including derived values and rounding. Compression has not removed essential sample sizes, uncertainty, baselines, or limitations. Observations, interpretations, and plans remain distinguishable.
 - A reader from the chosen audience can understand the problem, setup, baselines, and reasoning without the authoring context. A supplied outline remains recognizable.
 - Every visible section is scientific content the researcher could show the audience, without drafting instructions or invented evidence.
 - Formulas preserve meaning and use the selected output's rendering route. Inspect a rendered preview when available; report any inability to verify rendering rather than claiming it passed.

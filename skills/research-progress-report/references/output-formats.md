@@ -1,6 +1,6 @@
 # Output Formats
 
-Adapt section names to the selected language, project, audience, and available evidence. Lead with the material progress and provide its evidence and next implications; scale the structure to the requested length.
+Adapt section names to the selected language, project, audience, and available evidence. Lead with the material progress and provide its evidence and next implications; scale the structure to the requested length. Prefer informative charts and precise formulas over lengthy exposition when they improve clarity and accuracy. Use brief prose to connect evidence to conclusions and decisions, without repeating all values, definitions, or captions.
 
 Audience and context choices configure the writing but are not automatic report content. Include an event, venue, or audience label only when the user supplies it and it naturally belongs in the published or projected artifact. Never add internal writing guidance, speaking advice, or “what to say” sections to either format.
 
@@ -20,60 +20,42 @@ For a substantial report without a supplied outline, a useful scaffold is:
 > Reporting period: [...] \
 > Presenter or team: [...]
 
-## Key progress and conclusions
+## Main finding and current decision
 
-- [Most important supported advance, with enough problem context to understand why it matters]
-- [Second advance, limitation, or changed conclusion]
-- [Main unresolved problem or decision required]
+[Most important supported advance or limitation, enough context to understand its significance, and the decision it changes]
 
-## Background and research gap
+## Background and objective
 
-[Research object and larger problem; relevant prior state or baseline; unresolved gap; essential project-specific terms. Calibrate depth to the selected audience.]
-
-## Objective and success criteria
-
-[The question or hypothesis, current scope, and criteria used to judge progress]
+[Only the research problem, prior baseline, unresolved gap, essential terms, and success criteria needed to understand the evidence]
 
 ## [Research question or work package]
 
-### Rationale and action
+[Brief rationale, action, and consequential design or controls]
 
-[What was done or changed, and why this action was chosen]
-
-### Results and evidence
+[Metric definition or quantitative relationship as a formula when it replaces a longer explanation; define symbols, units, and assumptions nearby]
 
 ![Meaningful alt text](figures/example.svg)
 
 *Figure 1. [Message or metric; sample/population; units; uncertainty; source.]*
 
-| Condition | n | Metric (unit) | Uncertainty | Notes |
-|---|---:|---:|---:|---|
-| [...] | [...] | [...] | [...] | [...] |
+[Compact exact-value table here, or an explicit link to the full table in an appendix]
 
-### Interpretation and implications
+[Short interpretation: what the evidence supports, its material limitation, and which decision follows]
 
-[What the evidence supports, what it does not establish, and which decision follows]
+## Open questions and next steps
 
-## Problems, risks, and responses
-
-| Problem or uncertainty | Evidence / impact | Current explanation | Response or discriminating test | Decision criterion |
-|---|---|---|---|---|
-| [...] | [...] | [...] | [...] | [...] |
-
-## Next steps and outlook
-
-[Prioritized actions, their rationale, dependencies, and expected decision value]
-
-## Final summary
-
-[Supported conclusions, unresolved issues, proposed responses, and near-term outlook]
+[Prioritized uncertainties and the actions or discriminating tests they motivate; use a compact table if it makes the mapping clearer]
 
 ## References
 
 [Preserve supplied citation style and identifiers]
+
+## Appendix: exact values and supporting detail
+
+[Full tables, derivations, or diagnostics that are explicitly linked from the main report, when needed]
 ```
 
-Omit empty metadata and irrelevant sections, but do not omit premises required to understand the evidence. The background heading is optional only when its content is integrated clearly into the opening or first relevant section. For a continuation report, retain a compact recap unless the user explicitly confirms that the audience shares the specific prior material. Use appendices for detailed protocols, full tables, supplementary diagnostics, or specialist material that would interrupt the main narrative. Keep the exact-value table adjacent to its chart when practical; otherwise link explicitly to the appendix table.
+Omit empty metadata and irrelevant sections, but do not omit premises required to understand the evidence. The background heading is optional only when its content is integrated clearly into the opening or first relevant section. For a continuation report, retain a compact recap unless the user explicitly confirms that the audience shares the specific prior material. Use appendices for detailed protocols, full tables, supplementary diagnostics, or specialist material that would interrupt the main narrative. Keep the exact-value table adjacent to its chart when practical; otherwise link explicitly to the appendix table. Use prose alone when a simple or qualitative update does not benefit from a chart or formula. Add a closing synthesis only when it contributes a decision or cross-result insight beyond the opening.
 
 ## HTML
 
