@@ -2,6 +2,8 @@
 
 Use the selected audience to decide what must be explained, what can be assumed, and which evidence details belong in the main narrative. Scientific accuracy and traceability do not change across audiences.
 
+Every audience needs a coherent overview and clear relationships. Specialist knowledge permits less textbook background; it does not justify unexplained project-specific names, skipped reasoning, or dense terminology in place of an explanation. Introduce an unfamiliar concept through the problem it addresses and its role here, not merely an expanded acronym. Use consistent names and explain meaningful aliases.
+
 Use the audience description already supplied by the user, or choose a reasonable profile when the user explicitly delegates that decision. Otherwise ask before the first full draft. These profiles calibrate depth; they are not a mandatory menu. Treat the selected profile and public/lab context as internal configuration. Do not print labels such as `小领域科研人群` or `研究伙伴` in the report unless the user explicitly asks for audience metadata.
 
 Assume the audience has no access to the author–agent conversation, source bundle, or earlier drafts. Audience expertise determines which disciplinary concepts need explanation; it does not grant knowledge of this project's samples, baselines, decisions, chronology, or internal names. Omit project background only when the user explicitly confirms the shared prior material.
@@ -35,5 +37,7 @@ These profiles are calibration anchors, not rigid personas. If the actual audien
 ## Depth test
 
 For every paragraph, ask whether it enables this audience to understand a conclusion, evaluate evidence, follow a decision, or act on the next step. Compress or relocate content that does none of these.
+
+Check the overall route before shortening paragraphs: the opening and section openings should let the reader explain the problem, overall approach, how the parts connect, and current state. Keep introductions and transitions that are necessary for that understanding.
 
 Then apply a standalone-reader test: hand the report to a representative audience member without the prompt, attachments, previous draft, or chat history. They should still be able to identify the problem, relevant prior state, project objective, meaning of each comparison, reason for each major action, and basis of each conclusion.

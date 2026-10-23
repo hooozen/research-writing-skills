@@ -18,7 +18,7 @@
     {
       "name": "research-progress-report",
       "path": "skills/research-progress-report",
-      "description": "Draft or revise concise, self-contained scientific progress reports for public briefings or lab meetings, including 科研进展报告、阶段性研究总结、项目进度汇报. Use clear reasoning, informative charts, and precise formulas in audience-appropriate Markdown or HTML; use another workflow for journal manuscripts or grant proposals.",
+      "description": "Draft or revise self-contained scientific progress reports for public briefings or lab meetings, including 科研进展报告、阶段性研究总结、项目进度汇报. Establish the whole argument before details, explain concepts in plain language, and keep terminology consistent; use another workflow for journal manuscripts or grant proposals.",
       "tags": [
         "html",
         "katex",

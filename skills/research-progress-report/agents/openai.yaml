@@ -1,4 +1,4 @@
 interface:
   display_name: "科研进展报告"
-  short_description: "Write concise research reports with charts and formulas"
-  default_prompt: "Use $research-progress-report to draft a concise, self-contained scientific progress report with clear reasoning and charts or formulas where they improve clarity; follow my audience and outline, ask once if the audience is missing, and organize the structure when I leave it open."
+  short_description: "Explain research clearly, from overview to evidence"
+  default_prompt: "Use $research-progress-report to organize a self-contained report from a clear overall approach into connected details, explain new concepts in plain language, and keep terminology consistent; follow my audience and outline, asking once if the audience is missing."

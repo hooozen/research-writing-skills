@@ -6,6 +6,9 @@ All notable changes to this repository are documented here.
 
 ### Changed
 
+- Make whole-report organization and a substantive reader-facing overview precede detailed exposition; connect module roles, stages, data relationships, evidence, and decisions instead of assembling source fragments.
+- Require consistent canonical names and explained aliases, introduce unfamiliar concepts through their purpose and role, and replace abstract terminology with concrete actions. Preserve necessary explanations when shortening text or using figures and formulas.
+- Add worked writing examples and behavior cases for concept introduction, terminology consistency, and a report's overall explanatory flow.
 - Make concise language and explicit question–evidence–conclusion logic the default for progress reports; remove repeated exposition while preserving essential scientific context and limitations.
 - Prioritize informative charts and precise formulas when they communicate evidence more briefly and accurately than prose; keep exact values traceable, define quantitative assumptions, and avoid redundant visuals or forced notation.
 - Simplify the report scaffold and add bounded evaluation cases for visual compression, mathematical accuracy, and text-only updates.

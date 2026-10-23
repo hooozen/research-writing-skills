@@ -1,6 +1,6 @@
 # Output Formats
 
-Adapt section names to the selected language, project, audience, and available evidence. Lead with the material progress and provide its evidence and next implications; scale the structure to the requested length. Prefer informative charts and precise formulas over lengthy exposition when they improve clarity and accuracy. Use brief prose to connect evidence to conclusions and decisions, without repeating all values, definitions, or captions.
+Adapt section names to the selected language, project, audience, and available evidence. Start with a substantive overview: the problem, overall approach or flow, how the parts connect, and main progress or unresolved question. Then develop the details in the order needed to understand them. An opening conclusion still needs enough context to be intelligible. Prefer informative charts and precise formulas when they clarify the explanation, retaining the plain-language purpose and interpretation needed by the reader.
 
 Audience and context choices configure the writing but are not automatic report content. Include an event, venue, or audience label only when the user supplies it and it naturally belongs in the published or projected artifact. Never add internal writing guidance, speaking advice, or “what to say” sections to either format.
 
@@ -20,9 +20,11 @@ For a substantial report without a supplied outline, a useful scaffold is:
 > Reporting period: [...] \
 > Presenter or team: [...]
 
-## Main finding and current decision
+## Overall approach and current progress
 
-[Most important supported advance or limitation, enough context to understand its significance, and the decision it changes]
+[The problem, the overall route to address it, how the main parts fit, and what is now supported or unresolved; use connected prose rather than a directory of section titles]
+
+[A flow or hierarchy diagram when it clarifies module roles, data movement, or parent–child relationships; explain names before relying on them]
 
 ## Background and objective
 
@@ -30,7 +32,7 @@ For a substantial report without a supplied outline, a useful scaffold is:
 
 ## [Research question or work package]
 
-[Brief rationale, action, and consequential design or controls]
+[The section's question or point, why it follows from the overall approach, and necessary design or controls. Introduce an unfamiliar concept through the problem it addresses and its role here before technical detail.]
 
 [Metric definition or quantitative relationship as a formula when it replaces a longer explanation; define symbols, units, and assumptions nearby]
 
@@ -40,7 +42,7 @@ For a substantial report without a supplied outline, a useful scaffold is:
 
 [Compact exact-value table here, or an explicit link to the full table in an appendix]
 
-[Short interpretation: what the evidence supports, its material limitation, and which decision follows]
+[Short interpretation: what the evidence supports, its material limitation, and which decision follows. Use a supplied input–processing–output example if a mechanism would otherwise remain abstract.]
 
 ## Open questions and next steps
 
@@ -55,7 +57,7 @@ For a substantial report without a supplied outline, a useful scaffold is:
 [Full tables, derivations, or diagnostics that are explicitly linked from the main report, when needed]
 ```
 
-Omit empty metadata and irrelevant sections, but do not omit premises required to understand the evidence. The background heading is optional only when its content is integrated clearly into the opening or first relevant section. For a continuation report, retain a compact recap unless the user explicitly confirms that the audience shares the specific prior material. Use appendices for detailed protocols, full tables, supplementary diagnostics, or specialist material that would interrupt the main narrative. Keep the exact-value table adjacent to its chart when practical; otherwise link explicitly to the appendix table. Use prose alone when a simple or qualitative update does not benefit from a chart or formula. Add a closing synthesis only when it contributes a decision or cross-result insight beyond the opening.
+Omit empty metadata and irrelevant sections, but do not omit premises required to understand the evidence. The background heading is optional only when its content is integrated clearly into the opening or first relevant section. For a continuation report, retain a compact recap unless the user explicitly confirms that the audience shares the specific prior material. Use appendices for detailed protocols, full tables, supplementary diagnostics, or specialist material that would interrupt the main narrative. Keep the exact-value table adjacent to its chart when practical; otherwise link explicitly to the appendix table. Use prose alone when a simple or qualitative update does not benefit from a chart or formula. Add a closing synthesis only when it contributes a decision or cross-result insight beyond the opening. Keep names, aliases, and symbols consistent in both formats, and apply the reader check in [writing-and-explanation.md](writing-and-explanation.md).
 
 ## HTML
 

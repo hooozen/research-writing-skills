@@ -44,6 +44,26 @@ Inspect the actual report and figure, not keyword matches. Expect a clear questi
 
 Preserve the text-only request and produce a short, self-contained update. State the goal, completed draft, unevaluated status, and next comparison without invented results, sample sizes, thresholds, owners, or dates. Do not insert a token chart, generic equation, long methods scaffold, or repeated closing summary merely to follow the visual/formula preference.
 
+## Report: whole-system explanation, aliases, and stage boundaries
+
+**Prompt**
+
+> 将零散研发笔记整理为一份中文阶段报告，给有机器学习基础、不了解本项目的跨学科研究人员讨论，请自行组织结构。全部为虚构教学材料，须标明，不新增实验。目标是让甲/乙图像分类在不确定时转交核验或人工。300张图像分为development 240张与test 60张；development内含initial 180张与calibration 60张；initial内144张拟合原模型、36张内部验证。内部验证不是test。“初判”和“快速判别”指同一组件，“二次核验”和“复核”指同一组件；质量筛选独立检查模糊或遮挡，不是二次核验的别称。普通使用时先质量筛选，再初判；初判产生类别与原始分数，原始分数不等于答对概率。calibration只用于调整分数解释和选定判断规则，在正式使用前完成。规则决定直接返回还是二次核验；核验收到图像、初判结果、参考图像及来源类别，产生候选答案与理由；本地规则仍无法接受时转人工。核验不更新初判模型。另一份笔记称“经验吸收器”，指可靠反馈到来后复制一个小型附加模块进行试学，原模型冻结；该附加模块称适配器，只学习判断的小幅修正。普通推理与反馈后的学习在不同时间发生。学习后的收益比较方案尚未确定，不能自行指派数据集职责。接口例子：图像通过质量筛选，初判甲，规则要求复核；复核提出乙，但本地证据不足，最终转人工，未自动改答、未自动训练。当前只完成初判与核验间接口原型及流程演练，适配器仍为设计；无性能、延迟或正式实验结果。下一步先确定更新比较方案，再实现学习模块。
+
+**Review**
+
+Read the report as a new project reader, not as a checklist of keywords. Its opening should establish the purpose, the normal-use route, the separate feedback-learning role, and current status before technical exposition. Section openings should form a coherent route, with details expanding that overview. Expect stable canonical names with necessary aliases explained once, quality screening kept distinct from label verification, and the adapter introduced through its purpose rather than merely named. Training/calibration, runtime verification, and later learning must remain separate; the supplied example ends in human review rather than automatic relabeling or training. Trace the parent–child dataset membership and distinguish 36-image internal validation from 60-image test. Do not let the unresolved learning comparison acquire invented dataset assignments, thresholds, parameters, results, or extra architecture. A compact flow/hierarchy can clarify relationships but cannot replace their meaning. Check for repetition: prose should interpret rather than recite every table row, and common missing-performance limits should not reappear at every section ending or in duplicate status inventories. No separate outline-approval question is needed. Record actual passages that explain relationships or still force the reader to guess; valid syntax alone is not a pass.
+
+## Report: local revision without expanding the assignment
+
+**Prompt**
+
+> 以下是中文研究伙伴报告中的一个段落，只修改这一段，保留标题“本期变化”，不加术语表、图表或新方案。项目通过检查图像模糊程度来减少不合格输入，本期只实现质量规则，未评估效果；“图像质控”和“QC”在资料中指这同一项检查，和后续检查分类标签正确性的“标签核验”不同。原文：“本期构建QC治理与数据清洗协同底座，赋能标签核验闭环，全面提升下游泛化鲁棒性。”
+
+**Review**
+
+The revised paragraph should plainly identify what was implemented, why it exists, and what remains untested. It should use one clear canonical name, explain an alias only if retained, and keep image-quality screening distinct from label verification. No established downstream benefit follows from implementing a rule. Preserve the local-edit scope and heading; do not force a new whole-report scaffold, approval step, glossary, formula, or future architecture. Verify the actual prose conveys the relationship without relying on terms such as “底座” or “闭环” to stand in for an explanation; do not impose a universal word blacklist.
+
 ## Charts: composition, overlap, and continuous changes
 
 **Prompt**

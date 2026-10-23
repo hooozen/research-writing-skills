@@ -8,7 +8,7 @@ Each skill is a self-contained directory built around `SKILL.md`. Supporting ref
 
 | Skill | Purpose |
 |---|---|
-| [`research-progress-report`](skills/research-progress-report/) | Draft or revise concise, self-contained progress reports with clear reasoning. Prioritize informative charts and precise formulas over lengthy exposition; preserve essential context, uncertainty, and exact values. Follow the user's audience and outline in Markdown or HTML with KaTeX-compatible mathematics. |
+| [`research-progress-report`](skills/research-progress-report/) | Plan the whole argument, open with a clear overview, then explain connected details in plain language with consistent terminology. Preserve essential context and evidence; use charts and formulas to clarify rather than replace explanation. Follow the user's audience and outline in Markdown or HTML. |
 | [`clinical-data-chart-style`](skills/clinical-data-chart-style/) | Create consistent clinical and medical-imaging charts; includes a [nine-chart scientific reference](skills/clinical-data-chart-style/references/scientific-chart-examples.md) and optional reproducible examples. |
 
 Machine-readable discovery metadata is available in [`catalog.json`](catalog.json).
