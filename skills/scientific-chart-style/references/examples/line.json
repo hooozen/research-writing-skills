@@ -1,0 +1,40 @@
+{
+  "synthetic": true,
+  "times": [
+    0,
+    2,
+    4,
+    7
+  ],
+  "subjects": [
+    {
+      "id": "S1",
+      "values": [
+        10,
+        null,
+        12,
+        14
+      ]
+    },
+    {
+      "id": "S2",
+      "values": [
+        12,
+        null,
+        14,
+        15
+      ]
+    },
+    {
+      "id": "S3",
+      "values": [
+        11,
+        null,
+        13,
+        null
+      ]
+    }
+  ],
+  "time_label": "Time (h)",
+  "value_label": "Response (a.u.)"
+}

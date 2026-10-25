@@ -1,0 +1,35 @@
+{
+  "synthetic": true,
+  "ids": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8"
+  ],
+  "log2_fold_change": [
+    0.1,
+    0.6,
+    -1.6,
+    1.2,
+    -0.2,
+    1.8,
+    0.4,
+    -2.1
+  ],
+  "pvalues": [
+    0.8,
+    0.04,
+    0.001,
+    0.02,
+    0.6,
+    0.003,
+    0.25,
+    0.0004
+  ],
+  "adjusted_p_threshold": 0.05,
+  "absolute_log2_effect_threshold": 1
+}

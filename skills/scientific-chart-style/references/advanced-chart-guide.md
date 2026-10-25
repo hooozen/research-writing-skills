@@ -1,10 +1,6 @@
-# Additional Scientific Charts
+# Additional Scientific Charts — optional background
 
-Use the question and available observations to select a chart. The B color palette and D grayscale alternative in [style-guide.md](style-guide.md) control appearance; they do not choose the analysis. For distributions, scatter, time series, histograms, ECDFs, paired observations, point/interval plots and general heatmaps, start with [scientific-chart-examples.md](scientific-chart-examples.md). Read only the relevant sections below.
-
-![Nine additional synthetic scientific chart examples](advanced-chart-preview.png)
-
-[Designed grayscale print preview](advanced-chart-print-preview.png). The overview is for browsing; individual exports retain their declared physical width.
+Start with the [19-chart index](chart-index.md), then read one selected chart card and use its single-chart command. This longer guide is optional background for comparing related methods. The B/D tokens in [style-guide.md](style-guide.md) control appearance, not the analysis; overview images are optional browsing aids.
 
 ## Choose from the evidence
 
@@ -96,3 +92,9 @@ State the analysis matrix, feature units, exclusions, transformations, centering
 The optional [advanced gallery](../scripts/advanced_chart_gallery.py) illustrates the nine added chart types with clearly labeled synthetic fixtures; the [basic gallery](scientific-chart-examples.md) covers the original nine. Treat examples as drawing and definition references, not analysis defaults. Keep computed curve points, bins, matrices, exclusions, estimates and preprocessing settings traceable to their inputs. Use existing analysis outputs instead of recomputing inferential quantities when the task is only restyling.
 
 Inspect both color and grayscale exports at the intended physical size. Verify units, sign/reference lines, uncertainty meanings, colorbar bounds, observation counts, thresholds and text contrast. Simplify labels or split panels before reducing text below a legible size. A valid SVG/PDF or passing numeric check does not establish visual readability. Use [publication-references.md](publication-references.md) when adapting a figure for a specific journal.
+
+## Optional browsing overviews
+
+These contact sheets are for a quick visual survey, not required Agent context. For a selected figure, use its card, exact input and single SVG/PNG from the [index](chart-index.md).
+
+[Color overview](advanced-chart-preview.png) · [Designed print overview](advanced-chart-print-preview.png).

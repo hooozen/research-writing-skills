@@ -4,8 +4,14 @@ All notable changes to this repository are documented here.
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-10-25
+
 ### Changed
 
+- Make a 19-chart text/JSON index and per-chart cards the Agent's primary reference route. Each card has a minimal input, scientific definition, short runnable example and individual editable SVG/PNG; large contact sheets are optional.
+- Add a direct single-chart renderer for supplied input or explicitly requested synthetic examples, keeping shared B/D styles and tested statistical calculations. It rejects absent/invalid required data instead of falling back to a whole synthetic gallery.
+- Add source/input/image freshness records, reference consistency checks, and bounded Agent retrieval/single-chart/incomplete-input evaluations alongside numerical, layout and export regressions.
+- Publish the new skill directory and reference layout as a major release relative to v0.2.1; migrate old installed names and preserve recoverable backups outside discovery roots.
 - Rename `clinical-data-chart-style` to `scientific-chart-style`, broaden it to scientific figures across disciplines, and update discovery metadata, report integration and executable/test paths. Retire the old installed name rather than exposing duplicate skills.
 - Adopt the selected muted B teal/terracotta palette as the default and a deliberately encoded D grayscale mode for print; replace gray rounded cards and pixel-scaled typography with white publication figures, physical-point fonts and aligned panels.
 - Expand guidance on observation-level views, estimates/uncertainty, model evaluation, agreement, survival and high-dimensional data. Add primary publication/technical references and nine advanced reproducible examples alongside the existing nine basic examples and count/share figure.

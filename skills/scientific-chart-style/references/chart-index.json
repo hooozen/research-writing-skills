@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "charts": [
+    {
+      "id": "count_share",
+      "name": "Count/share bars",
+      "question": "How many records belong to each category, and what is the denominator?",
+      "required_inputs": [
+        "categories",
+        "counts",
+        "denominator",
+        "relationship",
+        "unit"
+      ],
+      "family": "count",
+      "guide": "references/charts/count_share.md",
+      "input": "references/examples/count_share.json",
+      "svg": "references/examples/count_share.svg",
+      "png": "references/examples/count_share.png"
+    },
+    {
+      "id": "boxplot",
+      "name": "Box plot with observations",
+      "question": "How do groups differ in location and spread?",
+      "required_inputs": [
+        "groups",
+        "value_label"
+      ],
+      "family": "basic",
+      "guide": "references/charts/boxplot.md",
+      "input": "references/examples/boxplot.json",
+      "svg": "references/examples/boxplot.svg",
+      "png": "references/examples/boxplot.png"
+    },
+    {
+      "id": "violin",
+      "name": "Violin plot with observations",
+      "question": "What distribution shape is supported by the observations?",
+      "required_inputs": [
+        "groups",
+        "value_label"
+      ],
+      "family": "basic",
+      "guide": "references/charts/violin.md",
+      "input": "references/examples/violin.json",
+      "svg": "references/examples/violin.svg",
+      "png": "references/examples/violin.png"
+    },
+    {
+      "id": "scatter",
+      "name": "Scatter plot",
+      "question": "Are two measured quantities associated?",
+      "required_inputs": [
+        "observations",
+        "x_label",
+        "y_label"
+      ],
+      "family": "basic",
+      "guide": "references/charts/scatter.md",
+      "input": "references/examples/scatter.json",
+      "svg": "references/examples/scatter.svg",
+      "png": "references/examples/scatter.png"
+    },
+    {
+      "id": "line",
+      "name": "Time series / longitudinal summary",
+      "question": "How does the observed quantity change over actual ordered times?",
+      "required_inputs": [
+        "times",
+        "subjects",
+        "time_label",
+        "value_label"
+      ],
+      "family": "basic",
+      "guide": "references/charts/line.md",
+      "input": "references/examples/line.json",
+      "svg": "references/examples/line.svg",
+      "png": "references/examples/line.png"
+    },
+    {
+      "id": "histogram",
+      "name": "Histogram",
+      "question": "How many observations fall in each numerical range?",
+      "required_inputs": [
+        "groups",
+        "value_label"
+      ],
+      "family": "basic",
+      "guide": "references/charts/histogram.md",
+      "input": "references/examples/histogram.json",
+      "svg": "references/examples/histogram.svg",
+      "png": "references/examples/histogram.png"
+    },
+    {
+      "id": "ecdf",
+      "name": "Empirical cumulative distribution",
+      "question": "What fraction of each group is at or below a value?",
+      "required_inputs": [
+        "groups",
+        "value_label"
+      ],
+      "family": "basic",
+      "guide": "references/charts/ecdf.md",
+      "input": "references/examples/ecdf.json",
+      "svg": "references/examples/ecdf.svg",
+      "png": "references/examples/ecdf.png"
+    },
+    {
+      "id": "paired",
+      "name": "Paired observations",
+      "question": "How did the same identified units change?",
+      "required_inputs": [
+        "pairs",
+        "value_label"
+      ],
+      "family": "basic",
+      "guide": "references/charts/paired.md",
+      "input": "references/examples/paired.json",
+      "svg": "references/examples/paired.svg",
+      "png": "references/examples/paired.png"
+    },
+    {
+      "id": "interval",
+      "name": "Effect estimates and intervals",
+      "question": "What is the estimated effect relative to a common reference?",
+      "required_inputs": [
+        "estimates",
+        "reference",
+        "value_label",
+        "interval_label"
+      ],
+      "family": "basic",
+      "guide": "references/charts/interval.md",
+      "input": "references/examples/interval.json",
+      "svg": "references/examples/interval.svg",
+      "png": "references/examples/interval.png"
+    },
+    {
+      "id": "heatmap",
+      "name": "Heatmap with missing cells",
+      "question": "How does a numerical quantity vary across rows and columns?",
+      "required_inputs": [
+        "values",
+        "row_labels",
+        "column_labels",
+        "value_label",
+        "limits"
+      ],
+      "family": "basic",
+      "guide": "references/charts/heatmap.md",
+      "input": "references/examples/heatmap.json",
+      "svg": "references/examples/heatmap.svg",
+      "png": "references/examples/heatmap.png"
+    },
+    {
+      "id": "raincloud",
+      "name": "Raincloud",
+      "question": "What do raw observations, distribution shape and summary show together?",
+      "required_inputs": [
+        "groups",
+        "value_label"
+      ],
+      "family": "advanced",
+      "guide": "references/charts/raincloud.md",
+      "input": "references/examples/raincloud.json",
+      "svg": "references/examples/raincloud.svg",
+      "png": "references/examples/raincloud.png"
+    },
+    {
+      "id": "roc",
+      "name": "ROC curve",
+      "question": "How well do continuous scores rank positives above negatives?",
+      "required_inputs": [
+        "labels",
+        "scores"
+      ],
+      "family": "advanced",
+      "guide": "references/charts/roc.md",
+      "input": "references/examples/roc.json",
+      "svg": "references/examples/roc.svg",
+      "png": "references/examples/roc.png"
+    },
+    {
+      "id": "pr",
+      "name": "Precision–recall curve",
+      "question": "How precise are positive predictions as recall increases?",
+      "required_inputs": [
+        "labels",
+        "scores"
+      ],
+      "family": "advanced",
+      "guide": "references/charts/pr.md",
+      "input": "references/examples/pr.json",
+      "svg": "references/examples/pr.svg",
+      "png": "references/examples/pr.png"
+    },
+    {
+      "id": "calibration",
+      "name": "Calibration diagram",
+      "question": "Do predicted probabilities match observed positive frequencies?",
+      "required_inputs": [
+        "labels",
+        "probabilities",
+        "bin_edges"
+      ],
+      "family": "advanced",
+      "guide": "references/charts/calibration.md",
+      "input": "references/examples/calibration.json",
+      "svg": "references/examples/calibration.svg",
+      "png": "references/examples/calibration.png"
+    },
+    {
+      "id": "confusion",
+      "name": "Confusion matrix",
+      "question": "Which binary classes are confused at a stated threshold?",
+      "required_inputs": [
+        "labels",
+        "scores",
+        "threshold"
+      ],
+      "family": "advanced",
+      "guide": "references/charts/confusion.md",
+      "input": "references/examples/confusion.json",
+      "svg": "references/examples/confusion.svg",
+      "png": "references/examples/confusion.png"
+    },
+    {
+      "id": "bland_altman",
+      "name": "Bland–Altman agreement",
+      "question": "Do two measurement methods agree on the same units?",
+      "required_inputs": [
+        "method_a",
+        "method_b",
+        "value_unit"
+      ],
+      "family": "advanced",
+      "guide": "references/charts/bland_altman.md",
+      "input": "references/examples/bland_altman.json",
+      "svg": "references/examples/bland_altman.svg",
+      "png": "references/examples/bland_altman.png"
+    },
+    {
+      "id": "survival",
+      "name": "Kaplan–Meier survival",
+      "question": "How does event-free probability change under right censoring?",
+      "required_inputs": [
+        "groups",
+        "risk_times",
+        "time_unit"
+      ],
+      "family": "advanced",
+      "guide": "references/charts/survival.md",
+      "input": "references/examples/survival.json",
+      "svg": "references/examples/survival.svg",
+      "png": "references/examples/survival.png"
+    },
+    {
+      "id": "volcano",
+      "name": "Volcano plot",
+      "question": "Which features combine signed effects with adjusted statistical evidence?",
+      "required_inputs": [
+        "ids",
+        "log2_fold_change",
+        "pvalues",
+        "adjusted_p_threshold",
+        "absolute_log2_effect_threshold"
+      ],
+      "family": "advanced",
+      "guide": "references/charts/volcano.md",
+      "input": "references/examples/volcano.json",
+      "svg": "references/examples/volcano.svg",
+      "png": "references/examples/volcano.png"
+    },
+    {
+      "id": "pca",
+      "name": "PCA scores",
+      "question": "Which multivariate variation appears in the first principal components?",
+      "required_inputs": [
+        "values",
+        "groups",
+        "feature_names",
+        "preprocessing"
+      ],
+      "family": "advanced",
+      "guide": "references/charts/pca.md",
+      "input": "references/examples/pca.json",
+      "svg": "references/examples/pca.svg",
+      "png": "references/examples/pca.png"
+    }
+  ]
+}

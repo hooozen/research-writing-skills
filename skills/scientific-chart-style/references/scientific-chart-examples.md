@@ -1,10 +1,6 @@
-# Scientific chart examples
+# Scientific chart examples — optional background
 
-Read only the rows and sections relevant to the requested figure. These examples translate the visual system into common scientific encodings; they do not prescribe an analysis method, sample size, significance threshold, or scientific conclusion.
-
-![Nine synthetic scientific chart examples in the default muted publication style](scientific-chart-preview.png)
-
-[Designed grayscale print preview](scientific-chart-print-preview.png).
+Start with the [19-chart index](chart-index.md), then read the selected standalone chart card. This longer guide is optional background for comparing related encodings; no overview image or full gallery-source read is required. It does not prescribe an analysis method, sample size, significance threshold, or scientific conclusion.
 
 ## Choose an encoding
 
@@ -77,3 +73,9 @@ It writes nine SVG/PNG/PDF figures, `overview.png`, `gallery.md`, raw `data.json
 Use the relevant drawing choices in task-specific code and apply the same specification in R, JavaScript or another available renderer. Do not run the whole gallery for an ordinary single-chart task. Keep raw/derived numerical data alongside the output so another reader can check every plotted result.
 
 For model evaluation, agreement, survival, omics and multivariate examples, read [advanced-chart-guide.md](advanced-chart-guide.md) and use the companion [advanced gallery](../scripts/advanced_chart_gallery.py) only when those encodings answer the actual question.
+
+## Optional browsing overviews
+
+These contact sheets are for a quick visual survey, not required Agent context. For a selected figure, use its card, exact input and single SVG/PNG from the [index](chart-index.md).
+
+[Color overview](scientific-chart-preview.png) · [Designed print overview](scientific-chart-print-preview.png).

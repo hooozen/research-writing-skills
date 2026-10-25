@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "generator": "scripts/build_chart_references.py",
+  "mode": "color",
+  "style": "B muted teal/terracotta",
+  "sources": {
+    "scripts/build_chart_references.py": "92c93a9bd12ccf99d216daad6b0474201ec515091406e679c9bc021efd68645f",
+    "scripts/render_chart.py": "99130a90dbc8f6f96ab3843e0529ac055c56c1bfcf84e52fa8be4e6611b4d5dc",
+    "scripts/matplotlib_example.py": "0c971dd5df16e2949f529a043b4b203f9c9c3331110e52c5fd1f96aa76e24236",
+    "scripts/scientific_chart_gallery.py": "fb9ca05d2b4af74614a02fbfa6f73c047aca795c286d329defa9dee9751fbb01",
+    "scripts/advanced_chart_gallery.py": "b25cf0962596e48169908ddc1e185ca254b284cdf07b1df17039ab594cf4d6b3",
+    "references/chart-index.json": "e581ce586786f4fd773bc22920b4dd39cee786655d0e165cb3006ba365316c70",
+    "references/style-guide.md": "40b4cf0dcd6bde25eb3ad993a18cbd4b423eb5b6f619e8a289c1d368e6033a44"
+  },
+  "charts": {
+    "count_share": {
+      "guide": "references/charts/count_share.md",
+      "input": "references/examples/count_share.json",
+      "svg": "references/examples/count_share.svg",
+      "png": "references/examples/count_share.png",
+      "guide_sha256": "36e5bf3437ef34e04317c52189205a0052058d872a10786a02165758346662f6",
+      "input_sha256": "f5f71401e0d6ec7f4507cf450127cdd867f783ad7f59dad94f2c2f159a90e103",
+      "svg_sha256": "d575de38aabb02e9b9f8b66484024fc5fa28ebbfe94d57412fc711c00705d2c9",
+      "png_sha256": "3f638c87f9ba6c30e35d489f0d061b7a26d96f261fd834ab4e04beeb4661770c",
+      "svg_dimensions_mm": {
+        "width": 180.0,
+        "height": 80.0
+      },
+      "png_pixels": {
+        "width": 2125,
+        "height": 944
+      }
+    },
+    "boxplot": {
+      "guide": "references/charts/boxplot.md",
+      "input": "references/examples/boxplot.json",
+      "svg": "references/examples/boxplot.svg",
+      "png": "references/examples/boxplot.png",
+      "guide_sha256": "af055d55f662ddb4cc73407bc6e0960756114a5308ecdad5b1ed756590e3a35b",
+      "input_sha256": "42fa2b61103fd8399f80a7e5a7cbf820c3c510646be3a9e2d5880c6a1c67166f",
+      "svg_sha256": "0869c802ed3b471648abd0c0cdd07a20318cbdaa634c8d3d6ecd04dff6b5fe2a",
+      "png_sha256": "2389ce47d81ab5ed3bb570e38d3c19ee57581dbe24632663f3d1815ca2343085",
+      "svg_dimensions_mm": {
+        "width": 89.0,
+        "height": 87.0
+      },
+      "png_pixels": {
+        "width": 1051,
+        "height": 1027
+      }
+    },
+    "violin": {
+      "guide": "references/charts/violin.md",
+      "input": "references/examples/violin.json",
+      "svg": "references/examples/violin.svg",
+      "png": "references/examples/violin.png",
+      "guide_sha256": "174c6cca7c25ef143a16aa4d6d8b1e803e54bccfde650c07a73bcca4e1a6b43e",
+      "input_sha256": "42fa2b61103fd8399f80a7e5a7cbf820c3c510646be3a9e2d5880c6a1c67166f",
+      "svg_sha256": "d4a404deaac84cb8349f6e8bf1085468e6903bb69092aee9f61e20024c11222c",
+      "png_sha256": "40d289bc8eaf96c6474d5effac07c420bb4312d77645c4dc9a81a9a4a288883d",
+      "svg_dimensions_mm": {
+        "width": 89.0,
+        "height": 87.0
+      },
+      "png_pixels": {
+        "width": 1051,
+        "height": 1027
+      }
+    },
+    "scatter": {
+      "guide": "references/charts/scatter.md",
+      "input": "references/examples/scatter.json",
+      "svg": "references/examples/scatter.svg",
+      "png": "references/examples/scatter.png",
+      "guide_sha256": "25b5e0862932592e11d61aadbf947ab58662fcfd7301afdfda5e2952021bd07b",
+      "input_sha256": "7795598f15d7f2af52f1715cad0f6f413dd566947ec9d7eef4fe1a2ab9f9c082",
+      "svg_sha256": "14f07e928b0a055e7de823227f9edd789e9d641ac7c2e65c4e9e17aa4b5cb90d",
+      "png_sha256": "87c7087aefb931b59eec3ba87f75e7ae310dc02bbc653958e318ac7eb7f133f3",
+      "svg_dimensions_mm": {
+        "width": 89.0,
+        "height": 87.0
+      },
+      "png_pixels": {
+        "width": 1051,
+        "height": 1027
+      }
+    },
+    "line": {
+      "guide": "references/charts/line.md",
+      "input": "references/examples/line.json",
+      "svg": "references/examples/line.svg",
+      "png": "references/examples/line.png",
+      "guide_sha256": "625a98bb8f8ec668d5b38f839d5d25eccf857d50023537bfedc0f69a4fcd456c",
+      "input_sha256": "c97f41dfdf1911bd78dd1827168b97c5368d3424fad66ca155d7de1983b91912",
+      "svg_sha256": "e1f7cdec2fe4457e05d85c5bef33edbad7e1c9641ecb2d4a004ed4e4c0dfa9c4",
+      "png_sha256": "c2e6ce68474c0e6792ae7282b10dce2a94b71b300856a86cf565d0b2d047dc99",
+      "svg_dimensions_mm": {
+        "width": 89.0,
+        "height": 87.0
+      },
+      "png_pixels": {
+        "width": 1051,
+        "height": 1027
+      }
+    },
+    "histogram": {
+      "guide": "references/charts/histogram.md",
+      "input": "references/examples/histogram.json",
+      "svg": "references/examples/histogram.svg",
+      "png": "references/examples/histogram.png",
+      "guide_sha256": "19d04546d0e8419b2f4584176a42d411a2f395d4cee61a071f60245398ef8b94",
+      "input_sha256": "42fa2b61103fd8399f80a7e5a7cbf820c3c510646be3a9e2d5880c6a1c67166f",
+      "svg_sha256": "2c3874913302826140346fff0c0e86d1d5fd861207ca485409ff760ccd855209",
+      "png_sha256": "62d972f8046d0bda68997064df74684e729568e1e6a019fa76c93891b7606152",
+      "svg_dimensions_mm": {
+        "width": 89.0,
+        "height": 87.0
+      },
+      "png_pixels": {
+        "width": 1051,
+        "height": 1027
+      }
+    },
+    "ecdf": {
+      "guide": "references/charts/ecdf.md",
+      "input": "references/examples/ecdf.json",
+      "svg": "references/examples/ecdf.svg",
+      "png": "references/examples/ecdf.png",
+      "guide_sha256": "fc744dec4be2077b98412348a8127cec8684483c96b5fed06deadbc3e3f97e13",
+      "input_sha256": "42fa2b61103fd8399f80a7e5a7cbf820c3c510646be3a9e2d5880c6a1c67166f",
+      "svg_sha256": "f6990243e84836fcb1ecbec48d869c585e2d3d380310e558218e50e1a2de04f4",
+      "png_sha256": "e08d668442371a9354933922cfff3bb41dbcd4734b133237a2504f09c1887bb2",
+      "svg_dimensions_mm": {
+        "width": 89.0,
+        "height": 87.0
+      },
+      "png_pixels": {
+        "width": 1051,
+        "height": 1027
+      }
+    },
+    "paired": {
+      "guide": "references/charts/paired.md",
+      "input": "references/examples/paired.json",
+      "svg": "references/examples/paired.svg",
+      "png": "references/examples/paired.png",
+      "guide_sha256": "ce4c5f91e4871949d82c6ab65ded18047120941da480908121c611f8e8e66d9f",
+      "input_sha256": "5e2ee411667e722a070f2a964e341dc5013aee713fbbc19beca0c83a55164a25",
+      "svg_sha256": "51291897ab1aeb5d1611e29d1ed19cd003f9ad7b0a85aa766e524241fa5f7d97",
+      "png_sha256": "aa64e50ac0c0b4a3b816db14c0e95fcaecca177f3aad30439f511a765e84b385",
+      "svg_dimensions_mm": {
+        "width": 89.0,
+        "height": 87.0
+      },
+      "png_pixels": {
+        "width": 1051,
+        "height": 1027
+      }
+    },
+    "interval": {
+      "guide": "references/charts/interval.md",
+      "input": "references/examples/interval.json",
+      "svg": "references/examples/interval.svg",
+      "png": "references/examples/interval.png",
+      "guide_sha256": "01a50a7acf817d937b8aec7b32c4c276844ae91d97f7e9472cddcc6a4a650061",
+      "input_sha256": "cc8331707a2314c41ffee38fb18daf08b7f4f3765180d2130398465d4ad78e96",
+      "svg_sha256": "664567413141f3749369d95c1d181e5b2718912ee8c5f79b732b596a411b110b",
+      "png_sha256": "1d74cc657b046f5a86efa94da6430b4d011acf0e1a65e8cadee38c08dba8d51d",
+      "svg_dimensions_mm": {
+        "width": 89.0,
+        "height": 87.0
+      },
+      "png_pixels": {
+        "width": 1051,
+        "height": 1027
+      }
+    },
+    "heatmap": {
+      "guide": "references/charts/heatmap.md",
+      "input": "references/examples/heatmap.json",
+      "svg": "references/examples/heatmap.svg",
+      "png": "references/examples/heatmap.png",
+      "guide_sha256": "5f7e62b4f9d49234393b65809c1aaa8417c5ee44a908b433e6b2532b12434d50",
+      "input_sha256": "64a95395ce609c9717162ea421891b38acbc0efe70638628729db9701add07cc",
+      "svg_sha256": "355f217c7fc1ade6fc466d865251e8aa6b0b9adfef4c2862956b8624b5316225",
+      "png_sha256": "13f4380a9e9b55508ffbd84847caf0084f3356d60042b0672e8d783f3e5a10c7",
+      "svg_dimensions_mm": {
+        "width": 89.0,
+        "height": 87.0
+      },
+      "png_pixels": {
+        "width": 1051,
+        "height": 1027
+      }
+    },
+    "raincloud": {
+      "guide": "references/charts/raincloud.md",
+      "input": "references/examples/raincloud.json",
+      "svg": "references/examples/raincloud.svg",
+      "png": "references/examples/raincloud.png",
+      "guide_sha256": "03ceac995d409b0d4368e6b75ce7089866bf9184816017f07a14944f7fa3bf2a",
+      "input_sha256": "42fa2b61103fd8399f80a7e5a7cbf820c3c510646be3a9e2d5880c6a1c67166f",
+      "svg_sha256": "8f38de1980a2ad5ddd59cfa03bfcc17bfb0cc1bb3161cdd56ce24c20e087a3e1",
+      "png_sha256": "ee14175ce08b46a93d87f001774681ea22ab54ca1bf41c090dc15fc10afad8c4",
+      "svg_dimensions_mm": {
+        "width": 89.0,
+        "height": 87.0
+      },
+      "png_pixels": {
+        "width": 1051,
+        "height": 1027
+      }
+    },
+    "roc": {
+      "guide": "references/charts/roc.md",
+      "input": "references/examples/roc.json",
+      "svg": "references/examples/roc.svg",
+      "png": "references/examples/roc.png",
+      "guide_sha256": "a5fec858bbfb08238383f9e7550dc8d27e63fe04fea5676e4bdeb0e11e7a41a2",
+      "input_sha256": "b4597538c25f88a3f7f0443d7bb77c19504a9a9db608e9db1d6fa6c25836e929",
+      "svg_sha256": "d996b83c990e84a72f662135dc88d9ed7352986aaf536d1dbf9e10b07adeed0b",
+      "png_sha256": "79fb7f6a92358b2acbc873f765cb5cae18434e80014479b4d772cf7985754101",
+      "svg_dimensions_mm": {
+        "width": 89.0,
+        "height": 87.0
+      },
+      "png_pixels": {
+        "width": 1051,
+        "height": 1027
+      }
+    },
+    "pr": {
+      "guide": "references/charts/pr.md",
+      "input": "references/examples/pr.json",
+      "svg": "references/examples/pr.svg",
+      "png": "references/examples/pr.png",
+      "guide_sha256": "e3cf24cb64483d7e7df5595630b9189aa51b0a31363e48b34505b4c3188443a9",
+      "input_sha256": "b4597538c25f88a3f7f0443d7bb77c19504a9a9db608e9db1d6fa6c25836e929",
+      "svg_sha256": "b1fc635639f15aacfe012436cac67f30d119192f0a9affb68c01dd9bc68a1476",
+      "png_sha256": "a048e46f112d894171d1bcb53a0c3d72849e1e1639c76572e88e59845ad72099",
+      "svg_dimensions_mm": {
+        "width": 89.0,
+        "height": 87.0
+      },
+      "png_pixels": {
+        "width": 1051,
+        "height": 1027
+      }
+    },
+    "calibration": {
+      "guide": "references/charts/calibration.md",
+      "input": "references/examples/calibration.json",
+      "svg": "references/examples/calibration.svg",
+      "png": "references/examples/calibration.png",
+      "guide_sha256": "b122d9840079aef416b958c0a4d7ab98d9ab52aeb320fcd0815011337ad68fd9",
+      "input_sha256": "6bc60d674dbf843d1921a153f8443a7857cba35b8f8b98362adeb7b387775988",
+      "svg_sha256": "3c2c433329d996255582c8b8095265272fbfbb31ab8a832aa97380a8b722fa28",
+      "png_sha256": "f9753dc50c6d49fa33ae9a56ccd8e577e6ffbc8f0a5fafa479e5974a96781d05",
+      "svg_dimensions_mm": {
+        "width": 89.0,
+        "height": 87.0
+      },
+      "png_pixels": {
+        "width": 1051,
+        "height": 1027
+      }
+    },
+    "confusion": {
+      "guide": "references/charts/confusion.md",
+      "input": "references/examples/confusion.json",
+      "svg": "references/examples/confusion.svg",
+      "png": "references/examples/confusion.png",
+      "guide_sha256": "84802a7bcce78930c1d2e45664abc06650169e6ee59a7e07a8b97eb0e787d2ab",
+      "input_sha256": "3f91321650968a292473f002663f335f2ad6f0eb6d0a9f0683c63fe5719a91cb",
+      "svg_sha256": "dbb2fe7919a47c7fb3a194a4d7a892a4d5d5287517d10023bd066bdcaa5558d5",
+      "png_sha256": "e1a1a3fa3ddb353682e22c5d584739f679578accaaf69d67ac772d1df1a0cb96",
+      "svg_dimensions_mm": {
+        "width": 180.0,
+        "height": 87.0
+      },
+      "png_pixels": {
+        "width": 2125,
+        "height": 1027
+      }
+    },
+    "bland_altman": {
+      "guide": "references/charts/bland_altman.md",
+      "input": "references/examples/bland_altman.json",
+      "svg": "references/examples/bland_altman.svg",
+      "png": "references/examples/bland_altman.png",
+      "guide_sha256": "2d93231004de371290a53073a7260382ee6558d3aa0ccb4ccdc9dafd0552a5e0",
+      "input_sha256": "7283251fbb3a1d80e9baaa975d421a772cbfd34ccf761768ea49a816314b9aa4",
+      "svg_sha256": "10cd14f9c588b8849ddc0698e9750d4f959da135d2c2601755bc24c6077b966a",
+      "png_sha256": "bdd022bf2772424a9929ad2245e2702f8295d2aa68d86eda963cc3dcfcebdf05",
+      "svg_dimensions_mm": {
+        "width": 180.0,
+        "height": 87.0
+      },
+      "png_pixels": {
+        "width": 2125,
+        "height": 1027
+      }
+    },
+    "survival": {
+      "guide": "references/charts/survival.md",
+      "input": "references/examples/survival.json",
+      "svg": "references/examples/survival.svg",
+      "png": "references/examples/survival.png",
+      "guide_sha256": "894106fd6bbdf054630aeb3cd922db9be7d57772722e18119a80644d16f21f95",
+      "input_sha256": "9fb44182e577476ca4514e069b712ac228ec288b6b096542a82fa969408c5c9f",
+      "svg_sha256": "fa05e6d4c43c168b3762518296fac2ce689aa361d703870dc907642e4d828eda",
+      "png_sha256": "9d35cd7203a665a346ab93c02ac3ee4e8f5bf6cac038cd4d6a2ecf0b3e3c5289",
+      "svg_dimensions_mm": {
+        "width": 180.0,
+        "height": 112.0
+      },
+      "png_pixels": {
+        "width": 2125,
+        "height": 1322
+      }
+    },
+    "volcano": {
+      "guide": "references/charts/volcano.md",
+      "input": "references/examples/volcano.json",
+      "svg": "references/examples/volcano.svg",
+      "png": "references/examples/volcano.png",
+      "guide_sha256": "5d989d9960d1a6f35d17ae6cb3e84b9c81f09840b8bdf5b4523bcd8a2746a233",
+      "input_sha256": "e3c7dbb90d5ba07bf356332c572c9497c66c3dcc8fc7d87e73455059d1bb9069",
+      "svg_sha256": "75763c98a8f4455782f02868baff411850bfee9389695092708665aad7522c45",
+      "png_sha256": "6bd36b8862983c5cbea0d7d44ca4474fe31e9b57afc6dea01249a451b8c0313b",
+      "svg_dimensions_mm": {
+        "width": 180.0,
+        "height": 87.0
+      },
+      "png_pixels": {
+        "width": 2125,
+        "height": 1027
+      }
+    },
+    "pca": {
+      "guide": "references/charts/pca.md",
+      "input": "references/examples/pca.json",
+      "svg": "references/examples/pca.svg",
+      "png": "references/examples/pca.png",
+      "guide_sha256": "f9ba9948216acd51ff48824483b1d738885f08d32f13f1e866a2ae17ec403cbc",
+      "input_sha256": "0866608c3b2a96d776d6eea7ab6eff78ce0abc27014fbc050f507d769de5f17c",
+      "svg_sha256": "c4f659e41baa143dbf4a62de7d9f468238664251ca448cd960b80beaebc45671",
+      "png_sha256": "ce3552ad20676006677ba185b0fc481994b94e29136c13f30687169aa7dbeb71",
+      "svg_dimensions_mm": {
+        "width": 89.0,
+        "height": 87.0
+      },
+      "png_pixels": {
+        "width": 1051,
+        "height": 1027
+      }
+    }
+  },
+  "libraries": {
+    "matplotlib": "3.10.9",
+    "numpy": "2.4.6"
+  }
+}

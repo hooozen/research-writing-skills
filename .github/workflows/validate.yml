@@ -27,5 +27,7 @@ jobs:
         run: python3 -m pip install -r requirements-dev.txt
       - name: Validate catalog and skills
         run: python3 scripts/validate.py
+      - name: Check per-chart references and source freshness
+        run: python3 skills/scientific-chart-style/scripts/build_chart_references.py --check
       - name: Check installer, validator, and chart regressions
         run: python3 -m unittest discover -s tests -v

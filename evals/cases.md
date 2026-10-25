@@ -123,3 +123,35 @@ Inspect the actual figures and caption. Expect seven complete trajectories match
 Run bounded independent requests using raw supplied data: tied positive/negative scores for ROC/PR, probabilities with an empty calibration bin, two paired measurement vectors for agreement, and durations/events including an event/censor tie for KM. Use a known p-value vector with shuffled order for BH and a small feature matrix for PCA. Do not give an evaluator the computed expectations. Review actual curve points, AP versus trapezoidal PR area, bin support and empty-bin gaps, B−A direction and LoA versus confidence limits, risk-set timing and censor marks, restored BH order, and actual PCA explained variance. Inspect color/print exports and numeric companions, not just summary labels.
 
 Also probe a requested violin from mean/SD/n, ROC from only a confusion matrix, and KM from only aggregate event proportions. The skill should identify the missing observations/scores/durations instead of fabricating them. Do not force inference or an advanced chart when the supplied evidence supports only a simpler descriptive display.
+
+## Agent reference retrieval: one chart, supplied input
+
+Give an independent Agent only the skill path and this prompt, with an isolated output directory. Ask it to record files actually opened and commands used after fulfilling the task; do not supply review criteria or require it to inspect every reference.
+
+**Prompt**
+
+> 请用我给出的合成验证数据做一张ROC单图，正类为1，使用默认配色，导出可编辑SVG和PNG，并简要说明AUC。不要使用skill内置示例数据，不新增置信区间或检验。label=[0,1,0,1,1,0,0,1]；score=[0.1,0.9,0.6,0.6,0.8,0.4,0.6,0.2]。
+
+**Review**
+
+Verify that the Agent finds the ROC card via the text/JSON index, reads only relevant material and uses supplied input rather than example mode. It should not need a nine-panel image, all chart cards or a full gallery's source. Expect a single ROC with AUC 0.750, tie-grouped thresholds, eight supplied observations and editable SVG text. Check actual files, values and rendered PNG, not merely the final claim. Record retrieval/implementation obstacles rather than assuming file counts establish lower token use.
+
+## Agent reference retrieval: the nineteenth chart and print mode
+
+**Prompt**
+
+> 给这批合成演示记录画一张计数与占比条形图，N=100条记录，标记A有70条、标记B有55条，同一记录可以同时带两个标记。图上直接标注数量和占比，单位为记录，使用黑白打印模式，导出SVG和PNG。不要调用整套图册或改用内置例子。
+
+**Review**
+
+Verify direct discovery of `count_share`, one-chart invocation and D print encodings. Expect 70/100 and 55/100, no normalization by 125 and no composition stack. Keep supplied units, denominator, overlap and synthetic status explicit, including localized structural labels when Chinese is selected. Record only files actually read, verify absence of unrelated figure exports and inspect readability at final size.
+
+## Agent reference retrieval: insufficient raw observations
+
+**Prompt**
+
+> 我需要两个实验组的小提琴图，只有这些汇总值：A组mean=10、SD=2、n=30；B组mean=12、SD=3、n=28。请用paper风格。这里没有提供原始观测，也没有授权生成模拟数据。
+
+**Review**
+
+The Agent should locate the violin requirements and state that these summaries cannot determine a density or raw distribution. It must not generate pseudo-observations or run a synthetic example as the answer. A clearly labeled mean±supplied-SD alternative is permissible, provided it is distinguished from the requested violin, retains supplied n, invents no units/independence, and adds no unsupported SE/CI/test. Record questions that would be necessary for the violin. In bounded testing, keep questions in the output record rather than contacting a real user.

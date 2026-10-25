@@ -1,0 +1,36 @@
+{
+  "synthetic": true,
+  "pairs": [
+    {
+      "id": "S1",
+      "before": 10,
+      "after": 8
+    },
+    {
+      "id": "S2",
+      "before": 11,
+      "after": 10
+    },
+    {
+      "id": "S3",
+      "before": 9,
+      "after": 10
+    },
+    {
+      "id": "S4",
+      "before": 12,
+      "after": 9
+    },
+    {
+      "id": "S5",
+      "before": 10,
+      "after": null
+    },
+    {
+      "id": "S6",
+      "before": 8,
+      "after": 7
+    }
+  ],
+  "value_label": "Measurement (a.u.)"
+}

@@ -1,0 +1,16 @@
+{
+  "synthetic": true,
+  "categories": [
+    "Category A",
+    "Category B",
+    "Other / unknown"
+  ],
+  "counts": [
+    50,
+    35,
+    15
+  ],
+  "denominator": 100,
+  "relationship": "exclusive_exhaustive",
+  "unit": "records"
+}

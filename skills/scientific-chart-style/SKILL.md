@@ -1,46 +1,53 @@
 ---
 name: scientific-chart-style
-description: "Create or restyle publication-oriented scientific charts across disciplines. Use muted teal/terracotta by default and a designed grayscale print mode; specify statistical encodings, final-size typography, uncertainty, and editable exports. Covers distributions, comparisons, relationships, model evaluation, agreement, survival, and high-dimensional data."
+description: "Create or restyle publication-oriented scientific charts across disciplines. Locate one of 19 chart references, read only its input/definition/example, and render a selected chart with editable exports. Use muted teal/terracotta by default and a designed grayscale print mode."
 ---
 
 # Scientific Chart Style
 
-Create clear scientific figures for papers, supplements and research reports across disciplines. Preserve evidence and use the user's approved visual system: **B, muted teal/terracotta, by default; D, designed grayscale, for black-and-white print.** This skill replaces `clinical-data-chart-style`; its scope includes clinical work without being limited to it.
+Use the approved **B muted teal/terracotta** palette by default and **D grayscale** for black-and-white print. Preserve source evidence and target-journal requirements. This skill supports scientific charts across disciplines.
 
-## Workflow
+## Start with the requested chart
 
-1. Identify the question, observation/independence unit, available raw data or summaries, grouping/pairing, units and intended comparison. Preserve source data and missingness. Use already supplied settings; do not repeat intake. Synthetic values are permitted only for an explicitly requested demonstration and must be labeled on the figure and in its data.
-2. Read [references/style-guide.md](references/style-guide.md) for visual tokens, final physical size, color and grayscale modes, typography, spacing and export requirements. A specified target journal overrides these default design parameters; use [references/publication-references.md](references/publication-references.md) to locate primary guidance. Do not describe one palette or font size as a universal journal requirement.
-3. Choose an encoding from the scientific question and data. Read the relevant sections of [references/scientific-chart-examples.md](references/scientific-chart-examples.md) for distributions, associations, repeated observations, intervals and matrices. Read [references/advanced-chart-guide.md](references/advanced-chart-guide.md) for raincloud/estimation plots, ROC/PR, calibration, confusion matrices, Bland–Altman, survival, volcano and PCA. Load only the needed sections.
-4. Make a traceable derived table with the plotted observations/aggregates, units, sample counts, denominators, transformations, statistical definitions and any exclusions. Do not manufacture quartiles, densities, paired records, intervals, p-values, censoring or individual outcomes from insufficient summaries.
-5. Use the plotting language/library appropriate to the user's project. The specification is authoritative; Python examples are optional translations, not a runtime requirement. Preserve the same visual meaning in R/ggplot2, Matplotlib, Plotly, Vega-Lite or other capable tools.
-6. Compose at the intended physical size. Align panels and consistent axis/legend roles, retain readable text and distinguish series with shape/line style as well as color. Move long prose to captions. Use statistical definitions and detail that let another reader interpret the figure correctly.
-7. Export vector PDF/SVG when suitable, plus a PNG preview when needed. Retain editable text and embed PDF fonts. Render and inspect the final exports at intended size; compare both default and print modes when both are requested. Verify values, labels, intervals, denominators, links and clipping before delivery.
+Open the [19-chart index](references/chart-index.md) and select the row matching the scientific question and available data. Each row links directly to a short chart card, minimal JSON input, individual SVG and PNG. The [JSON index](references/chart-index.json) exposes the same mapping for programmatic lookup; reading both indexes is unnecessary.
 
-## Core decisions
+1. Read **only the selected chart card** for when to use it, required fields, statistical definition, limitations and a short runnable example. Follow its linked methodological source only when needed. Do not read both long galleries or every chart card to make one plot.
+2. Read the [shared style guide](references/style-guide.md) when creating or restyling the figure. It owns palette, physical-point typography, spacing and export settings. Read [publication references](references/publication-references.md) only when adapting to a named publication or checking a submission requirement. Target-journal instructions override visual defaults.
+3. Use the individual SVG for editable geometry/style and the individual PNG for convenient visual inspection. A renderer may not display SVG directly; do not assume that reading SVG XML provides a visual inspection or a statistical definition. The nine-panel contact sheets are optional browsing aids, not required context.
+4. Use supplied observations or supported summaries. Identify units, grouping/pairing, missingness and the comparison/reference. If a required field is absent, obtain it or use an appropriate simpler encoding. Never reconstruct individual data, quartiles, densities, pairing, intervals or censoring from insufficient aggregates.
 
-- Use **color** unless the user requests grayscale or black-and-white printing. For grayscale, apply D's explicit tones plus marker/line/hatch distinctions; a desaturated screenshot is insufficient. Keep group identities consistent across related figures.
-- For continuous group comparisons, show observations or distributions and estimates/intervals when supported. A bar of a mean alone conceals spread. Use bars for counts, rates or meaningful aggregated quantities, with a zero origin for bar lengths. Choose orientation from label readability and meaningful order, not an arbitrary category-count rule.
-- Preserve actual time spacing and actual pairing; identify repeated observations and independent units. Do not connect unordered categories or independently sampled people as trajectories. Label interpolation, smoothing, fitted models and their uncertainty explicitly.
-- Define error bars and bands: SD, SE, confidence interval, prediction interval and limits of agreement answer different questions. State n, analysis unit, interval method and dependence structure where relevant. Do not derive statistical significance or module contribution from visual appearance.
-- Name the reference and direction for differences; distinguish relative percentages from percentage-point changes. Use a zero reference for additive effects and a reference of one, often on a log axis, for ratios.
-- For counts/shares, show direct count/share labels when readable, specify the denominator and its unit, and preserve exclusive/overlapping/subset relationships. Unknown or zero denominators have no defined share; missing is not zero. Never force count/share labels onto continuous outcomes.
-- Use neutral gray for residual/missing categories. Sequential and diverging color scales must reflect the quantity and a shared meaningful range. Mark missing cells separately, keep annotations legible and show a colorbar; do not silently normalize each row or panel.
-- Avoid decorative cards, shadows, gradients unrelated to data, 3D, rainbow scales and unnecessary chart furniture. Do not use pie/donut charts where aligned bars reveal the comparison more clearly. A quantitative heatmap or density scale is a valid use of a gradient.
-- Do not add significance stars, causal wording, extrapolated survival tails or machine-learning performance claims unsupported by the supplied analysis. Preserve negative and uncertain results.
+## Render one chart
 
-## Reference implementations and examples
+The optional [single-chart runner](scripts/render_chart.py) accepts the minimal input described by each card. Set `SKILL_DIR` to this installed skill's actual directory and `TASK_DIR` to the task workspace; write outputs in the task workspace, not inside the installed skill.
 
-When Matplotlib is appropriate, use these optional scripts or adapt their decisions:
+```sh
+# List available chart IDs without generating figures.
+python "$SKILL_DIR/scripts/render_chart.py" --list
 
-- [scripts/matplotlib_example.py](scripts/matplotlib_example.py): shared B/D tokens, physical-point typography, white figure/header layout and a count/share example. Supports SVG, PNG and PDF.
-- [scripts/scientific_chart_gallery.py](scripts/scientific_chart_gallery.py): nine basic scientific encodings, raw/derived data and color/print examples.
-- [scripts/advanced_chart_gallery.py](scripts/advanced_chart_gallery.py): nine further examples with explicit computational definitions and statistical limits.
+# Plot supplied data; only the chosen chart is generated.
+python "$SKILL_DIR/scripts/render_chart.py" --chart roc \
+  --input "$TASK_DIR/data.json" --output-dir "$TASK_DIR/figures/roc"
 
-The galleries produce labeled synthetic examples, exact data/statistics and export manifests. Run only the relevant example or gallery for the task; an ordinary chart does not require generating an entire atlas. The [basic reference preview](references/scientific-chart-preview.png) and [advanced reference preview](references/advanced-chart-preview.png) illustrate the system; they are not a source of real research results.
+# Explicitly requested synthetic demonstration; never a fallback for missing data.
+python "$SKILL_DIR/scripts/render_chart.py" --chart roc --example \
+  --output-dir "$TASK_DIR/figures/roc-example"
+```
 
-## Figure delivery
+Use `--mode grayscale` for D and `--formats svg,png,pdf` when PDF is needed; individual cards also show short Python calls. Without `--input` or explicit `--example`, the runner must not generate sample data. Keep synthetic flags and limitations in the output. The data/statistics/export records belong to the selected chart, not an unrelated atlas.
 
-Keep a figure's question, metric, population, units, n/denominator, uncertainty meaning and source clear in its caption or adjacent report text. Use short descriptive panel titles when needed, lower-case panel letters for multi-panel figures, and a separate manuscript caption for long interpretation. A standalone report figure may have a concise conclusion-led title when the evidence supports it.
+The runner is a reference implementation, not a requirement to use Python or a general statistical analysis service. Use the user's existing R, JavaScript or other capable tool when appropriate, translating the selected card's meaning and shared visual rules. Use task-specific implementation when the runner's documented input subset does not cover the design; do not force incompatible data into an example schema. Reuse shared style/statistical helpers rather than copying a full gallery or nineteen separate style implementations.
 
-Save figures in `figures/` beside a report with meaningful alt text and relative links. Retain raw/derived data and an analysis/export record when practical. Check actual exported artwork after changing font, size, labels or backend; automatic layout and a valid file do not establish readability. Deliver only supported conclusions and identify missing inputs or unverified rendering honestly.
+## Scientific and visual checks
+
+- Match the encoding to the question: observations/distributions for spread, effects and justified intervals for comparisons, counts/rates for bars. Retain a zero origin for bar lengths, actual time spacing, actual pair IDs, explicit denominators and missing values.
+- Define what a point represents, n and the dependence unit. State whether uncertainty is SD, SE, confidence/prediction interval or limits of agreement. Do not add unsupported intervals, significance stars, causal claims or conclusions of module contribution.
+- Keep group identities stable across related figures. D needs marker, line or hatch distinctions in addition to tonal differences. For quantitative matrices use an appropriate shared sequential/diverging scale and explicit missing cells.
+- Set final physical size before composing. Fonts are points, not pixels scaled by export DPI; reflow a single-column figure rather than shrinking a double-column figure's labels. Use white backgrounds, readable labels and measured spacing without decorative cards.
+- Retain editable vector text/geometry when suitable, embed PDF fonts and provide a PNG for visual QA when needed. Inspect the actual final render, including legends, colorbars, neighboring panels and glyphs; a valid SVG or a passing numerical test is not proof of visual readability.
+- Captions identify measure, population, units, n/denominator, reference, uncertainty method and source. Keep long interpretation outside the data rectangle. Save report figures in `figures/` with meaningful alt text and relative links, and keep exact data/derived values traceable.
+
+## Optional background and maintenance
+
+The [basic background](references/scientific-chart-examples.md) and [advanced background](references/advanced-chart-guide.md) contain broader comparisons and methodological sources. The old [basic gallery](scripts/scientific_chart_gallery.py) and [advanced gallery](scripts/advanced_chart_gallery.py) remain reproducible atlas examples; a single chart uses the direct runner above.
+
+When maintaining this skill, use [scripts/build_chart_references.py](scripts/build_chart_references.py) to rebuild the index and individual reference figures from their recorded inputs, then run it with `--check`. The manifest ties reference inputs and SVG/PNG files to generator sources. Do not rebuild or load all nineteen references during an ordinary plotting task. HTML or contact sheets may be generated for human browsing; the Agent's primary route remains the text index and selected chart card.
