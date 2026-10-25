@@ -88,7 +88,7 @@ Expect a visibly incomplete draft with the known dataset size/unit, proposed sub
 
 **Prompt**
 
-> Create three static figures and exact-value tables from these explicitly synthetic fixtures. Use the clinical-data chart skill and output SVG plus PNG. Figure 1: 28,552 scans, with exclusive scan-size categories 3 × 3 mm = 14,325; 6 × 6 mm = 12,194; Other / unknown = 2,033. Figure 2: 100 scans; Blur flag = 70; Motion flag = 55; Unknown status = 0. A scan may carry both flags. Figure 3: processing-time change from each pipeline's own previous implementation (different reference implementations for A and B, not a comparison of absolute processing times), in ms: A mean −2.5, supplied example 95% interval [−3.2, −1.8]; B mean +1.2, interval [+0.4, +2.0]. These intervals are fixture values, not estimates derived from counts. Also explain how count = 0, population = 0 should be labeled.
+> Create three static figures and exact-value tables from these explicitly synthetic fixtures. Use $scientific-chart-style and output SVG plus PNG. Figure 1: 28,552 scans, with exclusive scan-size categories 3 × 3 mm = 14,325; 6 × 6 mm = 12,194; Other / unknown = 2,033. Figure 2: 100 scans; Blur flag = 70; Motion flag = 55; Unknown status = 0. A scan may carry both flags. Figure 3: processing-time change from each pipeline's own previous implementation (different reference implementations for A and B, not a comparison of absolute processing times), in ms: A mean −2.5, supplied example 95% interval [−3.2, −1.8]; B mean +1.2, interval [+0.4, +2.0]. These intervals are fixture values, not estimates derived from counts. Also explain how count = 0, population = 0 should be labeled.
 
 **Review**
 
@@ -104,6 +104,22 @@ Use the chart skill to generate a box plot with observations, a scatter plot and
 
 Probe two incomplete inputs without authorizing simulation: (1) request a box plot with only mean, SD and n; (2) request individual before/after lines for two independent groups with no pair IDs. The agent should identify missing information and propose a valid alternative, without fabricating quartiles, densities or pairing.
 
-## Titles and gray panel boundaries
+## Physical typography, long labels and colorbars
 
-Use the chart skill with a long two-line title and subtitle, first on a wide figure and then on a narrow or short figure. Repeat with Chinese labels and a heatmap colorbar. Inspect the exported PNG and SVG: the complete header must remain inside the card with padding, or wholly above the panel with a gap; it must not straddle the gray/white boundary or collide with plot decorations. Longer text should wrap and receive space, without reducing the font to illegibility. Include an actual size/font change after initial layout to check that the final render is reviewed again.
+Use $scientific-chart-style with a long two-line header, first at 180 mm and then reflowed to 89 mm width, including a short fixed-height canvas. Repeat with Chinese labels and a heatmap colorbar, in B and D modes. Inspect the actual PNG, editable SVG and PDF at final size: titles, panel letters, axes, colorbar labels and legends must not overlap or be clipped. Long text should wrap and receive space without shrinking the physical font to fit. Export DPI must not change point sizes. A fixed canvas that is genuinely too small should cause re-layout or an honest limitation rather than an illegible export. Verify data, limits and group identities remain the same in print mode, with redundant marker/line distinctions. The white publication layout has no gray rounded card. Include an actual resize and export-backend change to check the final render again.
+
+## Scientific chart: paired observations in both modes
+
+**Prompt**
+
+> 为paper准备一幅89mm单栏的前后配对图，彩色默认版与黑白打印版各一份，输出可编辑SVG和PNG，图注用中文。全部是合成教学数据须标明；每行为同一独立样本前后测量，单位a.u.：S1 10→8，S2 11→9，S3 12→11，S4 9→8，S5 10→缺失，S6 13→10，S7 8→9，S8 11→10。只展示已提供的观测，不新增实验或统计检验。
+
+**Review**
+
+Inspect the actual figures and caption. Expect seven complete trajectories matched by ID, with S5's missing follow-up disclosed and no invented zero or connecting line to a fabricated value. A figure may also retain S5's observed baseline if distinguished and explained; it must not silently turn eight enrolled units into eight pairs. Preserve a.u., explicitly synthetic labels, exact values and the same limits/group identities in both modes. Expect B colors and a designed D print mode with readable point/line distinctions, 89 mm export width and editable SVG text. Check final-size glyphs, legend/label collisions and traceable data; no significance or unsupported interval should appear.
+
+## Advanced chart definitions and incomplete inputs
+
+Run bounded independent requests using raw supplied data: tied positive/negative scores for ROC/PR, probabilities with an empty calibration bin, two paired measurement vectors for agreement, and durations/events including an event/censor tie for KM. Use a known p-value vector with shuffled order for BH and a small feature matrix for PCA. Do not give an evaluator the computed expectations. Review actual curve points, AP versus trapezoidal PR area, bin support and empty-bin gaps, B−A direction and LoA versus confidence limits, risk-set timing and censor marks, restored BH order, and actual PCA explained variance. Inspect color/print exports and numeric companions, not just summary labels.
+
+Also probe a requested violin from mean/SD/n, ROC from only a confusion matrix, and KM from only aggregate event proportions. The skill should identify the missing observations/scores/durations instead of fabricating them. Do not force inference or an advanced chart when the supplied evidence supports only a simpler descriptive display.

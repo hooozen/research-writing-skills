@@ -1,6 +1,6 @@
 # Research Writing Skills
 
-Reusable, agent-neutral skills for turning research evidence into self-contained progress reports and precise clinical-data figures.
+Reusable, agent-neutral skills for turning research evidence into self-contained progress reports and publication-oriented scientific figures.
 
 Each skill is a self-contained directory built around `SKILL.md`. Supporting references, scripts, assets, and optional agent adapters stay inside the same directory, so a skill can be installed by copying one folder.
 
@@ -9,7 +9,7 @@ Each skill is a self-contained directory built around `SKILL.md`. Supporting ref
 | Skill | Purpose |
 |---|---|
 | [`research-progress-report`](skills/research-progress-report/) | Explain research from overview to evidence in plain language. Model reports require dataset splits, actual architecture and module data flow, loss formulas, training/stopping/model selection, and available results with metric purposes, formulas and interpretation. Follow the user's audience and outline in Markdown or HTML; retain detailed methods in the report or linked appendices. |
-| [`clinical-data-chart-style`](skills/clinical-data-chart-style/) | Create consistent clinical and medical-imaging charts; includes a [nine-chart scientific reference](skills/clinical-data-chart-style/references/scientific-chart-examples.md) and optional reproducible examples. |
+| [`scientific-chart-style`](skills/scientific-chart-style/) | Publication-oriented scientific charts across disciplines. Approved B teal/terracotta colors and D grayscale print mode, final-size typography, 18 basic/advanced chart examples, statistical guidance and editable SVG/PDF plus PNG exports. |
 
 Machine-readable discovery metadata is available in [`catalog.json`](catalog.json).
 
@@ -49,6 +49,14 @@ directories, and do not overwrite an existing installation without confirmation.
 ```
 
 Agents that support `SKILL.md` directories can load the installed skill directly. Other agents can read the selected `SKILL.md` as task instructions and resolve its linked resources relative to the skill directory. Files under `agents/` are optional platform adapters, not runtime requirements.
+
+## Upgrade from the former chart skill
+
+`scientific-chart-style` replaces `clinical-data-chart-style`. Install the complete new directory, update any explicitly named invocations, and archive the old installation **outside all skill discovery roots**. Do the same for backup folders that still contain a discoverable `SKILL.md`; keep recoverable backups without exposing duplicate old skills. The installer does not infer or remove prior names. The report skill now names the new companion.
+
+The color default is the selected B palette (teal `#547F7E`, terracotta `#AE766A`, ochre `#9B895B`); `--mode grayscale` uses the selected D design and redundant shapes/line styles. The [style guide](skills/scientific-chart-style/references/style-guide.md) defines physical-point typography and export rules; journal-specific instructions override the defaults.
+
+The [basic guide](skills/scientific-chart-style/references/scientific-chart-examples.md) and [advanced guide](skills/scientific-chart-style/references/advanced-chart-guide.md) include reference previews and computational definitions. The optional gallery scripts generate labeled synthetic data, numerical summaries and SVG/PNG/PDF examples in either mode. The count/share example adds a nineteenth encoding. These illustrations do not constitute observed research results.
 
 ## Maintain
 

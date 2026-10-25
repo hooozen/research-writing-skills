@@ -1,0 +1,4 @@
+interface:
+  display_name: "科研图表样式"
+  short_description: "Publication-oriented charts with color and print modes"
+  default_prompt: "Use $scientific-chart-style to create clear scientific figures with muted teal/terracotta colors, final-size typography, explicit statistics and editable exports; use its grayscale mode for black-and-white print."

@@ -6,6 +6,11 @@ All notable changes to this repository are documented here.
 
 ### Changed
 
+- Rename `clinical-data-chart-style` to `scientific-chart-style`, broaden it to scientific figures across disciplines, and update discovery metadata, report integration and executable/test paths. Retire the old installed name rather than exposing duplicate skills.
+- Adopt the selected muted B teal/terracotta palette as the default and a deliberately encoded D grayscale mode for print; replace gray rounded cards and pixel-scaled typography with white publication figures, physical-point fonts and aligned panels.
+- Expand guidance on observation-level views, estimates/uncertainty, model evaluation, agreement, survival and high-dimensional data. Add primary publication/technical references and nine advanced reproducible examples alongside the existing nine basic examples and count/share figure.
+- Export editable SVG/PDF and high-resolution PNG, preserve meaningful statistical definitions, support both color modes, and verify rendered physical-size layout, masks, ties, censoring, normalization and transformations.
+
 - Require explicit model-report coverage: dataset splits and leakage boundaries, overall/custom-module architecture diagrams and data flow, actual loss formulas, training settings, early stopping and final checkpoint selection, and available performance with metric purposes, formulas and interpretation.
 - Add a detailed model-reporting reference and verified original-paper diagram examples from ResNet, U-Net, Transformer and Squeeze-and-Excitation; reconcile audience/conciseness guidance with required methods detail, missing evidence and scoped edits.
 - Add bounded behavior cases for complete model methods, metric calculations, custom modules and incomplete training/evaluation evidence.

@@ -9,11 +9,12 @@ import unittest
 import xml.etree.ElementTree as ET
 
 os.environ.setdefault('MPLBACKEND', 'Agg')
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
 
-SCRIPT = Path(__file__).resolve().parents[1] / 'skills/clinical-data-chart-style/scripts/scientific_chart_gallery.py'
+SCRIPT = Path(__file__).resolve().parents[1] / 'skills/scientific-chart-style/scripts/scientific_chart_gallery.py'
 spec = importlib.util.spec_from_file_location('scientific_gallery', SCRIPT)
 gallery = importlib.util.module_from_spec(spec)
 sys.path.insert(0, str(SCRIPT.parent))
@@ -85,12 +86,46 @@ class ScientificGalleryTests(unittest.TestCase):
         fig, ax = plt.subplots()
         try:
             gallery.draw('heatmap', ax, data, stats)
-            artist = ax.images[0]
-            self.assertTrue(artist.get_array().mask[1,2])
+            artist = ax.collections[0]
+            self.assertTrue(np.ma.getmaskarray(artist.get_array()).reshape(4,4)[1,2])
             self.assertEqual(artist.get_clim(), (0,5))
-            self.assertEqual(artist.get_array()[0,0], 3.4)
+            self.assertEqual(artist.get_array().reshape(4,4)[0,0], 3.4)
+            self.assertFalse(artist.get_rasterized())
         finally:
             plt.close(fig)
+
+    def test_single_observation_keeps_mean_without_inventing_sd(self):
+        data = gallery.fixture_data()
+        data['longitudinal'] = {'weeks':[0,2], 'subjects':[{'id':'A','values':[1,4]}]}
+        stats = gallery.summarize(data)
+        self.assertIsNone(stats['line'][0]['sd'])
+        fig, ax = plt.subplots()
+        try:
+            gallery.draw('line', ax, data, stats)
+            self.assertEqual(list(ax.lines[0].get_ydata()), [1,4])
+            self.assertTrue(all(len(path.vertices) == 0 for path in ax.collections[0].get_paths()))
+        finally:
+            plt.close(fig)
+
+    def test_grayscale_keeps_secondary_line_encoding_and_values(self):
+        data = gallery.fixture_data(); stats = gallery.summarize(data)
+        plots = []
+        try:
+            for mode in ('color','grayscale'):
+                fig, ax = plt.subplots(); plots.append(fig)
+                gallery.draw('ecdf', ax, data, stats, mode=mode)
+                self.assertNotEqual(ax.lines[0].get_linestyle(), ax.lines[1].get_linestyle())
+                if mode == 'color':
+                    expected = [(line.get_xdata().copy(), line.get_ydata().copy()) for line in ax.lines]
+                else:
+                    for line, (x, y) in zip(ax.lines, expected):
+                        np.testing.assert_array_equal(line.get_xdata(), x)
+                        np.testing.assert_array_equal(line.get_ydata(), y)
+                        r,g,b = matplotlib.colors.to_rgb(line.get_color())
+                        self.assertLess(max(r,g,b)-min(r,g,b), .06)
+        finally:
+            for fig in plots:
+                plt.close(fig)
 
     def test_all_nine_charts_export_with_raw_and_derived_data(self):
         with tempfile.TemporaryDirectory(prefix='scientific-gallery-test-') as temp:
@@ -100,12 +135,19 @@ class ScientificGalleryTests(unittest.TestCase):
             self.assertEqual(json.loads((root/'statistics.json').read_text()), stats)
             self.assertEqual({p.stem for p in (root/'figures').glob('*.svg')}, set(gallery.KINDS))
             self.assertEqual({p.stem for p in (root/'figures').glob('*.png')}, set(gallery.KINDS))
+            self.assertEqual({p.stem for p in (root/'figures').glob('*.pdf')}, set(gallery.KINDS))
             for kind in gallery.KINDS:
-                self.assertTrue(ET.parse(root/f'figures/{kind}.svg').getroot().tag.endswith('svg'))
+                svg = ET.parse(root/f'figures/{kind}.svg').getroot()
+                self.assertTrue(svg.tag.endswith('svg'))
+                self.assertAlmostEqual(float(svg.get('width').removesuffix('pt'))*25.4/72, 89, places=3)
+                self.assertTrue(any(node.tag.endswith('text') for node in svg.iter()))
+                self.assertNotIn('<image ', (root/f'figures/{kind}.svg').read_text())
+                self.assertTrue((root/f'figures/{kind}.pdf').read_bytes().startswith(b'%PDF'))
                 with Image.open(root/f'figures/{kind}.png') as image:
                     image.verify()
             self.assertTrue((root/'overview.png').is_file())
             self.assertTrue((root/'gallery.md').is_file())
+            self.assertEqual(json.loads((root/'manifest.json').read_text())['mode'], 'color')
 
 
 if __name__ == '__main__':

@@ -4,14 +4,15 @@
   "repository": "https://github.com/hooozen/research-writing-skills",
   "skills": [
     {
-      "name": "clinical-data-chart-style",
-      "path": "skills/clinical-data-chart-style",
-      "description": "Create or restyle static clinical, medical-imaging, OCT/OCTA, and healthcare data charts with consistent blue/gray evidence panels. Use for counts, distributions, relationships, repeated measurements, and statistical comparisons; preserve units, denominators, uncertainty, and source data.",
+      "name": "scientific-chart-style",
+      "path": "skills/scientific-chart-style",
+      "description": "Create or restyle publication-oriented scientific charts across disciplines. Use muted teal/terracotta by default and a designed grayscale print mode; specify statistical encodings, final-size typography, uncertainty, and editable exports. Covers distributions, comparisons, relationships, model evaluation, agreement, survival, and high-dimensional data.",
       "tags": [
+        "scientific-figures",
         "charts",
-        "clinical-data",
-        "healthcare",
-        "medical-imaging",
+        "publication",
+        "statistics",
+        "grayscale",
         "visualization"
       ]
     },
@@ -29,7 +30,7 @@
         "scientific-communication"
       ],
       "related_skills": [
-        "clinical-data-chart-style"
+        "scientific-chart-style"
       ]
     }
   ]
