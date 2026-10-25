@@ -64,6 +64,26 @@ Read the report as a new project reader, not as a checklist of keywords. Its ope
 
 The revised paragraph should plainly identify what was implemented, why it exists, and what remains untested. It should use one clear canonical name, explain an alias only if retained, and keep image-quality screening distinct from label verification. No established downstream benefit follows from implementing a rule. Preserve the local-edit scope and heading; do not force a new whole-report scaffold, approval step, glossary, formula, or future architecture. Verify the actual prose conveys the relationship without relying on terms such as “底座” or “闭环” to stand in for an explanation; do not impose a universal word blacklist.
 
+## Report: detailed model methods and custom module
+
+**Prompt**
+
+> 为有机器学习基础但不了解项目的跨学科研究人员，写一份可独立阅读的中文 Markdown 组会报告，请组织结构。以下全部是合成教学材料，须显著标明，不新增实验。目标是二分类，阳性为甲。固定清单 split-v1 按受试者划分，互不重叠：训练16人192图、验证4人48图、测试10人60图，三个集合各有一半甲、一半乙。训练拟合参数，验证早停和选模，测试最终评价。输入单通道32×32；固定缩放后用训练集 mean=0.5/std=0.2 归一化，无增强。网络为 Conv2d(1,8,kernel=3,stride=1,padding=1) → ReLU → 自定义通道门控 → 全局平均池化 → Linear(8,1) logit。门控内部：对输入 B×8×32×32 全局平均得到 B×8，Linear(8,2) → ReLU → Linear(2,8) → sigmoid 得到 B×8 权重，reshape 为 B×8×1×1 后广播逐元素乘回原特征。所有参数随机初始化并训练，无冻结，无训练专用分支；门控借鉴 SE，当前无消融，不能声称门控带来收益。用整体图与门控展开图解释实际数据流，参考经典论文的画法并标明来源，不直接照搬网络。损失为无类别权重、无平滑、按样本平均的二元交叉熵，直接由 logits 计算；无额外正则项。Adam，lr=0.001，weight decay=0，恒定学习率；每设备 batch=8、2设备数据并行、梯度累积2次，每个 epoch 12个全局 minibatch、6次优化器更新。计划最多10 epochs，实际6 epochs/36次更新；每 epoch 验证。早停监控验证平均 BCE，越小越好，patience=2个验证轮次、min_delta=0、无预热。epoch4 验证 loss=0.42，为唯一最优；epoch5=0.43、epoch6=0.44，之后早停并恢复 epoch4（第24次更新）权重作为 ckpt-e4。训练随机种子11，其他运行环境信息未提供。最终推理用同样归一化和 sigmoid，固定阈值0.5，不做校准、测试增强或集成。ckpt-e4 在测试集 TP=24、FN=6、TN=27、FP=3；报告 accuracy、sensitivity、specificity 的公式、目的和结果。旧基线在相同测试集/推理协议下答对48/60，仅有该准确率；无逐图配对记录、置信区间或统计检验。总结与旧基线相比的观察和局限，不推断外部泛化或单模块贡献。完整细节可放明确链接的附录。
+
+**Review**
+
+Read the actual report and inspect both diagrams. Expect 300 images from 30 subjects, split proportions with explicit subject/image denominators, grouped independence, balanced classes and clear training/selection/testing boundaries. Trace B×1×32×32 → B×8×32×32 through the gate and B×8 → B×1; verify the gate's pooling, 8→2→8 projections, sigmoid, reshape and multiplication. Do not substitute addition or a stock SE diagram for this implementation. The mean BCE formula must define binary targets and probabilities/logits, its sample denominator and absence of extra terms; distinguish it from evaluation metrics. Expect effective batch 32, planned versus actual training duration, 12 minibatches versus 6 updates per epoch, stopping at epoch 6 and selection of epoch 4/update 24. Report supplied settings without guessing the runtime. Expect accuracy 85%, sensitivity 80%, specificity 90%, versus baseline accuracy 80% (+5 percentage points, +6.25% relative); no baseline sensitivity/specificity can be inferred. Explain metric purpose and positive class/threshold. No significance, exact corrected-case count, module attribution or external generalization follows. Methods may be in a linked appendix, but must remain present and understandable. Verify formulas, shapes, numbers, source/version labels and actual diagram readability; record any unavailable render inspection.
+
+## Report: incomplete model evidence without fabricated completion
+
+**Prompt**
+
+> 为研究伙伴写一份不完整的中文模型研发进展草稿，请直接组织并标明缺失资料。目标是图像二分类，本周只把 ResNet-18 和一个自定义融合模块接通，尚未训练、早停、选模或评价。资料只有240张图像来自20人，拟按人划分，但比例和清单未定；自定义模块只知道接收两个分支，分支来源、张量尺寸、内部操作和融合方式都未提供。没有训练配置、损失定义、性能或引用。图能画到已有事实即可，不要自行设计模块，也不要用常见设置填空。
+
+**Review**
+
+Expect a visibly incomplete draft with the known dataset size/unit, proposed subject-level split, integration status and specific missing inputs for split counts, actual architecture/module internals, loss, batch/optimizer/duration, stopping/selection and metrics/evaluation. A bounded diagram may show confirmed connectivity with unresolved inputs/operations clearly marked, but must not manufacture a standard ResNet variant's exact dimensions, concatenation, attention or module computation. Treat training/selection/evaluation as not performed, not as completed with unavailable scores; loss and training settings are unprovided, not confirmed absent. Do not generate guessed formulas, a 70/15/15 split, default BCE, a “disabled early stopping” claim, fake performance or empty result charts. Explain what evidence is required to complete the model account without turning the report into repeated boilerplate warnings. A classical-paper citation supports the reference architecture, not the unspecified custom module or actual run.
+
 ## Charts: composition, overlap, and continuous changes
 
 **Prompt**

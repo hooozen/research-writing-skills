@@ -6,6 +6,8 @@ Audience and context choices configure the writing but are not automatic report 
 
 A user-supplied outline takes precedence over the scaffold below. Preserve its recognizable hierarchy and emphasis while completing the scientific logic. Use this scaffold when structure is delegated or no outline is supplied; omit redundant sections in short reports.
 
+For model content, follow [model-reporting.md](model-reporting.md) in either format. Integrate dataset composition/splits, overall and custom-module architecture diagrams, module explanations and data flow, actual loss formulas, training/stopping/checkpoint selection settings, and available performance with metric purposes/formulas and interpretation into the supplied structure. Use explicitly linked appendices for extensive details, with the central mechanism and selection rationale still clear in the main text. A qualitative scaffold or brevity preference does not waive these requirements. Respect explicit text-only/no-formula requests and local-edit scope, and distinguish those limited deliverables from a complete model report.
+
 ## Markdown
 
 Use ordinary GitHub-flavored Markdown unless the target platform imposes another dialect.
@@ -57,7 +59,7 @@ For a substantial report without a supplied outline, a useful scaffold is:
 [Full tables, derivations, or diagnostics that are explicitly linked from the main report, when needed]
 ```
 
-Omit empty metadata and irrelevant sections, but do not omit premises required to understand the evidence. The background heading is optional only when its content is integrated clearly into the opening or first relevant section. For a continuation report, retain a compact recap unless the user explicitly confirms that the audience shares the specific prior material. Use appendices for detailed protocols, full tables, supplementary diagnostics, or specialist material that would interrupt the main narrative. Keep the exact-value table adjacent to its chart when practical; otherwise link explicitly to the appendix table. Use prose alone when a simple or qualitative update does not benefit from a chart or formula. Add a closing synthesis only when it contributes a decision or cross-result insight beyond the opening. Keep names, aliases, and symbols consistent in both formats, and apply the reader check in [writing-and-explanation.md](writing-and-explanation.md).
+Omit empty metadata and irrelevant sections, but do not omit premises required to understand the evidence. The background heading is optional only when its content is integrated clearly into the opening or first relevant section. For a continuation report, retain a compact recap unless the user explicitly confirms that the audience shares the specific prior material. Use appendices for detailed protocols, full tables, supplementary diagnostics, or specialist material that would interrupt the main narrative. Keep the exact-value table adjacent to its chart when practical; otherwise link explicitly to the appendix table. Use prose alone for simple or qualitative updates that do not require the model diagrams and formulas specified above, or when the user explicitly restricts the format. Add a closing synthesis only when it contributes a decision or cross-result insight beyond the opening. Keep names, aliases, and symbols consistent in both formats, and apply the reader check in [writing-and-explanation.md](writing-and-explanation.md).
 
 ## HTML
 

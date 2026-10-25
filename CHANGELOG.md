@@ -6,6 +6,9 @@ All notable changes to this repository are documented here.
 
 ### Changed
 
+- Require explicit model-report coverage: dataset splits and leakage boundaries, overall/custom-module architecture diagrams and data flow, actual loss formulas, training settings, early stopping and final checkpoint selection, and available performance with metric purposes, formulas and interpretation.
+- Add a detailed model-reporting reference and verified original-paper diagram examples from ResNet, U-Net, Transformer and Squeeze-and-Excitation; reconcile audience/conciseness guidance with required methods detail, missing evidence and scoped edits.
+- Add bounded behavior cases for complete model methods, metric calculations, custom modules and incomplete training/evaluation evidence.
 - Make whole-report organization and a substantive reader-facing overview precede detailed exposition; connect module roles, stages, data relationships, evidence, and decisions instead of assembling source fragments.
 - Require consistent canonical names and explained aliases, introduce unfamiliar concepts through their purpose and role, and replace abstract terminology with concrete actions. Preserve necessary explanations when shortening text or using figures and formulas.
 - Add worked writing examples and behavior cases for concept introduction, terminology consistency, and a report's overall explanatory flow.

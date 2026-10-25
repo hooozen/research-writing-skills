@@ -8,7 +8,7 @@ Each skill is a self-contained directory built around `SKILL.md`. Supporting ref
 
 | Skill | Purpose |
 |---|---|
-| [`research-progress-report`](skills/research-progress-report/) | Plan the whole argument, open with a clear overview, then explain connected details in plain language with consistent terminology. Preserve essential context and evidence; use charts and formulas to clarify rather than replace explanation. Follow the user's audience and outline in Markdown or HTML. |
+| [`research-progress-report`](skills/research-progress-report/) | Explain research from overview to evidence in plain language. Model reports require dataset splits, actual architecture and module data flow, loss formulas, training/stopping/model selection, and available results with metric purposes, formulas and interpretation. Follow the user's audience and outline in Markdown or HTML; retain detailed methods in the report or linked appendices. |
 | [`clinical-data-chart-style`](skills/clinical-data-chart-style/) | Create consistent clinical and medical-imaging charts; includes a [nine-chart scientific reference](skills/clinical-data-chart-style/references/scientific-chart-examples.md) and optional reproducible examples. |
 
 Machine-readable discovery metadata is available in [`catalog.json`](catalog.json).

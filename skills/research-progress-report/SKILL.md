@@ -1,6 +1,6 @@
 ---
 name: research-progress-report
-description: "Draft or revise self-contained scientific progress reports for public briefings or lab meetings, including 科研进展报告、阶段性研究总结、项目进度汇报. Establish the whole argument before details, explain concepts in plain language, and keep terminology consistent; use another workflow for journal manuscripts or grant proposals."
+description: "Draft or revise self-contained scientific progress reports for public briefings or lab meetings, including 科研进展报告、阶段性研究总结、项目进度汇报. Explain the whole argument clearly; document model data splits, architecture, module data flow, losses, training, selection, and evaluation in detail. Use another workflow for journal manuscripts or grant proposals."
 ---
 
 # Research Progress Report
@@ -43,6 +43,22 @@ For an abstract mechanism or interface, use a supplied case to show input, proce
 
 Read [references/writing-and-explanation.md](references/writing-and-explanation.md) when drafting or substantially restructuring a report, or repairing complaints about unclear logic, terminology, or dense language. It provides worked examples and a reader check. Follow [references/output-formats.md](references/output-formats.md) for Markdown or HTML; its headings are examples.
 
+## Make model methods and evaluation explicit
+
+When a report describes a model, read [references/model-reporting.md](references/model-reporting.md). Model detail is required scientific content, not an optional expansion for specialist audiences. A reader must be able to trace how data become predictions, how parameters are learned, which checkpoint is selected, and how performance is measured. Ground the account in supplied code, configuration, dataset manifests, logs, and evaluation outputs; resolve disagreements or identify them explicitly.
+
+Cover all applicable items in the report or an explicitly linked appendix:
+
+- **Dataset splits:** sources, inclusion/exclusion, sample units, counts and proportions, train/validation/test roles, split method and seed or fixed manifest, grouping to prevent leakage, and any cross-validation or external test design. Explain which data fit preprocessing, tune settings or thresholds, select checkpoints, and measure final performance.
+- **Architecture and module data flow:** provide an overall network diagram and internal expansion diagrams for unfamiliar, custom, or materially modified modules. Follow a sample or batch from input to output, showing key tensor shapes, branches, fusion operations, repeated blocks, and differences between training and inference. Explain each module's purpose, actual operations, inputs, outputs, and connection to the next module. A backbone name or a sequence of unexplained boxes is insufficient. Read [references/network-diagram-references.md](references/network-diagram-references.md) for verified classic-paper examples; borrow their visual conventions and draw the actual implementation.
+- **Loss functions:** give the actual optimized objective as a formula, including component terms, weights, reductions, masks and regularization where applicable. Define symbols and targets, explain each term's purpose and where it attaches to the network, and distinguish the training loss from selection and evaluation metrics.
+- **Training and final model selection:** report batch size and effective batch size when different, optimizer, learning rate and schedule, training loss, planned and completed epochs/optimizer steps, validation cadence, early stopping settings or its explicit absence, and the exact checkpoint selection rule. Include preprocessing, augmentation, initialization, frozen/trainable modules, seeds, runtime and numerical settings when they affect reproducibility. Distinguish best-validation, last, averaged, or ensemble weights; explain the actual choice without using final-test performance to tune or select it.
+- **Results and performance, when available:** identify the evaluated checkpoint, split, sample size and inference protocol. For every reported metric, explain why it addresses the research question, provide its calculation formula and symbol definitions, and specify aggregation, thresholds, units and direction. Present supported values and comparisons, then summarize what worked, what failed, and what the evidence does and does not establish. Do not turn an implemented interface into measured predictive performance.
+
+Audience and brevity change the presentation and placement of detail, not its accuracy or completeness. Keep the central architecture, custom mechanism, selection rationale and main result understandable in the main narrative; place long configurations, derivations and secondary results in a linked appendix. A brief continuation may link to an accessible, identified prior methods version and specify changes. An explicit local-edit, text-only or no-formula request limits that deliverable; honor it without silently claiming that a full model account is complete.
+
+Missing facts must remain missing. In an incomplete draft, mark the exact unreported field; in a completed report, obtain essential evidence or state the concrete limitation. Use “not used” only when confirmed and “not yet evaluated” when appropriate. Do not invent architecture, split ratios, hyperparameters, stopping rules, metric formulas for unknown implementations, or performance to fill this contract.
+
 ## Keep terminology stable and language direct
 
 - Choose a canonical name for each important entity, concept, dataset, and symbol before drafting. At first relevant use, explain a necessary alias or abbreviation and its relationship; then use the canonical name consistently across prose, headings, figures, tables, and formulas. Retain exact code identifiers where needed, with a readable explanation. Do not invent synonyms for variety or merge distinct concepts because their names sound similar. Keep this name map internal unless a glossary would help the reader.
@@ -55,6 +71,8 @@ Read [references/writing-and-explanation.md](references/writing-and-explanation.
 Plan the representation with the section's question. Prefer a chart for a comparison, pattern, distribution, or uncertainty; a compact table for exact values or mapped roles; a flow or hierarchy diagram for relationships; and a formula for a quantitative definition or calculation. Give them priority when they make the explanation clearer and more precise. Explain why the reader needs to see the representation and what follows from it; a diagram of jargon or an unexplained equation does not repair an unclear argument.
 
 Keep decisive evidence near its claim. Let the chart reveal the pattern, the formula define the relationship, and prose explain its meaning and limit without reciting every label. Move full tables, derivations, protocols, and secondary diagnostics to explicitly linked appendices when they interrupt the narrative. Respect text-only requests and use prose alone for a simple or qualitative update when visuals add no clarity. Do not impose visual quotas or decorative notation.
+
+For model methods and performance, the diagrams and formulas in the model-reporting contract are required representations. Treat the general preference for fewer visuals as a presentation choice within that contract, subject to explicit user restrictions.
 
 ## Preserve scientific integrity
 
@@ -96,6 +114,7 @@ Deliver the report first, with any necessary assumption or missing-input note ke
 - Read only the opening and section openings: can a reader retell the problem, overall approach, how the parts connect, and current state? Repair missing links before sentence polishing. A supplied outline remains recognizable.
 - Read in order as someone without the authoring context: concepts are introduced before they are needed, important actions have reasons, and inputs, outputs, stages, data relationships, and baselines have clear referents. Names, aliases, and symbols remain consistent across the artifact.
 - Opening claims have supporting evidence; experiments have reasons; conclusions and next decisions follow from the data. Training or evaluation descriptions support the role claimed for the method in actual use.
+- For model content, check the split, architecture/module data flow, loss formulas, training settings, stopping and checkpoint selection, and available metric formulas/results against [references/model-reporting.md](references/model-reporting.md). Trace one forward pass and each loss to the implementation. Verify that diagrams, tensor shapes, configuration, logs, checkpoint and reported results agree; disclose unavailable details instead of silently omitting them.
 - Prose uses concrete actions and readable sentences. Charts and formulas clarify rather than conceal the explanation; overviews, details, and captions each have a distinct purpose. Do not mistake compact terminology for understandable reasoning.
 - Numbers, units, denominators, formulas, tables, charts, captions, and sources agree, including derived values and rounding. Compression has not removed essential sample sizes, uncertainty, baselines, or limitations. Observations, interpretations, and plans remain distinguishable.
 - Every visible section is scientific content the researcher could show the audience, without drafting instructions or invented evidence.
