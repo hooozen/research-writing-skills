@@ -51,16 +51,16 @@ z
 "/>
     </defs>
     <g clip-path="url(#pa2659338e9)">
-     <use xlink:href="#C0_0_27c0944bce" x="317.940202" y="181.268631" style="fill: #8b9197; fill-opacity: 0.8"/>
+     <use xlink:href="#C0_0_27c0944bce" x="317.940202" y="181.268631" style="fill: #586575; fill-opacity: 0.8"/>
     </g>
     <g clip-path="url(#pa2659338e9)">
-     <use xlink:href="#C0_0_27c0944bce" x="361.946589" y="119.48814" style="fill: #8b9197; fill-opacity: 0.8"/>
+     <use xlink:href="#C0_0_27c0944bce" x="361.946589" y="119.48814" style="fill: #586575; fill-opacity: 0.8"/>
     </g>
     <g clip-path="url(#pa2659338e9)">
-     <use xlink:href="#C0_0_27c0944bce" x="291.536369" y="177.498034" style="fill: #8b9197; fill-opacity: 0.8"/>
+     <use xlink:href="#C0_0_27c0944bce" x="291.536369" y="177.498034" style="fill: #586575; fill-opacity: 0.8"/>
     </g>
     <g clip-path="url(#pa2659338e9)">
-     <use xlink:href="#C0_0_27c0944bce" x="344.344034" y="159.854261" style="fill: #8b9197; fill-opacity: 0.8"/>
+     <use xlink:href="#C0_0_27c0944bce" x="344.344034" y="159.854261" style="fill: #586575; fill-opacity: 0.8"/>
     </g>
    </g>
    <g id="PathCollection_2">
@@ -68,24 +68,24 @@ z
 L 170.050535 49.937286
 L 166.586434 49.937286
 z
-" clip-path="url(#pa2659338e9)" style="fill: #547f7e; fill-opacity: 0.8"/>
+" clip-path="url(#pa2659338e9)" style="fill: #1464d2; fill-opacity: 0.8"/>
     <path d="M 124.312097 47.943193
 L 126.044148 44.479091
 L 122.580047 44.479091
 z
-" clip-path="url(#pa2659338e9)" style="fill: #547f7e; fill-opacity: 0.8"/>
+" clip-path="url(#pa2659338e9)" style="fill: #1464d2; fill-opacity: 0.8"/>
    </g>
    <g id="PathCollection_3">
     <path d="M 414.754254 106.259583
 L 413.022203 109.723684
 L 416.486304 109.723684
 z
-" clip-path="url(#pa2659338e9)" style="fill: #ae766a; fill-opacity: 0.8"/>
+" clip-path="url(#pa2659338e9)" style="fill: #b64b00; fill-opacity: 0.8"/>
     <path d="M 467.561918 66.891987
 L 465.829868 70.356088
 L 469.293969 70.356088
 z
-" clip-path="url(#pa2659338e9)" style="fill: #ae766a; fill-opacity: 0.8"/>
+" clip-path="url(#pa2659338e9)" style="fill: #b64b00; fill-opacity: 0.8"/>
    </g>
    <g id="matplotlib.axis_1">
     <g id="xtick_1">
@@ -250,17 +250,17 @@ L -2.5 0
    <g id="line2d_15">
     <path d="M 221.126149 192.359055
 L 221.126149 39.458268
-" clip-path="url(#pa2659338e9)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: #8b9197; stroke-width: 0.6"/>
+" clip-path="url(#pa2659338e9)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: #586575; stroke-width: 0.6"/>
    </g>
    <g id="line2d_16">
     <path d="M 397.151699 192.359055
 L 397.151699 39.458268
-" clip-path="url(#pa2659338e9)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: #8b9197; stroke-width: 0.6"/>
+" clip-path="url(#pa2659338e9)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: #586575; stroke-width: 0.6"/>
    </g>
    <g id="line2d_17">
     <path d="M 107.149606 113.449828
 L 484.724409 113.449828
-" clip-path="url(#pa2659338e9)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: #8b9197; stroke-width: 0.6"/>
+" clip-path="url(#pa2659338e9)" style="fill: none; stroke-dasharray: 0.6,0.99; stroke-dashoffset: 0; stroke: #586575; stroke-width: 0.6"/>
    </g>
    <g id="patch_3">
     <path d="M 107.149606 192.359055
@@ -284,7 +284,7 @@ C 272.029957 46.678016 271.847457 47.11861 271.847457 47.577955
 C 271.847457 48.0373 272.029957 48.477894 272.354763 48.8027
 C 272.679569 49.127506 273.120163 49.310006 273.579508 49.310006
 z
-" style="fill: #8b9197; fill-opacity: 0.8"/>
+" style="fill: #586575; fill-opacity: 0.8"/>
     </g>
     <g id="text_17">
      <text style="font-size: 6px; font-family: 'Arial', 'Helvetica', 'Noto Sans', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #24282c" x="284.379508" y="49.152955" transform="rotate(-0 284.379508 49.152955)">Below criteria</text>
@@ -294,7 +294,7 @@ z
 L 275.311559 54.406217
 L 271.847457 54.406217
 z
-" style="fill: #547f7e; fill-opacity: 0.8"/>
+" style="fill: #1464d2; fill-opacity: 0.8"/>
     </g>
     <g id="text_18">
      <text style="font-size: 6px; font-family: 'Arial', 'Helvetica', 'Noto Sans', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #24282c" x="284.379508" y="57.713268" transform="rotate(-0 284.379508 57.713268)">Negative effect</text>
@@ -304,7 +304,7 @@ z
 L 271.847457 66.427819
 L 275.311559 66.427819
 z
-" style="fill: #ae766a; fill-opacity: 0.8"/>
+" style="fill: #b64b00; fill-opacity: 0.8"/>
     </g>
     <g id="text_19">
      <text style="font-size: 6px; font-family: 'Arial', 'Helvetica', 'Noto Sans', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #24282c" x="284.379508" y="66.270768" transform="rotate(-0 284.379508 66.270768)">Positive effect</text>

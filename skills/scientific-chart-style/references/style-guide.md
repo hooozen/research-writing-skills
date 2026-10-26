@@ -1,25 +1,26 @@
 # Shared Scientific Chart Style
 
-Use **B color by default**, **D for black-and-white print**, and white backgrounds. These are approved design defaults; a named journal's current specifications take priority. Read only the sections relevant to the current figure. Scientific definitions and minimal inputs belong to the selected [chart card](chart-index.md), not a contact sheet.
+Use **high-contrast blue by default**, **D for black-and-white print**, and white backgrounds. A named journal's current specifications take priority. Read only the sections relevant to the current figure. Scientific definitions and minimal inputs belong to the selected [chart card](chart-index.md), not a contact sheet.
 
 ## Color and print tokens
 
-| Role | B color | D print |
+| Role | High-contrast color | D print |
 |---|---|---|
 | Canvas / plot background | `#FFFFFF` | `#FFFFFF` |
-| First / focal series | `#547F7E` (teal) | `#34383C` |
-| Second series | `#AE766A` (terracotta) | `#70767B` |
-| Third series | `#9B895B` (ochre) | `#92989E` |
-| Other / unknown / missing | `#8B9197` | `#B7BCC0` |
+| First / focal series | `#1464D2` (saturated blue) | `#34383C` |
+| Second series | `#B64B00` (dark orange) | `#70767B` |
+| Third series | `#7A3DB8` (purple) | `#92989E` |
+| Light background fill / sequential midpoint | `#BFD5F4` | `#E0E3E5` |
+| Other / unknown / missing | `#586575` | `#B7BCC0` |
 | Main text | `#24282C` | `#24282C` |
 | Secondary notes | `#626B73` | `#626B73` |
 | Axes / ticks | `#34383C` | `#34383C` |
 
-Keep group identity consistent across figures. One series often needs only one color. For more than three groups, consider facets/direct labels or deliberately extend the muted palette; do not silently recycle hues. Color must not imply risk, significance or direction unless defined.
+Keep group identity consistent across figures. One series often needs only one color. For more than three groups, consider facets/direct labels or deliberately extend the contrasting palette; do not silently recycle hues. Color must not imply risk, significance or direction unless defined.
 
-Use circle/square/triangle and solid/dashed/dotted lines as redundant identities, with sparse bar hatching when useful. Apply D deliberately, rather than desaturating a B screenshot. Pale fills need visible outlines or foreground marks; low saturation must retain adequate contrast.
+Use circle/square/triangle and solid/dashed/dotted lines as redundant identities, with sparse bar hatching when useful. Apply D deliberately, rather than desaturating a color screenshot. Pale fills are background layers; use the stronger series colors for essential outlines, points and lines. Check the final composited color when transparency is present. Essential graphical cues should reach at least 3:1 against their adjacent background; this does not require pale support fills or every sequential-scale cell to reach 3:1 when other visible cues retain the meaning. See [W3C non-text contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html).
 
-For ordered magnitudes, use an ordered light-to-dark sequential scale, such as a light neutral to teal. Use teal–neutral–terracotta divergence only for a meaningful midpoint, with explicitly centered limits when appropriate. Keep comparable panels on a common scale; mark missing cells separately from low values. Choose annotation ink from actual background contrast. Avoid rainbow scales and decorative gradients.
+For ordered magnitudes, use an ordered light-to-dark blue sequential scale with a visible light-blue midpoint. Use blue–neutral–orange divergence only for a meaningful midpoint, with explicitly centered limits when appropriate. Keep comparable panels on a common scale; mark missing cells separately from low values. Choose dark or white annotation ink from actual background contrast. Avoid rainbow scales and decorative gradients. Color changes do not alter the physical typography, line widths, markers, layout, spacing or export rules below; the D print design remains unchanged.
 
 ## Physical size and typography
 

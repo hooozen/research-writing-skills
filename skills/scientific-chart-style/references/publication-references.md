@@ -1,6 +1,6 @@
 # Publication Guidance and Sources
 
-Use these primary sources to adapt a figure to its destination. The approved B palette is this skill's default and D is its grayscale alternative. Low saturation is a user preference; journals generally require legibility, adequate contrast and accessible encoding, not one universal palette. The shared style tokens are working defaults, while the target journal's current instructions determine submission dimensions, type sizes, accepted formats and resolution. Recheck linked specifications when preparing an actual submission; this reference was checked on 2026-10-25.
+Use these primary sources to adapt a figure to its destination. The high-contrast blue palette is this skill's default and D is its grayscale alternative. Palette choice is configurable; journals generally require legibility, adequate contrast and accessible encoding, not one universal palette. The shared style tokens are working defaults, while the target journal's current instructions determine submission dimensions, type sizes, accepted formats and resolution. Recheck linked specifications when preparing an actual submission; this reference was checked on 2026-10-25.
 
 ## Examples of journal-specific requirements
 

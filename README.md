@@ -9,7 +9,7 @@ Each skill is a self-contained directory built around `SKILL.md`. Supporting ref
 | Skill | Purpose |
 |---|---|
 | [`research-progress-report`](skills/research-progress-report/) | Explain research from overview to evidence in plain language. Model reports require dataset splits, actual architecture and module data flow, loss formulas, training/stopping/model selection, and available results with metric purposes, formulas and interpretation. Follow the user's audience and outline in Markdown or HTML; retain detailed methods in the report or linked appendices. |
-| [`scientific-chart-style`](skills/scientific-chart-style/) | Publication-oriented scientific charts across disciplines. A direct index of 19 chart cards with minimal inputs, runnable single-chart examples, individual SVG/PNG references, B color and D print modes, and statistical/export guidance. |
+| [`scientific-chart-style`](skills/scientific-chart-style/) | Publication-oriented scientific charts across disciplines. A direct index of 19 chart cards with minimal inputs, runnable single-chart examples, individual SVG/PNG references, high-contrast blue and D print modes, and statistical/export guidance. |
 
 Machine-readable discovery metadata is available in [`catalog.json`](catalog.json).
 
@@ -54,7 +54,7 @@ Agents that support `SKILL.md` directories can load the installed skill directly
 
 `scientific-chart-style` replaces `clinical-data-chart-style`. Install the complete new directory, update any explicitly named invocations, and archive the old installation **outside all skill discovery roots**. Do the same for backup folders that still contain a discoverable `SKILL.md`; keep recoverable backups without exposing duplicate old skills. The installer does not infer or remove prior names. The report skill now names the new companion.
 
-The color default is the selected B palette (teal `#547F7E`, terracotta `#AE766A`, ochre `#9B895B`); `--mode grayscale` uses the selected D design and redundant shapes/line styles. The [style guide](skills/scientific-chart-style/references/style-guide.md) defines physical-point typography and export rules; journal-specific instructions override the defaults.
+The color default uses saturated blue `#1464D2`, dark orange `#B64B00` and purple `#7A3DB8`, with darker neutral marks `#586575`; `--mode grayscale` uses the selected D design and redundant shapes/line styles. The [style guide](skills/scientific-chart-style/references/style-guide.md) defines physical-point typography and export rules; journal-specific instructions override the defaults.
 
 ## Agent reference entry
 

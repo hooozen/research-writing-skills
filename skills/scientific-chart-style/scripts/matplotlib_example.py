@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Optional Matplotlib translation of Scientific Chart Style.
 
-Style B (teal/terracotta) is the default; --mode grayscale selects print style D.
+High-contrast blue is the default; --mode grayscale selects print style D.
 Font sizes are physical points at final size, independent of export DPI.
 """
 from __future__ import annotations
@@ -16,10 +16,10 @@ from matplotlib.layout_engine import PlaceHolderLayoutEngine
 
 VI = {
     'canvas': '#FFFFFF', 'card': '#FFFFFF',
-    'primary': '#547F7E', 'secondary': '#AE766A', 'third': '#9B895B',
-    'light': '#DBE5E4', 'neutral': '#8B9197', 'baseline': '#34383C',
+    'primary': '#1464D2', 'secondary': '#B64B00', 'third': '#7A3DB8',
+    'light': '#BFD5F4', 'neutral': '#586575', 'baseline': '#34383C',
     'text': '#24282C', 'muted': '#626B73',
-    'palette': ['#547F7E', '#AE766A', '#9B895B'],
+    'palette': ['#1464D2', '#B64B00', '#7A3DB8'],
     'markers': ['o', 's', '^'], 'linestyles': ['-', '--', ':'],
     'hatches': ['', '//', '..'],
 }

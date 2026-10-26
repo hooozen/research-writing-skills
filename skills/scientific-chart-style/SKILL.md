@@ -1,11 +1,11 @@
 ---
 name: scientific-chart-style
-description: "Create or restyle publication-oriented scientific charts across disciplines. Locate one of 19 chart references, read only its input/definition/example, and render a selected chart with editable exports. Use muted teal/terracotta by default and a designed grayscale print mode."
+description: "Create or restyle publication-oriented scientific charts across disciplines. Locate one of 19 chart references, read only its input/definition/example, and render a selected chart with editable exports. Use high-contrast blue by default and a designed grayscale print mode."
 ---
 
 # Scientific Chart Style
 
-Use the approved **B muted teal/terracotta** palette by default and **D grayscale** for black-and-white print. Preserve source evidence and target-journal requirements. This skill supports scientific charts across disciplines.
+Use the **high-contrast blue** palette by default and **D grayscale** for black-and-white print. Preserve source evidence and target-journal requirements. This skill supports scientific charts across disciplines.
 
 ## Start with the requested chart
 

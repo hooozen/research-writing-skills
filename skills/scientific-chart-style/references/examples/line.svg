@@ -42,7 +42,7 @@ L 61.465426 179.077015
 L 61.465426 134.803546
 L 61.465426 134.803546
 z
-" clip-path="url(#pe83251ab4f)" style="fill: #547f7e; fill-opacity: 0.14"/>
+" clip-path="url(#pe83251ab4f)" style="fill: #1464d2; fill-opacity: 0.14"/>
     <path d="M 158.447121 90.530077
 L 158.447121 134.803546
 L 231.183393 95.114745
@@ -50,7 +50,7 @@ L 231.183393 63.808675
 L 231.183393 63.808675
 L 158.447121 90.530077
 z
-" clip-path="url(#pe83251ab4f)" style="fill: #547f7e; fill-opacity: 0.14"/>
+" clip-path="url(#pe83251ab4f)" style="fill: #1464d2; fill-opacity: 0.14"/>
    </g>
    <g id="matplotlib.axis_1">
     <g id="xtick_1">
@@ -186,9 +186,9 @@ L -2.5 0
     <path d="M 61.465426 156.94028
 M 158.447121 112.666812
 L 231.183393 79.46171
-" clip-path="url(#pe83251ab4f)" style="fill: none; stroke: #547f7e; stroke-linecap: square"/>
+" clip-path="url(#pe83251ab4f)" style="fill: none; stroke: #1464d2; stroke-linecap: square"/>
     <defs>
-     <path id="m44025d0c04" d="M 0 1.4
+     <path id="mb7b38c7884" d="M 0 1.4
 C 0.371284 1.4 0.727412 1.252487 0.989949 0.989949
 C 1.252487 0.727412 1.4 0.371284 1.4 0
 C 1.4 -0.371284 1.252487 -0.727412 0.989949 -0.989949
@@ -198,12 +198,12 @@ C -1.252487 -0.727412 -1.4 -0.371284 -1.4 0
 C -1.4 0.371284 -1.252487 0.727412 -0.989949 0.989949
 C -0.727412 1.252487 -0.371284 1.4 0 1.4
 z
-" style="stroke: #547f7e"/>
+" style="stroke: #1464d2"/>
     </defs>
     <g clip-path="url(#pe83251ab4f)">
-     <use xlink:href="#m44025d0c04" x="61.465426" y="156.94028" style="fill: #547f7e; stroke: #547f7e"/>
-     <use xlink:href="#m44025d0c04" x="158.447121" y="112.666812" style="fill: #547f7e; stroke: #547f7e"/>
-     <use xlink:href="#m44025d0c04" x="231.183393" y="79.46171" style="fill: #547f7e; stroke: #547f7e"/>
+     <use xlink:href="#mb7b38c7884" x="61.465426" y="156.94028" style="fill: #1464d2; stroke: #1464d2"/>
+     <use xlink:href="#mb7b38c7884" x="158.447121" y="112.666812" style="fill: #1464d2; stroke: #1464d2"/>
+     <use xlink:href="#mb7b38c7884" x="231.183393" y="79.46171" style="fill: #1464d2; stroke: #1464d2"/>
     </g>
    </g>
    <g id="patch_3">

@@ -2,7 +2,7 @@
 
 Start with the question and available inputs. Choose one chart ID, read only its card, and inspect its individual SVG or PNG only when visual detail is needed. The card specifies the statistical definition, input format, limitations and a short runnable example.
 
-The linked inputs and previews are **synthetic reference examples**, not research findings. B teal/terracotta is the default; generate D print mode with `--mode grayscale`. Keep the shared [style guide](style-guide.md) authoritative for appearance.
+The linked inputs and previews are **synthetic reference examples**, not research findings. High-contrast blue is the default; generate D print mode with `--mode grayscale`. Keep the shared [style guide](style-guide.md) authoritative for appearance.
 
 | ID / chart card | Use when | Required inputs | Example data | Individual preview |
 |---|---|---|---|---|

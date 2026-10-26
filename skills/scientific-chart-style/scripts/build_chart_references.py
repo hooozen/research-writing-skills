@@ -109,7 +109,7 @@ def index_markdown(charts: list[dict]) -> str:
         'and inspect its individual SVG or PNG only when visual detail is needed. '
         'The card specifies the statistical definition, input format, limitations and a short runnable example.',
         'The linked inputs and previews are **synthetic reference examples**, not research findings. '
-        'B teal/terracotta is the default; generate D print mode with `--mode grayscale`. '
+        'High-contrast blue is the default; generate D print mode with `--mode grayscale`. '
         'Keep the shared [style guide](style-guide.md) authoritative for appearance.',
         '| ID / chart card | Use when | Required inputs | Example data | Individual preview |',
         '|---|---|---|---|---|',
@@ -184,7 +184,7 @@ def check_references(root: Path = SKILL_ROOT) -> list[str]:
         if not isinstance(manifest, dict) or type(manifest.get('schema_version')) is not int or manifest['schema_version'] != 1:
             raise ValueError('Preview manifest must be an object with schema_version=1.')
         if manifest.get('mode') != 'color':
-            errors.append('Reference manifest mode must be color (approved B default).')
+            errors.append('Reference manifest mode must be color (high-contrast blue default).')
         if manifest.get('sources') != source_hashes(root):
             errors.append('Reference sources changed; refresh the shipped previews and manifest.')
         records = manifest.get('charts')
@@ -250,7 +250,7 @@ def build_references(root: Path = SKILL_ROOT, renderer=None) -> dict:
         finally:
             sys.path.pop(0)
     manifest = {'schema_version': 1, 'generator': 'scripts/build_chart_references.py',
-                'mode': 'color', 'style': 'B muted teal/terracotta', 'sources': sources,
+                'mode': 'color', 'style': 'High-contrast blue/orange/purple', 'sources': sources,
                 'charts': {}}
     try:
         manifest['libraries'] = {name: version(name) for name in ('matplotlib', 'numpy')}

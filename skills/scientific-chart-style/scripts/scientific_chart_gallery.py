@@ -259,7 +259,8 @@ def draw(kind, ax, data, stats, language='en', compact=False, mode='color'):
         ax.set_xlabel(t('Δ MAE (μm)', '平均绝对误差差值（μm）'))
     elif kind == 'heatmap':
         matrix = np.asarray(data[kind]['values'], dtype=float)
-        pale = tuple(.9+.1*c for c in matplotlib.colors.to_rgb(style['primary']))
+        pale = (tuple(.9+.1*c for c in matplotlib.colors.to_rgb(style['primary']))
+                if mode == 'grayscale' else matplotlib.colors.to_rgb(style['light']))
         cmap = LinearSegmentedColormap.from_list('scientific_sequential', [style['canvas'], pale, style['primary']])
         cmap = cmap.with_extremes(bad=style['neutral'])
         im = ax.pcolormesh(np.arange(matrix.shape[1]+1), np.arange(matrix.shape[0]+1),
@@ -270,7 +271,7 @@ def draw(kind, ax, data, stats, language='en', compact=False, mode='color'):
             background = style['neutral'] if np.isnan(value) else cmap(im.norm(value))
             ax.text(j+.5, i+.5, 'NA' if np.isnan(value) else f'{value:.1f}',
                     va='center', ha='center', fontsize=6.5,
-                    color=_cell_text_color(background, style['text']))
+                    color=_cell_text_color(background, '#000000' if mode == 'color' else style['text']))
         ax.set_xlim(0, matrix.shape[1]); ax.set_ylim(matrix.shape[0], 0)
         ax.set_xticks(np.arange(matrix.shape[1])+.5, data[kind]['columns'])
         ax.set_yticks(np.arange(matrix.shape[0])+.5, data[kind]['rows'])

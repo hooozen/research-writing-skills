@@ -116,7 +116,7 @@ Use $scientific-chart-style with a long two-line header, first at 180 mm and the
 
 **Review**
 
-Inspect the actual figures and caption. Expect seven complete trajectories matched by ID, with S5's missing follow-up disclosed and no invented zero or connecting line to a fabricated value. A figure may also retain S5's observed baseline if distinguished and explained; it must not silently turn eight enrolled units into eight pairs. Preserve a.u., explicitly synthetic labels, exact values and the same limits/group identities in both modes. Expect B colors and a designed D print mode with readable point/line distinctions, 89 mm export width and editable SVG text. Check final-size glyphs, legend/label collisions and traceable data; no significance or unsupported interval should appear.
+Inspect the actual figures and caption. Expect seven complete trajectories matched by ID, with S5's missing follow-up disclosed and no invented zero or connecting line to a fabricated value. A figure may also retain S5's observed baseline if distinguished and explained; it must not silently turn eight enrolled units into eight pairs. Preserve a.u., explicitly synthetic labels, exact values and the same limits/group identities in both modes. Expect high-contrast blue colors and a designed D print mode with readable point/line distinctions, 89 mm export width and editable SVG text. Check final-size glyphs, legend/label collisions and traceable data; no significance or unsupported interval should appear.
 
 ## Advanced chart definitions and incomplete inputs
 

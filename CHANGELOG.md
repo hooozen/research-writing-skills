@@ -4,6 +4,11 @@ All notable changes to this repository are documented here.
 
 ## [Unreleased]
 
+### Changed
+
+- Restore a saturated blue color default with darker orange, purple and neutral companions; strengthen the blue heatmap midpoint and refresh color reference figures for better readability.
+- Keep physical typography, spacing, geometry, line widths, markers, data/statistics and the D grayscale design unchanged.
+
 ## [1.0.0] - 2026-10-25
 
 ### Changed

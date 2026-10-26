@@ -43,7 +43,7 @@ Start with the [19-chart index](chart-index.md), then read the selected standalo
 
 ## Publication layout and colour modes
 
-The examples use the selected **B** palette (teal/terracotta with a muted ochre companion) on white. **D** is a separately designed grayscale mode, retaining marker/line-style differences and the same data, statistics, scale limits and category order. Do not use a grayscale conversion that makes groups indistinguishable. A filled density is a light background layer; observations and summaries remain legible in front of it.
+The examples use the **high-contrast blue** palette, with dark orange and purple companions, on white. **D** is a separately designed grayscale mode, retaining marker/line-style differences and the same data, statistics, scale limits and category order. Do not use a grayscale conversion that makes groups indistinguishable. A filled density is a light background layer; observations and summaries remain legible in front of it.
 
 Each single figure is 89 mm wide with ordinary labels near 7 pt at that exported size; the browsing overview is deliberately larger and must not be shrunk into a manuscript column. Recompose a multi-panel figure at the intended final dimensions rather than scaling a large figure down until its labels become too small. Font size is in physical points, independent of raster DPI. The selected baseline is a starting point; follow a named target journal's current requirements from [publication-references.md](publication-references.md).
 

@@ -38,7 +38,7 @@ z
    </g>
    <g id="PathCollection_1">
     <defs>
-     <path id="m4818afe571" d="M 0 1.5
+     <path id="mf3150ecf85" d="M 0 1.5
 C 0.397805 1.5 0.77937 1.341951 1.06066 1.06066
 C 1.341951 0.77937 1.5 0.397805 1.5 0
 C 1.5 -0.397805 1.341951 -0.77937 1.06066 -1.06066
@@ -51,12 +51,12 @@ z
 " style="stroke: #ffffff; stroke-opacity: 0.8; stroke-width: 0.25"/>
     </defs>
     <g clip-path="url(#peb7ac9aa06)">
-     <use xlink:href="#m4818afe571" x="61.465426" y="185.409019" style="fill: #547f7e; fill-opacity: 0.8; stroke: #ffffff; stroke-opacity: 0.8; stroke-width: 0.25"/>
-     <use xlink:href="#m4818afe571" x="95.409019" y="150.65884" style="fill: #547f7e; fill-opacity: 0.8; stroke: #ffffff; stroke-opacity: 0.8; stroke-width: 0.25"/>
-     <use xlink:href="#m4818afe571" x="129.352613" y="171.508948" style="fill: #547f7e; fill-opacity: 0.8; stroke: #ffffff; stroke-opacity: 0.8; stroke-width: 0.25"/>
-     <use xlink:href="#m4818afe571" x="163.296206" y="81.158482" style="fill: #547f7e; fill-opacity: 0.8; stroke: #ffffff; stroke-opacity: 0.8; stroke-width: 0.25"/>
-     <use xlink:href="#m4818afe571" x="197.2398" y="67.258411" style="fill: #547f7e; fill-opacity: 0.8; stroke: #ffffff; stroke-opacity: 0.8; stroke-width: 0.25"/>
-     <use xlink:href="#m4818afe571" x="231.183393" y="46.408304" style="fill: #547f7e; fill-opacity: 0.8; stroke: #ffffff; stroke-opacity: 0.8; stroke-width: 0.25"/>
+     <use xlink:href="#mf3150ecf85" x="61.465426" y="185.409019" style="fill: #1464d2; fill-opacity: 0.8; stroke: #ffffff; stroke-opacity: 0.8; stroke-width: 0.25"/>
+     <use xlink:href="#mf3150ecf85" x="95.409019" y="150.65884" style="fill: #1464d2; fill-opacity: 0.8; stroke: #ffffff; stroke-opacity: 0.8; stroke-width: 0.25"/>
+     <use xlink:href="#mf3150ecf85" x="129.352613" y="171.508948" style="fill: #1464d2; fill-opacity: 0.8; stroke: #ffffff; stroke-opacity: 0.8; stroke-width: 0.25"/>
+     <use xlink:href="#mf3150ecf85" x="163.296206" y="81.158482" style="fill: #1464d2; fill-opacity: 0.8; stroke: #ffffff; stroke-opacity: 0.8; stroke-width: 0.25"/>
+     <use xlink:href="#mf3150ecf85" x="197.2398" y="67.258411" style="fill: #1464d2; fill-opacity: 0.8; stroke: #ffffff; stroke-opacity: 0.8; stroke-width: 0.25"/>
+     <use xlink:href="#mf3150ecf85" x="231.183393" y="46.408304" style="fill: #1464d2; fill-opacity: 0.8; stroke: #ffffff; stroke-opacity: 0.8; stroke-width: 0.25"/>
     </g>
    </g>
    <g id="matplotlib.axis_1">

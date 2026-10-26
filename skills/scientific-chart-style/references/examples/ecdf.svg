@@ -224,7 +224,7 @@ L 180.112373 55.806151
 L 180.112373 43.785648
 L 239.669291 43.785648
 L 239.669291 43.785648
-" clip-path="url(#p93052863c2)" style="fill: none; stroke: #547f7e; stroke-linecap: square"/>
+" clip-path="url(#p93052863c2)" style="fill: none; stroke: #1464d2; stroke-linecap: square"/>
    </g>
    <g id="line2d_16">
     <path d="M 52.979528 188.031674
@@ -254,7 +254,7 @@ L 229.668054 55.806151
 L 229.668054 43.785648
 L 239.669291 43.785648
 L 239.669291 43.785648
-" clip-path="url(#p93052863c2)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #ae766a"/>
+" clip-path="url(#p93052863c2)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #b64b00"/>
    </g>
    <g id="patch_3">
     <path d="M 52.979528 192.359055
@@ -273,7 +273,7 @@ L 65.329528 47.765065
 L 65.329528 47.765065
 L 71.829528 47.765065
 L 71.829528 47.765065
-" style="fill: none; stroke: #547f7e; stroke-linecap: square"/>
+" style="fill: none; stroke: #1464d2; stroke-linecap: square"/>
     </g>
     <g id="text_17">
      <text style="font-size: 6.5px; font-family: 'Arial', 'Helvetica', 'Noto Sans', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #24282c" x="77.029528" y="50.040065" transform="rotate(-0 77.029528 50.040065)">A (n=12)</text>
@@ -284,7 +284,7 @@ L 65.329528 57.114908
 L 65.329528 57.114908
 L 71.829528 57.114908
 L 71.829528 57.114908
-" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #ae766a"/>
+" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #b64b00"/>
     </g>
     <g id="text_18">
      <text style="font-size: 6.5px; font-family: 'Arial', 'Helvetica', 'Noto Sans', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #24282c" x="77.029528" y="59.389908" transform="rotate(-0 77.029528 59.389908)">B (n=12)</text>

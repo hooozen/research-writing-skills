@@ -42,7 +42,7 @@ L 330.941586 42.674302
 L 330.941586 71.4083
 L 117.354331 71.4083
 z
-" clip-path="url(#p25c286e311)" style="fill: #547f7e"/>
+" clip-path="url(#p25c286e311)" style="fill: #1464d2"/>
    </g>
    <g id="patch_4">
     <path d="M 117.354331 92.215678
@@ -50,7 +50,7 @@ L 266.865409 92.215678
 L 266.865409 120.949676
 L 117.354331 120.949676
 z
-" clip-path="url(#p25c286e311)" style="fill: #ae766a"/>
+" clip-path="url(#p25c286e311)" style="fill: #b64b00"/>
    </g>
    <g id="patch_5">
     <path d="M 117.354331 141.757054
@@ -58,7 +58,7 @@ L 181.430507 141.757054
 L 181.430507 170.491052
 L 117.354331 170.491052
 z
-" clip-path="url(#p25c286e311)" style="fill: #8b9197"/>
+" clip-path="url(#p25c286e311)" style="fill: #586575"/>
    </g>
    <g id="matplotlib.axis_1">
     <g id="xtick_1">

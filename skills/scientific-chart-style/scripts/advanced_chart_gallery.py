@@ -370,7 +370,8 @@ def draw(kind, ax, data, stats, language='en', compact=False, mode='color'):
                               cmap=cmap,vmin=0,vmax=1,edgecolors='white',linewidth=.4,rasterized=False)
         for (i,j), value in np.ndenumerate(fractions):
             label = f'{row["counts"][i][j]}\n'+('NA' if not np.isfinite(value) else f'{value:.0%}')
-            ink = style['text'] if not np.isfinite(value) else _ink_on_color(cmap(value),style['text'])
+            background = to_rgb(style['neutral']) if not np.isfinite(value) else cmap(value)
+            ink = _ink_on_color(background, '#000000' if mode == 'color' else style['text'])
             ax.text(j+.5,i+.5,label,ha='center',va='center',color=ink,fontsize=7)
         ax.set_xlim(0,2); ax.set_ylim(2,0)
         ax.set_xticks([.5,1.5], ['0','1']); ax.set_yticks([.5,1.5], ['0','1'])

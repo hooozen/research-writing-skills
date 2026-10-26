@@ -1,4 +1,4 @@
 interface:
   display_name: "科研图表样式"
   short_description: "19 chart references with direct single-chart examples"
-  default_prompt: "Use $scientific-chart-style to select a chart from its index, read only that chart card, and create a scientifically defined figure with B colors or D grayscale and editable exports."
+  default_prompt: "Use $scientific-chart-style to select a chart from its index, read only that chart card, and create a scientifically defined figure with high-contrast blue colors or D grayscale and editable exports."

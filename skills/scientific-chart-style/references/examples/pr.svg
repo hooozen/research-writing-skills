@@ -119,7 +119,7 @@ L -2.5 0
    <g id="line2d_7">
     <path d="M 52.979528 115.908661
 L 239.669291 115.908661
-" clip-path="url(#p5168c4e349)" style="fill: none; stroke-dasharray: 0.7,1.155; stroke-dashoffset: 0; stroke: #8b9197; stroke-width: 0.7"/>
+" clip-path="url(#p5168c4e349)" style="fill: none; stroke-dasharray: 0.7,1.155; stroke-dashoffset: 0; stroke: #586575; stroke-width: 0.7"/>
    </g>
    <g id="line2d_8">
     <path d="M 57.424522 43.098763
@@ -135,7 +135,7 @@ L 235.224297 105.507247
 L 235.224297 105.507247
 L 235.224297 115.908661
 L 235.224297 115.908661
-" clip-path="url(#p5168c4e349)" style="fill: none; stroke: #547f7e; stroke-width: 1.1; stroke-linecap: square"/>
+" clip-path="url(#p5168c4e349)" style="fill: none; stroke: #1464d2; stroke-width: 1.1; stroke-linecap: square"/>
    </g>
    <g id="patch_3">
     <path d="M 52.979528 192.359055
@@ -155,7 +155,7 @@ L 239.669291 192.359055
      <path d="M 58.829528 173.747727
 L 65.329528 173.747727
 L 71.829528 173.747727
-" style="fill: none; stroke-dasharray: 0.7,1.155; stroke-dashoffset: 0; stroke: #8b9197; stroke-width: 0.7"/>
+" style="fill: none; stroke-dasharray: 0.7,1.155; stroke-dashoffset: 0; stroke: #586575; stroke-width: 0.7"/>
     </g>
     <g id="text_10">
      <text style="font-size: 6.5px; font-family: 'Arial', 'Helvetica', 'Noto Sans', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #24282c" x="77.029528" y="176.022727" transform="rotate(-0 77.029528 176.022727)">Prevalence</text>
@@ -166,7 +166,7 @@ L 58.829528 182.94218
 L 65.329528 182.94218
 L 65.329528 182.94218
 L 71.829528 182.94218
-" style="fill: none; stroke: #547f7e; stroke-width: 1.1; stroke-linecap: square"/>
+" style="fill: none; stroke: #1464d2; stroke-width: 1.1; stroke-linecap: square"/>
     </g>
     <g id="text_11">
      <text style="font-size: 6.5px; font-family: 'Arial', 'Helvetica', 'Noto Sans', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #24282c" x="77.029528" y="185.21718" transform="rotate(-0 77.029528 185.21718)">AP = 0.950</text>

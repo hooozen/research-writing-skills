@@ -6,7 +6,7 @@
     {
       "name": "scientific-chart-style",
       "path": "skills/scientific-chart-style",
-      "description": "Create or restyle publication-oriented scientific charts across disciplines. Locate one of 19 chart references, read only its input/definition/example, and render a selected chart with editable exports. Use muted teal/terracotta by default and a designed grayscale print mode.",
+      "description": "Create or restyle publication-oriented scientific charts across disciplines. Locate one of 19 chart references, read only its input/definition/example, and render a selected chart with editable exports. Use high-contrast blue by default and a designed grayscale print mode.",
       "tags": [
         "scientific-figures",
         "charts",
