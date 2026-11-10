@@ -297,6 +297,58 @@ function drawStyle(slide, t) {
   text(slide, '标题 33 pt\n正文 20 pt\n图表轴与标签 16.5 pt\n图注与数据来源 15 pt', {left: 724, top: 258, width: 430, height: 220}, t, {points: 20});
 }
 
+function tableValues(data) {
+  if (!Array.isArray(data.columns) || data.columns.length < 2 || data.columns.length > 6 ||
+      !Array.isArray(data.rows) || !data.rows.length || data.rows.length > 5) throw new Error('Use two to six columns and one to five body rows; split larger tables.');
+  for (const column of data.columns) {
+    if (!column.label || !['text', 'integer', 'number', 'percent'].includes(column.kind) ||
+        column.weight !== undefined && (!finite(column.weight) || column.weight <= 0) ||
+        column.digits !== undefined && (!Number.isInteger(column.digits) || column.digits < 0 || column.digits > 6)) throw new Error('Declare table column labels, types, positive widths and precision.');
+  }
+  if (data.rows.some(row => !Array.isArray(row) || row.length !== data.columns.length)) throw new Error('Table rows must align with all declared columns.');
+  const selected = [...(data.highlight_rows || []), ...(data.total_row === undefined ? [] : [data.total_row])];
+  if (selected.some(i => !Number.isInteger(i) || i < 0 || i >= data.rows.length)) throw new Error('Table emphasis must refer to existing body rows.');
+  return [data.columns.map(col => col.label), ...data.rows.map(row => row.map((value, i) => {
+    const col = data.columns[i];
+    if (value === null) return data.missing_label || '—';
+    if (col.kind === 'text') {
+      if (typeof value !== 'string') throw new Error('Text table cells require strings or explicit null.');
+      return value;
+    }
+    if (!finite(value) || col.kind === 'integer' && !Number.isInteger(value) ||
+        col.kind === 'percent' && (value < 0 || value > 1)) throw new Error('Numeric cells need finite values; percentages use proportions from zero to one.');
+    const digits = col.kind === 'integer' ? 0 : col.digits ?? 1;
+    return (col.kind === 'percent' ? value * 100 : value).toLocaleString('en-US', {minimumFractionDigits: digits, maximumFractionDigits: digits});
+  }))];
+}
+
+function drawTable(slide, data, t, c) {
+  const values = tableValues(data), columns = data.columns.length;
+  const width = 1120, weights = data.columns.map(col => col.weight ?? 1), total = weights.reduce((a, b) => a + b, 0);
+  const table = slide.tables.add({rows: values.length, columns, left: 80, top: 196, width,
+    height: 72 + 64 * data.rows.length, columnWidths: weights.map(v => width * v / total), values});
+  table.styleOptions = {headerRow: false, bandedRows: false, bandedColumns: false, firstColumn: false, lastColumn: false, totalRow: false};
+  table.borders.assign({style: 'solid', fill: 'none', width: 0});
+  table.rows[0].height = 72;
+  for (let r = 1; r < values.length; r++) table.rows[r].height = 64;
+  for (let col = 0; col < columns; col++) {
+    const alignment = data.columns[col].kind === 'text' ? 'left' : 'right';
+    table.cells.block({row: 0, column: col, rowCount: values.length, columnCount: 1}).assign({
+      fill: c.background, textStyle: {typeface: t.fonts.cjk_demo, fontSize: px(t.type_points.table ?? 18), color: c.text, alignment, verticalAlignment: 'middle'},
+      margins: {left: 16, right: 16, top: 12, bottom: 12},
+    });
+  }
+  table.cells.block({row: 0, column: 0, rowCount: 1, columnCount: columns}).assign({
+    fill: c.primary, textStyle: {bold: true, color: '#FFFFFF'},
+    borders: {top: {fill: c.primary, width: 1.6}, bottom: {fill: c.primary, width: 1.6}},
+  });
+  for (const row of data.highlight_rows || []) table.cells.block({row: row + 1, column: 0, rowCount: 1, columnCount: columns}).assign({fill: blend('#FFFFFF', c.primary, .1)});
+  if (data.total_row !== undefined) table.cells.block({row: data.total_row + 1, column: 0, rowCount: 1, columnCount: columns}).assign({
+    textStyle: {bold: true}, borders: {top: {fill: c.axis, width: 1.2}},
+  });
+  table.cells.block({row: values.length - 1, column: 0, rowCount: 1, columnCount: columns}).assign({borders: {bottom: {fill: c.axis, width: 1.6}}});
+}
+
 function drawEmpty(slide, t) {
   const shape = slide.shapes.add({geometry: 'rect', name: 'replace-with-chart', placeholderType: 'chart',
     position: {left: 96, top: 178, width: 1088, height: 380}, fill: '#FFFFFF', line: {fill: t.colors.neutral, width: 1.5, style: 'dashed'}});
@@ -306,12 +358,13 @@ function drawEmpty(slide, t) {
 }
 
 const renderers = {counts: drawCounts, line: drawLine, scatter: drawScatter, boxplot: drawBoxes,
-  paired: drawPaired, interval: drawIntervals, heatmap: drawHeatmap, performance: drawPerformance};
+  paired: drawPaired, interval: drawIntervals, heatmap: drawHeatmap, performance: drawPerformance, table: drawTable};
 
 export function makeScientificSlide(presentation, specification, tokens) {
   if (!specification || typeof specification.title !== 'string' || typeof specification.caption !== 'string') throw new Error('Supply a title and an explicit evidence caption.');
   const known = [...Object.keys(renderers), 'style', 'empty', 'grayscale'];
   if (!known.includes(specification.kind)) throw new Error('Unsupported layout; choose a documented kind or adapt using the chart mapping.');
+  if (specification.kind === 'table') tableValues(specification.data);
   const c = palette(tokens, specification.kind === 'grayscale' ? 'grayscale' : 'color');
   const slide = specification.reuseIndex === undefined ? presentation.slides.add({width: tokens.canvas.width_px, height: tokens.canvas.height_px}) : presentation.slides.getItem(specification.reuseIndex);
   if (slide.shapes.items.length || slide.charts.items.length || slide.images.items.length || slide.tables.items.length) throw new Error('Reuse only an empty slide; preserve existing content.');
@@ -326,9 +379,27 @@ export function makeScientificSlide(presentation, specification, tokens) {
   text(slide, caption, {left: 66, top: 624, width: 1148, height: 64}, tokens, {points: tokens.type_points.caption, color: c.muted, name: 'evidence-caption'});
   slide.speakerNotes.text = JSON.stringify({layout: specification.kind, synthetic: specification.synthetic || false,
     data: specification.data || null, caption: specification.caption,
-    editability: specification.kind === 'counts' ? 'native chart; refresh custom count/share label text after counts or denominator change' :
+    editability: specification.kind === 'table' ? 'native editable table; values are literal and calculated cells require refresh after source changes' :
+      specification.kind === 'counts' ? 'native chart; refresh custom count/share label text after counts or denominator change' :
       ['line', 'scatter', 'performance', 'grayscale'].includes(specification.kind) ? 'native chart' : 'native editable shapes; regenerate after data changes'}, null, 2);
   return slide.toSnapshot().aid;
+}
+
+export function tableSpecifications(examples) {
+  if (examples.synthetic !== true) throw new Error('Template demonstrations require an explicit synthetic flag.');
+  const d = examples.count_share;
+  if (d.relationship !== 'exclusive_exhaustive' || !Number.isInteger(d.denominator) || d.denominator <= 0 ||
+      d.counts.some(v => !Number.isInteger(v) || v < 0) || d.counts.reduce((a, b) => a + b, 0) !== d.denominator) throw new Error('Table composition counts must reconcile with their declared denominator.');
+  return [
+    {kind: 'table', title: '结果对比表', subtitle: '固定单位、统一精度，浅蓝行标出当前方案', data: examples.result_table,
+      caption: '同一测试集：60 张图像来自 10 名对象，其中阳性 30 张。— 表示未评估；箭头表示优选方向，未提供区间或检验。'},
+    {kind: 'table', title: '样本构成表', subtitle: '数量与占比并列，表头明确统计单位', data: {
+      columns: [{label: '类别', kind: 'text', weight: 2}, {label: '记录数（条）', kind: 'integer'}, {label: '占比（%）', kind: 'percent', digits: 1}],
+      rows: [...d.categories.map((name, i) => [name, d.counts[i], d.counts[i] / d.denominator]), ['合计', d.denominator, 1]], total_row: d.categories.length,
+    }, caption: '分母为 28,552 条记录，三类互斥且穷尽。占比保留一位小数。\n与前面的计数图使用相同数据；合计按原始计数计算。'},
+    {kind: 'table', title: '方法与参数表', subtitle: '取值与含义分列，未提供的设置明确写出', data: examples.parameter_table,
+      caption: '这些设置仅为模板示例。“未提供”表示缺少资料，不表示该规则已关闭。'},
+  ].map(spec => ({...spec, synthetic: true}));
 }
 
 export function templateSpecifications(examples) {
@@ -344,6 +415,7 @@ export function templateSpecifications(examples) {
     {kind: 'interval', title: '效应量与不确定性', subtitle: '保留方向、单位与零参照', data: examples.interval, caption: '区间为明确给定的合成 95% 区间。数值表示各模型相对自身基线的误差变化，未添加显著性标记。'},
     {kind: 'heatmap', title: '矩阵热图', subtitle: '连续色阶与缺失状态分开编码', data: examples.heatmap, caption: '所有单元格使用共同的 0–1 色阶。NA 表示缺失，灰色不表示较低分数。'},
     {kind: 'performance', title: '分类模型的 ROC 与 PR 曲线', subtitle: 'ROC：真阳性率与假阳性率；PR：精确率与召回率', data: examples.classification, caption: '同一组 8 条合成分类记录，正负样本各 4 条。灰线分别为 ROC 对角线与 PR 阳性比例参照。'},
+    ...tableSpecifications(examples),
     {kind: 'grayscale', title: '灰度打印模式', subtitle: '线型与点形补充明暗差异', data: examples.line, caption: '与彩色时间图使用相同数据、坐标范围和字体。保留实线、虚线及圆点、方点差异。'},
     {kind: 'empty', title: '研究问题或主要发现', caption: '图注：样本与独立单位、指标及单位、参照、区间定义、数据来源。'},
   ].map(specification => ({...common, ...specification, synthetic: !['style', 'empty'].includes(specification.kind)}));

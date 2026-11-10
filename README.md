@@ -83,7 +83,7 @@ data. Keep the high-contrast blue palette, readable projection typography, and e
 charts. Preserve actual units, uncertainty, pairing and missing observations.
 ```
 
-The optional authoring adapter can build a twelve-slide demonstration, including a cover, style guide, chart examples, grayscale layout and empty chart page. Its example data is explicitly synthetic. Follow the available presentation workflow for the output destination; a saved Spaces deck can be downloaded as `.pptx` from its viewer. The style specification also works with other capable PowerPoint authoring tools.
+The optional authoring adapter supports a fifteen-slide demonstration with a simple cover, style guide, chart examples, three native tables, grayscale layout and empty chart page. Results, sample-composition and parameter tables follow [shared table rules](skills/scientific-presentation-style/references/tables.md): explicit units, consistent precision, numerical alignment, missing-state definitions and literal-cell editability. Its example data is explicitly synthetic. Follow the available presentation workflow for the output destination; a saved Spaces deck can be downloaded as `.pptx` from its viewer. The style specification also works with other capable PowerPoint authoring tools.
 
 ## Version 1 migration
 

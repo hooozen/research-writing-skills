@@ -7,5 +7,14 @@
   "paired": {"value_label": "测量值（a.u.）", "pairs": [{"id": "S1", "before": 7.1, "after": 5.4}, {"id": "S2", "before": 6.5, "after": 5.2}, {"id": "S3", "before": 8.1, "after": 7.4}, {"id": "S4", "before": 5.8, "after": 5.1}, {"id": "S5", "before": 7.7, "after": 6.4}, {"id": "S6", "before": 6.9, "after": 5.7}, {"id": "S7", "before": 8.8, "after": 7.2}, {"id": "S8", "before": 6.2, "after": null}]},
   "interval": {"value_label": "误差变化（ms）", "reference": 0, "interval_label": "合成的 95% 区间", "estimates": [{"label": "模型 A", "estimate": -1.8, "low": -2.5, "high": -1.1}, {"label": "模型 B", "estimate": -0.4, "low": -1.2, "high": 0.4}, {"label": "模型 C", "estimate": 1.1, "low": 0.3, "high": 1.9}]},
   "heatmap": {"row_labels": ["方法 A", "方法 B", "方法 C"], "column_labels": ["集合 1", "集合 2", "集合 3"], "values": [[0.58, 0.64, 0.71], [0.65, null, 0.77], [0.72, 0.79, 0.84]], "limits": [0, 1], "unit": "分数（a.u.）"},
-  "classification": {"labels": [0, 0, 0, 0, 1, 1, 1, 1], "scores": [0.1, 0.2, 0.55, 0.3, 0.5, 0.8, 0.4, 0.9]}
+  "classification": {"labels": [0, 0, 0, 0, 1, 1, 1, 1], "scores": [0.1, 0.2, 0.55, 0.3, 0.5, 0.8, 0.4, 0.9]},
+  "result_table": {
+    "columns": [{"label": "方法", "kind": "text"}, {"label": "准确率（%）↑", "kind": "percent", "digits": 1}, {"label": "灵敏度（%）↑", "kind": "percent", "digits": 1}, {"label": "耗时（ms/图）↓", "kind": "number", "digits": 1}],
+    "rows": [["基线", 0.8, 0.8, 50], ["方法 A", 0.85, 0.8666666666666667, 40], ["方法 B", 0.8333333333333334, 0.8333333333333334, 38], ["待评估方案", null, null, null]],
+    "highlight_rows": [1], "missing_label": "—"
+  },
+  "parameter_table": {
+    "columns": [{"label": "设置项", "kind": "text", "weight": 1}, {"label": "取值", "kind": "text", "weight": 1}, {"label": "含义或待补资料", "kind": "text", "weight": 2.4}],
+    "rows": [["输入尺寸", "32 × 32", "统一输入大小（像素）"], ["批大小", "8", "每设备每步的图像数"], ["学习率", "0.001", "优化器的更新步长"], ["停止规则", "未提供", "需补充监控指标与停止条件"]]
+  }
 }

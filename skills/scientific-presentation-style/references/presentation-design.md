@@ -25,6 +25,7 @@ Projection typography is intentionally larger than publication typography:
 | Slide title | 33 pt | 44 px |
 | Body | 20 pt | 26.67 px |
 | Chart axis/legend/direct labels | 16.5 pt | 22 px |
+| Table header/body | 18 pt | 24 px |
 | Two related panels, if necessary | 15 pt | 20 px |
 | Caption/source | 15 pt | 20 px |
 
@@ -39,6 +40,7 @@ The reference frame is 1280 × 720 px. Keep roughly 64 px outer margins, a title
 - **Two related plots:** share grouping and scales when meaningful. Use two readable panels only when the relationship warrants them; otherwise use two slides. Keep panel labels and legends inside their reserved space.
 - **Matrix:** use consistent native cells, a shared sequential/diverging scale and explicit missing cells. Choose black or white cell text using the actual fill contrast. Keep the colorbar readable and editable.
 - **Empty plot layout:** retain a plot placeholder and a caption placeholder without fabricated experimental values.
+- **Native table:** blue header, dark text on white body cells, numerical columns right-aligned, minimal horizontal rules and explicitly explained emphasis. Read [tables.md](tables.md) when building result, composition or parameter tables.
 
 Use short, direct titles. Captions identify the observation unit, n/denominator, metric/unit, reference, uncertainty and source as applicable. A template guide may explain how to replace a chart; a real research slide should show the research content rather than authoring instructions.
 
@@ -47,6 +49,7 @@ Use short, direct titles. Captions identify the observation unit, n/denominator,
 | Representation | What the user can edit | What changes require |
 |---|---|---|
 | Native chart | Data series, categories, axes, labels and appearance | Update the native dataset/workbook and rerender |
+| Native table | Individual cells, row/column sizes, text and formatting | Refresh derived values explicitly; cells do not recalculate spreadsheet formulas |
 | Native vector geometry | Individual marks, lines, cells, labels and positions | Recompute/rebuild from source when data change |
 | Supplied image/SVG image | Placement and size, sometimes conversion in a target app | Original plotting source to update data |
 

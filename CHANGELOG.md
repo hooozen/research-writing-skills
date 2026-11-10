@@ -6,6 +6,7 @@ All notable changes to this repository are documented here.
 
 ### Added
 
+- Add native editable results, sample-composition and parameter tables to the scientific presentation template, with shared alignment, units, precision, missing-state and derived-value rules; expand the demonstration from twelve to fifteen slides.
 - Add `scientific-presentation-style`: the scientific chart palette adapted for projection, 19 chart-to-PowerPoint representation rules, native editable bar/XY charts and scientific geometry, and a reproducible twelve-slide synthetic template specification.
 - Include explicit data-bound versus geometric editability guidance, source data in notes, missing-observation handling and regression checks for presentation statistics/data preservation.
 

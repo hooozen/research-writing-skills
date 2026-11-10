@@ -169,3 +169,13 @@ Inspect all three rendered slides and actual native objects. Expect 70% and 55% 
 ## Scientific PowerPoint: scoped restyle and insufficient evidence
 
 Give an evaluator a two-slide deck with supplied fonts, text and chart positions; request only replacing muted colors with the scientific chart palette. Check actual positions, typefaces, point sizes and content before/after, not a recollected design. The restyle should not overwrite the full theme or reorganize the deck. Separately ask for an editable violin from only mean/SD/n: it must explain the missing distribution data without synthesizing observations or inserting the built-in sample. A clearly labeled summary alternative is acceptable only within the requested scope.
+
+## Scientific PowerPoint: exact-value tables
+
+**Prompt**
+
+> 按 scientific-presentation-style 做两页可编辑表格，不加封面。全部为合成教学数据，须标明。第一页是结果表，准确率A=0.80、B=0.85、C未评估；每图耗时A=50ms、B=40ms、C未评估，前两者使用同一60张图像测试集（10名受试者）。高亮B表示当前方案，不声称显著或最好。第二页是标记记录表：总数100条，模糊70条、运动55条、其他0条，各标记可以重叠；数量与占比并列。只给出这些事实，不新增区间或检验。
+
+**Review**
+
+Inspect rendered slides and native table cells, not screenshots described as editable. Expect accuracy 80.0/85.0%, latency 50.0/40.0 ms/image, separate missing entries, and actual zero for the other count/share. Overlapping shares are 70/55/0% with denominator 100; do not infer a summed total or renormalize by 125. Preserve 60 images versus 10 subjects and define the highlight/missing symbol. Keep consistent precision, numeric alignment, readable header/body sizes and explicit units. The output should explain that native table edits do not automatically recalculate derived cells. Do not add a heatmap in place of the requested exact-value table.

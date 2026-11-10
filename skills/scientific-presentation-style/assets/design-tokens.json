@@ -9,7 +9,7 @@
   },
   "grayscale": {"primary": "#34383C", "secondary": "#70767B", "third": "#92989E", "light": "#E0E3E5", "neutral": "#B7BCC0"},
   "fonts": {"latin": "Arial", "cjk_demo": "Arial Unicode MS", "cjk_alternatives": ["Microsoft YaHei", "Noto Sans CJK SC", "PingFang SC"]},
-  "type_points": {"cover": 42, "title": 33, "body": 20, "axis": 16.5, "compact_axis": 15, "caption": 15},
+  "type_points": {"cover": 42, "title": 33, "body": 20, "axis": 16.5, "compact_axis": 15, "table": 18, "caption": 15},
   "spacing_px": {"outer_margin": 64, "title_top": 42, "content_top": 168, "caption_top": 624, "panel_gap": 40},
   "strokes_points": {"axis": 1, "series": 1.65, "interval": 1.5},
   "note": "Points are adapted for projected slides; CSS pixels use pt * 4 / 3. Keep publication figures at their own final-size specifications."

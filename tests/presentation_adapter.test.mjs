@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {makeScientificSlide, statistics} from '../skills/scientific-presentation-style/scripts/slide-builders.mjs';
+import {makeScientificSlide, statistics, tableSpecifications} from '../skills/scientific-presentation-style/scripts/slide-builders.mjs';
 
 const base = new URL('../skills/scientific-presentation-style/', import.meta.url);
 const tokens = JSON.parse(fs.readFileSync(new URL('assets/design-tokens.json', base)));
@@ -24,6 +24,12 @@ function render(kind, data) {
       return shape;
     };
     slide.charts.add = (type, config) => {const chart = {type, ...config}; slide.charts.items.push(chart); return chart;};
+    slide.tables.add = config => {
+      const table = {...config, rows: Array.from({length: config.rows}, () => ({})), ranges: [],
+        borders: {assign() {}}, cells: {block(range) {return {assign(style) {table.ranges.push({range, style});}};}}};
+      slide.tables.items.push(table);
+      return table;
+    };
     slides.items.push(slide);
     return slide;
   };
@@ -115,4 +121,27 @@ test('the supplied tied-score ROC has AUC 0.75 without synthesizing thresholds',
 
 test('undefined ROC from a single class is rejected', () => {
   assert.throws(() => statistics.binaryCurves({labels: [1, 1], scores: [.2, .8]}), /both classes/);
+});
+
+test('native tables preserve missing cells, true zero and literal source values', () => {
+  const data = {columns: [{label: 'Method', kind: 'text'}, {label: 'Score (%)', kind: 'percent', digits: 1}, {label: 'Count', kind: 'integer'}], rows: [['A', .85, 1234], ['B', null, 0]]};
+  const slide = render('table', data);
+  assert.equal(slide.tables.items.length, 1);
+  assert.equal(slide.charts.items.length, 0);
+  assert.deepEqual(slide.tables.items[0].values, [['Method', 'Score (%)', 'Count'], ['A', '85.0', '1,234'], ['B', '—', '0']]);
+  assert.deepEqual(JSON.parse(slide.speakerNotes.text).data.rows, data.rows);
+});
+
+test('composition table derives shares and totals from the chart population', () => {
+  const spec = tableSpecifications(examples)[1];
+  const table = render('table', spec.data).tables.items[0];
+  assert.deepEqual(table.values.slice(1), [['类型 A', '14,325', '50.2'], ['类型 B', '12,194', '42.7'], ['其他', '2,033', '7.1'], ['合计', '28,552', '100.0']]);
+  assert.throws(() => tableSpecifications({...examples, count_share: {...examples.count_share, denominator: 100}}), /reconcile/);
+});
+
+test('tables reject ambiguous numeric units, ragged rows and crowded layouts', () => {
+  const data = {columns: [{label: 'Method', kind: 'text'}, {label: 'Score (%)', kind: 'percent'}], rows: [['A', .85]]};
+  assert.throws(() => render('table', {...data, rows: [['A', 85]]}), /proportions/);
+  assert.throws(() => render('table', {...data, rows: [['A']]}), /align/);
+  assert.throws(() => render('table', {...data, rows: Array.from({length: 6}, () => ['A', .85])}), /split/);
 });

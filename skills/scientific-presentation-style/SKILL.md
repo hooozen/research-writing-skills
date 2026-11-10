@@ -1,6 +1,6 @@
 ---
 name: scientific-presentation-style
-description: "Create scientific PowerPoint or slide templates and figures with the high-contrast scientific-chart-style visual system. Adapt typography for projection, preserve statistical meaning, and use editable native charts or slide geometry. Use for research presentations and chart-focused PPT requests, not journal-figure sizing or unrelated slide branding."
+description: "Create scientific PowerPoint templates with the high-contrast scientific-chart-style visual system. Adapt typography for projection, preserve statistical meaning, and use editable native charts, tables and scientific geometry. Use for research presentations and chart/table-focused PPT requests, not journal-figure sizing or unrelated slide branding."
 ---
 
 # Scientific Presentation Style
@@ -28,7 +28,9 @@ For a full research deck, establish the question, overall approach, available ev
 
 Use a clear title, one main plot or a genuinely related pair, and one evidence caption. Keep the plot larger than its surrounding explanation. Use native chart titles, axes, legends and labels rather than overlaying duplicate text boxes. For custom scientific plots, use native paths, lines, markers and text with a shared coordinate transform. Keep complete source data in notes or a companion data file.
 
-The optional [scripts/slide-builders.mjs](scripts/slide-builders.mjs) is an Artifact Tool adapter. It creates counts, numeric-time lines, scatter, two-group box plots, paired observations, intervals, heatmaps and ROC/PR panels, plus a style page, grayscale example and empty plot layout. Read [references/authoring-adapter.md](references/authoring-adapter.md) only when using this implementation. Other capable PowerPoint tools can apply the same specification.
+Use a native table when exact values or several attributes need comparison. Read [references/tables.md](references/tables.md) for result comparisons, sample composition and methods/parameter tables. Keep labels left-aligned, numbers right-aligned, units in headers and precision consistent within each metric. Explain missing states and emphasis; never turn missing values into zeros or use an unexplained highlight as a claim of significance. A heatmap does not replace an exact-value table when the user needs one.
+
+The optional [scripts/slide-builders.mjs](scripts/slide-builders.mjs) is an Artifact Tool adapter. It creates counts, numeric-time lines, scatter, two-group box plots, paired observations, intervals, heatmaps, ROC/PR panels and native tables, plus a style page, grayscale example and empty plot layout. Read [references/authoring-adapter.md](references/authoring-adapter.md) only when using this implementation. Other capable PowerPoint tools can apply the same specification.
 
 Native bar and XY charts retain their series/category values. The count/share labels are custom text: regenerate those labels when counts or denominators change, even if the bars update from edited data. Boxes, paired plots, intervals and heatmaps in this adapter are editable slide geometry with source data in notes; editing a shape does not recalculate its statistics. Rebuild those plots from updated data. For unsupported chart designs, use the mapping and the selected chart's definition rather than forcing the data into a sample layout.
 
@@ -36,6 +38,7 @@ Native bar and XY charts retain their series/category values. The count/share la
 
 - Render and inspect every slide at presentation size. Check CJK glyphs, labels, axes, legends, captions, contrast and unintended overlap. Reflow a crowded plot before reducing its fonts.
 - Inspect native chart series, x coordinates, category order and number formats against source data. Confirm geometric plots retain their actual coordinates, complete observations and interval endpoints.
+- Inspect every native table cell against the source. Check denominators, totals, percentage versus percentage-point changes, precision, units, missing-state definitions and any highlighted row. Table cells are editable literal values; refresh calculated cells after source changes.
 - Check the actual editability class: a native chart, editable shapes, and an embedded image are different deliverables. Do not claim that geometry is data-bound or that a preview proves PowerPoint editing behavior.
 - When exporting a PPTX is part of the authoring route, validate chart data/workbook references, native objects, fonts and slide size using that workflow. Test in PowerPoint only when available, and report unavailable application checks accurately.
 - Keep any template example marked synthetic. For real reports, replace example data and captions with the user's evidence, preserve the distinction between observations and interpretations, and remove unused layouts.
