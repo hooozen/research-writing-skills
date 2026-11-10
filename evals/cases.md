@@ -155,3 +155,17 @@ Verify direct discovery of `count_share`, one-chart invocation and D print encod
 **Review**
 
 The Agent should locate the violin requirements and state that these summaries cannot determine a density or raw distribution. It must not generate pseudo-observations or run a synthetic example as the answer. A clearly labeled mean±supplied-SD alternative is permissible, provided it is distinguished from the requested violin, retains supplied n, invents no units/independence, and adds no unsupported SE/CI/test. Record questions that would be necessary for the violin. In bounded testing, keep questions in the output record rather than contacting a real user.
+
+## Scientific PowerPoint: native data and geometric evidence
+
+**Prompt**
+
+> 用 scientific-presentation-style 做三页科研演示样例，16:9、中文、白底高对比度蓝色，输出可导出的 PowerPoint 演示文稿，不加封面。全部是合成数据须标明。第一页是同一记录可重复带标记的计数图：总数100，A标记70、B标记55，单位为记录。第二页画同一对象的前后测量，单位ms：S1 10→8，S2 11→9，S3 12→缺失，S4 8→9。第三页做ROC与PR：label=[0,1,0,1,1,0,0,1]；score=[0.1,0.9,0.6,0.6,0.8,0.4,0.6,0.2]。需要以后改数据，简要说明哪些对象改数据会自动更新，哪些需要重画。不新增区间、检验或显著性。
+
+**Review**
+
+Inspect all three rendered slides and actual native objects. Expect 70% and 55% from denominator 100 without stacking or normalization by 125, a zero bar origin, three complete ID-matched trajectories plus a disclosed missing follow-up, and threshold-grouped ROC/PR with numeric axes. The PR reference uses prevalence 0.5; no smoothed line or invented CI/AUC claim. Keep actual milliseconds, template-sized readable labels and synthetic disclosure. Verify native chart series values and editable paired geometry; do not accept a screenshot described as data-editable. The paired plot needs regeneration after source updates, while native chart series can be edited. Respect the chosen destination's export route and do not claim PowerPoint application testing from a viewer render alone.
+
+## Scientific PowerPoint: scoped restyle and insufficient evidence
+
+Give an evaluator a two-slide deck with supplied fonts, text and chart positions; request only replacing muted colors with the scientific chart palette. Check actual positions, typefaces, point sizes and content before/after, not a recollected design. The restyle should not overwrite the full theme or reorganize the deck. Separately ask for an editable violin from only mean/SD/n: it must explain the missing distribution data without synthesizing observations or inserting the built-in sample. A clearly labeled summary alternative is acceptable only within the requested scope.

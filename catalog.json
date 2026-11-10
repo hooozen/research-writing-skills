@@ -17,6 +17,13 @@
       ]
     },
     {
+      "name": "scientific-presentation-style",
+      "path": "skills/scientific-presentation-style",
+      "description": "Create scientific PowerPoint or slide templates and figures with the high-contrast scientific-chart-style visual system. Adapt typography for projection, preserve statistical meaning, and use editable native charts or slide geometry. Use for research presentations and chart-focused PPT requests, not journal-figure sizing or unrelated slide branding.",
+      "tags": ["powerpoint", "slides", "scientific-figures", "editable-charts", "templates"],
+      "related_skills": ["scientific-chart-style"]
+    },
+    {
       "name": "research-progress-report",
       "path": "skills/research-progress-report",
       "description": "Draft or revise self-contained scientific progress reports for public briefings or lab meetings, including 科研进展报告、阶段性研究总结、项目进度汇报. Explain the whole argument clearly; document model data splits, architecture, module data flow, losses, training, selection, and evaluation in detail. Use another workflow for journal manuscripts or grant proposals.",

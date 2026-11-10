@@ -4,6 +4,11 @@ All notable changes to this repository are documented here.
 
 ## [Unreleased]
 
+### Added
+
+- Add `scientific-presentation-style`: the scientific chart palette adapted for projection, 19 chart-to-PowerPoint representation rules, native editable bar/XY charts and scientific geometry, and a reproducible twelve-slide synthetic template specification.
+- Include explicit data-bound versus geometric editability guidance, source data in notes, missing-observation handling and regression checks for presentation statistics/data preservation.
+
 ### Changed
 
 - Restore a saturated blue color default with darker orange, purple and neutral companions; strengthen the blue heatmap midpoint and refresh color reference figures for better readability.

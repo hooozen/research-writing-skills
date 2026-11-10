@@ -1,6 +1,6 @@
 # Research Writing Skills
 
-Reusable, agent-neutral skills for turning research evidence into self-contained progress reports and publication-oriented scientific figures.
+Reusable, agent-neutral skills for turning research evidence into self-contained progress reports, publication figures, and editable scientific presentation charts.
 
 Each skill is a self-contained directory built around `SKILL.md`. Supporting references, scripts, assets, and optional agent adapters stay inside the same directory, so a skill can be installed by copying one folder.
 
@@ -10,6 +10,7 @@ Each skill is a self-contained directory built around `SKILL.md`. Supporting ref
 |---|---|
 | [`research-progress-report`](skills/research-progress-report/) | Explain research from overview to evidence in plain language. Model reports require dataset splits, actual architecture and module data flow, loss formulas, training/stopping/model selection, and available results with metric purposes, formulas and interpretation. Follow the user's audience and outline in Markdown or HTML; retain detailed methods in the report or linked appendices. |
 | [`scientific-chart-style`](skills/scientific-chart-style/) | Publication-oriented scientific charts across disciplines. A direct index of 19 chart cards with minimal inputs, runnable single-chart examples, individual SVG/PNG references, high-contrast blue and D print modes, and statistical/export guidance. |
+| [`scientific-presentation-style`](skills/scientific-presentation-style/) | Scientific PowerPoint charts using the same high-contrast colors, with projection-size typography and native editable evidence. Includes reusable slide builders, synthetic template examples and PowerPoint representation rules for all 19 chart types. |
 
 Machine-readable discovery metadata is available in [`catalog.json`](catalog.json).
 
@@ -72,6 +73,18 @@ Commands create only the selected figure and its data/statistics/export record. 
 
 Maintainers rebuild the installed reference set with `python skills/scientific-chart-style/scripts/build_chart_references.py`; `--check` verifies the registry, input/source hashes and saved individual SVG/PNG without rendering all charts. An ordinary Agent task does not rebuild the atlas.
 
+## Scientific PowerPoint charts
+
+Use `scientific-presentation-style` for readable scientific slides. It retains the chart palette and statistical conventions while adapting fonts and spacing for a 16:9 presentation. Native bar/XY charts preserve data series; box plots, paired plots, intervals and heatmaps use editable slide geometry and must be regenerated after data changes. The [19-chart mapping](skills/scientific-presentation-style/references/chart-mapping.md) covers advanced representations without claiming all of them are built-in renderers.
+
+```text
+Use $scientific-presentation-style to create a research presentation from the supplied
+data. Keep the high-contrast blue palette, readable projection typography, and editable
+charts. Preserve actual units, uncertainty, pairing and missing observations.
+```
+
+The optional authoring adapter can build a twelve-slide demonstration, including a cover, style guide, chart examples, grayscale layout and empty chart page. Its example data is explicitly synthetic. Follow the available presentation workflow for the output destination; a saved Spaces deck can be downloaded as `.pptx` from its viewer. The style specification also works with other capable PowerPoint authoring tools.
+
 ## Version 1 migration
 
 This release replaces the old `clinical-data-chart-style` directory with `scientific-chart-style`, and its primary reference entry is now the chart index. Update explicitly named invocations and keep old versions/backups outside discovery roots. The existing B/D visual decisions and scientific definitions remain intact. Repository versioning treats the changed installed skill path since v0.2.1 as a major release.
@@ -87,7 +100,7 @@ python3 skills/scientific-chart-style/scripts/build_chart_references.py --check
 MPLBACKEND=Agg python3 -m unittest discover -s tests -v
 ```
 
-These dependencies are for maintainers, not installation requirements. Installed skill instructions remain agent-neutral; Matplotlib is needed only for its optional example. Validation parses YAML, checks catalog consistency and relative Markdown resources throughout each skill, validates optional UI metadata, and checks script syntax without executing skill scripts or creating bytecode in their folders. It does not verify remote URLs, Markdown anchor IDs, raw HTML links, or scientific reasoning.
+These dependencies are for maintainers, not installation requirements. Node.js 20+ is also needed for the optional presentation adapter's regression tests. Installed skill instructions remain agent-neutral; Matplotlib is needed only for its optional plotting implementation. Validation parses YAML, checks catalog consistency and relative Markdown resources throughout each skill, validates optional UI metadata, and checks script syntax without executing skill scripts or creating bytecode in their folders. It does not verify remote URLs, Markdown anchor IDs, raw HTML links, or scientific reasoning.
 
 Use [evals/cases.md](evals/cases.md) for bounded report and chart behavior checks. Review generated artifacts as well as source data; a passing structural check does not establish scientific or visual correctness.
 

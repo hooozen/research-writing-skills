@@ -1,0 +1,11 @@
+{
+  "synthetic": true,
+  "count_share": {"categories": ["类型 A", "类型 B", "其他"], "counts": [14325, 12194, 2033], "roles": ["primary", "secondary", "neutral"], "denominator": 28552, "unit": "条记录", "relationship": "exclusive_exhaustive"},
+  "line": {"x": [0, 2, 4, 7], "x_label": "时间（天）", "y_label": "测量值（a.u.）", "series": [{"name": "个体 A", "values": [10, 11.5, 13, 14.2]}, {"name": "个体 B", "values": [9.4, 10.2, 11.7, 13.4]}]},
+  "scatter": {"x_label": "变量 X（a.u.）", "y_label": "变量 Y（a.u.）", "series": [{"name": "组 A", "x": [1, 2, 3, 4, 5, 6], "y": [2.1, 3.5, 3.1, 5.2, 5.6, 7.1]}, {"name": "组 B", "x": [1.3, 2.3, 3.3, 4.3, 5.3, 6.3], "y": [1.4, 2.1, 3.6, 3.8, 4.9, 5.3]}]},
+  "boxplot": {"value_label": "测量值（a.u.）", "groups": {"组 A": [3.2, 4.1, 4.4, 4.7, 5.2, 5.5, 5.8, 6.2, 6.8, 7.1, 7.5, 10.5], "组 B": [4.2, 4.9, 5.3, 5.9, 6.3, 6.8, 7.2, 7.7, 8.1, 8.6, 9.1, 9.7]}},
+  "paired": {"value_label": "测量值（a.u.）", "pairs": [{"id": "S1", "before": 7.1, "after": 5.4}, {"id": "S2", "before": 6.5, "after": 5.2}, {"id": "S3", "before": 8.1, "after": 7.4}, {"id": "S4", "before": 5.8, "after": 5.1}, {"id": "S5", "before": 7.7, "after": 6.4}, {"id": "S6", "before": 6.9, "after": 5.7}, {"id": "S7", "before": 8.8, "after": 7.2}, {"id": "S8", "before": 6.2, "after": null}]},
+  "interval": {"value_label": "误差变化（ms）", "reference": 0, "interval_label": "合成的 95% 区间", "estimates": [{"label": "模型 A", "estimate": -1.8, "low": -2.5, "high": -1.1}, {"label": "模型 B", "estimate": -0.4, "low": -1.2, "high": 0.4}, {"label": "模型 C", "estimate": 1.1, "low": 0.3, "high": 1.9}]},
+  "heatmap": {"row_labels": ["方法 A", "方法 B", "方法 C"], "column_labels": ["集合 1", "集合 2", "集合 3"], "values": [[0.58, 0.64, 0.71], [0.65, null, 0.77], [0.72, 0.79, 0.84]], "limits": [0, 1], "unit": "分数（a.u.）"},
+  "classification": {"labels": [0, 0, 0, 0, 1, 1, 1, 1], "scores": [0.1, 0.2, 0.55, 0.3, 0.5, 0.8, 0.4, 0.9]}
+}
