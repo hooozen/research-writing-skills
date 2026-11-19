@@ -32,6 +32,16 @@ Inspect the output and side effects. The agent should explain the unavailable in
 
 Verify 75%, 80%, +5 percentage points, and approximately +6.67% relative to A. The net increase of six correct predictions must not become “exactly six corrected images.” Preserve dependence, pairing, unknown split overlap, and causal uncertainty. Require an actual offline formula representation, a single-file dependency check, and a rendered inspection where available. If rendering cannot be inspected, report that limitation. Do not repeat already answered intake questions.
 
+## Report: HTML reading experience
+
+**Prompt**
+
+> 把下面的合成演示数据写成一份中文组会进展报告，受众是本领域研究生，请自行组织结构，输出单文件 HTML，我会在笔记本上看，也可能打印。全部为合成数据，须标明。项目比较两种图像预处理对分类准确率的影响：方案 A 在 200 张测试图像上答对 150 张，方案 B 答对 164 张；图像来自 40 名受试者，按受试者划分训练与测试。附带一张两组准确率的条形图，给出准确率公式，完整计数放在附录。
+
+**Review**
+
+Open the actual file in a browser at desktop width, at phone width (375 px) and in print preview. Expect the skill's report template rather than a newly invented page design: one reading column, a contents list generated from the section headings that tracks the current section on wide screens and collapses on phones, a figure that opens larger on click and closes with Esc, a rule-only table whose numbers are right-aligned and that scrolls inside its frame on a phone, an appendix that collapses on screen and expands in print, and native MathML for the formula. Expect 75.0% and 82.0%, +7 percentage points, about +9.3% relative, and subject-level dependence stated. Headings should state findings rather than "实验结果". Reject web fonts, CDN scripts, metric tiles, cards, icons, decorative animation, a dark theme that puts white figures on a dark page, and any visible template example content. Record checks that could not be run.
+
 ## Report: delegated settings and incomplete evidence
 
 **Prompt**
@@ -126,7 +136,7 @@ Probe two incomplete inputs without authorizing simulation: (1) request a box pl
 
 ## Physical typography, long labels and colorbars
 
-Use $scientific-chart-style with a long two-line header, first at 180 mm and then reflowed to 89 mm width, including a short fixed-height canvas. Repeat with Chinese labels and a heatmap colorbar, in B and D modes. Inspect the actual PNG, editable SVG and PDF at final size: titles, panel letters, axes, colorbar labels and legends must not overlap or be clipped. Long text should wrap and receive space without shrinking the physical font to fit. Export DPI must not change point sizes. A fixed canvas that is genuinely too small should cause re-layout or an honest limitation rather than an illegible export. Verify data, limits and group identities remain the same in print mode, with redundant marker/line distinctions. The white publication layout has no gray rounded card. Include an actual resize and export-backend change to check the final render again.
+Use $scientific-chart-style with a long two-line header, first at 180 mm and then reflowed to 89 mm width, including a short fixed-height canvas. Repeat with Chinese labels and a heatmap colorbar, in color and grayscale modes. Inspect the actual PNG, editable SVG and PDF at final size: titles, panel letters, axes, colorbar labels and legends must not overlap or be clipped. Long text should wrap and receive space without shrinking the physical font to fit. Export DPI must not change point sizes. A fixed canvas that is genuinely too small should cause re-layout or an honest limitation rather than an illegible export. Verify data, limits and group identities remain the same in print mode, with redundant marker/line distinctions. The white publication layout has no gray rounded card. Include an actual resize and export-backend change to check the final render again.
 
 ## Scientific chart: paired observations in both modes
 
@@ -136,7 +146,7 @@ Use $scientific-chart-style with a long two-line header, first at 180 mm and the
 
 **Review**
 
-Inspect the actual figures and caption. Expect seven complete trajectories matched by ID, with S5's missing follow-up disclosed and no invented zero or connecting line to a fabricated value. A figure may also retain S5's observed baseline if distinguished and explained; it must not silently turn eight enrolled units into eight pairs. Preserve a.u., explicitly synthetic labels, exact values and the same limits/group identities in both modes. Expect high-contrast blue colors and a designed D print mode with readable point/line distinctions, 89 mm export width and editable SVG text. Check final-size glyphs, legend/label collisions and traceable data; no significance or unsupported interval should appear.
+Inspect the actual figures and caption. Expect seven complete trajectories matched by ID, with S5's missing follow-up disclosed and no invented zero or connecting line to a fabricated value. A figure may also retain S5's observed baseline if distinguished and explained; it must not silently turn eight enrolled units into eight pairs. Preserve a.u., explicitly synthetic labels, exact values and the same limits/group identities in both modes. Expect the default blue palette and the designed grayscale print mode with readable point/line distinctions, 89 mm export width and editable SVG text. Check final-size glyphs, legend/label collisions and traceable data; no significance or unsupported interval should appear.
 
 ## Advanced chart definitions and incomplete inputs
 
@@ -164,7 +174,7 @@ Verify that the Agent finds the ROC card via the text/JSON index, reads only rel
 
 **Review**
 
-Verify direct discovery of `count_share`, one-chart invocation and D print encodings. Expect 70/100 and 55/100, no normalization by 125 and no composition stack. Keep supplied units, denominator, overlap and synthetic status explicit, including localized structural labels when Chinese is selected. Record only files actually read, verify absence of unrelated figure exports and inspect readability at final size.
+Verify direct discovery of `count_share`, one-chart invocation and grayscale print encodings. Expect 70/100 and 55/100, no normalization by 125 and no composition stack. Keep supplied units, denominator, overlap and synthetic status explicit, including localized structural labels when Chinese is selected. Record only files actually read, verify absence of unrelated figure exports and inspect readability at final size.
 
 ## Agent reference retrieval: insufficient raw observations
 
