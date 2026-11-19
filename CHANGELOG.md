@@ -6,6 +6,8 @@ All notable changes to this repository are documented here.
 
 ### Added
 
+- Add `infohub-maintenance` as an optional, separately installable integration for existing InfoHub research workspaces, covering project data revisions, local snapshots/exports, report delivery and unified Web/MCP maintenance without making warehouse publication or InfoHub a writing prerequisite.
+
 - Add native editable results, sample-composition and parameter tables to the scientific presentation template, with shared alignment, units, precision, missing-state and derived-value rules; expand the demonstration from twelve to fifteen slides.
 - Add `scientific-presentation-style`: the scientific chart palette adapted for projection, 19 chart-to-PowerPoint representation rules, native editable bar/XY charts and scientific geometry, and a reproducible twelve-slide synthetic template specification.
 - Include explicit data-bound versus geometric editability guidance, source data in notes, missing-observation handling and regression checks for presentation statistics/data preservation.

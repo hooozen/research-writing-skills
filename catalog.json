@@ -39,6 +39,23 @@
       "related_skills": [
         "scientific-chart-style"
       ]
+    },
+    {
+      "name": "infohub-maintenance",
+      "path": "skills/infohub-maintenance",
+      "description": "Maintain an existing InfoHub research workspace: project datasets, previews, annotations, local snapshots and exports, report delivery, and unified Web/MCP services. Optional integration for installations using InfoHub; ordinary research does not require warehouse publication. Not a prerequisite for writing reports or figures.",
+      "optional": true,
+      "tags": [
+        "infohub",
+        "project-workspace",
+        "research-data",
+        "local-publication",
+        "web-services",
+        "mcp"
+      ],
+      "related_skills": [
+        "research-progress-report"
+      ]
     }
   ]
 }

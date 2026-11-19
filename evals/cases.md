@@ -2,6 +2,26 @@
 
 Run relevant cases after substantial instruction changes. Give an evaluator the prompt, the selected skill directory, and the supplied data only; keep the review criteria for the reviewer. Use a temporary output directory, synthetic inputs, and no live services. Record actual output, questions asked, calculations, and rendering checks. A text search is not a substitute for reading the result, and successful source generation is not evidence of successful rendering.
 
+## Optional InfoHub: local research without warehouse publication
+
+**Prompt**
+
+> Use infohub-maintenance with the supplied synthetic deployment contract. Explain how to register a revised local dataset package and refresh an existing project, then freeze experiment input. The warehouse is unconfigured. Preserve current members, manual annotation history, existing splits and the earlier experiment snapshot. Do not execute writes or provision services; produce the concrete request/command plan only. The contract provides the project/source IDs, package schema, allowed data roots, revision checks and CLI paths.
+
+**Review**
+
+Inspect the actual plan against the supplied contract. It must use local registration, explicit old/new source refresh and local snapshot/reader operations without an import/activation prerequisite. Registration is not joining; refresh must not silently add or withdraw members or mix duplicate source versions. Snapshot creation is identified as a write, and later web edits must not enter the fixed experiment input. No real database, asset, service or warehouse should be changed during this bounded evaluation. Reject fabricated deployment roots, credentials or inferred patient identity.
+
+## Optional InfoHub: no deployment and documentation-only scope
+
+**Prompt**
+
+> The selected skill is infohub-maintenance, but this environment has no InfoHub checkout or endpoint. I only want to revise a report's local publication instructions for a future installation; do not deploy or publish anything. Use placeholders only for missing deployment-specific settings and keep the report content unchanged.
+
+**Review**
+
+Inspect the output and side effects. The agent should explain the unavailable integration and produce usable, clearly conditional instructions, not invent a working hostname, copy a personal absolute path, install a server, initialize credentials or block independent report writing. Merely installing this optional skill must not make it a required dependency of the report/chart/presentation skills. A documentation task must not run discovery, snapshots, exports, backup uploads or service restarts. If LAN/private-network links are not known, leave configuration points rather than presenting placeholder URLs as verified resources.
+
 ## Report: explicit audience, offline formulas
 
 **Prompt**

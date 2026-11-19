@@ -11,6 +11,7 @@ Each skill is a self-contained directory built around `SKILL.md`. Supporting ref
 | [`research-progress-report`](skills/research-progress-report/) | Explain research from overview to evidence in plain language. Model reports require dataset splits, actual architecture and module data flow, loss formulas, training/stopping/model selection, and available results with metric purposes, formulas and interpretation. Follow the user's audience and outline in Markdown or HTML; retain detailed methods in the report or linked appendices. |
 | [`scientific-chart-style`](skills/scientific-chart-style/) | Publication-oriented scientific charts across disciplines. A direct index of 19 chart cards with minimal inputs, runnable single-chart examples, individual SVG/PNG references, high-contrast blue and D print modes, and statistical/export guidance. |
 | [`scientific-presentation-style`](skills/scientific-presentation-style/) | Scientific PowerPoint charts using the same high-contrast colors, with projection-size typography and native editable evidence. Includes reusable slide builders, synthetic template examples and PowerPoint representation rules for all 19 chart types. |
+| [`infohub-maintenance`](skills/infohub-maintenance/) | Optional integration for existing InfoHub workspaces: maintain project data, previews, annotations, local experiment snapshots/exports, report delivery and unified Web/MCP services. Warehouse publication remains optional. |
 
 Machine-readable discovery metadata is available in [`catalog.json`](catalog.json).
 
@@ -50,6 +51,18 @@ directories, and do not overwrite an existing installation without confirmation.
 ```
 
 Agents that support `SKILL.md` directories can load the installed skill directly. Other agents can read the selected `SKILL.md` as task instructions and resolve its linked resources relative to the skill directory. Files under `agents/` are optional platform adapters, not runtime requirements.
+
+## Optional InfoHub integration
+
+`infohub-maintenance` is a separately selectable integration for users who already use InfoHub. It is not required by the writing, chart or presentation skills. Installing it copies instructions only: it does not install a server, create databases, publish reports, register data or upload anything to a warehouse.
+
+```sh
+./scripts/install.sh --target "$SKILLS_DIR" infohub-maintenance
+```
+
+The catalog marks this integration with `optional: true`; this is descriptive metadata, not a dependency or an installer filter. As before, `--all` explicitly installs every packaged skill, including optional integrations. Select skill names when only writing/chart tools are wanted.
+
+When using the integration, locate the authorized InfoHub checkout and its current deployment instructions. The skill contains no personal hostnames, account paths or credentials. It keeps source data, project working revisions, local snapshots and warehouse versions distinct: repeated local research and experiment export do not require warehouse publication. A missing InfoHub installation does not block ordinary report/figure work or authorize provisioning a new service.
 
 ## Upgrade from the former chart skill
 
