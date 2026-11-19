@@ -1,44 +1,46 @@
 ---
 name: scientific-presentation-style
-description: "Create scientific PowerPoint templates with the high-contrast scientific-chart-style visual system. Adapt typography for projection, preserve statistical meaning, and use editable native charts, tables and scientific geometry. Use for research presentations and chart/table-focused PPT requests, not journal-figure sizing or unrelated slide branding."
+description: "Build scientific PowerPoint slides in the scientific-chart-style look: white canvas, saturated blue/orange/purple, projection-size type, and editable native charts, tables and plot geometry that keep their statistical meaning. Use for research presentations and chart- or table-focused PPT requests; not for journal figure sizing or unrelated slide branding."
 ---
 
 # Scientific Presentation Style
 
-Translate the scientific chart system into readable presentation slides: white canvas, saturated blue, dark orange and purple, dark text, restrained axes, direct units and honest evidence. Keep the user's existing deck or requested template authoritative. A scientific chart on a slide needs presentation-size typography; do not paste a publication figure with unreadable 7 pt labels.
+Slides use the same visual system as the publication charts (white canvas, blue `#1464D2`, dark orange `#B64B00`, purple `#7A3DB8`, dark text, restrained axes), with type sized for a projector. Never paste a 7 pt journal figure onto a slide. An existing deck or a requested template always takes priority over these defaults.
 
-## Choose the workflow
+## 1. Pick the workflow
 
-- For a new deck, default to a 16:9 canvas. Use [assets/design-tokens.json](assets/design-tokens.json) and read [references/presentation-design.md](references/presentation-design.md) for colors, physical-point sizes, spacing, plot frames and editability rules.
-- Use the installed presentation-authoring workflow and its requested destination. In an Artifact Session, author the existing bound `presentation` and preserve its exact artifact reference. A saved Spaces presentation can be exported to PowerPoint by the user. Do not create a separate file or unrelated cloud deck to bypass the destination's rules.
-- For a focused chart edit, preserve the surrounding theme, text and geometry unless their change is requested. Apply local chart styling rather than replacing the entire deck theme.
-- Identify whether the user needs data-bound native charts, editable vector geometry, or a static supplied figure. Default to native editable evidence. State when a geometric chart requires regeneration after data changes; a picture or SVG image is not an editable chart dataset.
+- **New deck:** 16:9. Use [assets/design-tokens.json](assets/design-tokens.json) and read [references/presentation-design.md](references/presentation-design.md) for colors, type sizes, layout and editability.
+- **Destination:** use the presentation tool and destination the environment provides. In an Artifact Session, edit the bound `presentation` and keep its artifact reference; a saved Spaces deck can be downloaded as `.pptx`. Don't create a separate file or cloud deck to get around the destination.
+- **Editing one chart in an existing deck:** restyle that chart only. Keep the surrounding theme, text and positions unless asked.
+- **Editability:** default to native, editable evidence. Know which kind you're delivering: a data-bound native chart, editable shapes that must be regenerated when data change, or a static picture. A picture is never an editable dataset.
 
-## Select and preserve the chart
+## 2. Pick and preserve the chart
 
-Read only the relevant row of [references/chart-mapping.md](references/chart-mapping.md). It maps the 19 scientific chart types to suitable PowerPoint representations and the data each needs.
+Read only the relevant row of [references/chart-mapping.md](references/chart-mapping.md), which maps all 19 chart types to a PowerPoint representation and the data each needs. If `scientific-chart-style` is installed, its chart card gives the statistical definition; it's optional.
 
-Use `scientific-chart-style` when available for the selected chart's statistical definition, data requirements and original figure conventions. It is a companion, not a mandatory dependency: the mapping and design rules here remain usable independently. Do not invent observations, intervals, quartiles, density, pairing, censoring or test results to fill a template. Use [assets/example-data.json](assets/example-data.json) only for an explicitly requested demonstration/template example and retain the visible synthetic disclosure.
+Don't invent observations, intervals, quartiles, densities, pairs, censoring or test results to fill a layout. [assets/example-data.json](assets/example-data.json) is for an explicitly requested demo only, and its slides stay visibly labeled synthetic.
 
-Preserve observation units, n, denominators, signs, actual time spacing, missingness, reference values, category order and uncertainty definitions. Retain a zero origin for bars. Keep missing cells distinct from low values. Lines that represent steps must retain the step coordinates; a smoothed curve or equally spaced category axis can change scientific meaning.
+Keep units, n, denominators, signs, real time spacing, missing values, reference lines, category order and uncertainty definitions. Bars start at zero. Missing cells look different from low values. Step curves keep their steps; don't smooth them or put real times on an evenly spaced category axis.
 
-## Build slides with editable evidence
+## 3. Write the slides
 
-For a full research deck, establish the question, overall approach, available evidence and conclusion before expanding details. Follow a supplied outline. A gallery of chart types is a template, not the narrative of a real report. Use stable terminology, explain a new concept through its role, and keep titles and explanations in plain language.
+For a full research talk, settle the question, approach, evidence and conclusion before laying out slides, and follow the user's outline. A tour of chart types is a template, not a talk.
 
-Use a clear title, one main plot or a genuinely related pair, and one evidence caption. Keep the plot larger than its surrounding explanation. Use native chart titles, axes, legends and labels rather than overlaying duplicate text boxes. For custom scientific plots, use native paths, lines, markers and text with a shared coordinate transform. Keep complete source data in notes or a companion data file.
+- **Title states the point.** "Quality filtering raised validation accuracy from 75% to 80%" beats "Results". Keep it to one or two lines.
+- **One message per slide.** One main plot, or two that genuinely belong together, plus one caption with the evidence details. The plot is the largest thing on the slide.
+- **Plain words.** Same terminology as the report, new concepts introduced by what they do. No slogans or buzzwords (see the research-progress-report writing guide if it's installed).
+- **Native elements.** Use the chart's own title, axes, legend and labels instead of overlaid text boxes. For custom plots, draw native paths, lines, markers and text through one coordinate transform. Put full source data in the notes or a companion file.
+- **Tables for exact values.** Read [references/tables.md](references/tables.md). Labels left, numbers right, units in headers, consistent precision, missing values explained, highlights explained. A heatmap doesn't replace a requested table.
 
-Use a native table when exact values or several attributes need comparison. Read [references/tables.md](references/tables.md) for result comparisons, sample composition and methods/parameter tables. Keep labels left-aligned, numbers right-aligned, units in headers and precision consistent within each metric. Explain missing states and emphasis; never turn missing values into zeros or use an unexplained highlight as a claim of significance. A heatmap does not replace an exact-value table when the user needs one.
+[scripts/slide-builders.mjs](scripts/slide-builders.mjs) is an optional Artifact Tool adapter that builds count bars, time-series lines, scatter, two-group box plots, paired plots, intervals, heatmaps, ROC/PR, native tables, a style page, a grayscale example and an empty plot layout. Read [references/authoring-adapter.md](references/authoring-adapter.md) only when using it. Any capable PowerPoint tool can follow the same rules.
 
-The optional [scripts/slide-builders.mjs](scripts/slide-builders.mjs) is an Artifact Tool adapter. It creates counts, numeric-time lines, scatter, two-group box plots, paired observations, intervals, heatmaps, ROC/PR panels and native tables, plus a style page, grayscale example and empty plot layout. Read [references/authoring-adapter.md](references/authoring-adapter.md) only when using this implementation. Other capable PowerPoint tools can apply the same specification.
+What updates by itself and what doesn't: native bar and XY charts keep their data. Count/share labels are text, so refresh them when counts or denominators change. Box plots, paired plots, intervals and heatmaps are drawn shapes with data in the notes; editing a shape recalculates nothing, so rebuild them from new data.
 
-Native bar and XY charts retain their series/category values. The count/share labels are custom text: regenerate those labels when counts or denominators change, even if the bars update from edited data. Boxes, paired plots, intervals and heatmaps in this adapter are editable slide geometry with source data in notes; editing a shape does not recalculate its statistics. Rebuild those plots from updated data. For unsupported chart designs, use the mapping and the selected chart's definition rather than forcing the data into a sample layout.
+## 4. Check the deck
 
-## Verify the presentation
-
-- Render and inspect every slide at presentation size. Check CJK glyphs, labels, axes, legends, captions, contrast and unintended overlap. Reflow a crowded plot before reducing its fonts.
-- Inspect native chart series, x coordinates, category order and number formats against source data. Confirm geometric plots retain their actual coordinates, complete observations and interval endpoints.
-- Inspect every native table cell against the source. Check denominators, totals, percentage versus percentage-point changes, precision, units, missing-state definitions and any highlighted row. Table cells are editable literal values; refresh calculated cells after source changes.
-- Check the actual editability class: a native chart, editable shapes, and an embedded image are different deliverables. Do not claim that geometry is data-bound or that a preview proves PowerPoint editing behavior.
-- When exporting a PPTX is part of the authoring route, validate chart data/workbook references, native objects, fonts and slide size using that workflow. Test in PowerPoint only when available, and report unavailable application checks accurately.
-- Keep any template example marked synthetic. For real reports, replace example data and captions with the user's evidence, preserve the distinction between observations and interpretations, and remove unused layouts.
+- Render every slide at presentation size. Check CJK glyphs, labels, axes, legends, captions, contrast and overlaps. Reflow a crowded slide before shrinking type.
+- Compare native chart series, x values, category order and number formats with the source. Drawn plots keep their real coordinates, all observations and interval endpoints.
+- Check every table cell against the source: denominators, totals, percent vs. percentage points, precision, units, missing-value meanings, highlighted rows. Table cells don't recalculate.
+- State honestly what's editable: native chart, editable shapes or picture. A preview doesn't prove PowerPoint behavior.
+- If exporting PPTX is part of the workflow, validate chart data, native objects, fonts and slide size there. Test in PowerPoint only if it's available, and say so if it wasn't.
+- Template examples stay labeled synthetic. In a real deck, replace all example data and captions and delete unused layouts.

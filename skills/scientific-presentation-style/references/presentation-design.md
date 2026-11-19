@@ -1,10 +1,10 @@
-# Scientific chart system for presentations
+# Slide Design
 
 ## Visual system and point sizes
 
-Use a white 16:9 canvas with a flat composition, dark text and no decorative cards, shadows or 3D marks. Match a supplied deck's size and layout when editing it. The retained color system is:
+White 16:9 canvas, flat composition, dark text. No decorative cards, shadows, gradients or 3D marks. When editing a supplied deck, match its size and layout instead. Colors:
 
-| Role | Color | Grayscale D |
+| Role | Color | Grayscale |
 |---|---|---|
 | First/focal group | `#1464D2` | `#34383C` |
 | Second group | `#B64B00` | `#70767B` |
@@ -15,9 +15,9 @@ Use a white 16:9 canvas with a flat composition, dark text and no decorative car
 | Notes | `#626B73` | Same |
 | Axes/ticks | `#34383C` | Same |
 
-Keep group identity stable across the deck. Use point shapes or line styles as well as color where groups overlap or grayscale is requested. Use one color for one series. Count/share labels retain the correct population, and continuous outcomes keep their actual units. A light fill supports a visible outline or foreground mark; it does not replace one.
+A group keeps its color on every slide. Add marker shapes or line styles where groups overlap or grayscale is requested. A single series needs only one color. A light fill sits behind a visible outline or mark; it never replaces one.
 
-Projection typography is intentionally larger than publication typography:
+Type is much larger than in publication figures because slides are read from across a room:
 
 | Element | Presentation starting point | 96-DPI API pixels |
 |---|---:|---:|
@@ -42,7 +42,7 @@ The reference frame is 1280 × 720 px. Keep roughly 64 px outer margins, a title
 - **Empty plot layout:** retain a plot placeholder and a caption placeholder without fabricated experimental values.
 - **Native table:** blue header, dark text on white body cells, numerical columns right-aligned, minimal horizontal rules and explicitly explained emphasis. Read [tables.md](tables.md) when building result, composition or parameter tables.
 
-Use short, direct titles. Captions identify the observation unit, n/denominator, metric/unit, reference, uncertainty and source as applicable. A template guide may explain how to replace a chart; a real research slide should show the research content rather than authoring instructions.
+Titles state the slide's point in a sentence, not a topic label ("Latency fell from 50 to 40 ms per image", not "Latency"). Captions give the observation unit, n or denominator, metric and unit, reference, uncertainty and source. A template page may explain how to replace a chart; a real research slide shows research content, never authoring instructions.
 
 ## Editability
 

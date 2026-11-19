@@ -19,7 +19,7 @@
     {
       "name": "scientific-presentation-style",
       "path": "skills/scientific-presentation-style",
-      "description": "Create scientific PowerPoint templates with the high-contrast scientific-chart-style visual system. Adapt typography for projection, preserve statistical meaning, and use editable native charts, tables and scientific geometry. Use for research presentations and chart/table-focused PPT requests, not journal-figure sizing or unrelated slide branding.",
+      "description": "Build scientific PowerPoint slides in the scientific-chart-style look: white canvas, saturated blue/orange/purple, projection-size type, and editable native charts, tables and plot geometry that keep their statistical meaning. Use for research presentations and chart- or table-focused PPT requests; not for journal figure sizing or unrelated slide branding.",
       "tags": ["powerpoint", "slides", "scientific-figures", "editable-charts", "tables", "templates"],
       "related_skills": ["scientific-chart-style"]
     },

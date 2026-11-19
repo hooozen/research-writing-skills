@@ -1,4 +1,4 @@
 interface:
   display_name: "科研图表 PowerPoint"
-  short_description: "Scientific slides with editable charts and tables"
-  default_prompt: "Use $scientific-presentation-style to create a research presentation with the high-contrast palette, readable typography, and editable native charts, tables or scientific geometry."
+  short_description: "Research slides with editable scientific charts and tables"
+  default_prompt: "Use $scientific-presentation-style to build research slides in the scientific chart palette: titles that state the point, projector-size type, and editable native charts, tables or plot shapes."
