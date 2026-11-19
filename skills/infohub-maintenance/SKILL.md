@@ -1,45 +1,43 @@
 ---
 name: infohub-maintenance
-description: "Maintain an existing InfoHub research workspace: project datasets, previews, annotations, local snapshots and exports, report delivery, and unified Web/MCP services. Optional integration for installations using InfoHub; ordinary research does not require warehouse publication. Not a prerequisite for writing reports or figures."
+description: "Maintain an existing InfoHub research workspace: project datasets, previews, annotations, local snapshots and exports, report delivery, and the unified Web/MCP services. Optional integration for people who already run InfoHub; ordinary research never needs warehouse publication, and the writing and chart skills don't need InfoHub."
 ---
 
 # InfoHub Maintenance
 
-Use this optional integration when the task concerns an existing InfoHub workspace or an explicitly requested change to its services. Writing a report or preparing research data alone does not imply deploying InfoHub, registering data, publishing a report, or archiving to a warehouse.
+Use this only when the task is about an existing InfoHub installation, or the user explicitly asks to change its services. Writing a report or preparing data doesn't by itself mean deploying InfoHub, registering data, publishing a report or archiving to the warehouse.
 
-## Establish the installation
+## Find the installation first
 
-Locate the authorized InfoHub checkout from the task, project instructions, or configured `INFOHUB_ROOT`. Read its `AGENTS.md`, `README.md`, relevant source and current configuration. Discover service names, allowed data roots, LAN/Tailnet addresses and API contracts there; do not assume another user's paths, hostnames, credentials or ports.
+Locate the authorized checkout from the task, the project's instructions or `INFOHUB_ROOT`. Read its `AGENTS.md`, `README.md`, the relevant code and the current configuration. Service names, data roots, LAN and private-network addresses and API contracts come from there, never from memory or another user's setup.
 
-If InfoHub is absent, continue independent writing, figures or local artifact preparation. Explain that the integration is unavailable; do not provision a server, create credentials or publish elsewhere merely to satisfy this skill. An explicit installation request requires its own concrete deployment scope.
+If there's no InfoHub, carry on with the writing, figures or local files and say the integration isn't available. Don't provision a server, create credentials or publish somewhere else to make this skill apply. Installing InfoHub is a separate, explicitly scoped request.
 
-## Route the task
+## Where to go
 
-| Intent | Route |
-| --- | --- |
-| Create a project, register or repeatedly revise data, annotate, freeze experiment input, export locally | Read [project data workflows](references/project-data.md) |
-| Extend a source adapter, viewer, page, API, gateway or MCP endpoint | Read [Web services and delivery](references/web-services.md) |
-| Draft or revise a progress report or scientific chart | Use the applicable writing/chart skill independently; return here only for requested InfoHub integration |
-| Deliver a report through InfoHub | Follow the deployment's report publisher and delivery instructions; publication is a separate requested action |
-| Publish project results to a warehouse | Freeze a complete project snapshot and follow the installation's warehouse skill/runbook and publication task |
-| Inspect, plan, or update skills/documentation | Stay within that scope; do not create snapshots, exports, imports or deployments incidentally |
+| The task | Read |
+|---|---|
+| Create a project; register or revise data; annotate; freeze experiment input; export locally | [references/project-data.md](references/project-data.md) |
+| Change a source adapter, viewer, page, API, gateway or MCP endpoint | [references/web-services.md](references/web-services.md) |
+| Write or revise a report or chart | The writing or chart skill, on its own. Come back here only for an InfoHub step the user asked for. |
+| Deliver a report through InfoHub | The installation's report publisher. Publishing is its own requested action. |
+| Publish project results to the warehouse | Freeze a complete project snapshot, then follow the installation's warehouse runbook. |
+| Update skills or documentation | Stay in that scope. No snapshots, exports, imports or deployments on the side. |
 
-The writing skills in this collection do not require this skill or a running InfoHub installation. Platform-specific metadata under `agents/` is optional.
+## Rules that protect research data
 
-## Preserve the research workflow
+- **Working data is usable now.** Project data can be previewed, annotated, revised, used in experiments and exported locally without ever reaching the warehouse.
+- **Layers stay separate.** Source records, model outputs, human revisions, review decisions, membership and existing experiment splits are kept apart. Inheritance and refresh bind explicit revisions; upstream changes never silently replace project results.
+- **Unknown is not negative.** Keep unknown values, original option order, partially known QA and provenance. Don't infer patient identity or labels from file names. Apply mask or QA conventions only where that project defines them.
+- **Assets by reference, retained by hash.** Reference stable original images in place. Keep project-needed assets from disposable mirrors or embedded containers as separate copies with content hashes. A local manifest is not automatically a portable copy.
+- **One writer, checked revisions.** Use the unified write path with expected-revision checks. Keep undo history and old masks. Test writes against isolated databases and synthetic fixtures, never live annotations.
+- **No side effects from UI work.** A UI or catalog change never recomputes QA, redraws splits, changes members or publishes. Those happen only when the task asks, as a new traceable revision.
+- **Report the real stage.** Validated, activated and fully accepted are different states. A version can be active while export or backup acceptance still needs recovery.
 
-- Project working data is usable immediately for preview, annotation, repeated changes, experiments and local export. Warehouse publication is an optional destination, not a condition for using a dataset or completing a project.
-- Preserve source records, model outputs, human revisions, review decisions, membership and existing experiment splits separately. Project inheritance and refresh bind explicit revisions; upstream changes do not silently replace project results.
-- Preserve unknown values, original option order, partial-known QA and provenance. Do not infer patient identity or labels from filenames. Apply medical mask/QA conventions only when established by that project's standards.
-- Reuse original images by reference when stable. Retain project-needed assets from disposable mirrors or embedded data independently, with immutable content hashes. A local manifest is not automatically a portable copy of every image.
-- Use the unified write boundary and expected-revision checks. Preserve undo events and historical masks. Use isolated databases and synthetic fixtures for write tests; do not use live research annotations as smoke-test input.
-- Do not recompute QA, redraw experiment splits, change members or publish because of a UI or catalog update. Perform such changes only within the actual task, with a new traceable revision.
-- Distinguish validation, activation and completed acceptance. A version may be active while export or backup acceptance still needs recovery; report the real stage and preserve checkpoints.
+## Delivering and sharing
 
-## Delivery and scope
+Reuse the installation's navigation, UI components, asset service and gateway paths. Reports live in the report center; dataset tools live in the viewing and annotation systems. Keep legacy URLs working and keep a single annotation writer.
 
-Reuse the installation's shared navigation, UI components, asset service and gateway paths. Keep report content in the report center and dataset tools in the viewing/annotation systems. Respect existing legacy URL compatibility and keep one annotation writer.
+When sharing a resource, give both the LAN and the private-network link if both exist, with the same path, query and fragment. Say which links you actually opened. Never substitute `localhost` or an internal backend port, invent a hostname, or claim a second device was tested when it wasn't.
 
-When sharing a configured InfoHub resource, provide both LAN and private-network links when those access modes exist. Keep the path, query and fragment identical; report which endpoints were actually verified. Do not substitute localhost or an internal backend port, invent a private hostname, or claim a second device was tested without evidence.
-
-Existing conversation authorization governs the work; do not ask again for routine steps already authorized. Data publication, external transfer and access changes must remain within the requested scope. Never bundle credentials, database dumps, raw research data or private deployment configuration in a report or skill package.
+Authorization already given in the conversation covers routine steps; don't re-ask. Data publication, external transfers and access changes stay within what was requested. Never put credentials, database dumps, raw research data or private deployment configuration into a report or a skill package.
