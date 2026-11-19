@@ -1,6 +1,6 @@
 # Additional Scientific Charts — optional background
 
-Start with the [19-chart index](chart-index.md), then read one selected chart card and use its single-chart command. This longer guide is optional background for comparing related methods. The B/D tokens in [style-guide.md](style-guide.md) control appearance, not the analysis; overview images are optional browsing aids.
+Optional background. To make one chart, use the [chart index](chart-index.md) and that chart's card instead. Read this when choosing between related methods. Appearance is set by the [style guide](style-guide.md), not by anything here.
 
 ## Choose from the evidence
 

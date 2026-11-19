@@ -1,6 +1,6 @@
 # Scientific chart examples — optional background
 
-Start with the [19-chart index](chart-index.md), then read the selected standalone chart card. This longer guide is optional background for comparing related encodings; no overview image or full gallery-source read is required. It does not prescribe an analysis method, sample size, significance threshold, or scientific conclusion.
+Optional background. To make one chart, use the [chart index](chart-index.md) and that chart's card instead. Read this when choosing between related encodings. It doesn't prescribe an analysis method, sample size, significance threshold or conclusion.
 
 ## Choose an encoding
 
@@ -43,7 +43,7 @@ Start with the [19-chart index](chart-index.md), then read the selected standalo
 
 ## Publication layout and colour modes
 
-The examples use the **high-contrast blue** palette, with dark orange and purple companions, on white. **D** is a separately designed grayscale mode, retaining marker/line-style differences and the same data, statistics, scale limits and category order. Do not use a grayscale conversion that makes groups indistinguishable. A filled density is a light background layer; observations and summaries remain legible in front of it.
+The examples use the **high-contrast blue** palette, with dark orange and purple companions, on white. The grayscale print mode (`--mode grayscale`) is designed separately, retaining marker/line-style differences and the same data, statistics, scale limits and category order. Do not use a grayscale conversion that makes groups indistinguishable. A filled density is a light background layer; observations and summaries remain legible in front of it.
 
 Each single figure is 89 mm wide with ordinary labels near 7 pt at that exported size; the browsing overview is deliberately larger and must not be shrunk into a manuscript column. Recompose a multi-panel figure at the intended final dimensions rather than scaling a large figure down until its labels become too small. Font size is in physical points, independent of raster DPI. The selected baseline is a starting point; follow a named target journal's current requirements from [publication-references.md](publication-references.md).
 
