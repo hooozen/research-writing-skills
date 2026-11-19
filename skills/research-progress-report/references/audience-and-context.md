@@ -1,45 +1,45 @@
-# Audience and Context Calibration
+# Audience and Context
 
-Use the selected audience to decide what must be explained, what can be assumed, and which evidence details belong in the main narrative. Scientific accuracy and traceability do not change across audiences.
+The audience decides what you explain, what you can assume, and which details sit in the main text versus an appendix. It never changes accuracy or traceability.
 
-For model reports, [model-reporting.md](model-reporting.md) defines required coverage regardless of audience: data splits, architecture diagrams and module data flow, loss formulas, training/stopping/selection settings, and available metric formulas and results. Explain the central mechanism plainly in the main narrative and place specialist detail in explicitly linked appendices when needed. Audience calibration relocates detail; it does not remove it or justify inventing unavailable facts.
+Three rules hold for every audience:
 
-Every audience needs a coherent overview and clear relationships. Specialist knowledge permits less textbook background; it does not justify unexplained project-specific names, skipped reasoning, or dense terminology in place of an explanation. Introduce an unfamiliar concept through the problem it addresses and its role here, not merely an expanded acronym. Use consistent names and explain meaningful aliases.
+- **Nobody has seen your sources.** Readers don't have the chat, the attachments or earlier drafts. Expertise tells you which textbook concepts to skip, not what this project's samples, baselines, decisions or internal names are. Skip project background only when the user confirms the audience already shares it.
+- **Expertise doesn't excuse jargon.** Specialists still need a coherent overview, explained project-specific names and visible reasoning.
+- **Model detail doesn't shrink.** [model-reporting.md](model-reporting.md) applies to every audience; for a general audience, keep the central mechanism in the main text and move specialist detail to a linked appendix.
 
-Use the audience description already supplied by the user, or choose a reasonable profile when the user explicitly delegates that decision. Otherwise ask before the first full draft. These profiles calibrate depth; they are not a mandatory menu. Treat the selected profile and public/lab context as internal configuration. Do not print labels such as `小领域科研人群` or `研究伙伴` in the report unless the user explicitly asks for audience metadata.
+Use the audience the user described, or choose one when they explicitly delegate. Otherwise ask once before the first full draft. The profile and the public/lab context are internal settings: don't print labels such as `小领域科研人群` in the report unless the user asks for that metadata.
 
-Assume the audience has no access to the author–agent conversation, source bundle, or earlier drafts. Audience expertise determines which disciplinary concepts need explanation; it does not grant knowledge of this project's samples, baselines, decisions, chronology, or internal names. Omit project background only when the user explicitly confirms the shared prior material.
+## Profiles
 
-## Audience profiles
+These are calibration anchors, not personas you must pick from.
 
-| Audience | Assume | Explain in the report | Evidence and methods emphasis | Avoid |
+| Audience | Assume they know | Explain | Emphasize | Avoid |
 |---|---|---|---|---|
-| 普遍高学历人群 | General scientific literacy, quantitative reasoning, and scientific skepticism; no field-specific background | The research problem, why it matters, essential domain concepts, and how the evidence answers the question | Intuitive scales and comparisons, transparent study design, key controls, uncertainty in plain language, and a small number of decisive results; link full model methods in an appendix | Unexplained acronyms, unexplained protocol detail interrupting the narrative, field-internal debates without context, and oversimplified certainty |
-| 大领域科研人群 | Foundational and common knowledge of the broad discipline; limited knowledge of this specific subfield and its current frontier | The subfield landscape, the precise gap, why the chosen approach is credible, and how it differs from common alternatives | Design choices, major controls, benchmark or baseline, interpretable effect sizes, and enough methods detail to assess validity | Re-teaching broad disciplinary basics or assuming familiarity with niche methods and recent disputes |
-| 小领域科研人群 | Current questions, major methods, benchmarks, and recognized bottlenecks in the research direction | Only project-specific concepts, nonstandard choices, changed assumptions, and evidence that alters the state of the problem | Exact experimental conditions that affect interpretation, controls, ablations, uncertainty, failure modes, comparison to state of the art, and unresolved technical risks | Introductory background, vague claims such as “significantly improved” without a defined baseline, or hiding null and failed results |
-| 研究伙伴 | Relevant disciplinary expertise; project goals, terminology, and history only when explicitly confirmed as shared | A compact recap of the previous state, what changed since the last update, why a deviation was made, what the newest evidence means, and what input or decision is needed | Reproducible parameters, versions and sample identifiers when material, raw and processed results, anomalies, blockers, owners, dependencies, and immediate next experiments | General disciplinary background, assuming access to the authoring conversation, polished narrative at the expense of operational facts, or burying blockers and decisions |
+| 普遍高学历人群 (educated non-specialists) | Scientific literacy and healthy skepticism; no field background | The problem and why it matters, essential domain concepts, how the evidence answers the question | Intuitive scales and comparisons, the study design, key controls, uncertainty in plain words, a few decisive results; full model methods in an appendix | Unexplained acronyms, protocol detail that breaks the narrative, insider debates, false certainty |
+| 大领域科研人群 (same broad field) | Fundamentals of the discipline; little about this subfield's frontier | The subfield landscape, the precise gap, why this approach is credible and how it differs from common alternatives | Design choices, main controls, baselines, interpretable effect sizes, enough method to judge validity | Re-teaching basics; assuming niche methods or recent disputes are known |
+| 小领域科研人群 (same subfield) | Current questions, main methods, benchmarks and bottlenecks | Only what's project-specific: nonstandard choices, changed assumptions, evidence that moves the field | Conditions that affect interpretation, controls, ablations, uncertainty, failure modes, comparison with the state of the art, open risks | Introductory background, "significantly improved" with no baseline, hiding null or failed results |
+| 研究伙伴 (collaborators) | Domain expertise; project history only if confirmed as shared | A short recap of the last state, what changed, why, what the new evidence means, what input or decision is needed | Reproducible parameters, versions and sample IDs when they matter, raw and processed results, anomalies, blockers, dependencies, next experiments | General background, assuming they read the chat, polish at the expense of operational facts, burying blockers |
 
-These profiles are calibration anchors, not rigid personas. If the actual audience spans levels, write the main narrative for the user-designated primary audience and layer detail for the others. If selection is delegated, default to the least specialized intended reader and place specialist detail in appendices or linked tables.
+For a mixed audience, write the main text for the primary audience the user named and layer extra detail for the others. If the choice was delegated, write for the least specialized intended reader and put specialist detail in appendices or linked tables.
 
-## Public report
+## Public briefing
 
-- Make the central finding and its significance understandable before presenting technical detail.
-- Define specialized terms at first use and use figures that can stand with their captions.
-- Include enough methods and uncertainty to prevent the report from becoming publicity copy.
-- Respect any provided confidentiality, consent, embargo, de-identification, or disclosure constraints. If public release conflicts with an explicit constraint, flag the issue outside the report instead of silently publishing or silently altering the evidence.
-- Keep internal logistics, tentative blame, credentials, and operational identifiers out unless the user explicitly wants them public.
+- Make the central finding and why it matters clear before the technical detail.
+- Define specialist terms at first use; figures should stand on their own with their captions.
+- Keep enough method and uncertainty that the report doesn't turn into publicity.
+- Respect confidentiality, consent, embargo and de-identification constraints. If publishing conflicts with one, flag it outside the report; don't silently publish or silently edit the evidence.
+- Leave out internal logistics, tentative blame, credentials and operational identifiers unless the user wants them public.
 
 ## Lab meeting
 
-- Prioritize what changed, the evidence, failed or ambiguous results, technical causes under consideration, and decisions needed from the group.
-- Include consequential protocol changes, controls, sample exclusions, quality checks, and analysis versions.
-- Make next experiments testable: connect each to the uncertainty it addresses, expected discriminating outcomes, dependencies, and decision criteria.
-- Use owners and dates only when supplied or explicitly requested. Do not invent commitments.
+- Lead with what changed, the evidence, failed or ambiguous results, suspected technical causes, and decisions the group needs to make.
+- Include protocol changes, controls, exclusions, quality checks and analysis versions that matter.
+- Make next experiments testable: which uncertainty each one addresses, what result would discriminate, dependencies, decision criteria.
+- Add owners and dates only if supplied or requested.
 
 ## Depth test
 
-For every paragraph, ask whether it enables this audience to understand a conclusion, evaluate evidence, follow a decision, or act on the next step. Compress or relocate content that does none of these.
+For each paragraph, ask whether it helps this audience understand a conclusion, judge evidence, follow a decision or act on a next step. Shorten or move anything that does none of those, but check the overall route first: the opening and section openings must still let a reader explain the problem, approach, how parts connect and current status.
 
-Check the overall route before shortening paragraphs: the opening and section openings should let the reader explain the problem, overall approach, how the parts connect, and current state. Keep introductions and transitions that are necessary for that understanding.
-
-Then apply a standalone-reader test: hand the report to a representative audience member without the prompt, attachments, previous draft, or chat history. They should still be able to identify the problem, relevant prior state, project objective, meaning of each comparison, reason for each major action, and basis of each conclusion.
+Then hand the report, mentally, to a typical reader with no access to the prompt, attachments, earlier drafts or chat. They should still be able to identify the problem, the prior state, the objective, what each comparison means, why each major action was taken and what each conclusion rests on.

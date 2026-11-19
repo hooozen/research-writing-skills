@@ -1,97 +1,97 @@
-# Model Methods and Performance
+# Reporting a Model
 
-Use this reference whenever a progress report introduces, evaluates or materially changes a model. The required detail belongs in the reader-facing report or its explicitly linked appendix, not only in internal notes. Preserve the user's outline and language; these are coverage requirements, not mandatory headings. Apply them to each model or shared protocol, describing shared settings once and differences explicitly.
+Read this whenever a report introduces, evaluates or materially changes a model. Everything below belongs in the reader-facing report or a linked appendix, not only in your notes. These are coverage requirements, not mandatory headings: fit them into the user's outline and language. When several models share a protocol, describe the shared part once and spell out the differences.
 
-## Establish what was actually done
+## Start from what was actually run
 
-Use the supplied implementation, configuration, split manifests, logs and predictions as evidence. Record the model/configuration version or run identifier and checkpoint when available. A paper's default architecture and a library's default settings are not proof of this run's behavior. Distinguish planned, implemented, trained and evaluated components. If sources disagree, resolve the difference before reporting a definite value; otherwise identify the conflicting field and its consequence.
+Use the supplied code, configs, split manifests, logs and predictions as the evidence. Note the config version or run ID and checkpoint when available. A paper's default architecture or a library's default settings tell you nothing about this run. Keep planned, implemented, trained and evaluated components distinct. If two sources disagree, resolve it before stating a value; otherwise name the conflicting field and why it matters.
 
-For a proposed or untrained model, explain the supported design and mark training or evaluation as pending. In a requested incomplete draft, use localized markers such as `[待补充：每设备 batch size、梯度累积次数及实际优化器更新步数]`. In a completed report, obtain essential missing evidence or describe its absence as a specific limitation. Do not fill gaps with typical values, assumed standard losses or synthetic outcomes.
+For a model that's proposed but not trained, describe the design that's supported and mark training and evaluation as pending. In a requested draft, mark gaps precisely, e.g. `[待补充：每设备 batch size、梯度累积次数及实际优化器更新步数]`. In a finished report, get the missing evidence or state the specific limitation. Never fill a gap with a typical value, a standard loss you assume, or a synthetic result.
 
-## Dataset composition, splits and leakage
+## Data and splits
 
-Use a compact table for each split's source/version, purpose, observation unit, number of independent subjects/groups, number of images/records and proportion with an explicit denominator. Include class/target distribution where relevant. Explain inclusion/exclusion, missing labels, preprocessing and the relationship between parent datasets and subsets. Separate planned split sizes from final usable counts.
+Give a compact table per split: source and version, purpose, observation unit, number of independent subjects or groups, number of images or records, and share of the total with an explicit denominator. Add class or target distribution when relevant. Explain inclusion and exclusion, missing labels, preprocessing, and how subsets relate to their parent dataset. Keep planned split sizes separate from final usable counts.
 
-State the split procedure: random, stratified, grouped, temporal, site-based or a supplied fixed split; include the split seed or manifest identifier when available. Identify the independence unit. Repeated scans, both eyes, video frames, patches or augmentations from one subject must not silently become independent train/test samples. Describe actual overlap controls and residual leakage risks rather than asserting independence without evidence.
+Say how the split was made (random, stratified, grouped, temporal, by site, or a supplied fixed list) and give the seed or manifest ID. Name the unit of independence: repeated scans, both eyes, video frames, patches or augmentations of one subject must not end up on both sides of a split by accident. Describe the actual overlap controls and any remaining leakage risk instead of asserting independence.
 
-Give each dataset an explicit role:
+Give each set an explicit role:
 
-- Training fits model parameters and any learned preprocessing statistics.
-- Validation/development data tune hyperparameters, stopping, calibration or thresholds, and select checkpoints, according to the actual protocol.
-- Final test data estimate performance after those choices are fixed. External or temporal test sets need their own source and eligibility description.
+- **Training** fits model parameters and any learned preprocessing statistics.
+- **Validation / development** tunes hyperparameters, stopping, calibration or thresholds and selects checkpoints, as the actual protocol says.
+- **Test** estimates performance after all of those choices are fixed. External or temporal test sets need their own source and eligibility description.
 
-Do not infer roles solely from filenames. Explain calibration sets, nested subsets and shared data use explicitly. State where normalization, imputation, feature selection, resampling and augmentation are fit or applied; transformations fit on held-out data can leak information. For cross-validation, give folds, grouping/stratification, inner versus outer selection, repetition/seeds, retraining procedure and out-of-fold/aggregate reporting as applicable. Say whether an independent final test set exists.
+Don't infer roles from file names. Spell out calibration sets, nested subsets and shared use. Say where normalization, imputation, feature selection, resampling and augmentation are fit and applied: anything fit on held-out data leaks. For cross-validation, give folds, grouping or stratification, inner vs. outer selection, repeats and seeds, retraining, and how out-of-fold results are aggregated. Say whether an independent final test set exists.
 
-## Architecture, module explanations and data flow
+## Architecture and data flow
 
-Provide an overall network diagram and detailed internal diagrams for custom, unfamiliar or materially modified modules. Consult [network-diagram-references.md](network-diagram-references.md) for classic-paper conventions. Draw the actual network; a reference image does not substitute for the project's architecture. When the user explicitly requests text only, preserve the trace in prose and state any omitted diagram outside the artifact if it affects completeness.
+Draw an overall network diagram, plus an internal diagram for every custom, unfamiliar or materially modified module. [network-diagram-references.md](network-diagram-references.md) lists classic figures worth borrowing conventions from; draw the actual network, not the reference. If the user asks for text only, keep the full trace in prose and mention outside the report that the diagram was omitted.
 
-The overall diagram should locate inputs/modalities, preprocessing boundaries, backbone/stages, task heads, outputs and supervised loss attachment points. Mark repeat counts and key tensor shapes with a defined layout, such as $B\times C\times H\times W$ or $B\times L\times D$. Label addition, concatenation and multiplication distinctly. Show projection, resizing, cropping, reshape, pooling or broadcast when needed to explain a connection. Separate training-only branches, frozen/trainable parts and inference-time behavior when they differ. Do not draw unknown dimensions as facts.
+The overall diagram shows inputs and modalities, where preprocessing ends, backbone stages, task heads, outputs, and where each loss attaches. Mark repeat counts and key tensor shapes in a stated layout such as $B\times C\times H\times W$ or $B\times L\times D$. Draw addition, concatenation and multiplication differently. Show projections, resizing, cropping, reshapes, pooling or broadcasting where a connection needs them. Separate training-only branches, frozen vs. trainable parts, and inference behavior when they differ. Don't draw unknown dimensions as facts.
 
-For every module, explain its purpose in this task, input, transformation, output and downstream consumer. Standard modules can be concise with the actual variant and consequential settings. For unfamiliar/custom modules, provide:
+For every module, say what it's for in this task, what goes in, what it does, what comes out and what consumes it. Standard modules can be brief: name the variant and the settings that matter. For custom or unfamiliar modules, also give:
 
-- The problem it addresses and the rationale for this design; distinguish motivation from demonstrated benefit.
-- Internal operations in execution order, relevant equations, tensor shape changes and key parameters, such as kernels/strides, projection widths, attention heads or gating functions.
-- Every branch and how outputs merge; specify where weights, masks or attention scores come from and how they are normalized or broadcast.
-- Which parameters are learned or frozen, how gradients/losses reach the module, any initialization or external reference input, and training/inference differences.
-- What differs from the cited standard module. Report supplied ablations when available; do not claim that novelty or added complexity itself establishes an improvement.
+- The problem it addresses and why this design; keep motivation separate from demonstrated benefit.
+- The internal operations in order, with equations, shape changes and key parameters (kernel and stride, projection widths, attention heads, gating functions).
+- Every branch and how branches merge; where weights, masks or attention scores come from and how they're normalized or broadcast.
+- Which parameters are learned or frozen, how gradients reach the module, any initialization or external reference input, and training vs. inference differences.
+- How it differs from the cited standard module. Report ablations if supplied; novelty or added complexity alone doesn't show an improvement.
 
-Trace one actual sample or symbolic batch through the network in connected prose. A symbolic trace illustrates shapes and operations, not observed predictions. Cross-check shapes at merges, module names, figure labels and formulas against the implementation. Captions should explain symbols, arrow conventions, modifications and the cited paper/figure used as visual inspiration. Missing code is a reason to mark a design as unresolved, not to invent its internals.
+Then trace one sample or symbolic batch through the network in connected prose. A symbolic trace shows shapes and operations, not observed predictions. Cross-check shapes at every merge, module names, figure labels and formulas against the code. Captions explain symbols, arrow styles, modifications and which paper figure inspired the drawing. Missing code means the design is unresolved, not that you get to invent it.
 
-## Loss functions and optimization targets
+## Loss
 
-Write the objective actually optimized, including each component and its coefficient. For a verified multi-term objective, a useful notation is
+Write the objective that's actually optimized, every term and its weight. For a verified multi-term objective, a convenient notation is
 
 $$
-\mathcal{L}_{\mathrm{total}}=\sum_{k=1}^{K}\lambda_k\mathcal{L}_k.
+\mathcal{L}_{\mathrm{total}}=\sum_{k=1}^{K}\lambda_k\mathcal{L}_k,
 $$
 
-Here $K$ is the number of actual loss terms and $\lambda_k$ their configured weights. This is a notation example, not an assumed project objective. Give each component's formula; naming “cross-entropy + Dice” is insufficient. Match logits versus probabilities, hard versus soft targets, class weights, smoothing, masks, ignored labels, reduction denominators and numerical stabilizers to the actual implementation. Explain regularization accurately: decoupled optimizer weight decay must not automatically become an added $L_2$ loss term.
+where $K$ is the number of loss terms and $\lambda_k$ their configured weights. This is notation, not an assumed objective. Give each term's formula; "cross-entropy + Dice" isn't enough. Match the implementation on logits vs. probabilities, hard vs. soft targets, class weights, smoothing, masks, ignored labels, reduction denominators and numerical stabilizers. Decoupled weight decay in the optimizer is not an $L_2$ term in the loss.
 
-Define predictions, ground truth, indices, sample/pixel/class sets, weights and normalization near the formula. Explain what error each term penalizes, why it is used, and which output it supervises. Include auxiliary/self-supervised targets and schedules when used. Distinguish a differentiable training surrogate from a thresholded evaluation metric and from the validation quantity used for selection. If the exact loss variant is unknown, identify the unresolved definition instead of choosing a familiar formula. Follow [math-formatting.md](math-formatting.md) for rendering.
+Define predictions, targets, indices, the sets summed over, weights and normalization next to the formula. Say what error each term penalizes, why it's there and which output it supervises. Include auxiliary or self-supervised targets and their schedules. Keep three things apart: the differentiable training loss, the thresholded evaluation metric, and the validation quantity used for selection. If the exact variant is unknown, say so instead of picking a familiar formula. Follow [math-formatting.md](math-formatting.md).
 
-## Training settings, stopping and final checkpoint
+## Training, stopping and the final checkpoint
 
-Use a compact settings table, with stage-specific differences when training has multiple phases. Report actual values, confirmed absences or specific missing fields:
+Use a compact settings table, split by stage if training has phases. Report actual values, confirmed absences, or the specific missing field:
 
-| Setting | Required account |
+| Setting | What to report |
 |---|---|
-| Input and initialization | Input size/modalities, preprocessing/normalization, training augmentation versus evaluation transforms; pretrained weights/source, trainable/frozen modules and phase transitions. |
-| Batch size | Per-device batch size, device count and gradient accumulation; effective batch size when different, including incomplete/variable batches if consequential. For ordinary equal-sized data-parallel batches, effective batch = per-device batch × devices × accumulation steps; do not apply this blindly to a different setup. |
-| Optimizer and loss | Optimizer and material parameters, initial learning rate, scheduler/warmup, weight decay or other regularization, objective/components/weights linked to their formulas. |
-| Duration | Planned maximum and actually completed epochs and optimizer update steps, validation interval, and any resume or interrupted run. Distinguish minibatch iterations from optimizer updates under accumulation; do not derive a step count without the sampler, batching and stopping details. |
-| Early stopping | Whether enabled; monitored validation quantity and minimize/maximize direction, validation cadence, patience unit, minimum improvement, warmup/burn-in when present, actual stopping point/reason and whether best weights were restored. If disabled, say so; a maximum epoch budget alone is not early stopping. |
-| Final model selection | Candidate runs/checkpoints, selected validation criterion and direction, evaluation population/aggregation, tie rule if relevant, and selected epoch/step/checkpoint. State whether final weights are best, last, EMA/SWA, an ensemble or a subsequent refit, with the actual procedure and rationale. |
-| Reproducibility | Seed(s), framework/relevant library versions, precision, hardware/device count and deterministic settings where material; identify missing run/config/checkpoint records. Include compute/time only when supplied and relevant. |
+| Input and initialization | Input size and modalities, preprocessing and normalization, training augmentation vs. evaluation transforms; pretrained weights and source, frozen vs. trainable modules, phase changes. |
+| Batch size | Per-device batch, device count, gradient accumulation, and the effective batch when different. For ordinary equal-size data parallelism, effective batch = per-device batch × devices × accumulation steps; check before applying this elsewhere. |
+| Optimizer and loss | Optimizer and its key parameters, initial learning rate, schedule and warmup, weight decay or other regularization, loss terms and weights linked to their formulas. |
+| Duration | Planned maximum and actual epochs and optimizer updates, validation interval, any resumed or interrupted run. Minibatches and optimizer updates differ under accumulation; don't derive step counts without the sampler, batching and stopping details. |
+| Early stopping | Whether it's on; the monitored quantity and direction, validation cadence, patience and its unit, minimum improvement, warmup, where and why it stopped, whether best weights were restored. If off, say so; a maximum epoch budget isn't early stopping. |
+| Final selection | Candidate runs or checkpoints, the selection criterion and direction, evaluation population and aggregation, tie rule, and the selected epoch, step or checkpoint. Say whether the final weights are best, last, EMA/SWA, an ensemble or a refit, and why. |
+| Reproducibility | Seeds, framework and key library versions, precision, hardware and device count, determinism settings where they matter; name missing run, config or checkpoint records. Compute time only if supplied and relevant. |
 
-A best-checkpoint rule and a stopping rule are distinct. “Train for 100 epochs” does not establish which weights were evaluated. Report the actual selection rule even if it is imperfect; do not silently substitute a better protocol. If test performance was used for tuning, thresholding or model selection, disclose that use and limit claims of independent test performance. Separate validation-selected model comparison, final testing and any later retraining.
+A stopping rule and a checkpoint rule are different things. "Trained for 100 epochs" doesn't say which weights were evaluated. Report the selection rule that was actually used, even if it's imperfect; don't quietly substitute a better one. If test data were used for tuning, thresholds or selection, say so and limit claims of independent test performance.
 
 ## Metrics, results and interpretation
 
-For each reported metric, include its purpose, formula, symbol definitions, population/denominator, aggregation, units/range and better/worse direction. Prefer a metric-definition table or a linked mathematical appendix when there are many metrics. Explain why the primary metric answers this task's question, including class imbalance, asymmetric errors or clinically meaningful operating points when relevant; do not infer that a familiar metric is adequate without context.
+For each reported metric give its purpose, formula, symbols, population and denominator, aggregation, unit or range, and which direction is better. With many metrics, use a definitions table or a linked appendix. Explain why the primary metric fits this question (class imbalance, asymmetric error costs, clinically meaningful operating points); don't assume a familiar metric is adequate.
 
-Specify the details that can change the value:
+Spell out the details that change the number:
 
-- Classification: positive class, decision threshold and where it was chosen, per-class versus macro/micro/weighted averaging, missing/undefined classes and how multilabel predictions are handled. Accuracy alone can conceal minority-class errors.
-- Segmentation/detection: evaluation unit (pixel, image, subject, object), overlap or matching rule, empty-mask cases, background inclusion, averaging and any postprocessing.
-- Regression/reconstruction: target scale and inverse transforms, reduction unit, reference range or normalization and relevant physical units. RMSE and MSE have different units.
-- Ranking/curve metrics: the actual ROC/PR or ranking definition, integration/interpolation and averaging convention, such as average precision versus trapezoidal PR area. Do not attach a threshold-specific interpretation to a curve summary.
+- **Classification:** positive class, decision threshold and where it was chosen, per-class vs. macro/micro/weighted averaging, undefined classes, multilabel handling. Accuracy alone can hide minority-class errors.
+- **Segmentation / detection:** evaluation unit (pixel, image, subject, object), overlap or matching rule, empty masks, whether background counts, averaging, postprocessing.
+- **Regression / reconstruction:** target scale and inverse transforms, reduction unit, normalization, physical units. RMSE and MSE have different units.
+- **Curves and ranking:** the exact ROC/PR or ranking definition, interpolation and averaging (average precision is not trapezoidal PR area). A curve summary has no threshold-specific meaning.
 
-Give formulas for the actual definitions, not a generic metric catalog. For example, if ordinary binary sensitivity and specificity are reported, define
+Give formulas for the definitions you actually used, not a generic catalog. If ordinary binary sensitivity and specificity are reported:
 
 $$
 \mathrm{Sensitivity}=\frac{TP}{TP+FN},\qquad
 \mathrm{Specificity}=\frac{TN}{TN+FP}.
 $$
 
-Define $TP$, $TN$, $FP$ and $FN$ under the project's positive class and threshold. Explain that sensitivity measures detection of positives and specificity measures exclusion of negatives. A zero denominator needs an explicit undefined-value convention. This example does not prescribe metrics for unrelated tasks.
+Define $TP$, $TN$, $FP$, $FN$ under the project's positive class and threshold, and say in words that sensitivity measures how many positives are caught and specificity how many negatives are correctly cleared. State how a zero denominator is handled.
 
-Tie each result to the model/checkpoint, split, sample counts and inference protocol, including calibration, thresholding, test-time augmentation or ensembling if used. Present the exact values in a table or figure with traceable sources. Compare baselines under matched splits and evaluation settings; identify mismatches instead of presenting them as controlled improvements. Distinguish percentage-point changes from relative changes and keep uncertainty/repetition units explicit. Compute intervals or statistical tests only with suitable data and a justified dependence structure; never fabricate significance, uncertainty or per-sample outcomes from summary scores.
+Tie each result to the checkpoint, split, sample counts and inference protocol (calibration, thresholds, test-time augmentation, ensembling). Put exact values in a table or figure with a traceable source. Compare baselines only under matched splits and evaluation settings, and flag mismatches instead of presenting them as controlled improvements. Keep percentage points and relative change apart, and keep the unit of uncertainty explicit. Compute intervals or tests only from suitable data with a justified dependence structure; never fabricate significance, uncertainty or per-sample outcomes from summary scores.
 
-Summarize the main pattern, its practical meaning, failure cases/subgroups and limits. Explain what is supported relative to the stated objective and baseline. Use available ablations to assess module contributions, without attributing a whole-system gain to an unisolated component. Validation gains do not establish external generalization or clinical utility. If no evaluation exists, say which evaluation is pending and why it matters; do not produce an empty performance table or substitute interface demonstrations for model results.
+Then say what the results mean: the main pattern, its practical meaning, failure cases and subgroups, and what is and isn't supported relative to the objective and baseline. Use ablations to talk about module contributions; don't credit a whole-system gain to a component that wasn't isolated. Validation gains don't prove external generalization or clinical value. If nothing has been evaluated yet, say which evaluation is pending and why it matters; no empty results tables, and an interface demo is not a performance result.
 
-## Final reader and consistency check
+## Final check
 
-A reader should be able to answer: What data fitted the model, what selected it, and what tested it? How does an input move through every consequential module? Which objective produced gradients? What were the actual training budget, stopping rule and selected weights? What does each reported score measure, how is it calculated, and what conclusion follows?
+A reader should be able to answer: Which data fit the model, which selected it, which tested it? How does an input move through every module that matters? Which objective produced the gradients? What were the actual training budget, stopping rule and chosen weights? What does each score measure, how is it computed, and what follows from it?
 
-Cross-check dataset totals and units, diagram shapes/connections, loss coefficients/reductions, batch/step definitions, monitored criterion, selected checkpoint and evaluation outputs. Keep crucial mechanism and selection rationale in the main narrative, with explicit links to full configurations or formulas in appendices. For a short continuation, link an accessible prior methods version and describe changes. For a local paragraph edit, revise only that scope; do not force a complete methods scaffold into it. Explain unreported evidence once at its relevant location and retain local qualifications only when they prevent a distinct misinterpretation.
+Cross-check dataset totals and units, diagram shapes and connections, loss weights and reductions, batch and step definitions, the monitored criterion, the selected checkpoint and the evaluation outputs. Keep the core mechanism and the selection rationale in the main text, with links to full configs or derivations. For a short continuation, link the earlier methods version and describe what changed. For a one-paragraph edit, edit only that paragraph. State each piece of missing evidence once, where it matters.

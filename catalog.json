@@ -26,7 +26,7 @@
     {
       "name": "research-progress-report",
       "path": "skills/research-progress-report",
-      "description": "Draft or revise self-contained scientific progress reports for public briefings or lab meetings, including 科研进展报告、阶段性研究总结、项目进度汇报. Explain the whole argument clearly; document model data splits, architecture, module data flow, losses, training, selection, and evaluation in detail. Use another workflow for journal manuscripts or grant proposals.",
+      "description": "Draft or revise self-contained scientific progress reports for public briefings or lab meetings, including 科研进展报告、阶段性研究总结、项目进度汇报. Explains the work from an overview down to the evidence in plain language, and documents model data splits, architecture, losses, training, checkpoint selection and evaluation in full. Not for journal manuscripts or grant proposals.",
       "tags": [
         "html",
         "katex",

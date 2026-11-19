@@ -1,12 +1,12 @@
-# KaTeX-Compatible Mathematics
+# Formulas (KaTeX-compatible)
 
-Use this guide whenever a report contains mathematical notation. Markdown and retained TeX source must use portable VS Code/KaTeX syntax. Standalone HTML can instead present the equivalent expression as semantic MathML or locally rendered output; its readers should not need a TeX installation.
+Read this whenever a report contains math. Markdown and any retained TeX must use syntax that VS Code and KaTeX both render. Standalone HTML may instead show the same expression as MathML or pre-rendered output; readers should never need a TeX installation.
 
-## Use formulas to make quantitative meaning explicit
+## When a formula earns its place
 
-Prefer a formula when it replaces a longer explanation of a metric, transformation, model, or decision rule. Present the defining relationship once, followed by brief symbol definitions and the scientific implication. Keep a short expression inline; use display math when a central or complex relationship benefits from its own line. Move a derivation to an appendix unless its steps are needed to evaluate the result.
+Use a formula when it states a metric, transformation, model or decision rule more briefly and precisely than prose. Show the defining relationship once, define the symbols right after it, then say what it means for the result. Keep short expressions inline; give a central or complex one its own line. Derivations go to an appendix unless the reader needs the steps to judge the result.
 
-Retain units, denominators, baseline definitions, and assumptions. For example, with accuracy $a = n_{\mathrm{correct}}/N$, define $N$ as the evaluated population. For a nonzero baseline $a_0$, distinguish the percentage-point change $100(a_1-a_0)$ from the relative percentage change $100(a_1-a_0)/a_0$. A ratio is undefined when its denominator is zero; report that boundary rather than a fabricated value. Do not introduce notation that implies an untested relationship or evidence absent from the source.
+Keep units, denominators, baselines and assumptions. With accuracy $a = n_{\mathrm{correct}}/N$, say what population $N$ counts. For a nonzero baseline $a_0$, the percentage-point change $100(a_1-a_0)$ and the relative change $100(a_1-a_0)/a_0$ are different numbers. A ratio with a zero denominator is undefined; say so rather than printing a number. Don't write notation that implies a relationship nobody tested.
 
 ## Delimiters
 
