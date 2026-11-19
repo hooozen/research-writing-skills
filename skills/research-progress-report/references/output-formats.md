@@ -63,19 +63,7 @@ Notes on using it:
 
 ## HTML
 
-Produce a complete HTML document when HTML is requested:
-
-- Include `<!doctype html>`, an accurate `<html lang="...">`, UTF-8 charset, viewport metadata, and a meaningful `<title>`.
-- Use semantic landmarks such as `<header>`, `<main>`, `<section>`, `<figure>`, `<figcaption>`, and `<footer>`.
-- Use one `<h1>` and a correctly nested heading hierarchy.
-- Put tabular data in `<table>` with `<caption>`, `<thead>`, `<tbody>`, and scoped header cells. Preserve units in headers and exact values in cells.
-- Give every informative image meaningful `alt` text. Do not duplicate the full visible caption in the alt text.
-- Embed restrained print-friendly CSS in `<style>` unless the user supplies a stylesheet. Use no remote dependencies by default. A requested rendered-math output permits the minimal local rendering assets it needs; use static rendering or semantic MathML when practical.
-- Keep figures in a sibling `figures/` directory and use relative paths. For an explicitly requested single-file artifact, embed figures as inline SVG or image data, including accessible descriptions. The request already authorizes embedding; ask about size only if an actual delivery limit is at risk.
-- Ensure the reading order and meaning remain intact without color and when printed.
-- For formulas, follow [math-formatting.md](math-formatting.md). Check that a host renderer recognizes the chosen delimiters; a standalone file must contain a working offline rendering route when displayed mathematics is requested.
-
-Use responsive tables or wrappers where needed, but do not hide columns or exact values on small screens.
+When the user asks for HTML, follow [html-report.md](html-report.md) and start from its template: a complete, offline, single reading-column document with an automatic contents rail, a figure viewer, print styles and native MathML formulas. Don't hand-roll a new page design for each report.
 
 ## Missing inputs
 

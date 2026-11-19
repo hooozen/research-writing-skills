@@ -75,7 +75,7 @@ Choose the representation from the section's question: a chart for comparisons, 
 - For chart styling, use `scientific-chart-style` if it's installed (saturated blue/orange/purple, plus a grayscale print mode). It's optional: without it, keep clear encodings, units, denominators and direct labels, and don't claim to have used it.
 - For formulas, read [references/math-formatting.md](references/math-formatting.md): `$...$` inline, `$$...$$` on their own lines, KaTeX-safe commands only, every symbol defined.
 
-For output layout, follow [references/output-formats.md](references/output-formats.md).
+For output layout, follow [references/output-formats.md](references/output-formats.md). For HTML, start from [assets/report-template.html](assets/report-template.html) and follow [references/html-report.md](references/html-report.md).
 
 ## 6. Scientific integrity
 
