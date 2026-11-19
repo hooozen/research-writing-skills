@@ -1,6 +1,6 @@
 # Volcano plot (`volcano`)
 
-[All chart types](../chart-index.md) · [Shared B/D style](../style-guide.md)
+[All chart types](../chart-index.md) · [Style guide](../style-guide.md)
 
 ## Use and avoid
 
@@ -26,7 +26,7 @@ Run from the skill directory; choose a task-workspace output directory. The temp
 python scripts/render_chart.py --chart volcano --example --output-dir /tmp/volcano-example
 ```
 
-For real observations use `--input /path/to/task-data.json`; `--mode grayscale` selects D. Missing required data must not become synthetic evidence.
+For real observations use `--input /path/to/task-data.json`; `--mode grayscale` gives the print version. Missing required data must not become synthetic evidence.
 
 ```python
 import sys

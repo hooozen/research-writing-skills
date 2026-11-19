@@ -1,81 +1,69 @@
 # Output Formats
 
-Adapt section names to the selected language, project, audience, and available evidence. Start with a substantive overview: the problem, overall approach or flow, how the parts connect, and main progress or unresolved question. Then develop the details in the order needed to understand them. An opening conclusion still needs enough context to be intelligible. Prefer informative charts and precise formulas when they clarify the explanation, retaining the plain-language purpose and interpretation needed by the reader.
+The user's outline wins over everything below. Use this scaffold only when you're organizing the report yourself, and drop sections a short report doesn't need. Section names are examples: adapt them to the language, project and evidence.
 
-Audience and context choices configure the writing but are not automatic report content. Include an event, venue, or audience label only when the user supplies it and it naturally belongs in the published or projected artifact. Never add internal writing guidance, speaking advice, or “what to say” sections to either format.
+Audience and context settings shape the writing; they aren't report content. Add an event, venue or audience line only when the user supplies it and it belongs on the page. Never add writing advice, speaking tips or "what to say" sections.
 
-A user-supplied outline takes precedence over the scaffold below. Preserve its recognizable hierarchy and emphasis while completing the scientific logic. Use this scaffold when structure is delegated or no outline is supplied; omit redundant sections in short reports.
-
-For model content, follow [model-reporting.md](model-reporting.md) in either format. Integrate dataset composition/splits, overall and custom-module architecture diagrams, module explanations and data flow, actual loss formulas, training/stopping/checkpoint selection settings, and available performance with metric purposes/formulas and interpretation into the supplied structure. Use explicitly linked appendices for extensive details, with the central mechanism and selection rationale still clear in the main text. A qualitative scaffold or brevity preference does not waive these requirements. Respect explicit text-only/no-formula requests and local-edit scope, and distinguish those limited deliverables from a complete model report.
+For model content, [model-reporting.md](model-reporting.md) applies in every format: splits, diagrams, data flow, loss formulas, training and checkpoint selection, metric definitions and results. A short or qualitative scaffold doesn't waive it; explicit text-only, no-formula or local-edit requests do limit it.
 
 ## Markdown
 
-Use ordinary GitHub-flavored Markdown unless the target platform imposes another dialect.
+Use GitHub-flavored Markdown unless the target platform needs another dialect. Formulas follow [math-formatting.md](math-formatting.md).
 
-When formulas appear, follow [math-formatting.md](math-formatting.md): use `$...$` for inline math and `$$...$$` for display math, and keep all commands KaTeX-compatible.
-
-For a substantial report without a supplied outline, a useful scaffold is:
+A scaffold for a substantial report:
 
 ```markdown
-# [Project or progress-report title]
+# [Title that names the project and the period]
 
-> Reporting period: [...] \
-> Presenter or team: [...]
+> 报告期：[...] · 汇报人：[...]
 
-## Overall approach and current progress
+## 概述
 
-[The problem, the overall route to address it, how the main parts fit, and what is now supported or unresolved; use connected prose rather than a directory of section titles]
+[Problem → overall approach → how the parts fit → what is now supported or still open. Connected prose, not a list of section names. Add a flow diagram if it makes module roles or data relationships clearer.]
 
-[A flow or hierarchy diagram when it clarifies module roles, data movement, or parent–child relationships; explain names before relying on them]
+## 背景与目标
 
-## Background and objective
+[Only what's needed to read the evidence: the problem, the prior baseline, the gap, essential terms, the success criterion.]
 
-[Only the research problem, prior baseline, unresolved gap, essential terms, and success criteria needed to understand the evidence]
+## [A heading that states the finding or the question]
 
-## [Research question or work package]
+[The section's question, why it follows from the approach, and the design or controls. Introduce new concepts by the problem they solve.]
 
-[The section's question or point, why it follows from the overall approach, and necessary design or controls. Introduce an unfamiliar concept through the problem it addresses and its role here before technical detail.]
+[Formula, if it replaces a longer explanation; symbols defined right below.]
 
-[Metric definition or quantitative relationship as a formula when it replaces a longer explanation; define symbols, units, and assumptions nearby]
+![Alt text that says what the figure shows](figures/example.svg)
 
-![Meaningful alt text](figures/example.svg)
+*图 1. [Metric; population; unit; uncertainty; source.]*
 
-*Figure 1. [Message or metric; sample/population; units; uncertainty; source.]*
+[Compact table of exact values, or a link to the appendix table.]
 
-[Compact exact-value table here, or an explicit link to the full table in an appendix]
+[What the evidence supports, its main limit, and the decision that follows.]
 
-[Short interpretation: what the evidence supports, its material limitation, and which decision follows. Use a supplied input–processing–output example if a mechanism would otherwise remain abstract.]
+## 待解决问题与下一步
 
-## Open questions and next steps
+[Prioritized open questions and the test or action each one motivates.]
 
-[Prioritized uncertainties and the actions or discriminating tests they motivate; use a compact table if it makes the mapping clearer]
+## 参考文献
 
-## References
+[Keep the supplied citation style and identifiers.]
 
-[Preserve supplied citation style and identifiers]
+## 附录：完整数值与补充细节
 
-## Appendix: exact values and supporting detail
-
-[Full tables, derivations, or diagnostics that are explicitly linked from the main report, when needed]
+[Full tables, derivations, diagnostics, linked from the main text.]
 ```
 
-Omit empty metadata and irrelevant sections, but do not omit premises required to understand the evidence. The background heading is optional only when its content is integrated clearly into the opening or first relevant section. For a continuation report, retain a compact recap unless the user explicitly confirms that the audience shares the specific prior material. Use appendices for detailed protocols, full tables, supplementary diagnostics, or specialist material that would interrupt the main narrative. Keep the exact-value table adjacent to its chart when practical; otherwise link explicitly to the appendix table. Use prose alone for simple or qualitative updates that do not require the model diagrams and formulas specified above, or when the user explicitly restricts the format. Add a closing synthesis only when it contributes a decision or cross-result insight beyond the opening. Keep names, aliases, and symbols consistent in both formats, and apply the reader check in [writing-and-explanation.md](writing-and-explanation.md).
+Notes on using it:
+
+- Drop empty metadata and irrelevant sections, never the premises needed to read the evidence. "Background" can merge into the overview or first section when that stays clear.
+- Continuation reports keep a short recap unless the user confirms the audience already shares it.
+- Keep the exact-value table next to its chart when practical; otherwise link to the appendix table.
+- A simple qualitative update can be prose only.
+- Add a closing summary only if it contributes a decision or a cross-result insight the opening didn't.
+- Keep names, aliases and symbols consistent and run the reader test in [writing-and-explanation.md](writing-and-explanation.md).
 
 ## HTML
 
-Produce a complete HTML document when HTML is requested:
-
-- Include `<!doctype html>`, an accurate `<html lang="...">`, UTF-8 charset, viewport metadata, and a meaningful `<title>`.
-- Use semantic landmarks such as `<header>`, `<main>`, `<section>`, `<figure>`, `<figcaption>`, and `<footer>`.
-- Use one `<h1>` and a correctly nested heading hierarchy.
-- Put tabular data in `<table>` with `<caption>`, `<thead>`, `<tbody>`, and scoped header cells. Preserve units in headers and exact values in cells.
-- Give every informative image meaningful `alt` text. Do not duplicate the full visible caption in the alt text.
-- Embed restrained print-friendly CSS in `<style>` unless the user supplies a stylesheet. Use no remote dependencies by default. A requested rendered-math output permits the minimal local rendering assets it needs; use static rendering or semantic MathML when practical.
-- Keep figures in a sibling `figures/` directory and use relative paths. For an explicitly requested single-file artifact, embed figures as inline SVG or image data, including accessible descriptions. The request already authorizes embedding; ask about size only if an actual delivery limit is at risk.
-- Ensure the reading order and meaning remain intact without color and when printed.
-- For formulas, follow [math-formatting.md](math-formatting.md). Check that a host renderer recognizes the chosen delimiters; a standalone file must contain a working offline rendering route when displayed mathematics is requested.
-
-Use responsive tables or wrappers where needed, but do not hide columns or exact values on small screens.
+When the user asks for HTML, follow [html-report.md](html-report.md) and start from its template: a complete, offline, single reading-column document with an automatic contents rail, a figure viewer, print styles and native MathML formulas. Don't hand-roll a new page design for each report.
 
 ## Missing inputs
 

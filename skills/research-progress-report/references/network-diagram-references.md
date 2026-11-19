@@ -1,6 +1,6 @@
 # Network Diagram References
 
-Use these verified original-paper figures as examples of clear architecture communication, then draw the project's actual implementation. The reference figure's layers, dimensions, connections and operation order are not evidence about the current model. Cite the paper and figure used for visual inspiration in the report caption; distinguish a redrawn project architecture from a reproduced source figure.
+These original-paper figures are good examples of how to draw an architecture. Borrow their conventions, then draw the project's actual network: the reference's layers, sizes, connections and operation order say nothing about your model. Cite the paper and figure you drew inspiration from in the caption, and make clear the drawing is of this project's network, not a copy of the source.
 
 | Original paper | Verified figures | Useful visual convention |
 |---|---|---|
@@ -11,7 +11,7 @@ Use these verified original-paper figures as examples of clear architecture comm
 
 ## Adapt the convention to the actual model
 
-Use an overall architecture view to locate the module, and an internal expansion to explain unfamiliar/custom or materially modified computation. Show data direction, input/output meanings, key tensor shapes and layout, repetition, branches and merge operations. Name addition, concatenation and multiplication explicitly; include projections, resizing, cropping, reshape and broadcast when they make the connection valid. Define arrow styles and any distinction between training and inference.
+Use an overall view to show where each module sits, and an internal expansion to explain custom, unfamiliar or modified computation. Show data direction, input/output meanings, key tensor shapes and layout, repetition, branches and merge operations. Name addition, concatenation and multiplication explicitly; include projections, resizing, cropping, reshape and broadcast when they make the connection valid. Define arrow styles and any distinction between training and inference.
 
 Borrow only the relevant convention. For example, do not insert U-Net's original copy-and-crop into a same-padding implementation, or the original Transformer's normalization placement into a pre-normalized implementation. A proposed architecture should be labeled proposed; unknown operations or dimensions should remain unresolved. Figure, prose, equations and actual implementation must agree.
 

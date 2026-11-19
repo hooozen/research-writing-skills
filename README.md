@@ -1,123 +1,93 @@
 # Research Writing Skills
 
-Reusable, agent-neutral skills for turning research evidence into self-contained progress reports, publication figures, and editable scientific presentation charts.
+Agent skills for turning research evidence into progress reports, publication figures and scientific slides. They work with any agent that can read a `SKILL.md` folder (Claude Code, Codex and others).
 
-Each skill is a self-contained directory built around `SKILL.md`. Supporting references, scripts, assets, and optional agent adapters stay inside the same directory, so a skill can be installed by copying one folder.
-
-## Skills
-
-| Skill | Purpose |
+| Skill | What it does |
 |---|---|
-| [`research-progress-report`](skills/research-progress-report/) | Explain research from overview to evidence in plain language. Model reports require dataset splits, actual architecture and module data flow, loss formulas, training/stopping/model selection, and available results with metric purposes, formulas and interpretation. Follow the user's audience and outline in Markdown or HTML; retain detailed methods in the report or linked appendices. |
-| [`scientific-chart-style`](skills/scientific-chart-style/) | Publication-oriented scientific charts across disciplines. A direct index of 19 chart cards with minimal inputs, runnable single-chart examples, individual SVG/PNG references, high-contrast blue and D print modes, and statistical/export guidance. |
-| [`scientific-presentation-style`](skills/scientific-presentation-style/) | Scientific PowerPoint charts using the same high-contrast colors, with projection-size typography and native editable evidence. Includes reusable slide builders, synthetic template examples and PowerPoint representation rules for all 19 chart types. |
-| [`infohub-maintenance`](skills/infohub-maintenance/) | Optional integration for existing InfoHub workspaces: maintain project data, previews, annotations, local experiment snapshots/exports, report delivery and unified Web/MCP services. Warehouse publication remains optional. |
+| [`research-progress-report`](skills/research-progress-report/) | Writes self-contained progress reports (科研进展报告) that go from an overview down to the evidence in plain language. Model reports cover data splits, architecture, loss, training, checkpoint choice and metrics in full. Markdown, or HTML from a ready-made reading template. |
+| [`scientific-chart-style`](skills/scientific-chart-style/) | 19 scientific chart types, each with a one-page card (inputs, calculation, limits) and a one-command renderer. Editable SVG/PDF plus PNG, saturated blue by default, designed grayscale for print. |
+| [`scientific-presentation-style`](skills/scientific-presentation-style/) | The same look for PowerPoint: projector-size type, titles that state the point, and native editable charts and tables. |
+| [`infohub-maintenance`](skills/infohub-maintenance/) | Optional. Maintains an existing InfoHub research workspace (project data, annotations, snapshots, report delivery, Web/MCP services). Nothing else depends on it. |
 
-Machine-readable discovery metadata is available in [`catalog.json`](catalog.json).
+[`catalog.json`](catalog.json) lists the same skills for agents.
 
 ## Install
-
-Clone the repository, choose your agent's skills directory, and install one or all skills:
 
 ```sh
 git clone https://github.com/hooozen/research-writing-skills.git
 cd research-writing-skills
-
 SKILLS_DIR=/path/to/your-agent/skills
+```
 
-# Install one skill
+Install one skill:
+
+```sh
 ./scripts/install.sh --target "$SKILLS_DIR" research-progress-report
+```
 
-# Or install every skill
+Or all of them (including the optional InfoHub skill):
+
+```sh
 ./scripts/install.sh --target "$SKILLS_DIR" --all
 ```
 
-The installer never overwrites an existing skill by default. To upgrade intentionally, add `--force`; all selected copies are staged first, and each previous installation is moved to a unique timestamped backup before replacement. Repeating a skill name installs it once. Invalid selections are rejected before any skill is installed, and source directories cannot be used as their own destinations. If replacement fails, the installer attempts to restore that skill; a multi-skill install is not one atomic transaction.
+The installer won't overwrite an existing skill. Add `--force` to upgrade; the old copy is moved to a timestamped backup first. Copying a folder by hand (`cp -R skills/<name> "$SKILLS_DIR/"`) works too.
 
-Manual installation is equally simple:
-
-```sh
-SKILLS_DIR=/path/to/your-agent/skills
-mkdir -p "$SKILLS_DIR"
-cp -R skills/research-progress-report "$SKILLS_DIR/"
-```
-
-An agent can install automatically with this prompt:
+Or ask your agent:
 
 ```text
 Install the relevant skills from https://github.com/hooozen/research-writing-skills.
-Follow AGENTS.md, inspect catalog.json before selecting skills, copy complete skill
-directories, and do not overwrite an existing installation without confirmation.
+Follow AGENTS.md, check catalog.json first, copy whole skill folders,
+and don't overwrite an existing installation without asking me.
 ```
 
-Agents that support `SKILL.md` directories can load the installed skill directly. Other agents can read the selected `SKILL.md` as task instructions and resolve its linked resources relative to the skill directory. Files under `agents/` are optional platform adapters, not runtime requirements.
+Files under `agents/` are optional metadata for specific clients; the skills don't need them.
 
-## Optional InfoHub integration
+## Use
 
-`infohub-maintenance` is a separately selectable integration for users who already use InfoHub. It is not required by the writing, chart or presentation skills. Installing it copies instructions only: it does not install a server, create databases, publish reports, register data or upload anything to a warehouse.
+Just describe the task; the agent picks the skill. Some examples:
 
-```sh
-./scripts/install.sh --target "$SKILLS_DIR" infohub-maintenance
+```text
+帮我把这些实验记录整理成一份组会进展报告，听众是本领域的研究生，输出 HTML。
 ```
 
-The catalog marks this integration with `optional: true`; this is descriptive metadata, not a dependency or an installer filter. As before, `--all` explicitly installs every packaged skill, including optional integrations. Select skill names when only writing/chart tools are wanted.
+```text
+Plot these labels and scores as a ROC curve for an 89 mm single column, color and grayscale versions.
+```
 
-When using the integration, locate the authorized InfoHub checkout and its current deployment instructions. The skill contains no personal hostnames, account paths or credentials. It keeps source data, project working revisions, local snapshots and warehouse versions distinct: repeated local research and experiment export do not require warehouse publication. A missing InfoHub installation does not block ordinary report/figure work or authorize provisioning a new service.
+```text
+用这些结果做三页科研汇报 PPT，图表要能在 PowerPoint 里改数据。
+```
 
-## Upgrade from the former chart skill
-
-`scientific-chart-style` replaces `clinical-data-chart-style`. Install the complete new directory, update any explicitly named invocations, and archive the old installation **outside all skill discovery roots**. Do the same for backup folders that still contain a discoverable `SKILL.md`; keep recoverable backups without exposing duplicate old skills. The installer does not infer or remove prior names. The report skill now names the new companion.
-
-The color default uses saturated blue `#1464D2`, dark orange `#B64B00` and purple `#7A3DB8`, with darker neutral marks `#586575`; `--mode grayscale` uses the selected D design and redundant shapes/line styles. The [style guide](skills/scientific-chart-style/references/style-guide.md) defines physical-point typography and export rules; journal-specific instructions override the defaults.
-
-## Agent reference entry
-
-Start at the [19-chart index](skills/scientific-chart-style/references/chart-index.md), then read only the relevant chart card and the shared style guide. Each card links its minimal JSON, individual SVG/PNG and a runnable command. The [machine-readable index](skills/scientific-chart-style/references/chart-index.json) has the same chart IDs and paths. Nine-panel previews and the two longer background guides are optional browsing material.
-
-The single-chart runner reads supplied data with `--input`, or a labeled synthetic fixture only with explicit `--example`:
+To render a chart directly:
 
 ```sh
 python skills/scientific-chart-style/scripts/render_chart.py --list
-python skills/scientific-chart-style/scripts/render_chart.py --chart roc --example --output-dir /tmp/roc-example
-python skills/scientific-chart-style/scripts/render_chart.py --chart paired --input /path/to/task/pairs.json --mode grayscale --output-dir /path/to/task/figures
+python skills/scientific-chart-style/scripts/render_chart.py --chart paired \
+  --input path/to/pairs.json --mode grayscale --output-dir path/to/figures
 ```
 
-Commands create only the selected figure and its data/statistics/export record. Use `--formats svg,png,pdf` when all formats are required. The runner is an optional Matplotlib reference, while the input and scientific guidance remain portable to other plotting tools. Missing required data must not silently become demonstration observations.
+`--example` draws a labeled synthetic demo instead of your data. Without `--input` or `--example` the renderer refuses to run, so missing data never turns into demo data.
 
-Maintainers rebuild the installed reference set with `python skills/scientific-chart-style/scripts/build_chart_references.py`; `--check` verifies the registry, input/source hashes and saved individual SVG/PNG without rendering all charts. An ordinary Agent task does not rebuild the atlas.
+## Upgrading from `clinical-data-chart-style`
 
-## Scientific PowerPoint charts
-
-Use `scientific-presentation-style` for readable scientific slides. It retains the chart palette and statistical conventions while adapting fonts and spacing for a 16:9 presentation. Native bar/XY charts preserve data series; box plots, paired plots, intervals and heatmaps use editable slide geometry and must be regenerated after data changes. The [19-chart mapping](skills/scientific-presentation-style/references/chart-mapping.md) covers advanced representations without claiming all of them are built-in renderers.
-
-```text
-Use $scientific-presentation-style to create a research presentation from the supplied
-data. Keep the high-contrast blue palette, readable projection typography, and editable
-charts. Preserve actual units, uncertainty, pairing and missing observations.
-```
-
-The optional authoring adapter supports a fifteen-slide demonstration with a simple cover, style guide, chart examples, three native tables, grayscale layout and empty chart page. Results, sample-composition and parameter tables follow [shared table rules](skills/scientific-presentation-style/references/tables.md): explicit units, consistent precision, numerical alignment, missing-state definitions and literal-cell editability. Its example data is explicitly synthetic. Follow the available presentation workflow for the output destination; a saved Spaces deck can be downloaded as `.pptx` from its viewer. The style specification also works with other capable PowerPoint authoring tools.
-
-## Version 1 migration
-
-This release replaces the old `clinical-data-chart-style` directory with `scientific-chart-style`, and its primary reference entry is now the chart index. Update explicitly named invocations and keep old versions/backups outside discovery roots. The existing B/D visual decisions and scientific definitions remain intact. Repository versioning treats the changed installed skill path since v0.2.1 as a major release.
+`scientific-chart-style` replaced `clinical-data-chart-style` in v1.0.0. Install the new folder, update any prompts that name the old skill, and move the old folder (and any backups containing a `SKILL.md`) out of your agent's skills directory so it isn't loaded twice. The installer doesn't remove old names for you.
 
 ## Maintain
 
-Use Python 3.10+ and install maintenance dependencies before validating changes:
+Python 3.10+; Node.js 20+ for the presentation adapter tests.
 
 ```sh
 python3 -m pip install -r requirements-dev.txt
 python3 scripts/validate.py
 python3 skills/scientific-chart-style/scripts/build_chart_references.py --check
 MPLBACKEND=Agg python3 -m unittest discover -s tests -v
+node --test tests/presentation_adapter.test.mjs
 ```
 
-These dependencies are for maintainers, not installation requirements. Node.js 20+ is also needed for the optional presentation adapter's regression tests. Installed skill instructions remain agent-neutral; Matplotlib is needed only for its optional plotting implementation. Validation parses YAML, checks catalog consistency and relative Markdown resources throughout each skill, validates optional UI metadata, and checks script syntax without executing skill scripts or creating bytecode in their folders. It does not verify remote URLs, Markdown anchor IDs, raw HTML links, or scientific reasoning.
+`validate.py` checks the catalog, YAML, relative links and script syntax. It doesn't check remote URLs, anchors, or whether the science or the visuals are right: for that, run the relevant [evaluation cases](evals/cases.md) and look at the actual output.
 
-Use [evals/cases.md](evals/cases.md) for bounded report and chart behavior checks. Review generated artifacts as well as source data; a passing structural check does not establish scientific or visual correctness.
-
-See [`CONTRIBUTING.md`](CONTRIBUTING.md) for scope and contribution rules. Releases use semantic version tags; changes are recorded in [`CHANGELOG.md`](CHANGELOG.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution rules and [CHANGELOG.md](CHANGELOG.md) for history. Releases use semantic version tags.
 
 ## License
 

@@ -1,10 +1,10 @@
-# Chart Index: 19 Scientific Encodings
+# Chart Index
 
-Start with the question and available inputs. Choose one chart ID, read only its card, and inspect its individual SVG or PNG only when visual detail is needed. The card specifies the statistical definition, input format, limitations and a short runnable example.
+Find the row whose question matches the user's question and data, then read only that card. Each card gives the input format, how the chart is calculated, what it can't show, and a runnable example. Open the PNG when you want to see the intended result.
 
-The linked inputs and previews are **synthetic reference examples**, not research findings. High-contrast blue is the default; generate D print mode with `--mode grayscale`. Keep the shared [style guide](style-guide.md) authoritative for appearance.
+All example inputs and previews are **synthetic**, not research findings. Color is the default; add `--mode grayscale` for print. Appearance is set by the [style guide](style-guide.md).
 
-| ID / chart card | Use when | Required inputs | Example data | Individual preview |
+| Chart | Answers | Required inputs | Example input | Preview |
 |---|---|---|---|---|
 | [`count_share`: Count/share bars](charts/count_share.md) | How many records belong to each category, and what is the denominator? | categories, counts, denominator, relationship, unit | [JSON](examples/count_share.json) | [SVG](examples/count_share.svg) · [PNG](examples/count_share.png) |
 | [`boxplot`: Box plot with observations](charts/boxplot.md) | How do groups differ in location and spread? | groups, value_label | [JSON](examples/boxplot.json) | [SVG](examples/boxplot.svg) · [PNG](examples/boxplot.png) |
@@ -29,15 +29,15 @@ The linked inputs and previews are **synthetic reference examples**, not researc
 
 ## Run one example
 
-From the skill directory, use an output directory in the task workspace. The following creates only the ROC example and its numerical/export companions:
+From the skill directory, with output going to the task workspace. This creates only the ROC example and its data and statistics records:
 
 ```sh
 python scripts/render_chart.py --chart roc --example --output-dir /tmp/roc-reference
 ```
 
-For actual supplied data, replace `--example` with `--input /path/to/task/roc.json`. `--input` and `--example` are mutually exclusive; no data is silently synthesized. Use `--formats svg,png,pdf` when all three exports are needed. [Renderer](../scripts/render_chart.py) · [machine-readable index](chart-index.json).
+For real data, replace `--example` with `--input /path/to/task/roc.json`. The two flags are mutually exclusive, so data is never synthesized silently. Add `--formats svg,png,pdf` when PDF is needed too. [Renderer](../scripts/render_chart.py) · [machine-readable index](chart-index.json).
 
 
-## Maintenance and optional browsing
+## Maintenance
 
-The [preview manifest](examples/manifest.json) records fixture, source and output hashes. `python scripts/build_chart_references.py --check` verifies this mapping without rendering. Refreshing all shipped reference images is a maintainer action, not a prerequisite for drawing one chart. The older [basic](scientific-chart-examples.md) and [advanced](advanced-chart-guide.md) guides remain optional background; their contact sheets are not required Agent input.
+The [preview manifest](examples/manifest.json) records input, source and output hashes; `python scripts/build_chart_references.py --check` verifies them without rendering. Rebuilding the previews is a maintainer task, never part of drawing one chart. The [basic](scientific-chart-examples.md) and [advanced](advanced-chart-guide.md) guides are optional background.

@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>图像质量筛选与分类器验证准确率：阶段报告</title>
+<style>
+/* Research report base style. Self-contained: no web fonts, no CDN.
+   Colors match scientific-chart-style so figures sit flush on the page. */
+:root {
+  --paper: #FFFFFF;
+  --ink: #24282C;
+  --muted: #626B73;
+  --rule: #DDE1E5;
+  --tint: #F4F6F8;
+  --accent: #1464D2;
+  --caution: #B64B00;
+  --caution-tint: #FBF1EA;
+  --sans: "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Microsoft YaHei", sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --measure: 42rem;
+  --rail: 13rem;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { color-scheme: light; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 17px/1.75 var(--sans); font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
+a { color: var(--accent); text-underline-offset: .2em; text-decoration-thickness: 1px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+/* Layout: one reading column; contents rail on the left when there is room. */
+.layout {
+  display: grid; grid-template-columns: minmax(0, var(--measure));
+  justify-content: center; column-gap: 4rem;
+  padding: 3rem 1rem 6rem;
+}
+@media (min-width: 1100px) {
+  .layout { grid-template-columns: var(--rail) minmax(0, var(--measure)); padding-top: 4.5rem; }
+  .layout > header, .layout > main { grid-column: 2; }
+  .toc { grid-column: 1; grid-row: 1 / span 2; }
+}
+
+/* Header */
+.report-header { margin-bottom: 2.5rem; }
+.report-header h1 {
+  font-size: clamp(1.75rem, 1.2rem + 2vw, 2.375rem); line-height: 1.3;
+  font-weight: 650; letter-spacing: -.01em; margin: 0 0 1rem; text-wrap: balance;
+}
+.meta { display: flex; flex-wrap: wrap; gap: .25rem 2rem; margin: 0; color: var(--muted); font-size: .9375rem; }
+.meta div { display: flex; gap: .5rem; }
+.meta dt { font-weight: 400; }
+.meta dd { margin: 0; color: var(--ink); }
+
+/* Contents */
+.toc { font-size: .9375rem; line-height: 1.5; margin-bottom: 2rem; }
+.toc summary { cursor: pointer; color: var(--muted); padding: .5rem 0; list-style-position: inside; }
+.toc ol { list-style: none; margin: .25rem 0 0; padding: 0; border-left: 1px solid var(--rule); }
+.toc a {
+  display: block; padding: .375rem 0 .375rem 1rem; margin-left: -1px;
+  color: var(--muted); text-decoration: none; border-left: 2px solid transparent;
+}
+.toc a:hover { color: var(--ink); }
+.toc a[aria-current="true"] { color: var(--ink); border-left-color: var(--accent); font-weight: 600; }
+@media (max-width: 1099px) {
+  .toc { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+}
+@media (min-width: 1100px) {
+  .toc > details { position: sticky; top: 4.5rem; }
+  .toc summary { pointer-events: none; list-style: none; padding-top: 0; }
+  .toc summary::-webkit-details-marker { display: none; }
+}
+
+/* Text */
+main > section { margin-top: 3.5rem; }
+main > section:first-child { margin-top: 0; }
+h2 { font-size: 1.4375rem; line-height: 1.4; font-weight: 650; margin: 0 0 1rem; text-wrap: balance; scroll-margin-top: 1.5rem; }
+h3 { font-size: 1.125rem; line-height: 1.5; font-weight: 650; margin: 2rem 0 .5rem; scroll-margin-top: 1.5rem; }
+p, ul, ol { margin: 0 0 1rem; }
+li + li { margin-top: .25rem; }
+.lede { font-size: 1.1875rem; line-height: 1.7; }
+strong { font-weight: 650; }
+code { font: .875em var(--mono); background: var(--tint); padding: .1em .3em; border-radius: 3px; }
+sup a { text-decoration: none; }
+
+/* Notices: synthetic data, missing inputs. Use sparingly. */
+.notice {
+  margin: 0 0 2.5rem; padding: .75rem 1rem; font-size: .9375rem;
+  background: var(--caution-tint); border-left: 3px solid var(--caution);
+}
+.notice p { margin: 0; }
+.todo { color: var(--caution); text-decoration: underline dashed 1px; text-underline-offset: .25em; }
+
+/* Figures */
+figure { margin: 2rem 0; }
+figure img, figure svg { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+figure [data-zoom] { cursor: zoom-in; }
+figcaption, caption { font-size: .875rem; line-height: 1.6; color: var(--muted); text-align: left; }
+figcaption { margin-top: .75rem; }
+figcaption b, caption b { color: var(--ink); font-weight: 650; margin-right: .5em; }
+:target { animation: flash 1.6s ease-out; }
+@keyframes flash { from { background: #E3EDFB; } to { background: transparent; } }
+@media (prefers-reduced-motion: reduce) { :target { animation: none; } }
+
+/* Tables: rules, not grids; numbers right-aligned. */
+.table-wrap {
+  overflow-x: auto; margin: 2rem 0;
+  /* Edge shadows appear only when the table can scroll sideways. */
+  background:
+    linear-gradient(to right, var(--paper) 30%, transparent) left / 2rem 100% no-repeat local,
+    linear-gradient(to left, var(--paper) 30%, transparent) right / 2rem 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(36,40,44,.18), transparent) left / .75rem 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(36,40,44,.18), transparent) right / .75rem 100% no-repeat scroll;
+}
+table { width: 100%; min-width: 30rem; border-collapse: collapse; font-size: .9375rem; line-height: 1.5; font-variant-numeric: tabular-nums; }
+caption { caption-side: top; padding-bottom: .625rem; }
+th, td { padding: .5rem .75rem; text-align: left; vertical-align: top; }
+th:first-child, td:first-child { padding-left: 0; }
+th:last-child, td:last-child { padding-right: 0; }
+thead th { font-weight: 650; border-bottom: 1.5px solid var(--ink); white-space: nowrap; }
+tbody tr + tr td, tbody tr + tr th { border-top: 1px solid var(--rule); }
+tbody tr:last-child td, tbody tr:last-child th { border-bottom: 1.5px solid var(--ink); }
+tbody th { font-weight: 400; white-space: nowrap; }
+.num { text-align: right; white-space: nowrap; }
+
+/* Math (native MathML, works offline) */
+math[display="block"] { display: block; margin: 1.25rem 0; padding: .25rem 0; overflow-x: auto; overflow-y: hidden; font-size: 1.125em; }
+
+/* Appendix */
+details.appendix { margin-top: 3.5rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+details.appendix > summary { cursor: pointer; font-size: 1.4375rem; font-weight: 650; list-style: none; display: flex; align-items: baseline; gap: .625rem; }
+details.appendix > summary::-webkit-details-marker { display: none; }
+details.appendix > summary::before { content: ""; width: .5em; height: .5em; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: translateY(-.15em) rotate(-45deg); transition: transform .15s; }
+details.appendix[open] > summary::before { transform: translateY(-.3em) rotate(45deg); }
+details.appendix > summary + * { margin-top: 1rem; }
+
+footer { margin-top: 4rem; padding-top: 1rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: .875rem; }
+
+/* Figure viewer */
+dialog.viewer { border: 0; padding: 0; max-width: 96vw; max-height: 94vh; background: var(--paper); box-shadow: 0 8px 40px rgba(36, 40, 44, .25); }
+dialog.viewer::backdrop { background: rgba(36, 40, 44, .55); }
+dialog.viewer .stage { padding: 1.5rem; overflow: auto; max-height: 94vh; }
+dialog.viewer .stage img, dialog.viewer .stage svg { display: block; width: auto; max-width: none; height: auto; min-width: min(64rem, 180vw); }
+dialog.viewer button { position: sticky; top: 0; float: right; margin: -.5rem -.5rem 0 1rem; font: inherit; font-size: .9375rem; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: .25rem .75rem; cursor: pointer; }
+
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .layout { padding-top: 2rem; }
+  main > section { margin-top: 2.75rem; }
+}
+
+@media print {
+  @page { size: A4; margin: 18mm 16mm; }
+  body { font-size: 10.5pt; line-height: 1.6; }
+  .layout { display: block; padding: 0; }
+  .toc, dialog.viewer { display: none !important; }
+  a { color: inherit; text-decoration: none; }
+  figure, .table-wrap, math[display="block"] { break-inside: avoid; }
+  h2, h3 { break-after: avoid; }
+  .notice { border: 1px solid var(--caution); }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <header class="report-header">
+    <h1>图像质量筛选与分类器验证准确率：阶段报告</h1>
+    <dl class="meta">
+      <div><dt>报告期</dt><dd>2026 年 8–9 月</dd></div>
+      <div><dt>项目</dt><dd>小型图像分类器</dd></div>
+    </dl>
+  </header>
+
+  <nav class="toc" aria-label="目录" hidden>
+    <details open><summary>目录</summary><ol></ol></details>
+  </nav>
+
+  <main>
+    <div class="notice" role="note"><p>本报告中的全部数据均为演示用合成数据，不代表任何真实实验。</p></div>
+
+    <section id="overview">
+      <h2>概述</h2>
+      <p class="lede">我们想知道：训练前剔除低质量图像，能否让小型分类器在固定验证集上答对更多。9 月版本只做了这一处改动，验证准确率从 75% 升到 80%，即在同一组 120 张图像上多答对 6 张。由于样本独立性和训练、验证是否重叠都还不清楚，这个结果目前只能说明方向，不能说明幅度可靠。</p>
+    </section>
+
+    <section id="background">
+      <h2>背景与目标</h2>
+      <p>分类器在模糊或遮挡的图像上常常判断失误。如果训练数据里混有这类图像，模型可能学到错误的线索。本期的目标是检验一个简单做法：训练前先用质量规则剔除低质量图像，其余设置保持不变，比较前后两个版本在同一验证集上的准确率。</p>
+    </section>
+
+    <section id="result">
+      <h2>筛选后验证准确率从 75% 升到 80%</h2>
+      <p>两个版本使用同一个验证集：来自 30 个样本的 120 张图像。准确率按答对的图像数计算：</p>
+      <math display="block">
+        <semantics>
+          <mrow><mi>a</mi><mo>=</mo><mfrac><msub><mi>n</mi><mtext>correct</mtext></msub><mi>N</mi></mfrac></mrow>
+          <annotation encoding="application/x-tex">a = \frac{n_{\mathrm{correct}}}{N}</annotation>
+        </semantics>
+      </math>
+      <p>其中 <math><msub><mi>n</mi><mtext>correct</mtext></msub></math> 是答对的图像数，<math><mi>N</mi><mo>=</mo><mn>120</mn></math> 是验证集图像总数。</p>
+
+      <figure id="fig-accuracy">
+        <svg data-zoom viewBox="0 0 640 196" role="img" aria-labelledby="fig-accuracy-title" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica Neue, Arial, PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+          <title id="fig-accuracy-title">A、B 两个版本的验证准确率，分别为 75% 和 80%</title>
+          <g font-size="13" fill="#24282C">
+            <text x="96" y="52" text-anchor="end">版本 A（8 月）</text>
+            <text x="96" y="112" text-anchor="end">版本 B（9 月）</text>
+          </g>
+          <rect x="110" y="34" width="375" height="28" fill="#1464D2"/>
+          <rect x="110" y="94" width="400" height="28" fill="#1464D2"/>
+          <g font-size="13" fill="#24282C">
+            <text x="493" y="53">75.0%（90/120）</text>
+            <text x="518" y="113">80.0%（96/120）</text>
+          </g>
+          <line x1="110" y1="20" x2="110" y2="140" stroke="#34383C" stroke-width="1"/>
+          <line x1="110" y1="140" x2="610" y2="140" stroke="#34383C" stroke-width="1"/>
+          <g font-size="12" fill="#626B73" text-anchor="middle">
+            <line x1="235" y1="140" x2="235" y2="145" stroke="#34383C"/><text x="235" y="160">25%</text>
+            <line x1="360" y1="140" x2="360" y2="145" stroke="#34383C"/><text x="360" y="160">50%</text>
+            <line x1="485" y1="140" x2="485" y2="145" stroke="#34383C"/><text x="485" y="160">75%</text>
+            <line x1="610" y1="140" x2="610" y2="145" stroke="#34383C"/><text x="610" y="160">100%</text>
+            <text x="110" y="160">0</text>
+            <text x="360" y="186" fill="#24282C">验证准确率</text>
+          </g>
+        </svg>
+        <figcaption><b>图 1.</b>两个版本在同一验证集上的准确率。验证集为 30 个样本的 120 张图像；括号内为答对数/总数。没有逐图预测，因此无法给出置信区间或配对检验。合成数据。</figcaption>
+      </figure>
+
+      <p>相对 A，B 的准确率高 5 个百分点，相对提升约 6.7%（5 ÷ 75）。净增 6 张答对，不等于恰好有 6 张图像从错变对：没有逐图记录，无法知道是否有图像反过来从对变错。</p>
+
+      <div class="table-wrap">
+        <table id="tab-accuracy">
+          <caption><b>表 1.</b>验证集计数与准确率</caption>
+          <thead><tr><th scope="col">版本</th><th scope="col">改动</th><th scope="col" class="num">答对 / 张</th><th scope="col" class="num">总数 / 张</th><th scope="col" class="num">准确率 / %</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">A（8 月）</th><td>无</td><td class="num">90</td><td class="num">120</td><td class="num">75.0</td></tr>
+            <tr><th scope="row">B（9 月）</th><td>训练前剔除低质量图像</td><td class="num">96</td><td class="num">120</td><td class="num">80.0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="limits">
+      <h2>这个结果还不能说明什么</h2>
+      <p>120 张图像来自 30 个样本，同一样本的多张图像可能高度相关，实际的独立信息少于 120 份。训练集和验证集是否包含同一样本也未确认；如果有重叠，两个版本的准确率都可能偏高。因此，5 个百分点的差异可能部分来自抽样波动，也不能直接归因于质量筛选。</p>
+    </section>
+
+    <section id="next">
+      <h2>下一步</h2>
+      <ul>
+        <li>确认训练集和验证集按样本划分、没有重叠；如有重叠，按样本重新划分后复测。</li>
+        <li>保存两个版本的逐图预测，用配对方法比较，并给出按样本聚合的置信区间。</li>
+      </ul>
+    </section>
+
+    <details class="appendix" id="appendix">
+      <summary>附录：数据来源</summary>
+      <p>验证集清单：<span class="todo">[待补充：清单文件名与版本]</span>。A、B 两个版本的训练配置除质量筛选外相同。</p>
+    </details>
+  </main>
+</div>
+
+<dialog class="viewer" aria-label="放大查看图像">
+  <form method="dialog"><button>关闭</button></form>
+  <div class="stage"></div>
+</dialog>
+
+<script>
+/* Progressive enhancement only: the report reads correctly without this script. */
+(() => {
+  const main = document.querySelector('main');
+  const nav = document.querySelector('.toc');
+  const list = nav && nav.querySelector('ol');
+  const headings = [...main.querySelectorAll(':scope > section > h2, :scope > details.appendix > summary')];
+
+  // Contents: built from the section headings, so it never drifts from the text.
+  if (list && headings.length > 2) {
+    const links = headings.map((h, i) => {
+      const target = h.closest('section, details');
+      if (!target.id) target.id = 'section-' + (i + 1);
+      const a = document.createElement('a');
+      a.href = '#' + target.id;
+      a.textContent = h.textContent;
+      const li = document.createElement('li');
+      li.append(a);
+      list.append(li);
+      a.addEventListener('click', () => { if (target.tagName === 'DETAILS') target.open = true; });
+      return [target, a];
+    });
+    nav.hidden = false;
+
+    // Keep the contents open on wide screens; collapsed by default on phones.
+    const wide = matchMedia('(min-width: 1100px)');
+    const details = nav.querySelector('details');
+    const syncOpen = () => { details.open = wide.matches; };
+    syncOpen();
+    wide.addEventListener('change', syncOpen);
+
+    // Mark the section currently being read.
+    const mark = () => {
+      let active = links[0][1];
+      for (const [target, a] of links) {
+        if (target.getBoundingClientRect().top < innerHeight * 0.3) active = a;
+      }
+      for (const [, a] of links) {
+        if (a === active) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      }
+    };
+    addEventListener('scroll', () => requestAnimationFrame(mark), {passive: true});
+    mark();
+  }
+
+  // Click a figure to see it larger.
+  const viewer = document.querySelector('dialog.viewer');
+  const stage = viewer && viewer.querySelector('.stage');
+  if (viewer && viewer.showModal) {
+    main.querySelectorAll('figure img, figure svg').forEach(el => {
+      el.setAttribute('data-zoom', '');
+      el.setAttribute('tabindex', '0');
+      const open = () => {
+        stage.replaceChildren(el.cloneNode(true));
+        stage.firstChild.removeAttribute('tabindex');
+        viewer.showModal();
+      };
+      el.addEventListener('click', open);
+      el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    });
+    viewer.addEventListener('click', e => { if (e.target === viewer) viewer.close(); });
+  }
+
+  // Print everything, including collapsed appendices.
+  let closed = [];
+  addEventListener('beforeprint', () => {
+    closed = [...document.querySelectorAll('main details:not([open])')];
+    closed.forEach(d => { d.open = true; });
+  });
+  addEventListener('afterprint', () => closed.forEach(d => { d.open = false; }));
+})();
+</script>
+</body>
+</html>

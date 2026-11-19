@@ -6,16 +6,26 @@ All notable changes to this repository are documented here.
 
 ### Added
 
+- Add an offline HTML report template to `research-progress-report`: a single reading column, a contents rail generated from section headings that tracks reading position, a click-to-enlarge figure viewer, rule-only tables that scroll on phones, collapsible appendices that expand for print, and native MathML. A short guide says how to use it and what not to add.
+- Add a Chinese/English sentence-style guide to the report writing reference (verbs over 进行 + noun, concrete numbers, headings that state the finding, when buzzwords hide missing content).
+- Add interface and interaction rules for InfoHub pages: researcher-facing copy and errors, data-first layouts, unambiguous save and conflict states, progress on long actions, annotation shortcuts and a browser checklist.
+- Add an evaluation case for the HTML reading experience.
 - Add `infohub-maintenance` as an optional, separately installable integration for existing InfoHub research workspaces, covering project data revisions, local snapshots/exports, report delivery and unified Web/MCP maintenance without making warehouse publication or InfoHub a writing prerequisite.
-
 - Add native editable results, sample-composition and parameter tables to the scientific presentation template, with shared alignment, units, precision, missing-state and derived-value rules; expand the demonstration from twelve to fifteen slides.
 - Add `scientific-presentation-style`: the scientific chart palette adapted for projection, 19 chart-to-PowerPoint representation rules, native editable bar/XY charts and scientific geometry, and a reproducible twelve-slide synthetic template specification.
 - Include explicit data-bound versus geometric editability guidance, source data in notes, missing-observation handling and regression checks for presentation statistics/data preservation.
 
 ### Changed
 
+- Rewrite every skill's instructions, the README and the catalog descriptions in plain language: numbered steps, short sentences, tables where they help. Requirements are unchanged.
+- Rename the internal "B" and "D" chart-style labels to "default color" and "grayscale print mode"; chart previews are byte-identical.
+- Slide titles now state the slide's point; the presentation skill gains explicit one-message-per-slide rules.
 - Restore a saturated blue color default with darker orange, purple and neutral companions; strengthen the blue heatmap midpoint and refresh color reference figures for better readability.
-- Keep physical typography, spacing, geometry, line widths, markers, data/statistics and the D grayscale design unchanged.
+- Keep physical typography, spacing, geometry, line widths, markers, data/statistics and the grayscale print design unchanged.
+
+### Fixed
+
+- The report skill described the chart companion's palette as teal/terracotta; it is saturated blue/orange/purple.
 
 ## [1.0.0] - 2026-10-25
 

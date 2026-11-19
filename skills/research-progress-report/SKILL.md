@@ -1,123 +1,103 @@
 ---
 name: research-progress-report
-description: "Draft or revise self-contained scientific progress reports for public briefings or lab meetings, including 科研进展报告、阶段性研究总结、项目进度汇报. Explain the whole argument clearly; document model data splits, architecture, module data flow, losses, training, selection, and evaluation in detail. Use another workflow for journal manuscripts or grant proposals."
+description: "Draft or revise self-contained scientific progress reports for public briefings or lab meetings, including 科研进展报告、阶段性研究总结、项目进度汇报. Explains the work from an overview down to the evidence in plain language, and documents model data splits, architecture, losses, training, checkpoint selection and evaluation in full. Not for journal manuscripts or grant proposals."
 ---
 
 # Research Progress Report
 
-Create audience-facing material in the researcher's voice. Readers should understand the problem, the overall approach, how its parts connect, and what the evidence changes. Preserve the user's language, outline, scope, and explicit instructions. Accuracy and understanding come first; concision removes redundancy, not the explanation needed to follow the argument. Charts and formulas support that explanation.
+Write a report the researcher can hand to their audience as is. A reader who has never seen the chat, the notebooks or earlier drafts should come away knowing what problem the project tackles, how the approach works, what the evidence shows, and what happens next.
 
-## Establish the reporting contract
+Keep the user's language, outline, scope and explicit instructions. Accuracy comes first, then clarity, then brevity: cut repetition, never the explanation a reader needs to follow the argument.
 
-Use settings already supplied in this conversation or in the report being revised. Do not restart intake on a follow-up.
+## 1. Settle the basics, then stop asking
 
-- **Language and output:** use the request's language and Markdown unless specified otherwise; produce standalone HTML when requested.
-- **Audience:** obtain an explicit audience description or permission to choose. The calibration profiles are `普遍高学历人群`, `大领域科研人群`, `小领域科研人群`, and `研究伙伴`; custom descriptions are equally valid. If no audience or delegation is available, ask one concise question before the first full draft. If the user explicitly says to decide, use a reasonable profile and state the assumption outside the artifact. Do not ask again when the request already describes the readers.
-- **Context:** public report or lab meeting, using the request or existing artifact. If uncertain and consequential, include it in the audience question; otherwise state a reasonable assumption outside the report.
-- **Outline:** follow supplied headings or the existing report. Offer the option to supply an outline when another intake question is needed; an optional outline must not create a separate waiting step. Without an outline, organize the report using the evidence. Instructions such as “draft directly” or “organize it” already delegate structure.
-- **Scope:** identify the project, period, objective, evidence, methods, results, limitations, and intended next steps. Ask only about missing information that prevents a useful or accurate draft.
+Reuse whatever the conversation or the existing report already settles. Don't restart intake on a follow-up.
 
-Read [references/audience-and-context.md](references/audience-and-context.md) to calibrate depth. For mixed audiences, follow the designated primary audience and layer specialist detail. Ask for a primary audience only if that choice materially affects the report and has not been delegated.
+| Setting | Default | Ask only if… |
+|---|---|---|
+| Language and format | The request's language; Markdown. HTML when asked. | — |
+| Audience | None. You need a description or permission to choose. | Nobody has described the readers or said "you decide". |
+| Context | Public briefing or lab meeting, whichever the material suggests. | Getting it wrong would change the report. |
+| Outline | The user's outline or the existing report's structure; otherwise organize it yourself. | You're already asking something else. Offer it in the same message; never as a separate wait. |
 
-Missing facts are not permission to invent them. If the user wants an incomplete draft or template, use precise localized missing-information markers. For a completed report, either obtain essential missing evidence or describe its absence as a scientific limitation; do not label an unfinished template as final.
+If you must ask, ask once, in one short message. Calibration profiles for the audience are `普遍高学历人群`, `大领域科研人群`, `小领域科研人群` and `研究伙伴` (see [references/audience-and-context.md](references/audience-and-context.md)); a free-form description works just as well. When the user says "you decide", pick a profile and mention the assumption outside the report. "直接写" or "你来组织" already hands you the structure.
 
-## Organize the whole report before writing details
+Missing facts are never an invitation to invent them. In a draft or template, mark each gap precisely (`[待补充：对照组 n 与标准差]`). In a finished report, either get the evidence or state its absence as a limitation.
 
-Treat conversations, attachments, notebooks, and previous drafts as authoring sources the audience has not seen. Expertise does not imply knowledge of this project's samples, internal names, baselines, or previous decisions. Include a compact recap for continuation reports unless the user confirms the shared prior material.
+## 2. Plan the whole report before writing any section
 
-Before drafting, identify the report's central question and the answer or current state the evidence supports. Arrange the material into a coherent route: what the reader must understand first, which question each section answers, what evidence belongs there, and how it leads to the next section. Resolve contradictions or missing premises before polishing sentences. Do not organize a report by pasting source fragments or listing components in the order they were encountered.
+Treat everything you were given (chat, attachments, notebooks, drafts) as material the reader has not seen. Expert readers still don't know this project's samples, internal names, baselines or earlier decisions, so a continuation report needs a short recap unless the user confirms the audience already has it.
 
-When describing a module or experiment, place it within the whole project before expanding it: its purpose, inputs, outputs, and connection to other steps. Distinguish training, calibration, ordinary use, and later feedback when they have different roles. Explain how a local dataset or substep relates to its parent; similarly named sets or stages are not automatically the same. Do not invent relationships absent from the sources.
+Before drafting, answer privately:
 
-Open with a short, substantive overview that connects the problem, overall approach or flow, and main progress, conclusion, or unresolved question. Let readers see how the parts fit before meeting their details. A list of headings or “this report has five sections” is not an overview. An opening finding must carry enough context to make its meaning clear; do not front-load unexplained abbreviations. For a brief update, integrate the overview into its opening sentences rather than adding a separate section.
+1. What is the one question this report answers, and what is the current answer?
+2. What does the reader need to understand first, second, third?
+3. Which evidence supports each step, and why does each step lead to the next?
 
-Follow a supplied outline's hierarchy, order, and emphasis. Integrate necessary context and connections into it; explain a consequential conflict before materially reordering it unless restructuring is authorized. With delegated structure, organize by the research question, causal or process relationships, and decisions; use chronology when it explains the work. Keep the planning map internal unless requested. This workflow does not require a separate outline-approval turn.
+Fix contradictions and missing premises now; polishing sentences won't repair a broken route. Don't assemble the report from source fragments in the order you happened to read them.
 
-## Expand the overview into connected explanations
+Open with a real overview: the problem, the overall approach, how the parts connect, and where things stand. "本报告分为五部分" is a table of contents, not an overview. For a short update, the first two sentences do this job; no separate section.
 
-Build each section around one clear question. Start with its purpose or main point, then supply the necessary mechanism, design, evidence, and interpretation. Important actions need reasons, comparisons need explicit baselines, and conclusions must answer the question. Explain consequential transitions: which unresolved issue makes the next step necessary? Follow the relevant parts of `question → reason and setup → evidence → interpretation → next decision`; these are reasoning checks, not mandatory headings.
+With a supplied outline, keep its hierarchy and emphasis and fill in the missing connections. Explain before reordering anything substantial. With no outline, organize around the research question and the cause-and-effect or process order; use chronology only when the timeline is the point.
 
-Introduce an unfamiliar concept where the reader needs it: explain the problem it addresses, what it means in ordinary language, and its role or connection here; then give the technical name, abbreviation, or formula when useful. Expanding an English acronym is not an explanation. Familiar disciplinary concepts need no textbook recap, but project-specific roles still need explanation. Remove concepts that do no work in the argument.
+## 3. Write sections that each answer one question
 
-For an abstract mechanism or interface, use a supplied case to show input, processing or decision, output, and consequence when this clarifies the explanation. Do not fabricate an observed case. State which parts are implemented, tested, proposed, or undecided. Present the current approach clearly and keep alternatives subordinate unless the report's purpose is to compare them; do not add architecture, parameters, or future branches merely to make the report look complete.
+Open every section with its question or main point, then give the mechanism, design, evidence and interpretation it needs. Actions need reasons. Comparisons need an explicit baseline. Conclusions must answer the question asked. At a big transition, say what is still unresolved and why the next step addresses it.
 
-Read [references/writing-and-explanation.md](references/writing-and-explanation.md) when drafting or substantially restructuring a report, or repairing complaints about unclear logic, terminology, or dense language. It provides worked examples and a reader check. Follow [references/output-formats.md](references/output-formats.md) for Markdown or HTML; its headings are examples.
+Introduce an unfamiliar concept where it is first needed: the problem it solves, what it is in plain words, its role here, and only then its technical name or formula. Spelling out an acronym is not an explanation.
 
-## Make model methods and evaluation explicit
+Pick one name for each important thing and keep it everywhere: prose, headings, figures, tables, formulas. If the sources use an alias, mention it once. Don't vary names for style, and don't merge two things because their names sound alike.
 
-When a report describes a model, read [references/model-reporting.md](references/model-reporting.md). Model detail is required scientific content, not an optional expansion for specialist audiences. A reader must be able to trace how data become predictions, how parameters are learned, which checkpoint is selected, and how performance is measured. Ground the account in supplied code, configuration, dataset manifests, logs, and evaluation outputs; resolve disagreements or identify them explicitly.
+Say who does what to what, with what result. Not "构建协同治理闭环", but what actually runs, on which input, producing which output. A professional tone comes from precise meaning, not from dense terminology.
 
-Cover all applicable items in the report or an explicitly linked appendix:
+[references/writing-and-explanation.md](references/writing-and-explanation.md) has worked examples, a style guide for Chinese and English prose, and a reader test. Read it when drafting, restructuring, or fixing a report someone called unclear.
 
-- **Dataset splits:** sources, inclusion/exclusion, sample units, counts and proportions, train/validation/test roles, split method and seed or fixed manifest, grouping to prevent leakage, and any cross-validation or external test design. Explain which data fit preprocessing, tune settings or thresholds, select checkpoints, and measure final performance.
-- **Architecture and module data flow:** provide an overall network diagram and internal expansion diagrams for unfamiliar, custom, or materially modified modules. Follow a sample or batch from input to output, showing key tensor shapes, branches, fusion operations, repeated blocks, and differences between training and inference. Explain each module's purpose, actual operations, inputs, outputs, and connection to the next module. A backbone name or a sequence of unexplained boxes is insufficient. Read [references/network-diagram-references.md](references/network-diagram-references.md) for verified classic-paper examples; borrow their visual conventions and draw the actual implementation.
-- **Loss functions:** give the actual optimized objective as a formula, including component terms, weights, reductions, masks and regularization where applicable. Define symbols and targets, explain each term's purpose and where it attaches to the network, and distinguish the training loss from selection and evaluation metrics.
-- **Training and final model selection:** report batch size and effective batch size when different, optimizer, learning rate and schedule, training loss, planned and completed epochs/optimizer steps, validation cadence, early stopping settings or its explicit absence, and the exact checkpoint selection rule. Include preprocessing, augmentation, initialization, frozen/trainable modules, seeds, runtime and numerical settings when they affect reproducibility. Distinguish best-validation, last, averaged, or ensemble weights; explain the actual choice without using final-test performance to tune or select it.
-- **Results and performance, when available:** identify the evaluated checkpoint, split, sample size and inference protocol. For every reported metric, explain why it addresses the research question, provide its calculation formula and symbol definitions, and specify aggregation, thresholds, units and direction. Present supported values and comparisons, then summarize what worked, what failed, and what the evidence does and does not establish. Do not turn an implemented interface into measured predictive performance.
+## 4. Models: explain them completely
 
-Audience and brevity change the presentation and placement of detail, not its accuracy or completeness. Keep the central architecture, custom mechanism, selection rationale and main result understandable in the main narrative; place long configurations, derivations and secondary results in a linked appendix. A brief continuation may link to an accessible, identified prior methods version and specify changes. An explicit local-edit, text-only or no-formula request limits that deliverable; honor it without silently claiming that a full model account is complete.
+When the report describes a model, read [references/model-reporting.md](references/model-reporting.md). This detail is required for every audience; the audience only changes where it lives (main text or a linked appendix). A reader must be able to trace:
 
-Missing facts must remain missing. In an incomplete draft, mark the exact unreported field; in a completed report, obtain essential evidence or state the concrete limitation. Use “not used” only when confirmed and “not yet evaluated” when appropriate. Do not invent architecture, split ratios, hyperparameters, stopping rules, metric formulas for unknown implementations, or performance to fill this contract.
+- **Data splits.** Source, unit, counts, train/validation/test roles, how the split was made, and what prevents leakage.
+- **Architecture and data flow.** An overall network diagram, plus an internal diagram for any custom or modified module. Follow one sample from input to output with tensor shapes. See [references/network-diagram-references.md](references/network-diagram-references.md) for classic diagrams worth borrowing conventions from.
+- **Loss.** The actual objective as a formula, every term defined, kept separate from evaluation metrics.
+- **Training and checkpoint choice.** Batch size, optimizer, learning-rate schedule, planned vs. actual duration, early stopping (or its absence), and the exact rule that picked the final weights.
+- **Results, if any.** Which checkpoint, split and protocol; each metric's purpose and formula; what the numbers do and don't show.
 
-## Keep terminology stable and language direct
+Ground every value in supplied code, configs, manifests, logs and outputs. Unknown stays unknown: never fill a split ratio, hyperparameter, loss or score with a "typical" value. An explicit text-only, no-formula or one-paragraph request limits the deliverable; respect it, and don't pretend the model account is complete.
 
-- Choose a canonical name for each important entity, concept, dataset, and symbol before drafting. At first relevant use, explain a necessary alias or abbreviation and its relationship; then use the canonical name consistently across prose, headings, figures, tables, and formulas. Retain exact code identifiers where needed, with a readable explanation. Do not invent synonyms for variety or merge distinct concepts because their names sound similar. Keep this name map internal unless a glossary would help the reader.
-- Use concrete subjects and verbs: who or what takes which input, performs which action, and produces which result? Replace abstract noun chains, invented labels, ornate academic phrasing, and empty transitions with that relationship. A professional tone comes from precise meaning, not terminology density. Replace “as discussed”, “the previous method”, and vague pronouns with clear referents.
-- Give each paragraph one purpose. Remove repeated background, inflated significance, and sentences that add no explanation, evidence, or decision. Keep essential introductions, reasons, and bridges even when they cost a few words. An overview establishes relationships; later sections substantiate them, so this useful layering is not redundant repetition. Scale length to the task rather than enforcing a word count.
-- Give each detailed fact or shared limitation one main location. Do not recite a full data table in surrounding prose or repeat the same implementation status in an overview, status table, section endings, and conclusion. State shared missing evidence clearly once; repeat a boundary locally only when it prevents a distinct misinterpretation. Prefer “已接通接口，尚未评估分类效果” to repeated abstract statements about what the evidence can support.
+## 5. Figures, tables and formulas
 
-## Use charts and formulas to clarify the argument
+Choose the representation from the section's question: a chart for comparisons, patterns, distributions and uncertainty; a compact table for exact values; a diagram for structure and flow; a formula for a definition or calculation. Before a figure or formula, say why the reader needs it; after it, say what follows from it. Don't add visuals to fill a quota, and respect text-only requests.
 
-Plan the representation with the section's question. Prefer a chart for a comparison, pattern, distribution, or uncertainty; a compact table for exact values or mapped roles; a flow or hierarchy diagram for relationships; and a formula for a quantitative definition or calculation. Give them priority when they make the explanation clearer and more precise. Explain why the reader needs to see the representation and what follows from it; a diagram of jargon or an unexplained equation does not repair an unclear argument.
+- Keep decisive evidence next to its claim and move long tables, derivations and secondary diagnostics to a linked appendix.
+- Captions name the metric, population, unit, denominator, uncertainty and source.
+- Save figures in `figures/` next to the report with relative links. Prefer SVG, add PNG if needed.
+- Draw figures only from real data. If plot data are missing, give a table schema in a draft, not a fake chart.
+- For chart styling, use `scientific-chart-style` if it's installed (saturated blue/orange/purple, plus a grayscale print mode). It's optional: without it, keep clear encodings, units, denominators and direct labels, and don't claim to have used it.
+- For formulas, read [references/math-formatting.md](references/math-formatting.md): `$...$` inline, `$$...$$` on their own lines, KaTeX-safe commands only, every symbol defined.
 
-Keep decisive evidence near its claim. Let the chart reveal the pattern, the formula define the relationship, and prose explain its meaning and limit without reciting every label. Move full tables, derivations, protocols, and secondary diagnostics to explicitly linked appendices when they interrupt the narrative. Respect text-only requests and use prose alone for a simple or qualitative update when visuals add no clarity. Do not impose visual quotas or decorative notation.
+For output layout, follow [references/output-formats.md](references/output-formats.md). For HTML, start from [assets/report-template.html](assets/report-template.html) and follow [references/html-report.md](references/html-report.md).
 
-For model methods and performance, the diagrams and formulas in the model-reporting contract are required representations. Treat the general preference for fewer visuals as a presentation choice within that contract, subject to explicit user restrictions.
+## 6. Scientific integrity
 
-## Preserve scientific integrity
+- Claims never outrun evidence. Keep correlation vs. causation, exploratory vs. confirmatory, and "no evidence" vs. "evidence of no effect" distinct. Keep negative and inconclusive results that matter.
+- Keep units, denominators, sample sizes, replicate types, time ranges, statistical methods and uncertainty definitions. Repeated images of one subject are not independent subjects.
+- Name the reference for every comparison. Percentage points and relative percent are different numbers. Don't derive significance or intervals from aggregate counts.
+- State limitations and confounders in proportion to their impact. Keep plans separate from completed work. Never invent owners, deadlines or thresholds.
+- Keep supplied citations; mark missing ones instead of fabricating them.
+- Use synthetic data only when the user asks for a demonstration, and label it visibly in the report, tables and figures.
 
-- Do not strengthen a claim beyond its evidence. Distinguish correlation from causation, exploratory from confirmatory results, and absence of evidence from evidence of no effect. Include negative or inconclusive results that change the research logic.
-- Retain material units, denominators, sample sizes, biological versus technical replicates, time range, statistical methods, and definitions of uncertainty. Repeated images or measurements are not automatically independent subjects.
-- Identify each comparison's reference value. Distinguish percentage-point changes from relative percentage changes; do not derive significance or confidence intervals from aggregate counts without an appropriate design and justified assumptions.
-- State specific limitations, plausible alternatives, confounders, and data-quality issues in proportion to their impact. Keep proposed explanations and next experiments distinct from completed work. Do not invent owners, deadlines, thresholds, or commitments.
-- Preserve supplied citations and source identifiers. Mark missing citations for completion rather than manufacturing bibliographic details.
-- Use synthetic data only when the user requests a demonstration or simulation, and label the resulting report, tables, and figures clearly. Missing real evidence must never silently become synthetic results.
+## 7. Keep yourself out of the report
 
-## Mathematics
+The report is in the researcher's voice. Use the voice the user established; otherwise neutral research prose ("本研究", "本项目", "we"). The report must not contain "根据您的要求", "I have prepared", instructions to the reader, or sections such as `组会汇报口径`, `可以直接说`, `表达建议`. Write limits as science ("这些结果不能说明因果关系"), not as speaker coaching. Audience labels and internal checks stay hidden unless requested. Speaker notes or a talk script are a separate deliverable, only on request.
 
-Introduce the quantity and why it matters before its formula. Define symbols, units, reference values, and material assumptions near first use, then explain the implication needed by the audience. Use only supported relationships; notation must not imply an untested model, causal mechanism, or unavailable uncertainty estimate. Keep derivations only when they help assess the claim or are requested.
+Deliver the report first. Put any assumption or missing-input note briefly after it, outside the artifact.
 
-When formulas appear, read [references/math-formatting.md](references/math-formatting.md). Use `$...$` inline and `$$...$$` on separate lines for display math in Markdown and retained TeX source. Use portable KaTeX constructs, define symbols, and preserve mathematical meaning. Avoid equation numbering, labels, cross-references, custom macros, and document/package commands.
+## 8. Check before delivering
 
-Standalone HTML must actually display formulas when rendered mathematics is requested. Use a local rendering route or semantic MathML as described in the reference; raw dollar-delimited TeX alone is not rendered mathematics. If conversion is uncertain, resolve the expression before claiming a finished mathematical report.
-
-## Figures and exact values
-
-Create the planned figures when the data and output format support them. Give each a specific question or message; combine panels only for a useful shared comparison. Distinguish observed flows from proposed designs and hypotheses. Keep exact values in an adjacent compact table or explicitly linked appendix. Follow a user-named style first.
-
-For scientific figures across disciplines, use `scientific-chart-style` when available (muted teal/terracotta by default; grayscale for black-and-white print). It is an optional companion: if absent, continue with legible encodings, units, explicit denominators, accessible direct labels, and restrained styling; do not require installation or claim to have applied an unavailable skill. This skill controls the evidence narrative, while the companion controls the visual system.
-
-Choose the encoding from the analytical question. Show uncertainty and individual observations only when supported by the data. Caption the metric, population, unit, denominator where relevant, uncertainty encoding, and source or extraction date when available. Save static figures in `figures/` beside the report with relative links; prefer SVG and provide PNG when compatibility requires it. For a requested single-file HTML, embed figures as described in the output guide.
-
-If essential plot data are missing, supply a specification or table schema in an incomplete draft; do not fabricate a rendered result. Verify the plotted values against the source table.
-
-## Authorial voice and audience boundary
-
-Use established first-person voice when supplied; otherwise prefer neutral research prose such as “本研究” or “本项目”. Keep writing advice, generation commentary, and configuration outside the report. Do not include “根据您的要求”, “I have prepared”, instructions addressed to “你/您/you”, or headings such as `组会汇报口径`, `可以直接说`, `表达建议`, or “what to say”.
-
-Write scientific boundaries as content: “These results do not establish causality,” rather than coaching the speaker. Keep audience/context labels and internal checks hidden unless requested as metadata. Provide speaker notes, coaching, or talk scripts only when requested, as a separate artifact.
-
-Deliver the report first, with any necessary assumption or missing-input note kept concise and outside it.
-
-## Verify before delivery
-
-- Read only the opening and section openings: can a reader retell the problem, overall approach, how the parts connect, and current state? Repair missing links before sentence polishing. A supplied outline remains recognizable.
-- Read in order as someone without the authoring context: concepts are introduced before they are needed, important actions have reasons, and inputs, outputs, stages, data relationships, and baselines have clear referents. Names, aliases, and symbols remain consistent across the artifact.
-- Opening claims have supporting evidence; experiments have reasons; conclusions and next decisions follow from the data. Training or evaluation descriptions support the role claimed for the method in actual use.
-- For model content, check the split, architecture/module data flow, loss formulas, training settings, stopping and checkpoint selection, and available metric formulas/results against [references/model-reporting.md](references/model-reporting.md). Trace one forward pass and each loss to the implementation. Verify that diagrams, tensor shapes, configuration, logs, checkpoint and reported results agree; disclose unavailable details instead of silently omitting them.
-- Prose uses concrete actions and readable sentences. Charts and formulas clarify rather than conceal the explanation; overviews, details, and captions each have a distinct purpose. Do not mistake compact terminology for understandable reasoning.
-- Numbers, units, denominators, formulas, tables, charts, captions, and sources agree, including derived values and rounding. Compression has not removed essential sample sizes, uncertainty, baselines, or limitations. Observations, interpretations, and plans remain distinguishable.
-- Every visible section is scientific content the researcher could show the audience, without drafting instructions or invented evidence.
-- Formulas preserve meaning and use the selected output's rendering route. Inspect a rendered preview when available; report any inability to verify rendering rather than claiming it passed.
-- Local links resolve; HTML has semantic structure and accessible figures/tables, and works with the agreed offline or single-file constraints.
-- Remove resolved placeholders and unused scaffold sections. Describe outstanding gaps honestly when delivering an incomplete draft.
+- **Skim test.** Read only the opening and each section's first lines. Can you retell the problem, approach, how parts connect, and current status? If not, fix the structure before the sentences.
+- **Newcomer test.** Read in order as someone who never saw the sources. Every concept appears before it's needed, every action has a reason, every "it", "the previous method" or "this set" has a clear referent, and names stay consistent.
+- **Evidence test.** Each opening claim has support; each conclusion and next step follows from the data.
+- **Model test.** Trace one forward pass and each loss term to the implementation; diagrams, shapes, configs, logs, checkpoint and results agree. Disclose what's unavailable.
+- **Numbers test.** Values, units, denominators, rounding, tables, charts and captions agree. Compression hasn't dropped sample sizes, uncertainty, baselines or limitations.
+- **Rendering test.** Formulas render in the target format; links resolve; HTML follows the output guide. If you couldn't inspect a render, say so instead of claiming it passed.
+- **Cleanup.** No leftover placeholders in a final report, no unused scaffold sections, no drafting notes.

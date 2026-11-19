@@ -6,7 +6,7 @@
     {
       "name": "scientific-chart-style",
       "path": "skills/scientific-chart-style",
-      "description": "Create or restyle publication-oriented scientific charts across disciplines. Locate one of 19 chart references, read only its input/definition/example, and render a selected chart with editable exports. Use high-contrast blue by default and a designed grayscale print mode.",
+      "description": "Create or restyle publication-quality scientific charts in any discipline. Pick one of 19 chart types from an index, read only that chart's card (inputs, statistical definition, example), and render it with editable SVG/PDF and PNG exports. Saturated blue palette by default, with a purpose-built grayscale mode for print.",
       "tags": [
         "scientific-figures",
         "charts",
@@ -19,14 +19,14 @@
     {
       "name": "scientific-presentation-style",
       "path": "skills/scientific-presentation-style",
-      "description": "Create scientific PowerPoint templates with the high-contrast scientific-chart-style visual system. Adapt typography for projection, preserve statistical meaning, and use editable native charts, tables and scientific geometry. Use for research presentations and chart/table-focused PPT requests, not journal-figure sizing or unrelated slide branding.",
+      "description": "Build scientific PowerPoint slides in the scientific-chart-style look: white canvas, saturated blue/orange/purple, projection-size type, and editable native charts, tables and plot geometry that keep their statistical meaning. Use for research presentations and chart- or table-focused PPT requests; not for journal figure sizing or unrelated slide branding.",
       "tags": ["powerpoint", "slides", "scientific-figures", "editable-charts", "tables", "templates"],
       "related_skills": ["scientific-chart-style"]
     },
     {
       "name": "research-progress-report",
       "path": "skills/research-progress-report",
-      "description": "Draft or revise self-contained scientific progress reports for public briefings or lab meetings, including 科研进展报告、阶段性研究总结、项目进度汇报. Explain the whole argument clearly; document model data splits, architecture, module data flow, losses, training, selection, and evaluation in detail. Use another workflow for journal manuscripts or grant proposals.",
+      "description": "Draft or revise self-contained scientific progress reports for public briefings or lab meetings, including 科研进展报告、阶段性研究总结、项目进度汇报. Explains the work from an overview down to the evidence in plain language, and documents model data splits, architecture, losses, training, checkpoint selection and evaluation in full. Not for journal manuscripts or grant proposals.",
       "tags": [
         "html",
         "katex",
@@ -43,7 +43,7 @@
     {
       "name": "infohub-maintenance",
       "path": "skills/infohub-maintenance",
-      "description": "Maintain an existing InfoHub research workspace: project datasets, previews, annotations, local snapshots and exports, report delivery, and unified Web/MCP services. Optional integration for installations using InfoHub; ordinary research does not require warehouse publication. Not a prerequisite for writing reports or figures.",
+      "description": "Maintain an existing InfoHub research workspace: project datasets, previews, annotations, local snapshots and exports, report delivery, and the unified Web/MCP services. Optional integration for people who already run InfoHub; ordinary research never needs warehouse publication, and the writing and chart skills don't need InfoHub.",
       "optional": true,
       "tags": [
         "infohub",

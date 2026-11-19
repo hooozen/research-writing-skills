@@ -2,13 +2,13 @@
 
 ## Discover before editing
 
-Locate the authorized checkout and read its deployment documentation, route/module registry, actual configuration and relevant code. Service names, ports, filesystem roots and user identities below are roles to discover, not personal-machine defaults. Do not print `.env`, tokens, credential files or private patient paths while inspecting configuration.
+Read the checkout's deployment docs, route and module registry, actual configuration and the relevant code first. Service names, ports, file roots and user identities mentioned below are roles to look up, not defaults. Don't print `.env`, tokens, credential files or private patient paths while inspecting configuration.
 
 The existing implementation separates React/TypeScript/Vite UI, a modular FastAPI API, an independent PostgreSQL work database, persistent jobs, shared assets and a reverse-proxy gateway. Reuse these boundaries rather than creating another ad hoc viewer/backend for the same data.
 
 | Concern | Change and preserve |
 | --- | --- |
-| Navigation/pages | Shared components, theme variables, system titles/icons, tables, filters, error states and narrow layouts |
+| Navigation/pages | Shared components, theme variables, system titles/icons, tables, filters, error states and narrow layouts; see [Interface and interaction quality](#interface-and-interaction-quality) |
 | Source adapters | Immutable source revision/provenance, native fields, assets, unknown values and established splits |
 | Local data operations | Working revisions, expected-revision saves, independent snapshots, Python reads and local exports |
 | Assets | Registered sample/role access, original bytes where requested, dimensions/hashes, no arbitrary filesystem traversal |
@@ -19,6 +19,26 @@ The existing implementation separates React/TypeScript/Vite UI, a modular FastAP
 | Gateway | Public-facing paths, LAN/private-network access, legacy links, streaming/compression and metadata headers |
 
 Treat the deployment's legacy databases and migration scripts as historical evidence unless the task is an explicit migration/recovery. Ordinary maintenance does not repeat a cutover or start retired writers. Never run both old and new annotation writers as an expedient rollback.
+
+## Interface and interaction quality
+
+Research tools are used for hours at a time by people inspecting images and labels. Every UI change should make that work faster and less error-prone, not just look new. Reuse the installation's shared components and theme variables; if a needed pattern is missing, add it to the shared layer rather than styling one page by hand.
+
+**Copy.** Name things the way researchers talk about them: "项目", "数据集", "标注", "快照", not table names, internal IDs or API terms. Buttons say exactly what they do ("保存标注", "导出到本地", "发布到数据仓库"), and the confirmation uses the same verb ("已保存", "已导出"). Errors say what happened and what to do next ("另一位标注者刚保存了新版本。重新加载后再保存。"), never just "操作失败" or a raw status code. Empty states say what belongs there and offer the action that fills it.
+
+**Layout.** The data is the main thing on the screen: give the image, table or viewer the space, and keep controls compact around it. Lists of samples are dense tables with sortable columns, a sticky header, right-aligned numbers and a visible count ("显示 50 / 1,284"), not grids of cards. Keep filters, sort and selection in the URL so a view can be shared and survives reload.
+
+**Interaction.**
+
+- Every action that takes time shows progress right where it was triggered and disables the trigger while it runs; long jobs show their stage and can be left and resumed.
+- Saving is never ambiguous: show unsaved changes, warn before leaving with them, and show "已保存" with the revision once the server confirms.
+- Destructive or publishing actions say what will change and how much ("将从项目移除 12 个样本") before confirming. Prefer undo over a confirmation dialog for reversible edits.
+- Annotation canvases support keyboard shortcuts for frequent actions (next/previous sample, undo/redo, brush size, toggle mask), show them on hover, and keep zoom and pan when moving between samples of the same size.
+- Optimistic updates roll back visibly on a 409 or other failure; a conflict is shown as a choice to reload, never silently overwritten.
+
+**Visuals.** Neutral surfaces, one accent color for primary actions and selection, and status colors used only for status (and always paired with text or an icon). Mask overlays need adjustable opacity and colors that stay distinguishable for color-blind users. No decorative gradients, shadows on every panel or animations that delay work. Text stays at least 14 px in tables and 16 px in reading views.
+
+**Check it in a browser.** At desktop width and a narrow window: keyboard-only navigation with visible focus, loading, empty and error states (force them with a synthetic fixture), a conflicting save, and a long list. Screenshots of the changed pages belong in the change report.
 
 ## Unified routes and delivery
 

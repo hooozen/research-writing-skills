@@ -104,14 +104,14 @@ def _table_text(text) -> str:
 def index_markdown(charts: list[dict]) -> str:
     """Generate navigation, not a compulsory image gallery or duplicate manual."""
     parts = [
-        '# Chart Index: 19 Scientific Encodings',
-        'Start with the question and available inputs. Choose one chart ID, read only its card, '
-        'and inspect its individual SVG or PNG only when visual detail is needed. '
-        'The card specifies the statistical definition, input format, limitations and a short runnable example.',
-        'The linked inputs and previews are **synthetic reference examples**, not research findings. '
-        'High-contrast blue is the default; generate D print mode with `--mode grayscale`. '
-        'Keep the shared [style guide](style-guide.md) authoritative for appearance.',
-        '| ID / chart card | Use when | Required inputs | Example data | Individual preview |',
+        '# Chart Index',
+        'Find the row whose question matches the user\'s question and data, then read only that card. '
+        'Each card gives the input format, how the chart is calculated, what it can\'t show, and a runnable example. '
+        'Open the PNG when you want to see the intended result.',
+        'All example inputs and previews are **synthetic**, not research findings. '
+        'Color is the default; add `--mode grayscale` for print. '
+        'Appearance is set by the [style guide](style-guide.md).',
+        '| Chart | Answers | Required inputs | Example input | Preview |',
         '|---|---|---|---|---|',
     ]
     for item in charts:
@@ -125,19 +125,18 @@ def index_markdown(charts: list[dict]) -> str:
                      f'| [JSON]({rel("input")}) | [SVG]({rel("svg")}) · [PNG]({rel("png")}) |')
     parts += [
         '\n## Run one example',
-        'From the skill directory, use an output directory in the task workspace. '
-        'The following creates only the ROC example and its numerical/export companions:',
+        'From the skill directory, with output going to the task workspace. '
+        'This creates only the ROC example and its data and statistics records:',
         '```sh\npython scripts/render_chart.py --chart roc --example --output-dir /tmp/roc-reference\n```',
-        'For actual supplied data, replace `--example` with `--input /path/to/task/roc.json`. '
-        '`--input` and `--example` are mutually exclusive; no data is silently synthesized. '
-        'Use `--formats svg,png,pdf` when all three exports are needed. '
+        'For real data, replace `--example` with `--input /path/to/task/roc.json`. '
+        'The two flags are mutually exclusive, so data is never synthesized silently. '
+        'Add `--formats svg,png,pdf` when PDF is needed too. '
         '[Renderer](../scripts/render_chart.py) · [machine-readable index](chart-index.json).',
-        '\n## Maintenance and optional browsing',
-        'The [preview manifest](examples/manifest.json) records fixture, source and output hashes. '
-        '`python scripts/build_chart_references.py --check` verifies this mapping without rendering. '
-        'Refreshing all shipped reference images is a maintainer action, not a prerequisite for drawing one chart. '
-        'The older [basic](scientific-chart-examples.md) and [advanced](advanced-chart-guide.md) guides '
-        'remain optional background; their contact sheets are not required Agent input.',
+        '\n## Maintenance',
+        'The [preview manifest](examples/manifest.json) records input, source and output hashes; '
+        '`python scripts/build_chart_references.py --check` verifies them without rendering. '
+        'Rebuilding the previews is a maintainer task, never part of drawing one chart. '
+        'The [basic](scientific-chart-examples.md) and [advanced](advanced-chart-guide.md) guides are optional background.',
     ]
     return '\n\n'.join(parts[:3]) + '\n\n' + '\n'.join(parts[3:3+len(charts)+2]) + '\n\n' + '\n\n'.join(parts[3+len(charts)+2:]) + '\n'
 

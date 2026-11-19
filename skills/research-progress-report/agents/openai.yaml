@@ -1,4 +1,4 @@
 interface:
   display_name: "科研进展报告"
-  short_description: "Explain research clearly, from overview to evidence"
-  default_prompt: "Use $research-progress-report to organize a self-contained report from a clear overall approach into connected details, explain new concepts in plain language, and keep terminology consistent; follow my audience and outline, asking once if the audience is missing."
+  short_description: "Progress reports that explain the work from overview to evidence"
+  default_prompt: "Use $research-progress-report to turn my material into a self-contained progress report: overview first, plain language, one name per concept, evidence next to each claim. Ask once if the audience is unclear."

@@ -1,10 +1,10 @@
-# Shared Scientific Chart Style
+# Chart Style Guide
 
-Use **high-contrast blue by default**, **D for black-and-white print**, and white backgrounds. A named journal's current specifications take priority. Read only the sections relevant to the current figure. Scientific definitions and minimal inputs belong to the selected [chart card](chart-index.md), not a contact sheet.
+This guide owns how charts look: colors, type, spacing and export. What a chart means (inputs, calculations, limits) lives in its [chart card](chart-index.md). Read only the sections you need. A named journal's current specifications override everything here.
 
 ## Color and print tokens
 
-| Role | High-contrast color | D print |
+| Role | Color (default) | Grayscale print |
 |---|---|---|
 | Canvas / plot background | `#FFFFFF` | `#FFFFFF` |
 | First / focal series | `#1464D2` (saturated blue) | `#34383C` |
@@ -18,9 +18,9 @@ Use **high-contrast blue by default**, **D for black-and-white print**, and whit
 
 Keep group identity consistent across figures. One series often needs only one color. For more than three groups, consider facets/direct labels or deliberately extend the contrasting palette; do not silently recycle hues. Color must not imply risk, significance or direction unless defined.
 
-Use circle/square/triangle and solid/dashed/dotted lines as redundant identities, with sparse bar hatching when useful. Apply D deliberately, rather than desaturating a color screenshot. Pale fills are background layers; use the stronger series colors for essential outlines, points and lines. Check the final composited color when transparency is present. Essential graphical cues should reach at least 3:1 against their adjacent background; this does not require pale support fills or every sequential-scale cell to reach 3:1 when other visible cues retain the meaning. See [W3C non-text contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html).
+Use circle/square/triangle markers and solid/dashed/dotted lines as a second way to tell groups apart, with sparse bar hatching when useful. Grayscale is a designed mode (`--mode grayscale`), not a desaturated color figure. Pale fills are background layers; use the stronger series colors for essential outlines, points and lines. Check the final composited color when transparency is present. Essential graphical cues should reach at least 3:1 against their adjacent background; this does not require pale support fills or every sequential-scale cell to reach 3:1 when other visible cues retain the meaning. See [W3C non-text contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html).
 
-For ordered magnitudes, use an ordered light-to-dark blue sequential scale with a visible light-blue midpoint. Use blue–neutral–orange divergence only for a meaningful midpoint, with explicitly centered limits when appropriate. Keep comparable panels on a common scale; mark missing cells separately from low values. Choose dark or white annotation ink from actual background contrast. Avoid rainbow scales and decorative gradients. Color changes do not alter the physical typography, line widths, markers, layout, spacing or export rules below; the D print design remains unchanged.
+For ordered magnitudes, use an ordered light-to-dark blue sequential scale with a visible light-blue midpoint. Use blue–neutral–orange divergence only for a meaningful midpoint, with explicitly centered limits when appropriate. Keep comparable panels on a common scale; mark missing cells separately from low values. Choose dark or white annotation ink from actual background contrast. Avoid rainbow scales and decorative gradients. Switching between color and grayscale never changes type, line widths, markers, layout, spacing or export settings.
 
 ## Physical size and typography
 
@@ -59,7 +59,7 @@ For readable count/share bars, `14,325 · 50.2%` is a compact pattern; specify p
 - A PNG preview commonly uses 300 dpi at final aspect ratio. Raster/mixed images may need other resolutions; check the named journal. Increasing metadata DPI does not recover image detail. Dense point clouds may be selectively rasterized while axes/text remain vector.
 - Small heatmaps/colorbars can use vector cells; remove renderer seams without obscuring real boundaries. Use the requested color space/profile and known background for transparency.
 - Keep actual physical dimensions. Tight cropping can alter nominal page width, so inspect and record the final result if used.
-- Inspect final rendered text, glyphs, lines, marker contrast, legends, colorbar labels and neighboring panels at actual size. Inspect D itself when requested. Passing code/numerical checks does not establish visual readability.
+- Inspect final rendered text, glyphs, lines, marker contrast, legends, colorbar labels and neighboring panels at actual size. Inspect the grayscale version itself when one is requested. Passing code/numerical checks does not establish visual readability.
 - Check values, limits, transformations, intervals, denominators, legend identities, rounding and caption definitions against the source. Keep relative report links and relevant source/run metadata.
 
 For a named submission, consult [publication-references.md](publication-references.md). Optional broad comparisons remain in the [basic](scientific-chart-examples.md) and [advanced](advanced-chart-guide.md) backgrounds; they are not mandatory reading for one chart.

@@ -1,4 +1,4 @@
 interface:
   display_name: "InfoHub Maintenance"
-  short_description: "Optional InfoHub research data and service maintenance"
-  default_prompt: "Use $infohub-maintenance to update my existing InfoHub workspace or services, preserve project revisions, and keep warehouse publication optional."
+  short_description: "Maintain an existing InfoHub research workspace and its services"
+  default_prompt: "Use $infohub-maintenance to update my existing InfoHub workspace or services. Keep project revisions intact and treat warehouse publication as optional."

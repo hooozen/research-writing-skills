@@ -1,53 +1,53 @@
 ---
 name: scientific-chart-style
-description: "Create or restyle publication-oriented scientific charts across disciplines. Locate one of 19 chart references, read only its input/definition/example, and render a selected chart with editable exports. Use high-contrast blue by default and a designed grayscale print mode."
+description: "Create or restyle publication-quality scientific charts in any discipline. Pick one of 19 chart types from an index, read only that chart's card (inputs, statistical definition, example), and render it with editable SVG/PDF and PNG exports. Saturated blue palette by default, with a purpose-built grayscale mode for print."
 ---
 
 # Scientific Chart Style
 
-Use the **high-contrast blue** palette by default and **D grayscale** for black-and-white print. Preserve source evidence and target-journal requirements. This skill supports scientific charts across disciplines.
+Default look: white background, saturated blue `#1464D2` as the first series, dark orange and purple for the next two, physical-point typography. Use `--mode grayscale` for black-and-white print; it's a designed mode with distinct markers and line styles, not a desaturated screenshot. A target journal's instructions always override these defaults.
 
-## Start with the requested chart
+## 1. Find the chart
 
-Open the [19-chart index](references/chart-index.md) and select the row matching the scientific question and available data. Each row links directly to a short chart card, minimal JSON input, individual SVG and PNG. The [JSON index](references/chart-index.json) exposes the same mapping for programmatic lookup; reading both indexes is unnecessary.
+Open the [chart index](references/chart-index.md) and pick the row whose question matches the user's question and data. Each row links to a short card, a minimal JSON input, and an SVG/PNG preview. [chart-index.json](references/chart-index.json) has the same mapping for scripts; you don't need both.
 
-1. Read **only the selected chart card** for when to use it, required fields, statistical definition, limitations and a short runnable example. Follow its linked methodological source only when needed. Do not read both long galleries or every chart card to make one plot.
-2. Read the [shared style guide](references/style-guide.md) when creating or restyling the figure. It owns palette, physical-point typography, spacing and export settings. Read [publication references](references/publication-references.md) only when adapting to a named publication or checking a submission requirement. Target-journal instructions override visual defaults.
-3. Use the individual SVG for editable geometry/style and the individual PNG for convenient visual inspection. A renderer may not display SVG directly; do not assume that reading SVG XML provides a visual inspection or a statistical definition. The nine-panel contact sheets are optional browsing aids, not required context.
-4. Use supplied observations or supported summaries. Identify units, grouping/pairing, missingness and the comparison/reference. If a required field is absent, obtain it or use an appropriate simpler encoding. Never reconstruct individual data, quartiles, densities, pairing, intervals or censoring from insufficient aggregates.
+1. Read **only the chosen card**: when to use it, required fields, how it's calculated, what it can't show, and a runnable example. Don't read every card or the long background guides to make one plot.
+2. Read the [style guide](references/style-guide.md) when creating or restyling a figure. It owns colors, type sizes, spacing and export. Read [publication-references.md](references/publication-references.md) only for a named journal.
+3. Look at the card's PNG to see the intended result. Reading SVG source is not a visual check.
+4. Work from the user's observations or valid summaries. Know the units, grouping, pairing, missing values and the reference being compared against. If a required field is missing, ask for it or use a simpler chart the data do support. Never reconstruct raw points, quartiles, densities, pairs, intervals or censoring from summaries.
 
-## Render one chart
+## 2. Render it
 
-The optional [single-chart runner](scripts/render_chart.py) accepts the minimal input described by each card. Set `SKILL_DIR` to this installed skill's actual directory and `TASK_DIR` to the task workspace; write outputs in the task workspace, not inside the installed skill.
+[scripts/render_chart.py](scripts/render_chart.py) draws one chart from the card's input format. Set `SKILL_DIR` to this skill's installed directory and `TASK_DIR` to the user's workspace; write output to the workspace, never into the skill.
 
 ```sh
-# List available chart IDs without generating figures.
+# List chart IDs.
 python "$SKILL_DIR/scripts/render_chart.py" --list
 
-# Plot supplied data; only the chosen chart is generated.
+# Plot the user's data.
 python "$SKILL_DIR/scripts/render_chart.py" --chart roc \
   --input "$TASK_DIR/data.json" --output-dir "$TASK_DIR/figures/roc"
 
-# Explicitly requested synthetic demonstration; never a fallback for missing data.
+# Synthetic demo, only when the user asks for one.
 python "$SKILL_DIR/scripts/render_chart.py" --chart roc --example \
   --output-dir "$TASK_DIR/figures/roc-example"
 ```
 
-Use `--mode grayscale` for D and `--formats svg,png,pdf` when PDF is needed; individual cards also show short Python calls. Without `--input` or explicit `--example`, the runner must not generate sample data. Keep synthetic flags and limitations in the output. The data/statistics/export records belong to the selected chart, not an unrelated atlas.
+Add `--mode grayscale` for print and `--formats svg,png,pdf` when PDF is needed. Without `--input` or `--example` the runner refuses to plot, so missing data never turns into demo data. Synthetic outputs stay labeled as synthetic.
 
-The runner is a reference implementation, not a requirement to use Python or a general statistical analysis service. Use the user's existing R, JavaScript or other capable tool when appropriate, translating the selected card's meaning and shared visual rules. Use task-specific implementation when the runner's documented input subset does not cover the design; do not force incompatible data into an example schema. Reuse shared style/statistical helpers rather than copying a full gallery or nineteen separate style implementations.
+The runner is a reference implementation, not a requirement. If the user works in R, JavaScript or another tool, apply the card's definitions and the style guide there. If the design goes beyond the runner's input format, write task-specific code that reuses the shared helpers rather than forcing the data into the example schema.
 
-## Scientific and visual checks
+## 3. Check the result
 
-- Match the encoding to the question: observations/distributions for spread, effects and justified intervals for comparisons, counts/rates for bars. Retain a zero origin for bar lengths, actual time spacing, actual pair IDs, explicit denominators and missing values.
-- Define what a point represents, n and the dependence unit. State whether uncertainty is SD, SE, confidence/prediction interval or limits of agreement. Do not add unsupported intervals, significance stars, causal claims or conclusions of module contribution.
-- Keep group identities stable across related figures. D needs marker, line or hatch distinctions in addition to tonal differences. For quantitative matrices use an appropriate shared sequential/diverging scale and explicit missing cells.
-- Set final physical size before composing. Fonts are points, not pixels scaled by export DPI; reflow a single-column figure rather than shrinking a double-column figure's labels. Use white backgrounds, readable labels and measured spacing without decorative cards.
-- Retain editable vector text/geometry when suitable, embed PDF fonts and provide a PNG for visual QA when needed. Inspect the actual final render, including legends, colorbars, neighboring panels and glyphs; a valid SVG or a passing numerical test is not proof of visual readability.
-- Captions identify measure, population, units, n/denominator, reference, uncertainty method and source. Keep long interpretation outside the data rectangle. Save report figures in `figures/` with meaningful alt text and relative links, and keep exact data/derived values traceable.
+- **Right chart for the question.** Observations and distributions for spread; estimates with justified intervals for comparisons; bars for counts and rates. Bars start at zero, time keeps its real spacing, pairs keep their real IDs, denominators and missing values stay visible.
+- **Honest statistics.** Say what a point is, the n, and the unit of independence. Say whether error bars are SD, SE, a confidence or prediction interval, or limits of agreement. No unsupported intervals, significance stars or causal claims.
+- **Consistent identities.** A group keeps its color across related figures. Grayscale needs marker, line or hatch differences, not just tone. Matrices use one shared sequential or diverging scale and mark missing cells explicitly.
+- **Final size first.** Set the physical size before laying out. Fonts are points, not pixels scaled by DPI. For a single column, reflow rather than shrinking a double-column figure.
+- **Look at the render.** Inspect the actual PNG or PDF at final size, including legends, colorbars, neighboring panels and CJK glyphs. A valid SVG or a passing test isn't proof it reads well.
+- **Complete caption.** Measure, population, unit, n or denominator, reference, uncertainty method and source. Long interpretation goes in the caption or text, not inside the plot. Report figures live in `figures/` with alt text and relative links.
 
-## Optional background and maintenance
+## Background and maintenance
 
-The [basic background](references/scientific-chart-examples.md) and [advanced background](references/advanced-chart-guide.md) contain broader comparisons and methodological sources. The old [basic gallery](scripts/scientific_chart_gallery.py) and [advanced gallery](scripts/advanced_chart_gallery.py) remain reproducible atlas examples; a single chart uses the direct runner above.
+[scientific-chart-examples.md](references/scientific-chart-examples.md) and [advanced-chart-guide.md](references/advanced-chart-guide.md) compare related chart types and cite methodological sources; read them only when choosing between methods. The gallery scripts ([basic](scripts/scientific_chart_gallery.py), [advanced](scripts/advanced_chart_gallery.py)) reproduce the overview sheets; single charts use the runner above.
 
-When maintaining this skill, use [scripts/build_chart_references.py](scripts/build_chart_references.py) to rebuild the index and individual reference figures from their recorded inputs, then run it with `--check`. The manifest ties reference inputs and SVG/PNG files to generator sources. Do not rebuild or load all nineteen references during an ordinary plotting task. HTML or contact sheets may be generated for human browsing; the Agent's primary route remains the text index and selected chart card.
+Maintainers rebuild the index and previews with [scripts/build_chart_references.py](scripts/build_chart_references.py) and verify with `--check`. An ordinary plotting task never rebuilds them.
