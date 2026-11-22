@@ -1,6 +1,6 @@
-# Formulas (KaTeX-compatible)
+# LaTeX source and rendered formulas
 
-Read this whenever a report contains math. Markdown and any retained TeX must use syntax that VS Code and KaTeX both render. Standalone HTML may instead show the same expression as MathML or pre-rendered output; readers should never need a TeX installation.
+Read this whenever a report contains math. Keep the LaTeX source editable and make the published equation selectable as mathematics. Use KaTeX-compatible LaTeX in Markdown. In HTML use native MathML with retained TeX, or a renderer such as KaTeX in HTML-and-MathML mode. Readers should never need a TeX installation.
 
 ## When a formula earns its place
 
@@ -60,16 +60,16 @@ Do not use:
 
 If uncertain whether a command is portable, rewrite it using simpler primitives. Do not preserve a specialized macro merely because it works in a full LaTeX editor.
 
-## Markdown and HTML interactions
+## Markdown and HTML delivery
 
 - Avoid display math inside Markdown tables. Put the equation before or after the table and refer to it by symbol or descriptive name.
 - Inside a Markdown table, avoid raw vertical bars in formulas because they can split cells. Use `\mid`, `\lvert...\rvert`, or `\lVert...\rVert` as appropriate.
 - Do not place formulas in code spans or fenced code blocks in the finished report; code fences in this guide show source syntax only.
 - Keep sentence punctuation outside an inline delimiter unless it is mathematically meaningful.
-- For HTML on a page with a math renderer, retain `$...$` and `$$...$$` in text content and verify that its delimiter configuration recognizes both. Do not place TeX in HTML attributes.
-- For offline standalone HTML, use installed local KaTeX assets, prerendered mathematics with the necessary local styles/fonts, or semantic MathML for expressions that can be converted faithfully. A request for rendered offline HTML authorizes the necessary local assets; do not add a remote CDN.
-- For single-file HTML, embed any required styles/fonts or use native MathML without an external runtime. A MathML `<semantics>` element can preserve the dollar-delimited TeX source in an `<annotation encoding="application/x-tex">` while displaying the equivalent expression. This is an HTML output exception to the visible dollar-delimiter rule, not permission to change the mathematics.
-- Check the actual output in the target renderer when available, including fractions, subscripts, and line wrapping. If no workable renderer or conversion is available, describe that limitation outside the artifact and do not claim that raw TeX is rendered.
+- For a report published from Markdown, check the published view as well as the source. Confirm the renderer recognizes both math delimiters. If using client-side LaTeX rendering, keep TeX in text content and retain it in the rendered math's annotation or source document.
+- For offline standalone HTML, use native MathML or bundle the local KaTeX assets, styles and fonts. For single-file delivery, embed assets or use MathML without runtime dependencies. Preserve the exact TeX in `<annotation encoding="application/x-tex">` inside `<semantics>`. Native `<math>` holds the equivalent structure, including fractions and scripts.
+- Use document math for every required formula. Equation screenshots, PNG exports, SVG paths, and other image substitutes do not pass this requirement. Supporting scientific figures may still use normal image formats.
+- If the requested destination has no workable math renderer, keep the editable TeX in the source and state the specific rendering limitation. When an alternate view is in scope, provide the equivalent rendered document there.
 
 ## Verification
 
@@ -79,5 +79,6 @@ Before delivery:
 - confirm no prose was accidentally enclosed as mathematics;
 - confirm every symbol and comparison baseline is defined;
 - scan for forbidden labels, references, custom macros, and document environments;
-- render-check the Markdown in a KaTeX-capable preview when available;
+- open the delivered view and check at least an inline equation and a display equation with a fraction or subscript for actual typesetting, layout and selection;
+- verify the rendered equation is part of the document's math/text structure and that the TeX remains available in the source or a math annotation;
 - preserve the user's mathematical meaning, including indices, grouping, units, and operator precedence.

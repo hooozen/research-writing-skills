@@ -30,7 +30,7 @@ Inspect the output and side effects. The agent should explain the unavailable in
 
 **Review**
 
-Verify 75%, 80%, +5 percentage points, and approximately +6.67% relative to A. The net increase of six correct predictions must not become “exactly six corrected images.” Preserve dependence, pairing, unknown split overlap, and causal uncertainty. Require an actual offline formula representation, a single-file dependency check, and a rendered inspection where available. If rendering cannot be inspected, report that limitation. Do not repeat already answered intake questions.
+Verify 75%, 80%, +5 percentage points, and approximately +6.67% relative to A. The net increase of six correct predictions must not become “exactly six corrected images.” Preserve dependence, pairing, unknown split overlap, and causal uncertainty. Open the output offline and verify the fraction renders as selectable document math with retained LaTeX. An equation exported as PNG or SVG fails this check. If rendering cannot be inspected, report that limitation. Do not repeat already answered intake questions.
 
 ## Report: HTML reading experience
 

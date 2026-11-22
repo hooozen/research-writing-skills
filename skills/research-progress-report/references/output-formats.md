@@ -8,7 +8,7 @@ For model content, [model-reporting.md](model-reporting.md) applies in every for
 
 ## Markdown
 
-Use GitHub-flavored Markdown unless the target platform needs another dialect. Formulas follow [math-formatting.md](math-formatting.md).
+Use GitHub-flavored Markdown unless the target platform needs another dialect. Author LaTeX math directly in the Markdown and check its rendering in the intended view. Follow [math-formatting.md](math-formatting.md).
 
 A scaffold for a substantial report:
 
@@ -31,11 +31,19 @@ A scaffold for a substantial report:
 
 [Formula, if it replaces a longer explanation; symbols defined right below.]
 
+[图 1](#fig-comparison)显示主要比较，[表 1](#tab-comparison)给出完整数值。
+
+<a id="fig-comparison"></a>
+
 ![Alt text that says what the figure shows](figures/example.svg)
 
-*图 1. [Metric; population; unit; uncertainty; source.]*
+*图 1. [Descriptive title. Metric, population, unit, uncertainty and source.]*
 
-[Compact table of exact values, or a link to the appendix table.]
+<a id="tab-comparison"></a>
+
+**表 1. [Descriptive title]**
+
+[Compact table of exact values. Move this title, anchor and table to the appendix if needed.]
 
 [What the evidence supports, its main limit, and the decision that follows.]
 
@@ -57,6 +65,7 @@ Notes on using it:
 - Drop empty metadata and irrelevant sections, never the premises needed to read the evidence. "Background" can merge into the overview or first section when that stays clear.
 - Continuation reports keep a short recap unless the user confirms the audience already shares it.
 - Keep the exact-value table next to its chart when practical; otherwise link to the appendix table.
+- Put stable anchors before the figure or table. If the platform strips inline HTML, use a caption heading and verify that the same view exposes its generated fragment link.
 - A simple qualitative update can be prose only.
 - Add a closing summary only if it contributes a decision or a cross-result insight the opening didn't.
 - Keep names, aliases and symbols consistent and run the reader test in [writing-and-explanation.md](writing-and-explanation.md).

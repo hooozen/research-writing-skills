@@ -12,8 +12,8 @@ What the template already does:
 |---|---|---|
 | Reading column | About 40 Chinese characters or 75 Latin characters per line, 17 px text, 1.75 line height | Nothing. Don't widen the column for wide figures; export the figure at the right size instead. |
 | Contents | Built automatically from each `<section>`'s `<h2>` and the appendix `<summary>`. Sticky rail with the current section highlighted on wide screens; a collapsed "目录" block on phones. Hidden when there are fewer than three sections. | Give each top-level section an `id` and an `<h2>`. Don't hand-write a contents list. Localize the "目录" label for non-Chinese reports. |
-| Figure viewer | Click or press Enter on any figure image or inline SVG to open it larger; Esc or "关闭" closes it. | Use `<figure>` with an `<img>` or inline `<svg>` and a `<figcaption>`. Localize "关闭". |
-| Tables | Horizontal rules only, numbers right-aligned in tabular figures; on narrow screens the table scrolls sideways with an edge shadow instead of squashing columns. | Wrap each table in `<div class="table-wrap">`, put `class="num"` on numeric cells and headers, units in headers. |
+| Figure viewer | Click or press Enter on any figure image or inline SVG to open it larger; Esc or "关闭" closes it. | Use `<figure>` with an `id`, an `<img>` or inline `<svg>` and a `<figcaption>`. Localize "关闭". |
+| Tables | Horizontal rules only, numbers right-aligned in tabular figures; on narrow screens the table scrolls sideways with an edge shadow instead of squashing columns. | Wrap each table in `<div class="table-wrap">` and use a table `id`, a `<caption>`, `class="num"` on numeric cells and headers, and units in headers. |
 | Notices | `.notice` for the one thing a reader must not miss, such as "all data are synthetic". `.todo` marks a missing input in a draft. | Use at most one notice near the top. Remove every `.todo` before calling a report final. |
 | Appendix | `<details class="appendix">` collapses long supporting material; it opens automatically when printed or linked from the contents. | Put full tables, derivations and diagnostics here, linked from the main text. |
 | Print | A4 margins, contents and viewer hidden, figures and tables kept whole, appendices expanded. | Check the print preview once. |
@@ -56,9 +56,9 @@ Only the overview paragraph gets `class="lede"`. Leave out metadata the user did
 ## Figures and formulas
 
 - Link figures from a sibling `figures/` directory with relative paths. For a single-file report, inline the SVG (keep its text as text) or embed a PNG as a data URI. A single-file request already authorizes embedding.
-- Every figure gets a `<figcaption>` that starts with `<b>图 N.</b>` (or `Figure N.`) followed by metric, population, unit, uncertainty and source. Give `<img>` an `alt` that says what the figure shows, not a copy of the caption; give inline SVG a `<title>`.
-- Render formulas as native MathML so they work offline. Keep the TeX source in `<annotation encoding="application/x-tex">` inside `<semantics>`, as the template does. If a page will be served with a KaTeX setup the user controls, `$...$` and `$$...$$` text is fine instead. See [math-formatting.md](math-formatting.md).
-- Refer to figures and tables by link (`<a href="#fig-accuracy">图 1</a>`); the target briefly highlights when reached.
+- Start figure and table captions with their own number (`图 N.` or `表 N.`) and a descriptive title. Include metric, population, unit, uncertainty and source where relevant. Give `<img>` useful alt text and inline SVG a `<title>`.
+- For offline reports render formulas as native MathML and preserve the TeX in `<annotation encoding="application/x-tex">` inside `<semantics>`, as the template does. A served page can use its local KaTeX renderer in HTML-and-MathML mode. See [math-formatting.md](math-formatting.md).
+- Refer to each figure and table by an anchor link, for example `<a href="#fig-accuracy">图 1</a>` or `<a href="#tab-accuracy">表 1</a>`. The target briefly highlights when reached.
 
 ## Check before delivering
 
@@ -69,6 +69,6 @@ Open the file in a browser and look at it; don't just validate the markup.
 3. Click a figure: the viewer opens larger and closes with Esc.
 4. Print preview: appendices expanded, nothing cut across pages that shouldn't be, no contents rail.
 5. Disconnect from the network or check the source: no external requests.
-6. Formulas render; every link and anchor resolves; no `.todo` left in a final report.
+6. Inline and display formulas render as selectable mathematics in the actual view, with accessible TeX source. Figure and table links jump to their captioned items. Every link resolves and the final report is free of `.todo` placeholders.
 
 If you can't open a browser, say which of these checks you couldn't run.

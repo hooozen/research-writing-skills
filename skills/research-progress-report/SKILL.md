@@ -1,6 +1,6 @@
 ---
 name: research-progress-report
-description: "Draft or revise self-contained scientific progress reports for public briefings or lab meetings, including 科研进展报告、阶段性研究总结、项目进度汇报. Explains the work from an overview down to the evidence in plain language, and documents model data splits, architecture, losses, training, checkpoint selection and evaluation in full. Not for journal manuscripts or grant proposals."
+description: "Draft or revise self-contained scientific progress reports for public briefings or lab meetings, including 科研进展报告、阶段性研究总结、项目进度汇报. Explains the evidence in plain language and documents dataset backgrounds, model data splits, architecture, losses, training, checkpoint selection and evaluation in full. Not for journal manuscripts or grant proposals."
 ---
 
 # Research Progress Report
@@ -40,11 +40,15 @@ Open with a real overview: the problem, the overall approach, how the parts conn
 
 With a supplied outline, keep its hierarchy and emphasis and fill in the missing connections. Explain before reordering anything substantial. With no outline, organize around the research question and the cause-and-effect or process order; use chronology only when the timeline is the point.
 
+When asked to revise an existing report, put the requested explanations in that report. Give readers the definitions, methods and evidence they need to understand the result there. Use source links for attribution and verification and internal links for supporting details.
+
 ## 3. Write sections that each answer one question
 
 Open every section with its question or main point, then give the mechanism, design, evidence and interpretation it needs. Actions need reasons. Comparisons need an explicit baseline. Conclusions must answer the question asked. At a big transition, say what is still unresolved and why the next step addresses it.
 
 Introduce an unfamiliar concept where it is first needed: the problem it solves, what it is in plain words, its role here, and only then its technical name or formula. Spelling out an acronym is not an explanation.
+
+Introduce each dataset used in the reported work, including external evaluation and auxiliary training data. Describe who released it, who or what it covers, what one record contains, the usable fields and timeline, and which records the experiment used. For longitudinal or survival data, give the time origin and the observed duration or follow-up coverage where available. A short, labeled example can make an unfamiliar record understandable. Verify public dataset details and version against primary sources such as the release, dictionary or dataset paper. Verify experiment counts and local availability against the actual run artifacts.
 
 Pick one name for each important thing and keep it everywhere: prose, headings, figures, tables, formulas. If the sources use an alias, mention it once. Don't vary names for style, and don't merge two things because their names sound alike.
 
@@ -69,11 +73,11 @@ Ground every value in supplied code, configs, manifests, logs and outputs. Unkno
 Choose the representation from the section's question: a chart for comparisons, patterns, distributions and uncertainty; a compact table for exact values; a diagram for structure and flow; a formula for a definition or calculation. Before a figure or formula, say why the reader needs it; after it, say what follows from it. Don't add visuals to fill a quota, and respect text-only requests.
 
 - Keep decisive evidence next to its claim and move long tables, derivations and secondary diagnostics to a linked appendix.
-- Captions name the metric, population, unit, denominator, uncertainty and source.
+- Number figures and tables separately in reading order and give each a descriptive title and a stable destination link. Link references such as “Figure 1” or “Table 2” to the item. Add a compact linked index when the document is long enough to benefit. Preserve existing anchors when editing and update displayed references if numbering changes. Captions name the metric, population, unit, denominator, uncertainty and source where applicable.
 - Save figures in `figures/` next to the report with relative links. Prefer SVG, add PNG if needed.
 - Draw figures only from real data. If plot data are missing, give a table schema in a draft, not a fake chart.
 - For chart styling, use `scientific-chart-style` if it's installed (saturated blue/orange/purple, plus a grayscale print mode). It's optional: without it, keep clear encodings, units, denominators and direct labels, and don't claim to have used it.
-- For formulas, read [references/math-formatting.md](references/math-formatting.md): `$...$` inline, `$$...$$` on their own lines, KaTeX-safe commands only, every symbol defined.
+- For formulas, read [references/math-formatting.md](references/math-formatting.md). Write the editable equation in the report as LaTeX math and render it as selectable, structured mathematics in the intended reading view. Use `$...$` inline and `$$...$$` on their own lines in Markdown. Use native MathML or a text-and-MathML LaTeX renderer in HTML, and retain the TeX source.
 
 For output layout, follow [references/output-formats.md](references/output-formats.md). For HTML, start from [assets/report-template.html](assets/report-template.html) and follow [references/html-report.md](references/html-report.md).
 
@@ -99,5 +103,5 @@ Deliver the report first. Put any assumption or missing-input note briefly after
 - **Evidence test.** Each opening claim has support; each conclusion and next step follows from the data.
 - **Model test.** Trace one forward pass and each loss term to the implementation; diagrams, shapes, configs, logs, checkpoint and results agree. Disclose what's unavailable.
 - **Numbers test.** Values, units, denominators, rounding, tables, charts and captions agree. Compression hasn't dropped sample sizes, uncertainty, baselines or limitations.
-- **Rendering test.** Formulas render in the target format; links resolve; HTML follows the output guide. If you couldn't inspect a render, say so instead of claiming it passed.
+- **Rendering test.** Open the intended reading view. Check representative inline and display equations for correct layout and selectable math, and follow links to the numbered figures and tables. Validate the HTML layout when relevant. State which render checks could not be performed.
 - **Cleanup.** No leftover placeholders in a final report, no unused scaffold sections, no drafting notes.

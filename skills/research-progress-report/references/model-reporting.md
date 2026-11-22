@@ -10,6 +10,8 @@ For a model that's proposed but not trained, describe the design that's supporte
 
 ## Data and splits
 
+Introduce each dataset before the split table. Connect its original purpose, population, measurements and labels to what this run actually reads and predicts. Distinguish the complete release from the eligible and analyzed subsets, and trace labels from the source table to the model's target. For time-to-event data, name the event, the time origin, the observation unit, follow-up coverage and censoring. Cite the original release or data dictionary and use the experiment's manifest or outputs for the analyzed counts.
+
 Give a compact table per split: source and version, purpose, observation unit, number of independent subjects or groups, number of images or records, and share of the total with an explicit denominator. Add class or target distribution when relevant. Explain inclusion and exclusion, missing labels, preprocessing, and how subsets relate to their parent dataset. Keep planned split sizes separate from final usable counts.
 
 Say how the split was made (random, stratified, grouped, temporal, by site, or a supplied fixed list) and give the seed or manifest ID. Name the unit of independence: repeated scans, both eyes, video frames, patches or augmentations of one subject must not end up on both sides of a split by accident. Describe the actual overlap controls and any remaining leakage risk instead of asserting independence.

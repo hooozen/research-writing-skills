@@ -17,6 +17,7 @@ All notable changes to this repository are documented here.
 
 ### Changed
 
+- Require the report to explain each dataset and distinguish the release population from the analyzed sample. Use primary sources for public dataset details and the experiment artifacts for actual counts. Number, title and link each figure and table.
 - Rewrite every skill's instructions, the README and the catalog descriptions in plain language: numbered steps, short sentences, tables where they help. Requirements are unchanged.
 - Rename the internal "B" and "D" chart-style labels to "default color" and "grayscale print mode"; chart previews are byte-identical.
 - Slide titles now state the slide's point; the presentation skill gains explicit one-message-per-slide rules.
@@ -25,6 +26,7 @@ All notable changes to this repository are documented here.
 
 ### Fixed
 
+- The report skill now requires editable LaTeX and selectable document math in the intended reading view. Formula screenshots and image exports do not meet the requirement.
 - The report skill described the chart companion's palette as teal/terracotta; it is saturated blue/orange/purple.
 
 ## [1.0.0] - 2026-10-25
